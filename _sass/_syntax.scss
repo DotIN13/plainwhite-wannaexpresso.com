@@ -7,8 +7,23 @@
 div.highlight {
 	padding: 5px 20px;
 }
+
+figure.highlight {
+	padding: 5px 20px;
+	margin: 0;
+}
+
 pre.highlight, code {
-	font-family: 'Consolas', Menlo, monospace;
+	font-family: "Fira Code", Menlo, Monaco, Consolas, "Courier New", "Songti SC", 思源宋体, 华文宋体, "AR PL New Sung", "文鼎ＰＬ简报宋", 新宋体, 中易宋体, 全字库正宋体, 文泉驿点阵宋, AR PL UMing, 新细明体, 细明体, monospace;
 	line-height: 1.4em;
 	tab-size: 4;
+}
+
+p>code {
+	padding: 2px 4px;
+  font-size: 90%;
+  /*color: #c7254e;
+	background-color: #f9f2f4;*/
+	background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
 }

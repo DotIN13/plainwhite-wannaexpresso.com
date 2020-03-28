@@ -1,0 +1,53 @@
+---
+layout: post
+title: 在Manjaro中优雅地使用QQ与Wechat
+subtitle: Using Deepin-QQ and Deepin-Wechat in Manjaro 19
+date: '2020-02-23T15:08:00.000+08:00'
+author: DotIN13
+tags:
+- Linux Dev
+- Deepin-QQ
+- Deepin-Wechat
+modified_time: '2020-02-23T16:16:50.134+08:00'
+blogger_id: tag:blogger.com,1999:blog-7275524089009887162.post-3702675473024617438
+blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
+---
+
+<h2>安装Deepin-QQ与Deepin-Wechat</h2><a href="https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/index-bg1.png"
+    data-fancybox="gallery" data-caption="QQ-TIM"><img border="0" src="https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/index-bg1.png" width="640"
+        height="250" data-original-width="800" data-original-height="312" alt="QQ-TIM"/></a>
+<p>在Manjaro中，由于有AUR源、Archlinuxcn源的加持，安装Deepin应用是非常方便的。</p>
+<p>安装微信，只需在AUR中找到并安装<code>deepin-wine-wechat</code>；安装QQ，只需在AUR中找到并安装<code>deepin-wine-tim</code>或者<code>deepin-wine-qq</code>即可。
+</p>
+<p>安装软件包后，打开软件，按照提示完成进一步的安装配置之后就可使用。</p>
+
+<h2>调整界面DPI</h2>
+<p>打开界面发现字体过小，此时需要进入<code>winecfg</code>调整软件的DPI</p><a
+    href="/img/in-post/post-deepin-qq/screenshot-1-orig.png"
+    data-fancybox="gallery" data-caption="Wine QQ Configuration"><img border="0"
+        src="/img/in-post/post-deepin-qq/screenshot-1-orig.png"
+        width="526" height="640" data-original-width="480" data-original-height="584" style="border-radius: 8px" alt="wine qq config" /></a><em>Wine QQ Configuration</em>
+<p>首先完全退出QQ与Wechat。<br>在Terminal输入命令
+    {% highlight shell %}env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg #修改TIM的DPI
+env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" winecfg #修改QQ的DPI
+env WINEPREFIX="$HOME/.deepinwine/Deepin-Wechat" winecfg #修改Wechat的DPI{% endhighlight %}
+        此处建议将DPI设定在120左右，具体请自行调试。
+</p>
+<p>如果使用的是基于deepin-wine的deepin.com.qq.im或者deepin.com.qq.office，则应使用
+    {% highlight shell %}WINEPREFIX=~/.deepinwine/Deepin-QQ deepin-wine winecfg #修改QQ的DPI
+WINEPREFIX=~/.deepinwine/Deepin-TIM deepin-wine winecfg #修改TIM的DPI{% endhighlight %}
+    来调整DPI。
+</p>
+
+<h2>解决无法显示图片</h2>
+<p>
+    如遇到聊天图片与头像无法显示，或者始终处于加载中，是因为QQ的图片解析与ipv6不兼容，需要关闭ipv6。
+</p>
+<p>
+    在系统终端中运行命令：
+    {% highlight shell %}sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1{% endhighlight %}
+
+    注：以上命令在深度Deepin Linux系统下有效，其他Linux发行版可参考。
+</p>

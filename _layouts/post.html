@@ -17,6 +17,27 @@ layout: default
   <div class="post">
     {{ content }}
   </div>
+  {% if site.valine_appid %}
+  <!-- valine 评论框 start -->
+  <div id="vcomments"></div>
+  <!-- valine 评论框 end -->
+
+  <!-- Valine -->
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: '{{site.valine_appid}}',
+      appKey: '{{site.valine_apikey}}',
+      placeholder: 'Your comment here...',
+      avatar: 'identicon',
+      visitor: true,
+      lang: 'en'
+    })
+  </script>
+  <!-- Valine -->
+  {% endif %}
+
   {%- if site.plainwhite.disqus_shortname -%}
   <div id="disqus_thread" style="margin-top:25px"></div>
   <script>

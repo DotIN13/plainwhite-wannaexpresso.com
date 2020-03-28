@@ -1,38 +1,59 @@
-title: Your awesome title
-author: GitHub User
-email: your-email@domain.com
+title: LACKAWANNA EXPRESSO
+author: DotIN13
+email: dotin13@126.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 show_excerpts: true # set to true to show excerpts on the homepage
 
-# Minima date format
+permalink: pretty
+exclude: ["node_modules","package.json","README.md"]
+
+# Gitalk settings
+gitalk_clientid: false
+# b4edc9ea059838b0bf4e
+
+# Disqus settings
+disqus_username: false
+
+# Netease settings
+netease_comment: false
+
+# Valine settings
+valine_appid: "PSy1tmiW2mx0DpKo7psk67EN-9Nh9j0Va"
+valine_apikey: "MskLH2QYVC2Kqj8aG3XJ7x7o"
+
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
 plainwhite:
-  name: Adam Denisov
-  tagline: Developer. Designer
+  name: DotIN13
+  tagline: "LACKAWANNA<br>EXPRESSO"
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
+  navigation:
+    - title: About
+      url: "/about"
+  analytics_id: "UA-159368053-1"
 
   # generate social links in footer
   social_links:
-    twitter: thelehhman
-    github:  thelehhman
-    linkedIn: in/thelehhman
+    twitter: DotIN13
+    github: DotIN13
+    # linkedIn: in/thelehhman
     rss: rss
     # dribbble: jekyll
-    # facebook: jekyll
+    facebook: peter.zhang.1466
+    weibo: DotIN13
     # flickr:   jekyll
     # instagram: jekyll
     # linkedin: jekyll
     # pinterest: jekyll
-    # youtube: jekyll
+    youtube: DotIN13
     # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
     # youtube_channel_name: CloudCannon
-    # telegram: jekyll
+    telegram: DotIN13
     # googleplus: +jekyll
     # microdotblog: jekyll
 

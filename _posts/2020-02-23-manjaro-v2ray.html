@@ -1,0 +1,143 @@
+---
+layout: post
+title: 在Linux/Manjaro中使用V2Ray
+subtitle: Using V2Ray in Manjaro
+date: '2020-02-23T13:32:00.000+08:00'
+author: DotIN13
+tags:
+- Linux Dev
+- V2Ray
+modified_time: '2020-02-23T13:33:56.983+08:00'
+blogger_id: tag:blogger.com,1999:blog-7275524089009887162.post-2226326942169726602
+blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjarov2ray.html
+---
+
+<h2 id="Project-V">Project V</h2>
+<p>要了解 <code>V2Ray</code> 就必须要知道 <a href="https://github.com/v2ray" rel="external nofollow noopener noreferrer"
+        target="_blank">Project V</a>，根据官方说法：<code>Project V</code>
+    是一个工具集合，它可以帮助你打造专属的基础<strong>通信网络</strong>，<strong>Project V 的核心工具称为 V2Ray</strong>，其主要负责网络协议和功能的实现，与其它
+    <code>Project V</code> 通信，<code>V2Ray</code> 可以单独运行，也可以和其它工具配合，以提供简便的操作流程。</p>
+<p>相对于<code>shadowsocksr</code>来说，它有以下几个优势：</p>
+<ul>
+    <li><strong>多入口多出口</strong>: 一个 <code>V2Ray</code> 进程可并发支持多个入站和出站协议，每个协议可独立工作</li>
+    <li><strong>可定制化路由</strong>: 入站流量可按配置由不同的出口发出。轻松实现按区域或按域名分流，以达到最优的网络性能</li>
+    <li><strong>多协议支持</strong>: V2Ray 可同时支持多个协议，包括
+        <code>Socks</code>、<code>HTTP</code>、<code>Shadowsocks</code>、<code>VMess</code> 等</li>
+    <li><strong>隐蔽性</strong>: V2Ray 的节点可以伪装成正常的网站（HTTPS），将其流量与正常的网页流量混淆，以避开第三方干扰</li>
+    <li><strong>反向代理</strong>: 通用的反向代理支持，可实现内网穿透功能</li>
+    <li><strong>多平台支持</strong>: 原生支持所有常见平台，如 Windows、Mac OS、Linux，并已有第三方支持移动平台</li>
+</ul>
+<h2>安装V2Ray客户端</h2>
+<p>客户端软件在<a href="https://github.com/v2ray/v2ray-core/releases" rel="external nofollow noopener noreferrer"
+        target="_blank">发布页</a>，根据你需要的系统下载匹配型号的安装包，我这里以我的系统为例子，其他系统请自行参照<a href>官方文档</a>配置。</p>
+{% highlight bash %}sudo pacman -S v2ray    #ArchLinux/Manjaro安装v2ray{% endhighlight %}
+<p>配置上可以替换<code>/etc/v2ray/config.json</code>文件，参照以下模板自行修改参数即可，注意修改各注释处；或者可以使用<a
+        href="https://intmainreturn0.com/v2ray-config-gen/" rel="external nofollow noopener noreferrer"
+        target="_blank">配置生成器</a>。</p>
+<details>
+    <summary>config.json示例</summary>
+    {% highlight json %}
+{
+  "inbounds": [
+    {
+      "port": 1080, // 监听端口
+      "protocol": "socks", // 入口协议为 SOCKS 5
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings": {
+        "auth": "noauth"  //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess", // 出口协议
+      "settings": {
+        "vnext": [
+          {
+            "address": "serveraddr.com", // 服务器地址，请修改为你自己的服务器 IP 或域名
+            "port": 16823,  // 服务器端口
+            "users": [
+              {
+                "id": "b831381d-6324-4d53-ad4f-8cda48b30811",  // 用户 ID，必须与服务器端配置相同
+                "alterId": 64 // 此处的值也应当与服务器相同
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+    {% endhighlight %}
+</details>
+<p><code>V2Ray</code>支持配置多个服务器，那么多个服务器配置的时候，它其实是轮询访问的，也就是说第一个数据包走第一个服务器，第二个数据包走第二个服务器，而不是我们一般认为的第一个服务器被墙了就自动切换到第二个服务器，然后继续传输。
+</p>p>路由规则参照 <a href="https://github.com/v2ray/domain-list-community" rel="external nofollow noopener noreferrer"
+    target="_blank">domain-list-community</a> 域名列表，如果该项目中有一整套 <code>google</code> 顶级域名及其子域名，则用 <code>geosite</code> 写成
+<code>geosite:google</code> ，如果是普通网站，则使用 <code>domain</code> 写成 <code>domain:google.com</code></p>
+</details>
+<p>使用<code>v2ray</code>自带了一个检查工具<code>v2ray -test</code>检查<code>json</code>文件</p>
+{% highlight bash %}v2ray -test -config /etc/v2ray/config.json  #检查json
+V2Ray 4.18.0 (Po) 20190228
+A unified platform for anti-censorship.
+Configuration OK.{% endhighlight %}
+<p>显示<code>OK</code>就表示没问题了，可以开启本机的开机自启服务</p>
+{% highlight bash %}systemctl enable v2ray  #开机自启v2ray
+systemctl start v2ray   #启动v2ray{% endhighlight %}
+
+<h2>配置Socks代理</h2>
+<p>打开系统设置，进入网络设置，配置如下图：</p>
+<p><a href="/img/in-post/post-v2ray/v2ray-manual-socks.webp" data-fancybox="gallery" data-caption="System Manual Proxy"><img src="/img/in-post/post-v2ray/v2ray-manual-socks.webp" alt="System manual proxy"></a><em>System Manual Proxy</em></p>
+<p>如果仅需要浏览器代理，可以下载<code>SwitchyOmega</code>浏览器插件，最简配置如下：</p>
+<p><a href="/img/in-post/post-v2ray/switchyomega.png" data-fancybox="gallery" data-caption="SwitchyOmega Settings"><img src="/img/in-post/post-v2ray/switchyomega.png" alt="SwitchyOmega Settings"></a><em>SwitchyOmega Settings</em></p>
+
+<h2>配置shell代理</h2>
+<p>为了解决终端下载被墙服务器的安装包失败的问题，可以考虑代理终端。</p>
+<h3>临时代理</h3>
+只需要http代理则输入命令<code>export http_proxy=http://proxyAddress:port</code>；
+全部协议代理则输入命令<code>export ALL_PROXY=http://proxyAddress:port</code>。
+临时代理仅对当前环境有效，重启即失效。
+<h3>长期代理</h3>
+{% highlight bash %}sudo gedit ~/.bashrc    #编辑.bashrc文件{% endhighlight %}
+<p>在最后追加以下配置。</p>
+{% highlight bash %}export http_proxy="http://localhost:port"
+export https_proxy="http://localhost:port"{% endhighlight %}
+<p><code>source ~/.bashrc</code>或者重启终端后生效</p>
+
+<h2>配置PAC</h2>
+<h3>生成PAC</h3>
+<p><code>PAC</code>代理需要生成一个<code>.pac</code>的文件，首先本机安装<code>pip</code>工具</p>
+{% highlight bash %}sudo pacman -S python-pip       #安装pip
+pip -V      #查看pip版本
+#-------------------------输出----------------------------
+pip 19.0.3 from /usr/lib/python3.7/site-packages/pip (python 3.7)
+{% endhighlight %}
+{% highlight bash %}sudo pip install genpac     #使用pip安装genpac，需要root权限
+#-------------------------输出----------------------------
+Collecting genpac
+  Downloading https://files.pythonhosted.org/packages/48/fb/b8f9cce57c4ea856e7dd1f9fb917df2896d7e62d43c50ed1af2e50a4e57d/genpac-2.1.0.tar.gz (102kB)
+     |████████████████████████████████| 112kB 111kB/s 
+Installing collected packages: genpac
+  Running setup.py install for genpac ... done
+Successfully installed genpac-2.1.0{% endhighlight %}
+<p>最后执行以下命令，会生成一个auto.pac文件，无输出结果表示执行成功</p>
+{% highlight bash %}genpac --format=pac -o auto.pac --pac-proxy="SOCKS5 127.0.0.1:1080"
+{% endhighlight %}
+
+<h3>Firefox PAC代理设置</h3>
+<p>PAC文件的绝对路径为<code>file:///etc/v2ray/auto.pac</code>，如下图</p>
+<p><a href="/img/in-post/post-v2ray/firefox-pac.webp" data-fancybox="gallery" data-caption="Firefox PAC Manual Proxy"><img src="/img/in-post/post-v2ray/firefox-pac.webp" alt="Firefox PAC manual proxy"></a><em>Firefox PAC Manual Proxy</em></p>
+
+<h3>系统PAC代理设置</h3>
+<p>以<code>gnome</code>桌面为例，PAC文件的绝对路径为<code>file:///etc/v2ray/auto.pac</code>；
+</p>
+<p><a href="/img/in-post/post-v2ray/v2ray-auto-pac.webp"" data-fancybox="gallery" data-caption="PAC Automatic Proxy"><img src="/img/in-post/post-v2ray/v2ray-auto-pac.webp" alt="PAC automatic proxy"></a><em>PAC Automatic Proxy</em></p>
+<p>全局代理也可以通过以下命令来设置:</p>
+{% highlight bash %}gsettings set org.gnome.system.proxy autoconfig-url file:///etc/v2ray/auto.pac
+gsettings set org.gnome.system.proxy mode 'auto'
+
+gsettings set org.gnome.system.proxy.socks host '127.0.0.1'
+gsettings set org.gnome.system.proxy.socks port 1088{% endhighlight %}
+<p>转引自<a href="https://www.teaper.dev/2019/06/02/v2ray/">https://www.teaper.dev/2019/06/02/v2ray/</a>，有修改。</p>

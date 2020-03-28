@@ -1,68 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {%- include head.html -%}
-  </head>
-  <body>
-    <main class="container">
-      <section class="about">
-        <a href="/"><img src="{{ "/assets/portfolio.png" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
-        <h2 id="title">
-          <a href="/">{{ site.plainwhite.name }}</a>
-        </h2>
-        <p class="tagline">{{ site.plainwhite.tagline }}</p>
-        <ul class="social">
-          {%- if site.plainwhite.social_links.github -%}
-            <a href="https://github.com/{{ site.plainwhite.social_links.github }}">
-              <li>
-                <i class="icon-github-circled"></i>
-              </li>
-            </a>
-          {%- endif -%}
-          {%- if site.plainwhite.social_links.linkedIn -%}
-            <a href="https://www.linkedin.com/{{ site.plainwhite.social_links.linkedIn }}">
-              <li>
-                <i class="icon-linkedin-squared"></i>
-              </li>
-            </a>
-          {%- endif -%}
-          {%- if site.plainwhite.social_links.twitter -%}
-            <a href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
-              <li>
-                <i class="icon-twitter-squared"></i>
-              </li>
-            </a>
-          {%- endif -%}
-        </ul>
 
-        {%- if site.plainwhite.navigation -%}
-          <nav class="navigation">
-            <ul>
-              {% for link in site.plainwhite.navigation %}
-                <li>
-                  <a href="{{ link.url }}">{{ link.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </nav>
+<head>
+  {%- include head.html -%}
+</head>
+
+<body>
+  <main class="container">
+    <section class="about">
+      <a href="/"><img src="{{ "/img/orange.webp" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
+      <h2 id="title">
+        <a href="/">{{ site.plainwhite.name }}</a>
+      </h2>
+      <p class="tagline">{{ site.plainwhite.tagline }}</p>
+      <ul class="social">
+        {%- if site.plainwhite.social_links.github -%}
+        <li>
+          <a target="_blank" href="https://github.com/{{ site.plainwhite.social_links.github }}">
+            <span class="fa-stack fa-2x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+        </li>
         {%- endif -%}
+        {%- if site.plainwhite.social_links.facebook -%}
+        <li>
+          <a target="_blank" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}">
+            <span class="fa-stack fa-2x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- if site.plainwhite.social_links.twitter -%}
+        <li>
+          <a target="_blank" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
+          <span class="fa-stack fa-2x">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+          </span>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- if site.plainwhite.social_links.weibo -%}
+        <li>
+          <a target="_blank" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}">
+            <span class="fa-stack fa-2x">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+        </li>
+        {%- endif -%}
+      </ul>
 
-        <p>&copy;
-          {{ "now" | date: "%Y" }}</p>
-      </section>
-      <section class="content">
-        {{ content }}
-      </section>
-    </main>
-    {%- if site.plainwhite.analytics_id -%}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
-      <script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+      {%- if site.plainwhite.navigation -%}
+      <nav class="navigation">
+        <ul>
+          {% for link in site.plainwhite.navigation %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {%- endif -%}
 
-		gtag('config', '{{ site.plainwhite.analytics_id }}');
-	</script>
-    {%- endif -%}
-  </body>
+      <p><a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-4.0<a> &copy;
+            {{ "now" | date: "%Y" }}</p>
+    </section>
+    <section class="content">
+      {{ content }}
+    </section>
+  </main>
+  {%- if site.plainwhite.analytics_id -%}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', '{{ site.plainwhite.analytics_id }}');
+  </script>
+  {%- endif -%}
+  {% include footer.html %}
+</body>
+
 </html>
