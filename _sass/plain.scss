@@ -3,7 +3,7 @@
 @import "syntax";
 @import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap');
 
-$linkColor: #0a59b0;
+$linkColor: #9C27B0;
 $mobileW: 768px;
 $smallMobileW: 480px;
 $bigScreenW: 1600px;
@@ -16,7 +16,7 @@ $leftWidth: 220px;
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   font-size: 16px;
   line-height: 1.2em;
   margin: 0;
@@ -106,11 +106,22 @@ main {
       white-space: pre-wrap;
       line-height: normal;
       text-align: center;
+
+      &:hover {
+        color: $linkColor;
+        transition: color 0.3s;
+      }
     }
     img {
       max-width: 150px;
       border-radius: 0.2rem;
       cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+    }
+    p {
+      text-align: center;
     }
   }
 }
@@ -174,9 +185,9 @@ main {
     background-color: #e3e3e3;
     padding: 5px 20px;
     border-radius: 2px;
-    @media screen and (max-width: $mobileW) {
+    /*@media screen and (max-width: $mobileW) {
       margin-top: 5px;
-    }
+    }*/
     margin-right: 10px;
     margin-bottom: 10px;
   }
@@ -233,6 +244,11 @@ main {
   padding-left: 30px;
   max-width: 1000px;
 }
+ul.posts {
+  .post-title {
+    margin-top: 40px;
+  }
+}
 .post {
   font-family: "Merriweather", sans-serif;
   font-weight: 300;
@@ -266,6 +282,47 @@ main {
   font-weight: normal;
 }
 
+.pagination-links {
+  list-style-type: none;
+  margin: 45px 30px;
+  padding-bottom: 60px;
+
+  @media screen and (max-width: $smallMobileW) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: $mobileW) {
+    padding: 0 !important;
+    margin-top: 0;
+  }
+
+  li {
+    line-height: 1.5em;
+    font-size: 1.2em;
+    a {
+      color: #aaa;
+      &:hover {
+        color: $linkColor;
+      }
+    }
+  }
+
+  .left {
+    float: left;
+    @media screen and (max-width: $smallMobileW) {
+      float: none;
+    }
+  }
+
+  .right {
+    float: right;
+    @media screen and (max-width: $smallMobileW) {
+      float: none;
+    }
+  }
+}
+
 select.sel-lang {
   padding: 0px 1px 2px 1px;
   margin-top: 40px;
@@ -277,6 +334,23 @@ select.sel-lang {
 
 #vcomments.v .vwrap .vheader .vinput {
   border-bottom: 1px solid #dedede;
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid #ba68c8;
+  }
+}
+
+#vcomments.v {
+  .vbtn:active,
+  .vbtn:hover {
+    color: #ba68c8;
+    border-color: #ba68c8;
+    background-color: #fff;
+  }
+
+  a:before {
+  background: $linkColor;
+  }
 }
 
 #vcomments.v .vwrap {
@@ -287,6 +361,10 @@ select.sel-lang {
   overflow: hidden;
   position: relative;
   padding: 10px;
+  &:hover,
+  &:focus {
+    border: 2px solid #ba68c8;
+  }
 }
 
 /*video iframe*/

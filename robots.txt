@@ -1,0 +1,9 @@
+Sitemap: https://www.wannaexpresso.com/sitemap.xml
+
+User-agent: *
+Disallow: /url.txt
+
+User-agent: Baiduspider
+Disallow: /page*
+Disallow: /archive*
+Disallow: /404.html
