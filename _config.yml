@@ -2,10 +2,9 @@ title: LACKAWANNA EXPRESSO | DOTIN13'S BLOG
 author: DotIN13
 email: dotin13@126.com
 description: > # this means to ignore newlines until "show_exerpts:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Act local, think global with DotIN13!
 show_excerpts: true # set to true to show excerpts on the homepage
+url: "https://www.wannaexpresso.com"  
 
 permalink: pretty
 exclude: ["node_modules","package.json","README.md"]
