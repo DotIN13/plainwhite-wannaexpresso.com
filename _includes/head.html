@@ -2,13 +2,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="google-site-verification" content="zrVlHARQzSGPX8n0jKJdP_fCO0AvtLXxoPmYkJh-oXw" />
+
 {% if page.noindex and paginator.page != 1 %}
-<!-- noindex -->
+<!-- Noindex -->
 <meta name="robots" content="noindex" />
 {% endif %}
+
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link href="/css/all.min.css" rel="stylesheet">
 <script src="/js/jquery-3.4.1.min.js"></script>
+
+<!-- Service Worker -->
+<script src="/js/sw-registration.js"></script>
+<script src="/js/snackbar.js "></script>
+
 <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.png">
