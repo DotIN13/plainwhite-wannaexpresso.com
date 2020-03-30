@@ -34,11 +34,13 @@ video {
 a {
   color: #000;
   transition: color 0.3s;
+
   &:hover {
     color: $linkColor;
   }
 
-  img:focus, img:hover {
+  img:focus,
+  img:hover {
     cursor: zoom-in;
   }
 }
@@ -46,6 +48,7 @@ a {
 h2 {
   margin: 0.7em 0;
 }
+
 main {
   margin: 0 90px;
   display: flex;
@@ -55,9 +58,11 @@ main {
     margin: 0 auto;
     max-width: 1440px;
   }
+
   @media screen and (max-width: 1280px) {
     margin: 0 75px;
   }
+
   @media screen and (max-width: 1024px) {
     margin: 0 35px;
   }
@@ -66,6 +71,7 @@ main {
     margin: 0 10px;
     flex-direction: column;
   }
+
   @media screen and (max-width: $smallMobileW) {
     margin: 0;
   }
@@ -77,21 +83,26 @@ main {
       width: 100%;
     }
   }
+
   .about {
     display: flex;
     height: 100vh;
     padding-bottom: 15vh;
+
     @media screen and (max-width: $mobileW) {
       height: auto;
       padding: 10vh 0;
     }
+
     @media screen and (min-width: $mobileW + 1) {
       position: fixed;
     }
+
     min-width: $leftWidth;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
     h2 {
       font-size: 22px;
       margin-top: 25px;
@@ -99,6 +110,7 @@ main {
       color: #222222;
       font-weight: normal;
     }
+
     .tagline {
       font-size: 22px;
       margin-top: 17px;
@@ -106,35 +118,45 @@ main {
       white-space: pre-wrap;
       line-height: normal;
       text-align: center;
+      transition: color 0.3s;
 
       &:hover {
         color: $linkColor;
-        transition: color 0.3s;
       }
     }
+
     img {
       max-width: 150px;
       border-radius: 0.2rem;
       cursor: pointer;
     }
+
     a {
       text-decoration: none;
     }
+
     p {
       text-align: center;
     }
   }
 }
+
 #title {
   a {
     text-decoration: none;
   }
 }
+
 .social {
   list-style: none;
-  .fa-stack { font-size: 1em; }
+
+  .fa-stack {
+    font-size: 1em;
+  }
+
   padding: 0;
   margin-top: 0;
+
   li {
     display: inline-block;
   }
@@ -179,6 +201,7 @@ main {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   li {
     font-size: 14px;
     border: solid 1px #e3e3e3;
@@ -191,30 +214,35 @@ main {
     }*/
     margin-right: 10px;
     margin-bottom: 10px;
+    transition: background-color 0.2s;
 
     &:hover {
       background-color: #F5F5F5;
-      transition: background-color 0.2s;
     }
   }
 }
+
 .post-date {
   margin-right: 10px;
   color: #555;
   min-width: 150px;
 }
+
 .post-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   @media screen and (max-width: $mobileW) {
     flex-direction: column-reverse;
     align-items: baseline;
+
     .post-date {
       margin-bottom: 16px;
     }
   }
 }
+
 .post-link {
   text-decoration: none;
 }
@@ -233,6 +261,7 @@ main {
 .post-container {
   list-style-type: none;
   margin: 45px 30px;
+
   /*@media screen and (max-width: $smallMobileW) {
     padding: 0 !important;
     margin-top: 0;
@@ -241,33 +270,40 @@ main {
     margin-left: 20px;
     margin-right: 20px;
   }
+
   @media screen and (max-width: $mobileW) {
     padding: 0 !important;
     margin-top: 0;
   }
 }
+
 .post-container {
   padding-left: 30px;
   max-width: 1000px;
 }
+
 ul.posts {
   .post-title {
     margin-top: 40px;
   }
 }
+
 .post {
   font-family: "Merriweather", sans-serif;
   font-weight: 300;
   color: #222;
   line-height: 1.9em;
+
   a {
     color: $linkColor;
     text-decoration: none;
     transition: border-bottom 0.4s;
+
     &:hover {
       border-bottom: 0.5px solid $linkColor;
     }
   }
+
   h1,
   h2,
   h3,
@@ -288,7 +324,8 @@ ul.posts {
   font-weight: normal;
 }
 
-.pagination-links {
+.pagination-links,
+.pager ul {
   list-style-type: none;
   margin: 45px 30px;
   padding-bottom: 60px;
@@ -299,32 +336,59 @@ ul.posts {
   }
 
   @media screen and (max-width: $mobileW) {
-    padding: 0 !important;
+    padding: 0;
+    padding-bottom: 40px;
     margin-top: 0;
   }
 
   li {
-    line-height: 1.5em;
-    font-size: 1.2em;
+
     a {
-      color: #aaa;
+      line-height: 1.2em;
+      font-size: 0.95em;  
+      text-decoration: none;
+      border: solid 1px #ededed;
+      background-color: #ededed;
+      padding: 6px 25px;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-block;
+      min-width: 95px;
+      text-align: center;
+
       &:hover {
-        color: $linkColor;
+        background-color: #f5f5f5;
       }
     }
   }
 
   .left {
     float: left;
-    @media screen and (max-width: $smallMobileW) {
-      float: none;
-    }
   }
 
   .right {
     float: right;
-    @media screen and (max-width: $smallMobileW) {
-      float: none;
+  }
+}
+
+.pager ul {
+  margin: 20px 0;
+  padding: 0 0 15px 0;
+  
+  li {
+    width: 36%;
+
+    a {
+      width: 100%;
+
+      span {
+        font-size: 0.8em;
+        color: #555;
+      }
+
+      &:hover {
+        color: $linkColor;
+      }
     }
   }
 }
@@ -340,6 +404,7 @@ select.sel-lang {
 
 #vcomments.v .vwrap .vheader .vinput {
   border-bottom: 1px solid #dedede;
+
   &:hover,
   &:focus {
     border-bottom: 1px solid #ba68c8;
@@ -347,6 +412,9 @@ select.sel-lang {
 }
 
 #vcomments.v {
+
+  padding-top: 30px;
+
   .vbtn:active,
   .vbtn:hover {
     color: #ba68c8;
@@ -355,7 +423,7 @@ select.sel-lang {
   }
 
   a:before {
-  background: $linkColor;
+    background: $linkColor;
   }
 }
 
@@ -367,6 +435,7 @@ select.sel-lang {
   overflow: hidden;
   position: relative;
   padding: 10px;
+
   &:hover,
   &:focus {
     border: 2px solid #ba68c8;
@@ -410,9 +479,11 @@ blockquote.g_bq {
   margin-inline-end: 40px;
   color: #282828;
   border: none;
+
   &:before {
     content: open-quote;
   }
+
   &:after {
     content: close-quote;
   }

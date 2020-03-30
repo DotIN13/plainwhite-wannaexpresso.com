@@ -12,7 +12,7 @@ layout: default
   {% if post.subtitle %}
   <h3 class="post-subtitle">{{ post.subtitle }}</h3>
   {% endif %}
-  
+
   {% if page.multilingual %}
   {% include multilingual-sel.html %}
   {% endif %}
@@ -29,6 +29,29 @@ layout: default
   </div>
   <div class="post">
     {{ content }}
+  </div>
+
+  <div class="pager">
+    <ul>
+      {% if page.previous.url %}
+      <li class="left">
+        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+          data-placement="top" title="{{page.previous.title}}">
+          PREV<br>
+          <span>{{page.previous.title}}</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if page.next.url %}
+      <li class="right">
+        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+          data-placement="top" title="{{page.next.title}}">
+          NEXT<br>
+          <span>{{page.next.title}}</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
   </div>
 
   {% if site.valine_appid %}
