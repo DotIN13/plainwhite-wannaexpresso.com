@@ -8,16 +8,20 @@
 <meta name="robots" content="noindex" />
 {% endif %}
 
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link href="/css/all.min.css" rel="stylesheet">
 <link href="/css/fonticon.css" rel="stylesheet">
+
+<!-- Jquery -->
 <script src="/js/jquery-3.4.1.min.js"></script>
 
-<!-- Service Worker -->
-<script src="/js/sw-registration.js"></script>
-<script src="/js/snackbar.js "></script>
+<!-- Service Worker Unregistration -->
+<script src="/sw.js"></script>
 
+<!-- CSS -->
 <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.png">
 <title>{{ page.title | default: site.title }}</title>
