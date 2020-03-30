@@ -1,10 +1,11 @@
 title: LACKAWANNA EXPRESSO | DOTIN13'S BLOG
+SEOTitle: DOTIN13'S BLOG
 author: DotIN13
 email: dotin13@126.com
-description: > # this means to ignore newlines until "show_exerpts:"
-  Act local, think global with DotIN13!
+description: "Act local, think global with DotIN13!"
 show_excerpts: true # set to true to show excerpts on the homepage
-url: "https://www.wannaexpresso.com"  
+url: "https://www.wannaexpresso.com"
+avatar: "/img/orange.webp"
 
 permalink: pretty
 exclude: ["node_modules","package.json","README.md"]
@@ -73,8 +74,8 @@ plainwhite:
 theme: plainwhite
 
 plugins:
-  - jekyll-seo-tag
   - jekyll-paginate-v2
+#  - jekyll-seo-tag
 #  - jekyll-feed
 
 ############################################################
