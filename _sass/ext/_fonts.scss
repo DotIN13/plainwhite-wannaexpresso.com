@@ -20,7 +20,10 @@
 }
 */
  
- [class^="icon-"]:before, [class*=" icon-"]:before {
+.icon-calendar:before,
+.icon-github-circled:before,
+.icon-twitter-squared,
+.icon-linkedin-squared {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;

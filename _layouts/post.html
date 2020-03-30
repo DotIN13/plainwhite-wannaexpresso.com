@@ -5,6 +5,9 @@ layout: default
 <div class="post-container">
   <a class="post-link" href="{{ page.url | relative_url }}">
     <h2 class="post-title">{{ page.title | escape }}</h2>
+    {% if page.subtitle %}
+    <h3 class="post-subtitle">{{ page.subtitle }}</h3>
+    {% endif %}
   </a>
   {% if post.subtitle %}
   <h3 class="post-subtitle">{{ post.subtitle }}</h3>
@@ -16,7 +19,7 @@ layout: default
 
   <div class="post-meta">
     <ul class="post-categories">
-      {%- for tag in page.categories -%}
+      {%- for tag in page.tags -%}
       <li>{{ tag }}</li>
       {%- endfor -%}
     </ul>
