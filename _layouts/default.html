@@ -8,9 +8,9 @@
 <body>
   <main class="container">
     <section class="about">
-      <a href="/"><img src="{{ "/img/orange.webp" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
+      <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}"><img src="{{ "/img/orange.webp" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
       <h2 id="title">
-        <a href="/">{{ site.plainwhite.name }}</a>
+        <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
       </h2>
       <p class="tagline">{{ site.plainwhite.tagline }}</p>
       <ul class="social">

@@ -6,7 +6,7 @@ author: "楪祈"
 tags:
   - WoD
   - Game
-  - Settings
+  - Terminology
 typora-root-url: ./
 ---
 
