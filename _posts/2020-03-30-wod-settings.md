@@ -21,7 +21,7 @@ typora-root-url: ./
 
 当你拥有了自己的人物之后，你就可以在地城中与蛮不讲理的酒吧客人和阴险狡猾的地精斗智斗勇了。但是，你要如何控制你的人物做出完美的行动呢？这时你需要进入设置页面，预先规划你的英雄的一举一动。
 
-## 专家模式 Now I Know the Way！
+## 专家模式 Now I Know the Way!
 
 <a href="/img/in-post/post-wodbasics/settings.png" data-fancybox="gallery" data-caption="Where Is Settings?"><img src="/img/in-post/post-wodbasics/settings.md.png" alt="Where Is Settings?"></a><em>设置在哪</em>
 
