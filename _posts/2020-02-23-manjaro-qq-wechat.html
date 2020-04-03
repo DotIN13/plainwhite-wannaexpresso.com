@@ -6,6 +6,7 @@ date: '2020-02-23T15:08:00.000+08:00'
 author: DotIN13
 tags:
 - Linux Dev
+- QQ for Linux
 - Deepin-QQ
 - Deepin-Wechat
 modified_time: '2020-02-23T16:16:50.134+08:00'
@@ -13,41 +14,76 @@ blogger_id: tag:blogger.com,1999:blog-7275524089009887162.post-37026754730246174
 blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
 ---
 
-<h2>安装Deepin-QQ与Deepin-Wechat</h2><a href="https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/index-bg1.png"
-    data-fancybox="gallery" data-caption="QQ-TIM"><img border="0" src="https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/index-bg1.png" width="640"
-        height="250" data-original-width="800" data-original-height="312" alt="QQ-TIM"/></a>
-<p>在Manjaro中，由于有AUR源、Archlinuxcn源的加持，安装Deepin应用是非常方便的。</p>
-<p>安装微信，只需在AUR中找到并安装<code>deepin-wine-wechat</code>；安装QQ，只需在AUR中找到并安装<code>deepin-wine-tim</code>或者<code>deepin-wine-qq</code>即可。
+<h2>安装QQ for Linux</h2>
+<p>
+    QQ for Linux已经更新到了2.0.0b2，虽然没有重大的变化，但相比臃肿的Deepin-QQ，我想还是优先推荐这款QQ。</p>
+
+<a href="/img/in-post/post-deepin-qq/qq-for-linux.jpg" data-fancybox="gallery" data-caption="QQ for Linux 2.0b2"><img
+        border="0" src="/img/in-post/post-deepin-qq/qq-for-linux.jpg" alt="QQ for Linux 2.0b2" /></a><em>QQ for Linux
+    2.0.0 Beta2</em>
+
+<p>
+    安装的方法很简单，只需要在archlinux或者AUR源中找到QQ for Linux即可，或者使用命令也能轻松解决。
 </p>
-<p>安装软件包后，打开软件，按照提示完成进一步的安装配置之后就可使用。</p>
+{% highlight bash %}sudo pacman -S qq-linux{% endhighlight %}
+<p>
+    安装之后，如果扫码闪退，可以依照如下的方法解决。这一问题据<a
+        href="https://geekeyes.cn/forum.php?mod=viewthread&tid=1080">244099121同学</a>解释是由于QQ运行并不需要最高权限导致的。
+</p>
+<p>
+    打开终端，输入<code>sudo nano /usr/share/applications/qq.desktop</code>，修改Exec行为<code>Exec=/opt/tencent-qq/qq %U --no-sandbox</code>，然后再启动就不会发生闪退了。
+</p>
+
+<h2>使用Wechat网页版</h2>
+<p>
+    同理，Deepin-Wechat显得非常臃肿，可能存在各种bug，在此仍然推荐<a href="https://wx.qq.com/">Wechat网页版</a>。目前文件、图片等功能完善，除截屏外都能够正常使用。
+</p>
+<p>
+    <a href="/img/in-post/post-deepin-qq/web-wechat.jpg" data-fancybox="gallery" data-caption="Web Wechat"><img
+            border="0" src="/img/in-post/post-deepin-qq/web-wechat.jpg" alt="Web Wechat" /></a><em>Web Wechat</em>
+</p>
+
+<h2>Deepin-QQ与Deepin-Wechat</h2>
+<p>
+    如果你执意需要完整的QQ、Wechat体验，可以安装Deepin应用，在Manjaro中，由于有AUR源、Archlinuxcn源的加持，安装过程是非常方便的。
+</p>
+<p>
+    安装微信，只需在AUR中找到并安装<code>deepin-wine-wechat</code>；安装QQ，只需在AUR中找到并安装<code>deepin-wine-tim</code>或者<code>deepin-wine-qq</code>即可。
+</p>
+<p>
+    安装软件包后，打开软件，按照提示完成进一步的安装配置之后就可使用。
+</p>
 
 <h2>调整界面DPI</h2>
-<p>打开界面发现字体过小，此时需要进入<code>winecfg</code>调整软件的DPI</p><a
-    href="/img/in-post/post-deepin-qq/screenshot-1-orig.png"
-    data-fancybox="gallery" data-caption="Wine QQ Configuration"><img border="0"
-        src="/img/in-post/post-deepin-qq/screenshot-1-orig.png"
-        width="526" height="640" data-original-width="480" data-original-height="584" style="border-radius: 8px" alt="wine qq config" /></a><em>Wine QQ Configuration</em>
-<p>首先完全退出QQ与Wechat。<br>在Terminal输入命令
-    {% highlight shell %}env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg #修改TIM的DPI
-env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" winecfg #修改QQ的DPI
-env WINEPREFIX="$HOME/.deepinwine/Deepin-Wechat" winecfg #修改Wechat的DPI{% endhighlight %}
-        此处建议将DPI设定在120左右，具体请自行调试。
+<p>
+    打开界面发现字体过小，此时需要进入<code>winecfg</code>调整软件的DPI
 </p>
-<p>如果使用的是基于deepin-wine的deepin.com.qq.im或者deepin.com.qq.office，则应使用
+<a href="/img/in-post/post-deepin-qq/screenshot-1-orig.png" data-fancybox="gallery"
+    data-caption="Wine QQ Configuration"><img border="0" src="/img/in-post/post-deepin-qq/screenshot-1-orig.png"
+        style="border-radius: 8px" alt="wine qq config" /></a><em>Wine QQ Configuration</em>
+<p>
+    首先完全退出QQ与Wechat。<br>在Terminal输入命令
+    {% highlight shell %}env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg #修改TIM的DPI
+    env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" winecfg #修改QQ的DPI
+    env WINEPREFIX="$HOME/.deepinwine/Deepin-Wechat" winecfg #修改Wechat的DPI{% endhighlight %}
+    此处建议将DPI设定在120左右，具体请自行调试。
+</p>
+<p>
+    如果使用的是基于deepin-wine的deepin.com.qq.im或者deepin.com.qq.office，则应使用
     {% highlight shell %}WINEPREFIX=~/.deepinwine/Deepin-QQ deepin-wine winecfg #修改QQ的DPI
-WINEPREFIX=~/.deepinwine/Deepin-TIM deepin-wine winecfg #修改TIM的DPI{% endhighlight %}
+    WINEPREFIX=~/.deepinwine/Deepin-TIM deepin-wine winecfg #修改TIM的DPI{% endhighlight %}
     来调整DPI。
 </p>
 
-<h2>解决无法显示图片</h2>
+<h2>解决Deepin-QQ无法显示图片</h2>
 <p>
     如遇到聊天图片与头像无法显示，或者始终处于加载中，是因为QQ的图片解析与ipv6不兼容，需要关闭ipv6。
 </p>
 <p>
     在系统终端中运行命令：
     {% highlight shell %}sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1{% endhighlight %}
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+    sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1{% endhighlight %}
 
     注：以上命令在深度Deepin Linux系统下有效，其他Linux发行版可参考。
 </p>
