@@ -11,7 +11,11 @@ layout: default
 {%- if site.posts.size > 0 -%}
   <ul class="posts">
     <li>
+      {% if page.url contains "wod" %}
+      <h1 id="posts-label">World of Dungeons</h1>
+      {% else %}
       <h1 id="posts-label">posts</h1>
+      {% endif %}
     </li>
 
     {{ content }}
