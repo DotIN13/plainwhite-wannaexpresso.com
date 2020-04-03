@@ -11,6 +11,15 @@ $('[data-fancybox="gallery"]').fancybox({
 });
 </script>
 
+<!-- Link _blank -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+</script>
+
 {% if page.multilingual %}
 <!-- Multi-Lingual Forked from Hux-blog -->
 <!-- Handle Language Change -->
