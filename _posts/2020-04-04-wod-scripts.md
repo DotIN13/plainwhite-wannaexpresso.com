@@ -15,7 +15,7 @@ tags:
 
 <iframe src="https://datahub.io/core/population/view/1" width="100%" height="475px" frameborder="0"></iframe>
 
-我说，ZZZ，你要是再写WoD脚本，要不你就剁手吧。行，不过剁手有点疼，要不还是剁希莉亚吧……
+我说，ZZZ，你要是再写WoD脚本，要不你就剁手吧。行，不过剁手有点疼，要不还是剁希莉娅吧……
 
 ## Function Scope
 
