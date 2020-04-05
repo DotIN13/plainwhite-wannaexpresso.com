@@ -185,7 +185,7 @@ main {
       border-bottom: 1px solid #ececec;
 
       @media screen and (max-width: $mobileW) {
-        padding: 2rem 0;
+        padding: 2em 0;
       }
     }
   }
@@ -198,11 +198,10 @@ main {
 }
 
 .post-categories {
-  list-style-type: none;
   margin: 0;
   padding: 0;
 
-  li {
+  a {
     font-size: 14px;
     border: solid 1px #e3e3e3;
     float: left;
@@ -215,6 +214,7 @@ main {
     margin-right: 10px;
     margin-bottom: 10px;
     transition: background-color 0.2s;
+    text-decoration: none;
 
     &:hover {
       background-color: #F5F5F5;
@@ -324,6 +324,8 @@ ul.posts {
   font-weight: normal;
 }
 
+/* pagination */
+
 .pagination-links {
   list-style-type: none;
   margin: 45px 30px;
@@ -431,6 +433,8 @@ select.sel-lang {
   border-bottom: solid 1px black;
 }
 
+/* Vcomments */
+
 #vcomments.v .vwrap .vheader .vinput {
   border-bottom: 1px solid #dedede;
 
@@ -469,7 +473,8 @@ select.sel-lang {
   }
 }
 
-/*video iframe*/
+/* video iframe */
+
 .video-iframe {
   position: relative;
   width: 100%;
@@ -485,7 +490,8 @@ select.sel-lang {
   top: 0;
 }
 
-/*Picture Caption*/
+/* Picture Caption */
+
 a+em {
   font-size: 0.9em;
   color: #666;
@@ -494,7 +500,8 @@ a+em {
   font-style: normal;
 }
 
-/*Block Quote*/
+/* Block Quote */
+
 blockquote.g_bq {
   font: italic 600 32px EB Garamond, serif;
   font-style: italic;
@@ -516,20 +523,23 @@ blockquote.g_bq {
   }
 }
 
-/* table */
+/* GitHub table styling */
 table {
   padding: 0;
   word-break: initial;
 }
+
 table tr {
   border-top: 1px solid #dfe2e5;
   margin: 0;
   padding: 0;
 }
+
 table tr:nth-child(2n),
 thead {
   background-color: #f8f8f8;
 }
+
 table tr th {
   font-weight: bold;
   border: 1px solid #dfe2e5;
@@ -537,16 +547,243 @@ table tr th {
   margin: 0;
   padding: 6px 13px;
 }
+
 table tr td {
   border: 1px solid #dfe2e5;
   margin: 0;
   padding: 6px 13px;
 }
+
 table tr th:first-child,
 table tr td:first-child {
   margin-top: 0;
 }
+
 table tr th:last-child,
 table tr td:last-child {
   margin-bottom: 0;
 }
+
+/* Hux add tags support */
+.d-none {
+  display: none !important;
+}
+
+.tags {
+  margin-bottom: -5px;
+}
+
+.tags.tags-sup a,
+.tags.tags-sup .tag {
+  padding: 0 10px 0 12px;
+}
+
+.tags a,
+.tags .tag {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999em;
+  padding: 0 10px 0 10px;
+  color: #424242;
+  line-height: 24px;
+  font-size: 12px;
+  text-decoration: none;
+  margin: 0 1px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.tags a>sup,
+.tags .tag>sup {
+  margin-left: -2px;
+  font-weight: 700;
+}
+
+.tags a:hover,
+.tags .tag:hover,
+.tags a:active,
+.tags .tag:active {
+  color: white;
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .tags a,
+  .tags .tag {
+    margin-right: 5px;
+  }
+}
+
+#tag-heading {
+  padding: 70px 0 60px;
+}
+
+@media only screen and (min-width: 768px) {
+  #tag-heading {
+    padding: 55px 0;
+  }
+}
+
+#tag_cloud {
+  margin: 20px 0 15px 0;
+}
+
+#tag_cloud a,
+#tag_cloud .tag {
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  font-size: 14px;
+  border: none;
+  line-height: 28px;
+  margin: 0 2px;
+  margin-bottom: 8px;
+  background-color: #e3e3e3;
+  border-radius: 2px;
+}
+
+#tag_cloud a:hover,
+#tag_cloud .tag:hover,
+#tag_cloud a:active,
+#tag_cloud .tag:active,
+#tag_cloud a.focus,
+#tag_cloud .tag.focus {
+  background-color: $linkColor !important;
+  color: #fff;
+}
+
+#tag_cloud a.focus,
+#tag_cloud .tag.focus {
+  box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
+}
+
+#tag_cloud a.tag-button--all,
+#tag_cloud .tag.tag-button--all {
+  font-weight: 700;
+  color: $linkColor !important;
+}
+
+#tag_cloud a.tag-button--all:hover,
+#tag_cloud .tag.tag-button--all:hover,
+#tag_cloud a.tag-button--all:active,
+#tag_cloud .tag.tag-button--all:active,
+#tag_cloud a.tag-button--all.focus,
+#tag_cloud .tag.tag-button--all.focus {
+  background-color: #e4e4e4 !important;
+}
+
+@media only screen and (min-width: 768px) {
+  #tag_cloud {
+    margin-bottom: 25px;
+  }
+}
+
+.tag-comments {
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .tag-comments {
+    font-size: 14px;
+  }
+}
+
+// hide low occurring tags
+a.tag-button[rel="1"] {
+  display: none;
+
+  &.focus,
+  &.visited {
+    display: inline-block;
+  }
+}
+
+.t:first-child {
+  margin-top: 0px;
+}
+
+.listing-seperator {
+  color: $linkColor;
+  font-size: 21px !important;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.listing-seperator::before {
+  margin-right: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  .listing-seperator {
+    font-size: 20px !important;
+    line-height: 2 !important;
+  }
+}
+
+.mini-post-list {
+  margin: 20px 0 15px 0;
+}
+
+.mini-post-list .tag-text {
+  font-weight: 200;
+  /* Hux learn from
+     *     TypeIsBeautiful,
+     *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
+     */
+  // font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  line-height: 1.7;
+}
+
+.mini-post-list .post-preview {
+  position: relative;
+  border-bottom: solid 1px #e3e3e3;
+}
+
+.mini-post-list .post-preview>a {
+  text-decoration: none;
+}
+
+.mini-post-list .post-preview>a .post-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.mini-post-list .post-preview>a .post-subtitle {
+  font-size: 13px;
+  margin-bottom: 0.5em;
+}
+
+.mini-post-list .post-preview>.post-meta {
+  position: absolute;
+  right: 5px;
+  bottom: 0px;
+  margin: 0px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .mini-post-list .post-preview {
+    margin-left: 20px;
+  }
+
+  .mini-post-list .post-preview>a>.post-title {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .mini-post-list .post-preview>a>.post-subtitle {
+    font-size: 14px;
+    margin-bottom: 0.5em;
+  }
+
+  .mini-post-list .post-preview .post-meta {
+    font-size: 18px;
+  }
+}
+
+/* Tags support End*/

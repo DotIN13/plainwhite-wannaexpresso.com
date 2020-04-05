@@ -39,6 +39,8 @@ plainwhite:
       url: "/wod"
     - title: About
       url: "/about"
+    - title: Archive
+      url: "/archive"
   analytics_id: "UA-159368053-1"
 
   # generate social links in footer

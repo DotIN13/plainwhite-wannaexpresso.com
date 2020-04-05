@@ -18,11 +18,11 @@ layout: default
   {% endif %}
 
   <div class="post-meta">
-    <ul class="post-categories">
+    <div class="post-categories">
       {%- for tag in page.tags -%}
-      <li>{{ tag }}</li>
+          <a href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
       {%- endfor -%}
-    </ul>
+    </div>
     {% if page.date %}
     <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
     {% endif %}
