@@ -2,7 +2,7 @@
 Credits: this script is shamelessly borrowed from
 https://github.com/kitian616/jekyll-TeXt-theme
 */
-(function() {
+(function () {
   function queryString() {
     // This function is anonymous, is executed immediately and
     // the return value is assigned to QueryString!
@@ -25,9 +25,9 @@ https://github.com/kitian616/jekyll-TeXt-theme
     return queryObj;
   }
 
-  var setUrlQuery = (function() {
-    var baseUrl =  window.location.href.split('?')[0];
-    return function(query) {
+  var setUrlQuery = (function () {
+    var baseUrl = window.location.href.split('?')[0];
+    return function (query) {
       if (typeof query === 'string') {
         window.history.replaceState(null, '', baseUrl + query);
       } else {
@@ -36,7 +36,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
     };
   })();
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     var $tags = $('.js-tags');
     var $articleTags = $tags.find('.tag-button');
     var $tagShowAll = $tags.find('.tag-button--all');
@@ -46,9 +46,8 @@ https://github.com/kitian616/jekyll-TeXt-theme
     var $lastFocusButton = null;
     var sectionTopArticleIndex = [];
     var hasInit = false;
-    console.log($tags, $articleTags, $tagShowAll, $result, $sections);
 
-    $sections.each(function() {
+    $sections.each(function () {
       sectionArticles.push($(this).find('.item'));
     });
 
@@ -81,7 +80,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
       }
     }
 
-    function tagSelect (tag/*raw tag*/, target) {
+    function tagSelect(tag/*raw tag*/, target) {
       var result = {}, $articles;
       var i, j, k, _tag;
 
@@ -131,15 +130,25 @@ https://github.com/kitian616/jekyll-TeXt-theme
       }
     }
 
-    var query = queryString(), 
-        _tag = query.tag;
+    var query = queryString(),
+      _tag = query.tag;
 
-    init(); 
+    init();
     tagSelect(_tag);
 
-    $tags.on('click', 'a', function() {   /* only change */
+    $tags.on('click', 'a', function () {   /* only change */
       tagSelect($(this).data('encode'), $(this));
+      //if ($(this).attr("data-encode") == "") {
+      $("[rel='1']").toggleClass("hover");
+      //}
     });
 
   });
+
+  $("#tag_cloud").hover(function () {
+    $("[rel='1']").addClass("hover");
+  }, function () {
+    $("[rel='1']").removeClass("hover");
+  });
+
 })();

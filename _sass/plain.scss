@@ -185,7 +185,7 @@ main {
       border-bottom: 1px solid #ececec;
 
       @media screen and (max-width: $mobileW) {
-        padding: 2em 0;
+        padding: 1em 0;
       }
     }
   }
@@ -629,6 +629,17 @@ table tr td:last-child {
 
 #tag_cloud {
   margin: 20px 0 15px 0;
+  height: auto;
+
+  a.tag-button[rel="1"] {
+    display: none;
+
+    &.hover,
+    &.focus,
+    &.visited {
+      display: inline-block;
+    }
+  }
 }
 
 #tag_cloud a,
@@ -688,16 +699,6 @@ table tr td:last-child {
 @media only screen and (min-width: 768px) {
   .tag-comments {
     font-size: 14px;
-  }
-}
-
-// hide low occurring tags
-a.tag-button[rel="1"] {
-  display: none;
-
-  &.focus,
-  &.visited {
-    display: inline-block;
   }
 }
 
