@@ -630,6 +630,7 @@ table tr td:last-child {
 #tag_cloud {
   margin: 20px 0 15px 0;
   height: auto;
+  width: 95%;
 
   a.tag-button[rel="1"] {
     display: none;
@@ -689,6 +690,32 @@ table tr td:last-child {
 @media only screen and (min-width: 768px) {
   #tag_cloud {
     margin-bottom: 25px;
+  }
+}
+
+// Show Tags Button
+#show-tags {
+  display: none;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  font-size: 14px;
+  border: none;
+  line-height: 28px;
+  margin: 0 2px;
+  margin-bottom: 8px;
+  background-color: #e3e3e3;
+  border-radius: 2px;
+  padding: 0 12px 0 12px;
+
+  &:hover {
+    background-color: $linkColor;
+    color: #fff;
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: inline-block;
+    float: right;
   }
 }
 

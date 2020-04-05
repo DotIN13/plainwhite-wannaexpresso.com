@@ -138,17 +138,27 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
     $tags.on('click', 'a', function () {   /* only change */
       tagSelect($(this).data('encode'), $(this));
-      //if ($(this).attr("data-encode") == "") {
-      $("[rel='1']").toggleClass("hover");
-      //}
     });
 
   });
 
-  $("#tag_cloud").hover(function () {
-    $("[rel='1']").addClass("hover");
-  }, function () {
-    $("[rel='1']").removeClass("hover");
-  });
+  // PC Show Tags on Hover
+  if (window.innerWidth >= 768) {
+    $("#tag_cloud").hover(function () {
+      $("[rel='1']").addClass("hover");
+    }, function () {
+      $("[rel='1']").removeClass("hover");
+    });
+  }
+
+  // Mobile Show Tags on Keypress
+  $("#show-tags").click(function(){
+    $("[rel='1']").toggleClass("hover");
+    if ($(".fa-caret-square-down").length){
+      $(".fa-caret-square-down").removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+    } else {
+      $(".fa-caret-square-up").removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+    }
+  })
 
 })();
