@@ -4,7 +4,13 @@ layout: default
 description: Rubbles we should pick up again.
 noindex: true
 ---
-<div class="posts">
+<div class="posts archive">
+  <ul style="list-style: none; padding-left: 0;">
+    <li>
+      <h1 id="posts-label">Archive</h1>
+    </li>
+  </ul>
+
   <div id='show-tags'>
       <i class="far fa-caret-square-down"></i>
   </div>
@@ -12,7 +18,7 @@ noindex: true
   <div id='tag_cloud' class="tags tags-sup js-tags">
     <a class="tag-button--all" data-encode="">
       Show All
-      <sup>{{site.posts.size}}</sup>
+      <span class="sup">{{site.posts.size}}</span>
     </a>
 
     {% capture tags %}
@@ -20,7 +26,7 @@ noindex: true
     <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
       data-encode="{{ tag[0] | strip | url_encode }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
       {{ tag[0] }}
-      <sup>{{tag[1].size}}</sup>
+      <span class="sup">{{tag[1].size}}</span>
     </a>__SEPERATOR__
     {% endfor %}
     {% endcapture %}

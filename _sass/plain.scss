@@ -569,6 +569,10 @@ table tr td:last-child {
   display: none !important;
 }
 
+.archive {
+  padding-left: 40px;
+}
+
 .tags {
   margin-bottom: -5px;
 }
@@ -580,23 +584,28 @@ table tr td:last-child {
 
 .tags a,
 .tags .tag {
-  display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 999em;
-  padding: 0 10px 0 10px;
+  display: flex;
+  //border: 1px solid rgba(255, 255, 255, 0.8);
+  //border-radius: 999em;
+  //padding: 0 10px 0 10px;
   color: #424242;
-  line-height: 24px;
-  font-size: 12px;
-  text-decoration: none;
-  margin: 0 1px;
-  margin-bottom: 6px;
+  //line-height: 24px;
+  //font-size: 12px;
+  //text-decoration: none;
+  //margin: 0 1px;
+  //margin-bottom: 6px;
   cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
 }
 
-.tags a>sup,
-.tags .tag>sup {
-  margin-left: -2px;
+.tags a>.sup,
+.tags .tag>.sup {
+  margin-left: 4px;
   font-weight: 700;
+  line-height: 18px;
+  position: relative;
+  font-size: 50%;
 }
 
 .tags a:hover,
@@ -628,9 +637,10 @@ table tr td:last-child {
 }
 
 #tag_cloud {
-  margin: 20px 0 15px 0;
+  margin: 8px -4px 15px -4px;
+  display: flex;
+  flex-wrap: wrap;
   height: auto;
-  width: 95%;
 
   a.tag-button[rel="1"] {
     display: none;
@@ -638,7 +648,7 @@ table tr td:last-child {
     &.hover,
     &.focus,
     &.visited {
-      display: inline-block;
+      display: flex;
     }
   }
 }
@@ -651,7 +661,7 @@ table tr td:last-child {
   font-size: 14px;
   border: none;
   line-height: 28px;
-  margin: 0 2px;
+  margin: 0 4px;
   margin-bottom: 8px;
   background-color: #e3e3e3;
   border-radius: 2px;
@@ -690,6 +700,7 @@ table tr td:last-child {
 @media only screen and (min-width: 768px) {
   #tag_cloud {
     margin-bottom: 25px;
+    margin-left: 15px;
   }
 }
 
@@ -702,8 +713,6 @@ table tr td:last-child {
   font-size: 14px;
   border: none;
   line-height: 28px;
-  margin: 0 2px;
-  margin-bottom: 8px;
   background-color: #e3e3e3;
   border-radius: 2px;
   padding: 0 12px 0 12px;
@@ -715,7 +724,8 @@ table tr td:last-child {
 
   @media only screen and (max-width: 768px) {
     display: inline-block;
-    float: right;
+    width: 100%;
+    text-align: center;
   }
 }
 
