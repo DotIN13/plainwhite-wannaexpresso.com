@@ -571,6 +571,10 @@ table tr td:last-child {
 
 .archive {
   padding-left: 40px;
+
+  @media screen and (max-width: 768px){
+    padding-bottom: 300px!important;
+  }
 }
 
 .tags {
@@ -639,8 +643,11 @@ table tr td:last-child {
 #tag_cloud {
   margin: 8px -4px 15px -4px;
   display: flex;
+  overflow: hidden;
   flex-wrap: wrap;
-  height: auto;
+  align-items: flex-start;
+  align-content: flex-start;
+  transition: height 0.5s;
 
   a.tag-button[rel="1"] {
     display: none;

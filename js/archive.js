@@ -142,18 +142,37 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
   });
 
+
+  function updateHeight(status, oriHeight) {
+    if (status) {
+      setTimeout(function() {
+        $("[rel='1']").toggleClass("hover");
+      }, 500);
+      $("#tag_cloud").css("height", oriHeight + "px");
+      return false;
+    } else {
+      $("[rel='1']").toggleClass("hover");
+      $("#tag_cloud").css("height", document.getElementById("tag_cloud").scrollHeight);
+      return true;
+    }
+  }
+
+  var expanded = false;
+  var originalHeight = $("#tag_cloud").height();
+  $("#tag_cloud").css("height", originalHeight + "px");
+
   // PC Show Tags on Hover
   if (window.innerWidth >= 768) {
     $("#tag_cloud").hover(function () {
-      $("[rel='1']").addClass("hover");
+      expanded = updateHeight(expanded, originalHeight);
     }, function () {
-      $("[rel='1']").removeClass("hover");
+      expanded = updateHeight(expanded, originalHeight);
     });
   }
 
   // Mobile Show Tags on Keypress
   $("#show-tags").click(function(){
-    $("[rel='1']").toggleClass("hover");
+    expanded = updateHeight(expanded, originalHeight);
     if ($(".fa-caret-square-down").length){
       $(".fa-caret-square-down").removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
     } else {
