@@ -142,37 +142,41 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
   });
 
+  var expanded = false;
+  var originalHeight = $("#tag_cloud").height();
+  $("#tag_cloud").css("height", originalHeight + "px");
+  var offset = $("[rel='2']").get($("[rel='2']").length-1).offsetTop + 28 - document.getElementById("tag_cloud").scrollHeight;
 
-  function updateHeight(status, oriHeight) {
-    if (status) {
-      setTimeout(function() {
+  function updateHeight(status) {
+    if (status) { // collapsing
+      $("[rel='1']").toggleClass("hover").promise().done(function() {
+        $("#tag_cloud").css("height", (document.getElementsByClassName("visited")[document.getElementsByClassName("visited").length-1].offsetTop + 36 - offset) + "px");
         $("[rel='1']").toggleClass("hover");
-      }, 500);
-      $("#tag_cloud").css("height", oriHeight + "px");
+        setTimeout(function() {
+          $("[rel='1']").toggleClass("hover");
+        }, 450);
+      });
       return false;
-    } else {
-      $("[rel='1']").toggleClass("hover");
-      $("#tag_cloud").css("height", document.getElementById("tag_cloud").scrollHeight);
+    } else { //expanding
+      $("[rel='1']").toggleClass("hover").promise().done(function() {
+        $("#tag_cloud").css("height", document.getElementById("tag_cloud").scrollHeight + "px");
+      });
       return true;
     }
   }
 
-  var expanded = false;
-  var originalHeight = $("#tag_cloud").height();
-  $("#tag_cloud").css("height", originalHeight + "px");
-
   // PC Show Tags on Hover
   if (window.innerWidth >= 768) {
     $("#tag_cloud").hover(function () {
-      expanded = updateHeight(expanded, originalHeight);
+      expanded = updateHeight(expanded);
     }, function () {
-      expanded = updateHeight(expanded, originalHeight);
+      expanded = updateHeight(expanded);
     });
   }
 
   // Mobile Show Tags on Keypress
   $("#show-tags").click(function(){
-    expanded = updateHeight(expanded, originalHeight);
+    expanded = updateHeight(expanded);
     if ($(".fa-caret-square-down").length){
       $(".fa-caret-square-down").removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
     } else {
