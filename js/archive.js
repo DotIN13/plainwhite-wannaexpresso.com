@@ -142,6 +142,7 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
   });
 
+  // tag cloud collapser
   var expanded = false;
   var originalHeight = $("#tag_cloud").height();
   $("#tag_cloud").css("height", originalHeight + "px");
@@ -150,7 +151,10 @@ https://github.com/kitian616/jekyll-TeXt-theme
   function updateHeight(status) {
     if (status) { // collapsing
       $("[rel='1']").toggleClass("hover").promise().done(function() {
-        $("#tag_cloud").css("height", (document.getElementsByClassName("visited")[document.getElementsByClassName("visited").length-1].offsetTop + 36 - offset) + "px");
+        var lastVisited = document.getElementsByClassName("visited")[document.getElementsByClassName("visited").length-1].offsetTop;
+        var lastHigh = $("[rel='2']").get($("[rel='2']").length-1).offsetTop;
+        var targetTop = lastVisited > lastHigh ? lastVisited : lastHigh;
+        $("#tag_cloud").css("height", (targetTop + 36 - offset) + "px");
         $("[rel='1']").toggleClass("hover");
         setTimeout(function() {
           $("[rel='1']").toggleClass("hover");
