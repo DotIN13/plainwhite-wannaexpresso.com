@@ -7,7 +7,7 @@ tags:
   - WoD
   - Game
   - Universal Law
-typora-root-url: ./
+typora-root-url: ../..
 ---
 
 <a href="/img/in-post/post-wodbasics/universe.png" data-fancybox="gallery" data-caption="WoD Universe"><img src="/img/in-post/post-wodbasics/universe.png" alt="WoD Universe" width="620px"></a><em>WoD宇宙</em>

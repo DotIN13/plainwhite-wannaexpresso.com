@@ -7,7 +7,7 @@ tags:
   - WoD
   - Game
   - Settings
-typora-root-url: ./
+typora-root-url: ../..
 ---
 
 <style>
