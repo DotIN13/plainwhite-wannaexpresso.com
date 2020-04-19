@@ -94,6 +94,8 @@ NoMethodError (undefined method `-@' for nil:NilClass)
 
 其中原委，不得而知，当将`variable = - variable`修改为`@variable = - variable`时，程序就又能正常运行了。
 
+> 2020/04/07 EDIT: 阅读《The Ruby on Rails Tutorial 6th Ed.》第219页，"In fact, inside the String class the use of self. is optional on a method or attribute (unless we’re making an assignment)"。也就是说，在给Instance Variable赋值时，Ruby不会自动为变量加上`self.`，导致变量被识别为`nil`，因此，还是乖乖地在赋值时加上`self.`或者`@`吧。
+
 这一问题，还需要进一步的学习来解决。但就Ruby本身来说，这也是其好心却添了乱的一种表现。
 
 ## 总结

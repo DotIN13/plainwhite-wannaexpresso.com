@@ -8,6 +8,7 @@ $mobileW: 768px;
 $smallMobileW: 480px;
 $bigScreenW: 1600px;
 $leftWidth: 220px;
+$maxWidth: 1000px;
 
 *,
 *:before,
@@ -261,6 +262,7 @@ main {
 .post-container {
   list-style-type: none;
   margin: 45px 30px;
+  max-width: $maxWidth;
 
   /*@media screen and (max-width: $smallMobileW) {
     padding: 0 !important;
@@ -279,7 +281,7 @@ main {
 
 .post-container {
   padding-left: 30px;
-  max-width: 1000px;
+  max-width: $maxWidth;
 }
 
 ul.posts {
@@ -330,6 +332,7 @@ ul.posts {
   list-style-type: none;
   margin: 45px 30px;
   padding-bottom: 60px;
+  max-width: $maxWidth;
 
   @media screen and (max-width: $smallMobileW) {
     margin-left: 20px;
