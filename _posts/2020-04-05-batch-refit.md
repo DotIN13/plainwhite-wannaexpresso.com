@@ -3,6 +3,7 @@ layout: post
 title: "用Batch Replacer轻松切换到Rouge高亮引擎"
 subtitle: "Fix Highlighting in Imported Posts with Batch Replacer"
 author: "DotIN13"
+multilingual: ture
 tags:
   - Batch Replacer
   - VSCode

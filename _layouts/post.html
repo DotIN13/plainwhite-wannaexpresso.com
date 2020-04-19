@@ -13,19 +13,22 @@ layout: default
   <h3 class="post-subtitle">{{ post.subtitle }}</h3>
   {% endif %}
 
-  {% if page.multilingual %}
-  {% include multilingual-sel.html %}
-  {% endif %}
-
   <div class="post-meta">
+    {% if page.tags %}
     <div class="post-categories">
       {%- for tag in page.tags -%}
-          <a href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+      <a href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
       {%- endfor -%}
     </div>
-    {% if page.date %}
-    <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
     {% endif %}
+    <div class="post-misc">
+      {% if page.multilingual %}
+      {% include multilingual-sel.html %}
+      {% endif %}
+      {% if page.date %}
+      <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
+      {% endif %}
+    </div>
   </div>
   <div class="post">
     {{ content }}
