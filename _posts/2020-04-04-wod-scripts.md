@@ -13,6 +13,8 @@ tags:
 
 目前我已经断断续续地给WoD写了5个Tampermonkey脚本，可惜真正受到玩家欢迎的只有两款。又因为WoD的玩家数量实在是太少，太少。往多了算，或许全国的14亿人里能有300人在玩WoD？
 
+<iframe width="100%" height="325" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=l&amp;strail=false&amp;bcs=d&amp;nselm=h&amp;met_y=sp_pop_totl&amp;scale_y=lin&amp;ind_y=false&amp;rdim=world&amp;idim=country:CHN:IND:USA&amp;ifdim=world&amp;hl=en_US&amp;dl=en&amp;ind=false"></iframe>
+
 我说，ZZZ，你要是再写WoD脚本，要不你就剁手吧。行，不过剁手有点疼，要不还是剁希莉娅吧……
 
 ## Function Scope
