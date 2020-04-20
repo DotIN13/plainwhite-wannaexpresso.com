@@ -8,11 +8,13 @@ layout: default
     {% include multilingual-sel.html %}
     <a class="post-link" href="{{ page.url | relative_url }}">
       <h2 class="post-title">{{ page.title | escape }}</h2>
-      {% if page.subtitle %}
-      <h3 class="post-subtitle">{{ page.subtitle }}</h3>
-      {% endif %}
     </a>
   </div>
+  {% if page.subtitle %}
+  <a class="post-link" href="{{ page.url | relative_url }}">
+    <h3 class="post-subtitle">{{ page.subtitle }}</h3>
+  </a>
+  {% endif %}
 
   {% else %}
   <a class="post-link" href="{{ page.url | relative_url }}">
