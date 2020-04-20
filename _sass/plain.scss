@@ -669,7 +669,7 @@ table tr td:last-child {
 }
 
 #tag_cloud {
-  margin: 8px -4px 15px -4px;
+  margin: 8px -4px 0px -4px;
   display: flex;
   overflow: hidden;
   flex-wrap: wrap;
@@ -751,6 +751,7 @@ table tr td:last-child {
   background-color: #e3e3e3;
   border-radius: 2px;
   padding: 0 12px 0 12px;
+  margin-bottom: 15px;
 
   &:hover {
     background-color: $linkColor;

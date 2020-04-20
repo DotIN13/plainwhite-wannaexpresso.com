@@ -184,3 +184,13 @@
 }
 
 /* '' */
+.icon-expand_less:before {
+  content: '\e803';
+}
+
+/* '' */
+.icon-expand_more:before {
+  content: '\e804';
+}
+
+/* '' */

@@ -142,27 +142,39 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
   });
 
-  // tag cloud collapser
+  // Tag cloud collapser
   var expanded = false;
-  var originalHeight = $("#tag_cloud").height();
-  $("#tag_cloud").css("height", originalHeight + "px");
-  var offset = $("[rel='2']").get($("[rel='2']").length-1).offsetTop + 28 - document.getElementById("tag_cloud").scrollHeight;
+  // Get the offset from screen top to cloud top border
+  var offset = document.querySelector("#tag_cloud a").offsetTop;
+
+  // Initialize by adding height style
+  $(document).ready(function () {
+    var originalHeight = document.getElementById("tag_cloud").scrollHeight;
+    $("#tag_cloud").css("height", originalHeight + "px");
+  });
+
+  function getBottomline() {
+    // Get the maximum height of tag cloud
+    var lastVisited = 0;
+    if (document.getElementsByClassName("visited"))
+      lastVisited = document.getElementsByClassName("visited")[document.getElementsByClassName("visited").length - 1].offsetTop;
+    var lastHigh = $("[rel='2']").get($("[rel='2']").length - 1).offsetTop;
+    return lastVisited > lastHigh ? lastVisited : lastHigh;
+  }
 
   function updateHeight(status) {
     if (status) { // collapsing
-      $("[rel='1']").toggleClass("hover").promise().done(function() {
-        var lastVisited = document.getElementsByClassName("visited")[document.getElementsByClassName("visited").length-1].offsetTop;
-        var lastHigh = $("[rel='2']").get($("[rel='2']").length-1).offsetTop;
-        var targetTop = lastVisited > lastHigh ? lastVisited : lastHigh;
-        $("#tag_cloud").css("height", (targetTop + 36 - offset) + "px");
+      $("[rel='1']").toggleClass("hover").promise().done(function () {
+        var targetHeight = getBottomline();
+        $("#tag_cloud").css("height", (targetHeight + document.querySelector("#tag_cloud a").offsetHeight + 8 - offset) + "px");
         $("[rel='1']").toggleClass("hover");
-        setTimeout(function() {
+        setTimeout(function () {
           $("[rel='1']").toggleClass("hover");
         }, 450);
       });
       return false;
     } else { //expanding
-      $("[rel='1']").toggleClass("hover").promise().done(function() {
+      $("[rel='1']").toggleClass("hover").promise().done(function () {
         $("#tag_cloud").css("height", document.getElementById("tag_cloud").scrollHeight + "px");
       });
       return true;
@@ -179,12 +191,12 @@ https://github.com/kitian616/jekyll-TeXt-theme
   }
 
   // Mobile Show Tags on Keypress
-  $("#show-tags").click(function(){
+  $("#show-tags").click(function () {
     expanded = updateHeight(expanded);
-    if ($(".fa-caret-square-down").length){
-      $(".fa-caret-square-down").removeClass("fa-caret-square-down").addClass("fa-caret-square-up");
+    if ($(".icon-expand_more").length) {
+      $(".icon-expand_more").removeClass("icon-expand_more").addClass("icon-expand_less");
     } else {
-      $(".fa-caret-square-up").removeClass("fa-caret-square-up").addClass("fa-caret-square-down");
+      $(".icon-expand_less").removeClass("icon-expand_less").addClass("icon-expand_more");
     }
   })
 

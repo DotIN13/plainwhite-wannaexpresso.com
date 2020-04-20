@@ -13,10 +13,6 @@ sitemap:
     </li>
   </ul>
 
-  <div id='show-tags'>
-      <i class="far fa-caret-square-down"></i>
-  </div>
-
   <div id='tag_cloud' class="tags tags-sup js-tags">
     <a class="tag-button--all" data-encode="">
       Show All
@@ -33,6 +29,10 @@ sitemap:
     {% endfor %}
     {% endcapture %}
     {{ tags | split:'__SEPERATOR__' | sort }}
+  </div>
+
+  <div id='show-tags'>
+    <i class="far icon-expand_more"></i>
   </div>
 
   <!-- Article List -->
