@@ -40,11 +40,6 @@ a {
   &:hover {
     color: $linkColor;
   }
-
-  img:focus,
-  img:hover {
-    cursor: zoom-in;
-  }
 }
 
 h2 {
@@ -339,6 +334,17 @@ ul.posts {
   h6 {
     font-family: Raleway, sans-serif;
   }
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+    &:focus,
+    &:hover {
+      cursor: zoom-in;
+    }
+  }
 }
 
 #posts-label {
@@ -525,10 +531,14 @@ a+em {
   color: #666;
   display: block;
   margin-bottom: 1em;
-  font-style: normal;
+  text-align: center;
 }
 
 /* Block Quote */
+
+blockquote {
+  color: #555;
+}
 
 blockquote.g_bq {
   font: italic 600 32px EB Garamond, serif;
