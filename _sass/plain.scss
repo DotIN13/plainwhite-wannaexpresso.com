@@ -257,10 +257,10 @@ main {
 
   a.translate {
     line-height: 1.2em;
-    margin: 20px 0.5em 1em 0;
+    margin: 21px 0.5em 1em 0;
     background-color: #e3e3e3;
     border-radius: 2px;
-    padding: 6px 6px 3px 6px;
+    padding: 7px 6px 3px 6px;
     transition: all 0.3s;
 
     &:hover {
@@ -857,29 +857,3 @@ table tr td:last-child {
 }
 
 /* Tags support End*/
-
-/* Material Icons */
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}zh{% endif %}">
 
 <head>
   {%- include head.html -%}
@@ -7,7 +8,7 @@
 <body>
   <main class="container">
     <section class="about">
-      <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}"><img src="{{ "/img/orange.webp" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
+      <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}"><img src="{{ "/img/orange160x160.png" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
       <h2 id="title">
         <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
       </h2>
@@ -15,50 +16,50 @@
       <ul class="social">
         {%- if site.plainwhite.social_links.github -%}
         <li>
-          <a target="_blank" href="https://github.com/{{ site.plainwhite.social_links.github }}">
+          <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}">
             <span class="fa-stack fa-2x">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              <i class="fas icon-circle fa-stack-2x"></i>
+              <i class="fab icon-github fa-stack-1x fa-inverse"></i>
             </span>
           </a>
         </li>
         {%- endif -%}
         {%- if site.plainwhite.social_links.facebook -%}
         <li>
-          <a target="_blank" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}">
+          <a target="_blank" rel="noreferrer" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}">
             <span class="fa-stack fa-2x">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+              <i class="fas icon-circle fa-stack-2x"></i>
+              <i class="fab icon-facebook fa-stack-1x fa-inverse"></i>
             </span>
           </a>
         </li>
         {%- endif -%}
         {%- if site.plainwhite.social_links.twitter -%}
         <li>
-          <a target="_blank" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
             <span class="fa-stack fa-2x">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              <i class="fas icon-circle fa-stack-2x"></i>
+              <i class="fab icon-twitter fa-stack-1x fa-inverse"></i>
             </span>
           </a>
         </li>
         {%- endif -%}
         {%- if site.plainwhite.social_links.weibo -%}
         <li>
-          <a target="_blank" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}">
+          <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}">
             <span class="fa-stack fa-2x">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+              <i class="fas icon-circle fa-stack-2x"></i>
+              <i class="fab icon-weibo fa-stack-1x fa-inverse"></i>
             </span>
           </a>
         </li>
         {%- endif -%}
         {%- if site.plainwhite.social_links.bilibili -%}
         <li>
-          <a target="_blank" href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}">
+          <a target="_blank" rel="noreferrer" href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}">
             <span class="fa-stack fa-2x">
-              <i class="fas fa-circle fa-stack-2x"></i>
-              <i class="icon-CN_bilibili fa-stack-1x fa-inverse"></i>
+              <i class="fas icon-circle fa-stack-2x"></i>
+              <i class="icon-bilibili fa-stack-1x fa-inverse"></i>
             </span>
           </a>
         </li>
@@ -78,10 +79,10 @@
       {%- endif -%}
 
       <p>
-        <a href="https://icp.gov.moe" target="_blank">萌ICP备</a> &reg; <a href="https://icp.gov.moe/?keyword=20201620"
-          target="_blank"> 20201620号</a>
+        <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">萌ICP备</a> &reg; <a href="https://icp.gov.moe/?keyword=20201620"
+          target="_blank" rel="noreferrer"> 20201620号</a>
         <br>
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA-4.0</a>
+        <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA-4.0</a>
       </p>
     </section>
     <section class="content">

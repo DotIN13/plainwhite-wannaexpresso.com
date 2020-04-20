@@ -27,6 +27,7 @@ valine_apikey: "MskLH2QYVC2Kqj8aG3XJ7x7o"
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
+  style: compressed
 plainwhite:
   name: DotIN13
   tagline: "LACKAWANNA<br>EXPRESSO"

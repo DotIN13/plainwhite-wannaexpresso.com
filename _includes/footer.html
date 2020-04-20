@@ -1,7 +1,8 @@
 {% if page.title == "Archive" %}
-<script src="/js/archive.js"></script>
+<script src="/js/archive.min.js"></script>
 {% endif %}
 
+{% if page.layout == "post" %}
 <!-- Fancybox -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
@@ -14,6 +15,7 @@ $('[data-fancybox="gallery"]').fancybox({
   ]
 });
 </script>
+{% endif %}
 
 <!-- Link _blank -->
 <script type="text/javascript">
