@@ -1,4 +1,7 @@
 <!-- Language Selector -->
-    <a href="{% if page.lang == 'en' %}{{ page.url | remove: '/en-us'}}{% else %}{{ '/en-us' | append: page.url }}{% endif %}">
-        <i class="fas fa-language"></i>
-    </a>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<a class="translate"
+    href="{% if page.lang == 'en' %}{{ page.url | remove: '/en-us'}}{% else %}{{ '/en-us' | append: page.url }}{% endif %}">
+    <i class="material-icons">translate</i>
+</a>

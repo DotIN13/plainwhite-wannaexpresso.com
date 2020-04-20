@@ -3,14 +3,24 @@ layout: default
 ---
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 <div class="post-container">
+  {% if page.multilingual %}
+  <div class="multilingual-title">
+    {% include multilingual-sel.html %}
+    <a class="post-link" href="{{ page.url | relative_url }}">
+      <h2 class="post-title">{{ page.title | escape }}</h2>
+      {% if page.subtitle %}
+      <h3 class="post-subtitle">{{ page.subtitle }}</h3>
+      {% endif %}
+    </a>
+  </div>
+
+  {% else %}
   <a class="post-link" href="{{ page.url | relative_url }}">
     <h2 class="post-title">{{ page.title | escape }}</h2>
     {% if page.subtitle %}
     <h3 class="post-subtitle">{{ page.subtitle }}</h3>
     {% endif %}
   </a>
-  {% if post.subtitle %}
-  <h3 class="post-subtitle">{{ post.subtitle }}</h3>
   {% endif %}
 
   <div class="post-meta">
@@ -22,9 +32,6 @@ layout: default
     </div>
     {% endif %}
     <div class="post-misc">
-      {% if page.multilingual %}
-      {% include multilingual-sel.html %}
-      {% endif %}
       {% if page.date %}
       <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
       {% endif %}

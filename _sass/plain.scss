@@ -234,7 +234,7 @@ main {
 .post-meta {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
 
   @media screen and (max-width: $mobileW) {
     flex-direction: column-reverse;
@@ -244,45 +244,30 @@ main {
       margin-bottom: 16px;
     }
   }
-
-  .post-misc {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    a {
-      color: #555;
-      border: solid 1px #e3e3e3;
-      background: #e3e3e3;
-      padding: 0 30px;
-      border-radius: 2px;
-      transition: all 0.2s;
-      margin-bottom: -10px;
-
-      @media screen and (max-width: $smallMobileW) {
-        margin-bottom: 5px;
-      }
-
-      &:hover {
-        color: $linkColor;
-        background-color: #F5F5F5;
-      }
-    }
-
-    .icon-calendar::before {
-      margin-left: 0px;
-    }
-
-    .fa-language::before {
-      font-size: 25px;
-      margin: 0 0.15rem;
-      line-height: 30px;
-    }
-  }
 }
 
 .post-link {
   text-decoration: none;
+}
+
+.multilingual-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  a.translate {
+    line-height: 1.2em;
+    margin: 20px 0.5em 1em 0;
+    background-color: #e3e3e3;
+    border-radius: 2px;
+    padding: 6px 6px 3px 6px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $linkColor;
+      color: white;
+    }
+  }
 }
 
 .post-title {
@@ -872,3 +857,29 @@ table tr td:last-child {
 }
 
 /* Tags support End*/
+
+/* Material Icons */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
