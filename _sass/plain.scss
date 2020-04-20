@@ -253,7 +253,7 @@ main {
 .multilingual-title {
   display: flex;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: flex-start;
 
   a.translate {
     line-height: 1.2em;
