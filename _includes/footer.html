@@ -7,13 +7,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script>
-$('[data-fancybox="gallery"]').fancybox({
-  buttons : [
-    'download',
-    'thumbs',
-    'close'
-  ]
-});
+  $('[data-fancybox="gallery"]').fancybox({
+    buttons: [
+      'download',
+      'thumbs',
+      'close'
+    ]
+  });
 </script>
 {% endif %}
 
@@ -21,25 +21,25 @@ $('[data-fancybox="gallery"]').fancybox({
 <!-- Simple Jekyll Search -->
 <script src="/js/simple-jekyll-search.min.js"></script>
 <script>
-var sjs = SimpleJekyllSearch({
-  searchInput: document.getElementById('searchbar'),
-  resultsContainer: document.getElementById('search-results'),
-  json: '/search.json',
-  searchResultTemplate: '<a href="{{ site.url }}{url}">{title}</a>',
-  noResultsText: ''
-});
+  var sjs = SimpleJekyllSearch({
+    searchInput: document.getElementById('searchbar'),
+    resultsContainer: document.getElementById('search-results'),
+    json: '/search.json',
+    searchResultTemplate: '<a href="{{ site.url }}{url}">{title}</a>',
+    noResultsText: ''
+  });
 
-$('.posts-labelgroup').click(function() {
-     $('#searchbar').focus();
-});
+  document.querySelector(".posts-labelgroup").addEventListener("click", function () {
+    document.getElementById("searchbar").focus();
+  }, false);
 </script>
 {% endif %}
 
 <!-- Link _blank -->
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('a[href^="http"]').each(function() {
-			$(this).attr('target', '_blank');
-		});
-	});
+  $(document).ready(function () {
+    $('a[href^="http"]').each(function () {
+      $(this).attr('target', '_blank');
+    });
+  });
 </script>
