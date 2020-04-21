@@ -392,6 +392,15 @@ ul.posts {
     transition: all 0.5s;
   }
 
+  /* faster animation for small device */
+  @media screen and (max-width: $mobileW) {
+
+    i,
+    input {
+      transition: all 0.3s;
+    }
+  }
+
   .search-results {
     display: none;
     border-radius: 5px;
