@@ -403,6 +403,7 @@ ul.posts {
     box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
     z-index: 1;
     padding: 10px 0;
+    font-size: 16px;
 
     @media screen and (max-width: $mobileW) {
       max-width: 70%;
