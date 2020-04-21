@@ -17,6 +17,24 @@ $('[data-fancybox="gallery"]').fancybox({
 </script>
 {% endif %}
 
+{% if page.layout == "page" %}
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script>
+var sjs = SimpleJekyllSearch({
+  searchInput: document.getElementById('searchbar'),
+  resultsContainer: document.getElementById('search-results'),
+  json: '/search.json',
+  searchResultTemplate: '<a href="{{ site.url }}{url}">{title}</a>',
+  noResultsText: ''
+});
+
+$('.posts-labelgroup').click(function() {
+     $('#searchbar').focus();
+});
+</script>
+{% endif %}
+
 <!-- Link _blank -->
 <script type="text/javascript">
 	$(document).ready(function() {

@@ -18,7 +18,8 @@ $maxWidth: 1000px;
 
 body {
   font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-  font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;;
+  font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  ;
   font-size: 16px;
   line-height: 1.2em;
   margin: 0;
@@ -111,7 +112,7 @@ main {
     .tagline {
       font-size: 22px;
       margin-top: 17px;
-      color: #aaa;
+      color: #777;
       white-space: pre-wrap;
       line-height: normal;
       text-align: center;
@@ -347,14 +348,125 @@ ul.posts {
   }
 }
 
+.posts-labelgroup {
+  margin: 0.67em 0;
+  display: flex;
+  align-items: flex-start;
+
+  .search-section {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  input:focus,
+  &:hover input {
+    width: none;
+    flex-grow: 1;
+    border-bottom: 1px solid $linkColor;
+    outline: none;
+  }
+
+  input:focus+i,
+  &:hover i {
+    color: $linkColor;
+    flex-grow: 0;
+    border-bottom: 1px solid $linkColor;
+  }
+
+  i {
+    color: #777;
+    flex-grow: 1;
+    border-bottom: 1px solid #eee;
+    padding: 0 5px 10px 5px;
+    align-self: flex-start;
+    transition: all 0.5s;
+  }
+
+  input {
+    width: 0;
+    font-size: 15px;
+    height: 30px;
+    border: none;
+    padding: 0 0 11px 0;
+    border-bottom: solid 1px #eee;
+    transition: all 0.5s;
+  }
+
+  .search-results {
+    display: none;
+    border-radius: 5px;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    max-width: 45%;
+    min-height: 50px;
+    box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+    z-index: 1;
+    padding: 10px 0;
+
+    @media screen and (max-width: $mobileW) {
+      max-width: 70%;
+    }
+  }
+
+  .search-container {
+    display: block;
+    flex-grow: 1;
+
+    &:focus-within {
+
+      .search-results {
+        display: flex;
+        flex-direction: column;
+
+        &:empty::before {
+          content: attr(data-placeholder);
+          padding: 6px 25px 6px 14px;
+        }
+
+        a {
+          padding: 6px 25px 6px 14px;
+          text-decoration: none;
+          display: flex;
+
+          &:hover {
+            color: black;
+            background-color: #eee;
+          }
+
+          &::before {
+            content: '\e805';
+            font-family: "fontello";
+            font-style: normal;
+            speak: none;
+            display: inline-block;
+            text-decoration: inherit;
+            font-variant: normal;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: 'liga';
+            margin-right: 14px;
+            color: #9aa0a6;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 #posts-label {
   border-bottom: 1px solid #eee;
   font-size: 15px;
-  color: #777;
+  color: #555;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding-bottom: 10px;
   font-weight: normal;
+  margin: 0;
+  padding-right: 5px;
 }
 
 /* pagination */
@@ -610,7 +722,7 @@ table tr td:last-child {
 .archive {
   padding-left: 40px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $mobileW) {
     padding-bottom: 300px !important;
   }
 }
@@ -660,7 +772,7 @@ table tr td:last-child {
   text-decoration: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $mobileW) {
 
   .tags a,
   .tags .tag {
@@ -672,7 +784,7 @@ table tr td:last-child {
   padding: 70px 0 60px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $mobileW) {
   #tag-heading {
     padding: 55px 0;
   }
@@ -742,7 +854,7 @@ table tr td:last-child {
   background-color: #e4e4e4 !important;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $mobileW) {
   #tag_cloud {
     margin-bottom: 25px;
     margin-left: 15px;
@@ -768,7 +880,7 @@ table tr td:last-child {
     color: #fff;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $mobileW) {
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -779,7 +891,7 @@ table tr td:last-child {
   font-size: 12px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $mobileW) {
   .tag-comments {
     font-size: 14px;
   }
@@ -800,7 +912,7 @@ table tr td:last-child {
   margin-right: 5px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $mobileW) {
   .listing-seperator {
     font-size: 20px !important;
     line-height: 2 !important;
@@ -850,7 +962,7 @@ table tr td:last-child {
   line-height: 12px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $mobileW) {
   .mini-post-list .post-preview {
     margin-left: 20px;
   }
