@@ -422,8 +422,15 @@ ul.posts {
     position: relative;
   }
 
-  &:focus-within,
   &:hover {
+    cursor: text;
+
+    i {
+      color: $linkColor;
+    }
+  }
+
+  &:focus-within {
 
     .search-section {
       border-radius: 5px;
