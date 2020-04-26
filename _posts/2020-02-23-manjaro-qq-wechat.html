@@ -64,14 +64,14 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
 <p>
     首先完全退出QQ与Wechat。<br>在Terminal输入命令
     {% highlight shell %}env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg #修改TIM的DPI
-    env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" winecfg #修改QQ的DPI
-    env WINEPREFIX="$HOME/.deepinwine/Deepin-Wechat" winecfg #修改Wechat的DPI{% endhighlight %}
+env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" winecfg #修改QQ的DPI
+env WINEPREFIX="$HOME/.deepinwine/Deepin-Wechat" winecfg #修改Wechat的DPI{% endhighlight %}
     此处建议将DPI设定在120左右，具体请自行调试。
 </p>
 <p>
     如果使用的是基于deepin-wine的deepin.com.qq.im或者deepin.com.qq.office，则应使用
     {% highlight shell %}WINEPREFIX=~/.deepinwine/Deepin-QQ deepin-wine winecfg #修改QQ的DPI
-    WINEPREFIX=~/.deepinwine/Deepin-TIM deepin-wine winecfg #修改TIM的DPI{% endhighlight %}
+WINEPREFIX=~/.deepinwine/Deepin-TIM deepin-wine winecfg #修改TIM的DPI{% endhighlight %}
     来调整DPI。
 </p>
 
@@ -82,8 +82,8 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
 <p>
     在系统终端中运行命令：
     {% highlight shell %}sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-    sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1{% endhighlight %}
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1{% endhighlight %}
 
     注：以上命令在深度Deepin Linux系统下有效，其他Linux发行版可参考。
 </p>
