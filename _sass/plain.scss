@@ -348,132 +348,148 @@ ul.posts {
   }
 }
 
+/* post label and search*/
 .posts-labelgroup {
-  margin: 0.67em 0;
+  margin: 0 0 0.67em 0;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #eee;
 
-  .search-section {
-    display: flex;
-    flex-grow: 1;
-  }
-
-  input:focus,
-  &:hover input {
-    width: none;
-    flex-grow: 1;
-    border-bottom: 1px solid $linkColor;
-    outline: none;
-  }
-
-  input:focus+i,
-  &:hover i {
-    color: $linkColor;
-    flex-grow: 0;
-    border-bottom: 1px solid $linkColor;
+  #posts-label {
+    font-size: 15px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 0;
+    font-weight: normal;
+    margin: 0;
+    padding-right: 5px;
+    transition: all 0.1s;
   }
 
   i {
     color: #777;
-    flex-grow: 1;
-    border-bottom: 1px solid #eee;
+    flex-grow: 0;
     padding: 0 5px 10px 5px;
-    align-self: flex-start;
-    transition: all 0.5s;
+    transition: color 0.5s;
   }
 
   input {
-    width: 0;
     font-size: 15px;
+    flex-grow: 1;
     height: 30px;
     border: none;
     padding: 0 0 11px 0;
-    border-bottom: solid 1px #eee;
     transition: all 0.5s;
+  }
+
+  .search-section {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 10px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
   }
 
   /* faster animation for small device */
   @media screen and (max-width: $mobileW) {
 
-    i,
-    input {
-      transition: all 0.3s;
+    i {
+      transition: color 0.3s;
     }
   }
 
   .search-results {
     display: none;
     border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     position: absolute;
     background-color: #fff;
     min-width: 160px;
     width: 100%;
     min-height: 50px;
     box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
-    z-index: 1;
+    z-index: 3;
     padding: 10px 0;
     font-size: 16px;
+    border: 1px solid rgba(223,225,229,0);
   }
 
   .search-container {
     display: block;
     flex-grow: 1;
     position: relative;
+  }
 
-    &:focus-within {
+  &:focus-within,
+  &:hover {
 
-      .search-results {
+    .search-section {
+      border-radius: 5px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+      border: 1px solid rgba(223,225,229,0);
+      border-bottom: solid 1px #eee;
+      z-index: 3;
+      margin: 0 auto;
+    }
+
+    input {
+      width: none;
+      outline: none;
+    }
+
+    i {
+      color: $linkColor;
+      flex-grow: 0;
+      padding: 0 14px 10px 14px;
+    }
+
+    .search-results {
+      display: flex;
+      flex-direction: column;
+
+      &:empty::before {
+        content: attr(data-placeholder);
+        padding: 6px 25px 6px 14px;
+      }
+
+      a {
+        padding: 6px 25px 6px 14px;
+        text-decoration: none;
         display: flex;
-        flex-direction: column;
 
-        &:empty::before {
-          content: attr(data-placeholder);
-          padding: 6px 25px 6px 14px;
+        &:hover {
+          color: black;
+          background-color: #eee;
         }
 
-        a {
-          padding: 6px 25px 6px 14px;
-          text-decoration: none;
-          display: flex;
-
-          &:hover {
-            color: black;
-            background-color: #eee;
-          }
-
-          &::before {
-            content: '\e805';
-            font-family: "fontello";
-            font-style: normal;
-            speak: none;
-            display: inline-block;
-            text-decoration: inherit;
-            font-variant: normal;
-            text-transform: none;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-feature-settings: 'liga';
-            margin-right: 14px;
-            color: #9aa0a6;
-          }
+        &::before {
+          content: '\e805';
+          font-family: "fontello";
+          font-style: normal;
+          speak: none;
+          display: inline-block;
+          text-decoration: inherit;
+          font-variant: normal;
+          text-transform: none;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-feature-settings: 'liga';
+          margin-right: 14px;
+          color: #9aa0a6;
         }
       }
     }
+
+    #posts-label {
+      width: 0;
+      padding-right: 0;
+      overflow: hidden;
+    }
   }
-}
-
-
-
-#posts-label {
-  border-bottom: 1px solid #eee;
-  font-size: 15px;
-  color: #555;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding-bottom: 10px;
-  font-weight: normal;
-  margin: 0;
-  padding-right: 5px;
 }
 
 /* pagination */
