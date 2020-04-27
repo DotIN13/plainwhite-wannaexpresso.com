@@ -50,9 +50,9 @@ layout: default
     </div>
     <div class="post">
       {% if post.lang == 'en' %}
-      {{ post.content | strip_html | truncate:300 }}
+      {{ post.content | excerpt | strip_html | truncate:300 }}
       {% else %}
-      {{ post.content | strip_html | truncate:200 }}
+      {{ post.content | excerpt | strip_html | truncate:200 }}
       {% endif %}
     </div>
   </li>
