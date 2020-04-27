@@ -348,11 +348,11 @@ ul.posts {
   }
 }
 
-/* post label and search*/
+/* post label and search */
 .posts-labelgroup {
   margin: 0 0 0.67em 0;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   border-bottom: 1px solid #eee;
 
   #posts-label {
@@ -363,18 +363,19 @@ ul.posts {
     padding: 10px 0;
     font-weight: normal;
     margin: 0;
-    padding-right: 5px;
     transition: all 0.1s;
   }
 
   i {
     color: #777;
     flex-grow: 0;
-    padding: 0 5px 10px 5px;
+    padding: 0 8px 10px 8px;
     transition: color 0.5s;
+    font-size: 15px;
   }
 
   input {
+    color: #555;
     font-size: 15px;
     flex-grow: 1;
     height: 30px;
@@ -389,6 +390,7 @@ ul.posts {
     padding-top: 10px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
+    align-items: baseline;
   }
 
   /* faster animation for small device */
@@ -412,7 +414,7 @@ ul.posts {
     box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
     z-index: 3;
     padding: 10px 0;
-    font-size: 16px;
+    font-size: 15px;
     border: 1px solid rgba(223,225,229,0);
   }
 
@@ -427,6 +429,10 @@ ul.posts {
 
     i {
       color: $linkColor;
+    }
+
+    input {
+      color: #000;
     }
   }
 
@@ -446,12 +452,14 @@ ul.posts {
     input {
       width: none;
       outline: none;
+      color: black;
     }
 
     i {
       color: $linkColor;
       flex-grow: 0;
       padding: 0 14px 10px 14px;
+      margin: 0 3px;
     }
 
     .search-results {
@@ -486,6 +494,7 @@ ul.posts {
           -moz-osx-font-smoothing: grayscale;
           font-feature-settings: 'liga';
           margin-right: 14px;
+          padding: 0 3px;
           color: #9aa0a6;
         }
       }
@@ -493,7 +502,6 @@ ul.posts {
 
     #posts-label {
       width: 0;
-      padding-right: 0;
       overflow: hidden;
     }
   }
