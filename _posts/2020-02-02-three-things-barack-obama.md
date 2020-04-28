@@ -14,8 +14,7 @@ modified_time: '2020-02-02T16:27:28.117+08:00'
 blogger_id: tag:blogger.com,1999:blog-7275524089009887162.post-7614211253303895269
 blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/3-things-that-keep-barack-obama-up-at.html
 ---
-<a href="/img/in-post/post-obama-singapore/Barack-Obama-Singapore.jpg" data-fancybox="gallery" data-caption="Former U.S. President Barack Obama | Sean Gallup | Getty Images"><img src="/img/in-post/post-obama-singapore/Barack-Obama-Singapore.jpg" alt="Former U.S. President Barack Obama | Sean Gallup | Getty Images"></a>
-*Former U.S. President Barack Obama | Sean Gallup | Getty Images*
+{% include image.html link="/img/in-post/post-obama-singapore/Barack-Obama-Singapore.jpg" alt="Former U.S. President Barack Obama | Sean Gallup | Getty Images" %}
 
 翻译：DotIN13  
 校对：天佑
@@ -86,8 +85,7 @@ He warned that extreme weather shifts could affect the lives of millions around 
 “So I worry about that.”  
 “因此我为之感到担忧。”
 
-<a href="/img/in-post/post-obama-singapore/Barack-Obama-Singapore-1.jpg" data-fancybox="gallery" data-caption="Barack Obama on Worrying Trends | CNBC.com"><img src="/img/in-post/post-obama-singapore/Barack-Obama-Singapore-1.jpg" alt="Barack Obama on Worrying Trends | CNBC.com"></a>
-*Barack Obama on Worrying Trends | CNBC.com*
+{% include image.html link="/img/in-post/post-obama-singapore/Barack-Obama-Singapore-1.jpg" alt="Barack Obama on Worrying Trends | CNBC.com" %}
 
 ## 3\. Social media 社交媒体
 

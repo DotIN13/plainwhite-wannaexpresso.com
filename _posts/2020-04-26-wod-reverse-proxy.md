@@ -31,11 +31,11 @@ typora-root-url: ../
 
 代理服务器就是一个中间、中介服务器，它会将众多客户端的内容请求转发到网络上不同的服务器中。**反向代理服务器**就是代理服务器的一种，通常它处于一个私人网络的防火墙中，将客户端请求引导到合适的后端服务器中。反向代理提供更好的抽象度与管理，来保证服务器与用户间平滑的网络连接。
 
-<a href="/img/in-post/post-reverse-proxy/reverse-proxy.jpg" data-fancybox="gallery" data-caption="Reverse Proxy"><img border="0" src="/img/in-post/post-reverse-proxy/reverse-proxy.jpg" alt="Reverse Proxy" /></a><em>Reverse Proxy</em>
+{% include image.html link="/img/in-post/post-reverse-proxy/reverse-proxy.jpg" alt="Reverse Proxy" %}
 
 从图中可以清楚地看到，反向代理就是通过中间服务器代理后端服务器，用户访问时直接访问中间服务器，由中间服务器从后端服务器获得回应后将回应返回给用户。
 
-<a href="/img/in-post/post-reverse-proxy/forward-proxy.jpg" data-fancybox="gallery" data-caption="Forward Proxy"><img border="0" src="/img/in-post/post-reverse-proxy/forward-proxy.jpg" alt="Forward Proxy" /></a><em>Forward Proxy</em>
+{% include image.html link="/img/in-post/post-reverse-proxy/forward-proxy.jpg" alt="Forward Proxy" %}
 
 上图中的则是正向代理，我们平时使用的VPN就属于正向代理，通过中间服务器代理客户端，由中间服务器代客户端发送内容请求，获得回应后再返回给用户。简单来说，反向代理和正向代理最直接的区别就是中间服务器究竟代理了谁。
 

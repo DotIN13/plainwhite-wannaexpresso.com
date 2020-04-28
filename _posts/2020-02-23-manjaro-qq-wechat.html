@@ -18,9 +18,8 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
 <p>
     QQ for Linux已经更新到了2.0.0b2，虽然没有重大的变化，但相比臃肿的Deepin-QQ，我想还是优先推荐这款QQ。</p>
 
-<a href="/img/in-post/post-deepin-qq/qq-for-linux.jpg" data-fancybox="gallery" data-caption="QQ for Linux 2.0b2"><img
-        border="0" src="/img/in-post/post-deepin-qq/qq-for-linux.jpg" alt="QQ for Linux 2.0b2" /></a><em>QQ for Linux
-    2.0.0 Beta2</em>
+{% include image.html link="/img/in-post/post-deepin-qq/qq-for-linux.jpg" alt="QQ for Linux
+    2.0.0 Beta2" %}
 
 <p>
     安装的方法很简单，只需要在archlinux或者AUR源中找到QQ for Linux即可，或者使用命令也能轻松解决。
@@ -39,8 +38,7 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
     同理，Deepin-Wechat显得非常臃肿，可能存在各种bug，在此仍然推荐<a href="https://wx.qq.com/">Wechat网页版</a>。目前文件、图片等功能完善，除截屏外都能够正常使用。
 </p>
 <p>
-    <a href="/img/in-post/post-deepin-qq/web-wechat.jpg" data-fancybox="gallery" data-caption="Web Wechat"><img
-            border="0" src="/img/in-post/post-deepin-qq/web-wechat.jpg" alt="Web Wechat" /></a><em>Web Wechat</em>
+    {% include image.html link="/img/in-post/post-deepin-qq/web-wechat.jpg" alt="Web Wechat" %}
 </p>
 
 <h2 id="Deepin-QQ与Deepin-Wechat">Deepin-QQ与Deepin-Wechat</h2>
@@ -58,9 +56,7 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjaroqqwechat.html
 <p>
     打开界面发现字体过小，此时需要进入<code>winecfg</code>调整软件的DPI
 </p>
-<a href="/img/in-post/post-deepin-qq/screenshot-1-orig.png" data-fancybox="gallery"
-    data-caption="Wine QQ Configuration"><img border="0" src="/img/in-post/post-deepin-qq/screenshot-1-orig.png"
-        style="border-radius: 8px" alt="wine qq config" /></a><em>Wine QQ Configuration</em>
+{% include image.html link="/img/in-post/post-deepin-qq/screenshot-1-orig.png" alt="Wine QQ Configuration" %}
 <p>
     首先完全退出QQ与Wechat。<br>在Terminal输入命令
     {% highlight shell %}env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg #修改TIM的DPI

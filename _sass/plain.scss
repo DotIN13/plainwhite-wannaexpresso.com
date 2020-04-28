@@ -364,6 +364,11 @@ ul.posts {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    max-width: 80%;
+    
+    @media screen and (max-width: $mobileW) {
+      max-width: 100%;
+    }
 
     &:focus,
     &:hover {

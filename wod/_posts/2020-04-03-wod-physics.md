@@ -10,7 +10,7 @@ tags:
 typora-root-url: ../..
 ---
 
-<a href="/img/in-post/post-wodbasics/universe.png" data-fancybox="gallery" data-caption="WoD Universe"><img src="/img/in-post/post-wodbasics/universe.png" alt="WoD Universe" width="620px"></a><em>WoD宇宙</em>
+{% include image.html link="/img/in-post/post-wodbasics/universe.png" alt="WoD宇宙" %}
 
 ## 定律一：先乘除后加减原则
 
