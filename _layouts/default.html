@@ -8,7 +8,12 @@
 <body>
   <main class="container">
     <section class="about">
-      <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}"><img src="{{ "/img/orange240x240.png" | relative_url }}" alt="{{ site.plainwhite.name }}"></a>
+      <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}">
+        <picture>
+          <source type="image/webp" srcset="/img/orange320x320.webp"> 
+          <img src="{{ "/img/orange240x240.png" | relative_url }}" alt="{{ site.plainwhite.name }}">
+        </picture>
+      </a>
       <h2 id="title">
         <a href="{% if page.categories contains 'wod' %}/wod{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
       </h2>
@@ -17,6 +22,7 @@
         {%- if site.plainwhite.social_links.github -%}
         <li>
           <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}">
+            <span style="display: none">GitHub Account Link</span>
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-github fa-stack-1x fa-inverse"></i>
@@ -27,6 +33,7 @@
         {%- if site.plainwhite.social_links.facebook -%}
         <li>
           <a target="_blank" rel="noreferrer" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}">
+            <span style="display: none">Facebook Account Link</span>
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-facebook fa-stack-1x fa-inverse"></i>
@@ -37,6 +44,7 @@
         {%- if site.plainwhite.social_links.twitter -%}
         <li>
           <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
+            <span style="display: none">Twitter Account Link</span>
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-twitter fa-stack-1x fa-inverse"></i>
@@ -47,6 +55,7 @@
         {%- if site.plainwhite.social_links.weibo -%}
         <li>
           <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}">
+            <span style="display: none">Weibo Account Link</span>
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-weibo fa-stack-1x fa-inverse"></i>
@@ -57,6 +66,7 @@
         {%- if site.plainwhite.social_links.bilibili -%}
         <li>
           <a target="_blank" rel="noreferrer" href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}">
+            <span style="display: none">Bilibili Account Link</span>
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="icon-bilibili fa-stack-1x fa-inverse"></i>
