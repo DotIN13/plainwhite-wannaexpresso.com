@@ -83,7 +83,8 @@ plainwhite:
 plugins:
   - jekyll-paginate-v2
   - jekyll-minifier
-  - jekyll-webp
+  - jekyll_picture_tag
+#  - jekyll-webp
 #  - jekyll-seo-tag
 #  - jekyll-feed
 
