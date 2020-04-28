@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
+require 'nokogiri'
+
 module Excerpt
   def excerpt(html)
-    headers = [/<h1[^<]*<\/h1>/, /<h2[^<]*<\/h2>/, /<h3[^<]*<\/h3>/, /<div\sclass=\"highlight\".*<\/div>/m, /<figure\sclass=\"highlight\".*<\/figure>/m]
-
-    headers.each do |tag|
-      html.gsub!(tag, '')
+    @doc = Nokogiri::HTML html
+    remove_tags = %w[figure.highlight div.highlight h1 h2 h3 h4 h5 h6 em]
+    remove_tags.each do |tag|
+      @doc.css(tag).each { |node| node.content = '' }
     end
-
-    html
+    @doc.to_html
   end
 end
 

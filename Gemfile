@@ -6,3 +6,4 @@ gemspec
 gem "jekyll"
 gem "jekyll-paginate-v2"
 gem "jekyll-minifier"
+gem "nokogiri"
