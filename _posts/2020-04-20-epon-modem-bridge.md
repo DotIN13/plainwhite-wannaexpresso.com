@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "将EPON光猫切换到桥接模式"
-subtitle: "Bridge with EPON Optical Network Terminal"
+title: "将电信EPON光猫切换到桥接模式"
+subtitle: "EPON Optical Network Terminal on Bridge Mode"
 author: "DotIN13"
 tags:
   - Network
