@@ -32,7 +32,7 @@ Instead, three newer issues have emerged that worry him: political polarization,
 If those issues are not tackled soon, “we could end up having even greater problems than we do today,” he told a sold-out audience in Singapore on Monday at an hour-long event, “In Conversation with President Barack Obama.”  
 如果这些问题不能尽快得到解决，“我们可能会最终面对比我们今天更严重的问题，”周一，在新加坡举办的为时一小时的“对话奥巴马总统”活动中，他对满堂听众说道。
 
-## 1\. Global political polarization _全球政治极化_
+## 1\. Global political polarization 全球政治极化
 
 One worrying new trend is political polarization, both in advanced economies and in developing countries.  
 一个令人担忧的新趋势是政治极化，这种现象同时出现在了发达经济体与发展中国家中。
@@ -41,7 +41,7 @@ One worrying new trend is political polarization, both in advanced economies and
 “如果你问我，促成了一战二战的某些政治潮流与紧张社会局势正在回归，这或许是我在过去十年间见过的最大趋势，”这位58岁的前政治家说道。
 
 Noting people his age and younger have lived during times of “relative tranquility,” he recalled major events that resulted in “enormous optimism” around the globe: the fall of the Berlin Wall, the unification of Europe, the prison release of South African anti-apartheid icon Nelson Mandela, Chinese economic reform, globalization and a billion people lifted from poverty.  
-他特别指出与他同龄和比他年轻的人们经历了“相对平静”的时代，他回顾了那些引起全球范围内“极大乐观”的重大事件：柏林墙的倒塌、欧洲的联合、南美反种族隔离的标志尼尔森·曼德拉获释出狱、中国的经济改革、全球化以及全球一亿人口的脱贫。
+他特别指出与他同龄和比他年轻的人们经历了“相对平静”的时代，他回顾了那些引起全球范围内“极大乐观”的重大事件：柏林墙的倒塌、欧洲的联合、南美反种族隔离的标志尼尔森·曼德拉获释出狱、中国的经济改革、全球化以及全球十亿人口的脱贫。
 
 Even after the September 11 terrorist attacks on the U.S., there was still a sense that the event was an anomaly in a world that was becoming more integrated, better educated and more tolerant, he said.  
 即便在剑指美国的9/11恐怖袭击发生后，人们仍然有一种感觉，仿佛这一事件只是这个越发一体化、受更好教育、更具包容性的世界的一个例外，他说。
@@ -63,7 +63,7 @@ Cultural disruptions in the Middle East, Asia and U.S. were also a factor, he sa
 “And, as a consequence, what you start seeing is this populist backlash — sometimes from the left, more often from the right — and a fallback to tribalism, racism, misogyny, ethnic or sectarian conflicts and strong men who would come in and oftentimes exploit some of those divisions.”  
 “结果就是，你开始看到民粹主义的反扑——有时来自左翼，更多的时候来自右翼——以及向宗族主义、种族歧视、反女性主义、种族宗派冲突的退化，还有那些会插手其中并且常常利用个中分歧谋利的社会精英。
 
-## 2\. Climate change _气候变化_
+## 2\. Climate change 气候变化
 
 Another worrying trend is climate change.  
 另一个令人担忧的趋势是气候变化。
@@ -89,7 +89,7 @@ He warned that extreme weather shifts could affect the lives of millions around 
 <a href="/img/in-post/post-obama-singapore/Barack-Obama-Singapore-1.jpg" data-fancybox="gallery" data-caption="Barack Obama on Worrying Trends | CNBC.com"><img src="/img/in-post/post-obama-singapore/Barack-Obama-Singapore-1.jpg" alt="Barack Obama on Worrying Trends | CNBC.com"></a>
 *Barack Obama on Worrying Trends | CNBC.com*
 
-## 3\. Social media _社交媒体_
+## 3\. Social media 社交媒体
 
 The third trend that keeps Obama up at night is the rise of social media, which he called “an accelerant to some of these other trends.”  
 第三个让奥巴马夜不能寐的趋势是社交媒体的崛起，他将其称为“其他一些潮流的催化剂”。
@@ -105,7 +105,7 @@ The third trend that keeps Obama up at night is the rise of social media, which 
 “There’s no agreed upon set of facts that we can agree to, and then test our ideas and opinions against some objective facts, but rather everybody has their own facts. You start seeing political breakdown as a consequence of that.”  
 “我们原本认可的事实不再能够得到认同，我们不再能对照着一些客观事实验证我们的想法与观点，相反地，每个人都有他们自己的事实基础。我们开始看到政治因此而崩溃。”
 
-## Doing his best _竭尽所能_
+## Doing his best 竭尽所能
 
 During the discussion, Obama also talked about what he misses about being president: the positive impact he could make, the intellectual challenge and his team. However, there are some things he doesn’t miss about it, such as the security bubble, the “pomp and circumstance” of cameras, and people standing up when he walked into a room.  
 在讨论中，奥巴马也谈到他所怀念的做总统时的一些东西：他能够做出的积极影响、对智谋的挑战以及他的团队。但是，其中也有一些他不愿重提的，比如安全泡沫、前拥后簇的镜头以及他走进房间便有人们起立致敬。

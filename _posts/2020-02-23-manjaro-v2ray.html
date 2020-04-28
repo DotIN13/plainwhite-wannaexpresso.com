@@ -27,7 +27,7 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjarov2ray.html
     <li><strong>反向代理</strong>: 通用的反向代理支持，可实现内网穿透功能</li>
     <li><strong>多平台支持</strong>: 原生支持所有常见平台，如 Windows、Mac OS、Linux，并已有第三方支持移动平台</li>
 </ul>
-<h2>安装V2Ray客户端</h2>
+<h2 id="安装V2Ray客户端">安装V2Ray客户端</h2>
 <p>客户端软件在<a href="https://github.com/v2ray/v2ray-core/releases" rel="external nofollow noopener noreferrer"
         target="_blank">发布页</a>，根据你需要的系统下载匹配型号的安装包，我这里以我的系统为例子，其他系统请自行参照<a href>官方文档</a>配置。</p>
 {% highlight bash %}sudo pacman -S v2ray    #ArchLinux/Manjaro安装v2ray{% endhighlight %}
@@ -87,27 +87,27 @@ Configuration OK.{% endhighlight %}
 {% highlight bash %}systemctl enable v2ray  #开机自启v2ray
 systemctl start v2ray   #启动v2ray{% endhighlight %}
 
-<h2>配置Socks代理</h2>
+<h2 id="配置Socks代理">配置Socks代理</h2>
 <p>打开系统设置，进入网络设置，配置如下图：</p>
 <p><a href="/img/in-post/post-v2ray/v2ray-manual-socks.webp" data-fancybox="gallery" data-caption="System Manual Proxy"><img src="/img/in-post/post-v2ray/v2ray-manual-socks.webp" alt="System manual proxy"></a><em>System Manual Proxy</em></p>
 <p>如果仅需要浏览器代理，可以下载<code>SwitchyOmega</code>浏览器插件，最简配置如下：</p>
 <p><a href="/img/in-post/post-v2ray/switchyomega.png" data-fancybox="gallery" data-caption="SwitchyOmega Settings"><img src="/img/in-post/post-v2ray/switchyomega.png" alt="SwitchyOmega Settings"></a><em>SwitchyOmega Settings</em></p>
 
-<h2>配置shell代理</h2>
+<h2 id="配置shell代理">配置shell代理</h2>
 <p>为了解决终端下载被墙服务器的安装包失败的问题，可以考虑代理终端。</p>
-<h3>临时代理</h3>
+<h3 id="临时代理">临时代理</h3>
 只需要http代理则输入命令<code>export http_proxy=http://proxyAddress:port</code>；
 全部协议代理则输入命令<code>export ALL_PROXY=http://proxyAddress:port</code>。
 临时代理仅对当前环境有效，重启即失效。
-<h3>长期代理</h3>
+<h3 id="长期代理">长期代理</h3>
 {% highlight bash %}sudo gedit ~/.bashrc    #编辑.bashrc文件{% endhighlight %}
 <p>在最后追加以下配置。</p>
 {% highlight bash %}export http_proxy="http://localhost:port"
 export https_proxy="http://localhost:port"{% endhighlight %}
 <p><code>source ~/.bashrc</code>或者重启终端后生效</p>
 
-<h2>配置PAC</h2>
-<h3>生成PAC</h3>
+<h2 id="配置PAC">配置PAC</h2>
+<h3 id="生成PAC">生成PAC</h3>
 <p><code>PAC</code>代理需要生成一个<code>.pac</code>的文件，首先本机安装<code>pip</code>工具</p>
 {% highlight bash %}sudo pacman -S python-pip       #安装pip
 pip -V      #查看pip版本
@@ -126,11 +126,11 @@ Successfully installed genpac-2.1.0{% endhighlight %}
 {% highlight bash %}genpac --format=pac -o auto.pac --pac-proxy="SOCKS5 127.0.0.1:1080"
 {% endhighlight %}
 
-<h3>Firefox PAC代理设置</h3>
+<h3 id="Firefox PAC代理设置">Firefox PAC代理设置</h3>
 <p>PAC文件的绝对路径为<code>file:///etc/v2ray/auto.pac</code>，如下图</p>
 <p><a href="/img/in-post/post-v2ray/firefox-pac.webp" data-fancybox="gallery" data-caption="Firefox PAC Manual Proxy"><img src="/img/in-post/post-v2ray/firefox-pac.webp" alt="Firefox PAC manual proxy"></a><em>Firefox PAC Manual Proxy</em></p>
 
-<h3>系统PAC代理设置</h3>
+<h3 id="系统PAC代理设置">系统PAC代理设置</h3>
 <p>以<code>gnome</code>桌面为例，PAC文件的绝对路径为<code>file:///etc/v2ray/auto.pac</code>；
 </p>
 <p><a href="/img/in-post/post-v2ray/v2ray-auto-pac.webp"" data-fancybox="gallery" data-caption="PAC Automatic Proxy"><img src="/img/in-post/post-v2ray/v2ray-auto-pac.webp" alt="PAC automatic proxy"></a><em>PAC Automatic Proxy</em></p>

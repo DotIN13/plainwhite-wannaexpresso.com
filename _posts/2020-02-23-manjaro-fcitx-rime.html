@@ -13,8 +13,7 @@ blogger_id: tag:blogger.com,1999:blog-7275524089009887162.post-45914563233829283
 blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/manjarofcitxrime.html
 ---
 
-<h2>
-    安装Fcitx+Rime</h2>
+<h2 id="安装Fcitx+Rime">安装Fcitx+Rime</h2>
 <div>
     <p>Linux中的中文输入法与Windows上的输入法有所不同，不像Windows中一个输入法软件即可提供输入服务，在Linux中首先需要安装基础输入法软件Fcitx或者iBus，再通过Addon的方式添加各家的输入法解决方案如Google
         Pinyin、Sougou Pinyin等，本篇推荐的方案就是Fcitx加Rime的组合。其中，Rime的官方名称是中州韻輸入法引擎，官方网站是<a
@@ -27,8 +26,7 @@ sudo pacman -S fcitx-configtool #安裝fcitx圖形管理工具{% endhighlight %}
     </p>
 </div>
 
-<h2>
-    选择Rime</h2>
+<h2 id="选择Rime">选择Rime</h2>
 <div>
     <p>打开fcitx-configtool后，在Input
         Method选项卡中点击加号弹出搜索对话框，搜索Rime，点击OK添加。默认的输入法切换按键是<code>Ctrl+Space</code>，切换到Rime后再按Shift可以切换中英文。</p>
@@ -41,8 +39,7 @@ sudo pacman -S fcitx-configtool #安裝fcitx圖形管理工具{% endhighlight %}
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"{% endhighlight %}
 
-<h2>
-    具体的Rime配置</h2>
+<h2 id="具体的Rime配置">具体的Rime配置</h2>
 <div>
     <p>自定义Rime是一桩技术活，本篇只介绍我所使用的配置，你的个性配置可以参考<a href="https://github.com/rime/home/wiki/CustomizationGuide">GitHub</a>。
     </p>
@@ -165,8 +162,7 @@ patch:
   "menu/page_size": 9
 {% endhighlight %}</details>
 </div>
-<h2>
-    Fcitx的皮肤</h2>
+<h2 id="Fcitx的皮肤">Fcitx的皮肤</h2>
 <div>
     <p>自Fcitx 4.0以来，已经可以安装第三方皮肤，例如<a href="https://github.com/winjeg/fcitx-skins">GitHub</a>上就有一些不错的Material
         Style皮肤，可以依照自身喜好选择。</p>
