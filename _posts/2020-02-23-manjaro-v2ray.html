@@ -89,7 +89,7 @@ systemctl start v2ray   #启动v2ray{% endhighlight %}
 
 <h2 id="配置Socks代理">配置Socks代理</h2>
 <p>打开系统设置，进入网络设置，配置如下图：</p>
-<p>{% include image.html link="/img/in-post/post-v2ray/v2ray-manual-socks.webp" alt="System Manual Proxy" %}</p>
+<p>{% include image.html link="/img/in-post/post-v2ray/v2ray-manual-socks.png" alt="System Manual Proxy" %}</p>
 <p>如果仅需要浏览器代理，可以下载<code>SwitchyOmega</code>浏览器插件，最简配置如下：</p>
 <p>{% include image.html link="/img/in-post/post-v2ray/switchyomega.png" alt="SwitchyOmega Settings" %}</p>
 
@@ -128,12 +128,12 @@ Successfully installed genpac-2.1.0{% endhighlight %}
 
 <h3 id="Firefox PAC代理设置">Firefox PAC代理设置</h3>
 <p>PAC文件的绝对路径为<code>file:///etc/v2ray/auto.pac</code>，如下图</p>
-<p>{% include image.html link="/img/in-post/post-v2ray/firefox-pac.webp" alt="Firefox PAC Manual Proxy" %}</p>
+<p>{% include image.html link="/img/in-post/post-v2ray/firefox-pac.png" alt="Firefox PAC Manual Proxy" %}</p>
 
 <h3 id="系统PAC代理设置">系统PAC代理设置</h3>
 <p>以<code>gnome</code>桌面为例，PAC文件的绝对路径为<code>file:///etc/v2ray/auto.pac</code>；
 </p>
-<p>{% include image.html link="/img/in-post/post-v2ray/v2ray-auto-pac.webp" alt="PAC Automatic Proxy" %}</p>
+<p>{% include image.html link="/img/in-post/post-v2ray/v2ray-auto-pac.png" alt="PAC Automatic Proxy" %}</p>
 <p>全局代理也可以通过以下命令来设置:</p>
 {% highlight bash %}gsettings set org.gnome.system.proxy autoconfig-url file:///etc/v2ray/auto.pac
 gsettings set org.gnome.system.proxy mode 'auto'
