@@ -453,7 +453,7 @@ ul.posts {
     position: relative;
   }
 
-  &:hover {
+  /*&:hover {
     cursor: text;
 
     i {
@@ -463,9 +463,11 @@ ul.posts {
     input {
       color: #000;
     }
-  }
+  }*/
 
-  &:focus-within {
+  &:focus-within,
+  &:hover {
+    cursor: text;
 
     .search-section {
       border-radius: 5px;
