@@ -21,17 +21,39 @@
 <!-- Simple Jekyll Search -->
 <script src="/js/simple-jekyll-search.min.js"></script>
 <script>
-  var sjs = SimpleJekyllSearch({
-    searchInput: document.getElementById('searchbar'),
-    resultsContainer: document.getElementById('search-results'),
-    json: '/search.json',
-    searchResultTemplate: '<a href="{url}" target="_blank">{title}</a>',
-    noResultsText: ''
-  });
+  window.onload = function () {
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('searchbar'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/search.json',
+      searchResultTemplate: '<a href="{url}" target="_blank">{title}</a>',
+      noResultsText: ''
+    });
 
-  document.querySelector(".posts-labelgroup").addEventListener("click", function () {
-    document.getElementById("searchbar").focus();
-  }, false);
+    var $labelGroup = document.querySelector(".posts-labelgroup");
+    var $searchbar = document.getElementById("searchbar");
+    var $postLabel = document.getElementById("posts-label");
+    var $searchResults = document.querySelector(".search-results");
+    var labelWidth = $postLabel.scrollWidth;
+    $postLabel.style.width = labelWidth + "px";
+
+    $labelGroup.addEventListener("click", function () {
+      $searchbar.focus();
+      $labelGroup.setAttribute("class", "posts-labelgroup focus-within");
+      $postLabel.style.width = "0";
+      $searchResults.style.display = null;
+      $labelGroup.onmouseleave = function () {
+        document.body.onclick = searchCollapse;
+      };
+    }, false);
+
+    var searchCollapse = function (e) {
+      $searchResults.style.display = "none";
+      $labelGroup.setAttribute("class", "posts-labelgroup");
+      $postLabel.style.width = labelWidth + "px";
+      document.body.onclick = null;
+    };
+  }
 </script>
 {% endif %}
 
