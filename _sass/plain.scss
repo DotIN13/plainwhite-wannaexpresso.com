@@ -398,7 +398,7 @@ ul.posts {
   i {
     color: #777;
     flex-grow: 0;
-    padding: 0 8px 10px 8px;
+    padding: 0 8px;
     transition: color 0.5s;
     font-size: 15px;
   }
@@ -407,19 +407,19 @@ ul.posts {
     color: #555;
     font-size: 15px;
     flex-grow: 1;
-    height: 30px;
+    height: 19px;
     border: none;
-    padding: 0 0 11px 0;
+    padding: 0;
     transition: all 0.5s;
   }
 
   .search-section {
     display: flex;
     flex-grow: 1;
-    padding-top: 10px;
+    padding: 10px 0;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
-    align-items: baseline;
+    align-items: center;
   }
 
   /* faster animation for small device */
@@ -487,7 +487,7 @@ ul.posts {
     i {
       color: $linkColor;
       flex-grow: 0;
-      padding: 0 14px 10px 14px;
+      padding: 0 14px;
       margin: 0 3px;
     }
 
@@ -858,13 +858,17 @@ table tr td:last-child {
 }
 
 #tag_cloud {
-  margin: 8px -4px 0px -4px;
+  margin: 8px -4px 25px 11px;
   display: flex;
   overflow: hidden;
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: flex-start;
   transition: height 0.5s;
+
+  @media only screen and (max-width: $mobileW) {
+    margin-bottom: 0;
+  }
 
   a.tag-button[rel="1"] {
     display: none;
@@ -921,13 +925,6 @@ table tr td:last-child {
   background-color: #e4e4e4 !important;
 }
 
-@media only screen and (min-width: $mobileW) {
-  #tag_cloud {
-    margin-bottom: 25px;
-    margin-left: 15px;
-  }
-}
-
 // Show Tags Button
 #show-tags {
   display: none;
@@ -941,6 +938,7 @@ table tr td:last-child {
   border-radius: 2px;
   padding: 0 12px 0 12px;
   margin-bottom: 15px;
+  margin-left: 15px;
 
   &:hover {
     background-color: $linkColor;
@@ -948,8 +946,8 @@ table tr td:last-child {
   }
 
   @media only screen and (max-width: $mobileW) {
-    display: inline-block;
-    width: 100%;
+    display: block;
+    height: 28px;
     text-align: center;
   }
 }
