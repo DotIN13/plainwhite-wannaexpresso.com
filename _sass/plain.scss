@@ -27,6 +27,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* hack ios safari unfocus */
+main {
+  outline: none;
+}
+
 img,
 embed,
 object,

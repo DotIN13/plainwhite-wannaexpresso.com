@@ -30,6 +30,10 @@
       noResultsText: ''
     });
 
+    /* hack ios safari unfocus */
+    if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))
+      document.body.firstElementChild.tabIndex = 1;
+
     var $labelGroup = document.querySelector(".posts-labelgroup");
     var $searchbar = document.getElementById("searchbar");
     var $postLabel = document.getElementById("posts-label");
@@ -42,9 +46,9 @@
       $labelGroup.setAttribute("class", "posts-labelgroup focus-within");
       $postLabel.style.width = "0";
       $searchResults.style.display = null;
-      $labelGroup.onmouseleave = function () {
+      $labelGroup.addEventListener("mouseleave", function () {
         document.body.onclick = searchCollapse;
-      };
+      });
     }, false);
 
     var searchCollapse = function (e) {
