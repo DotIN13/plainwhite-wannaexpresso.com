@@ -399,7 +399,7 @@ ul.posts {
     font-weight: normal;
     margin: 0;
     overflow: hidden;
-    transition: width 0.2s;
+    //transition: width 0.1s;
   }
 
   i {
@@ -439,7 +439,7 @@ ul.posts {
   }
 
   .search-results {
-    display: flex;
+    display: none;
     flex-direction: column;
     border-radius: 5px;
     border-top-left-radius: 0;
@@ -495,7 +495,7 @@ ul.posts {
     position: relative;
   }
 
-  &.focus-within {
+  &:focus-within {
 
     .search-section {
       border-radius: 5px;
@@ -516,6 +516,14 @@ ul.posts {
       color: $linkColor;
       padding: 0 14px;
       margin: 0 3px;
+    }
+
+    .search-results {
+      display: flex;
+    }
+
+    #posts-label {
+      width: 0;
     }
   }
 
