@@ -19,7 +19,8 @@ pre.highlight, code {
 	tab-size: 4;
 }
 
-p>code {
+p>code,
+li>code {
 	padding: 2px 4px;
   font-size: 90%;
   /*color: #c7254e;
