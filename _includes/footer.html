@@ -41,16 +41,17 @@
     var labelWidth = $postLabel.scrollWidth;
     $postLabel.style.width = labelWidth + "px";
 
-    $searchbar.addEventListener("click", function (e) {
+    $labelGroup.addEventListener("click", function (e) {
       $searchResults.style.display = null;
       $postLabel.style.width = "0";
       $labelGroup.setAttribute("class", "posts-labelgroup focus-within");
       $searchbar.focus();
-      e.preventDefault();
-      $labelGroup.addEventListener("mouseleave", function () {
-        document.body.onclick = searchCollapse;
-      });
+      e.stopPropagation();
     }, false);
+
+    $labelGroup.addEventListener("mouseleave", function () {
+        document.body.onclick = searchCollapse;
+    });
 
     var searchCollapse = function (e) {
       $searchResults.style.display = "none";

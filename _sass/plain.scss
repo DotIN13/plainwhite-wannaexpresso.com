@@ -389,6 +389,11 @@ ul.posts {
   align-items: baseline;
   border-bottom: 1px solid #eee;
 
+  /* Firefox flex hack */
+  @-moz-document url-prefix() { 
+    align-items: center;
+  }
+
   #posts-label {
     font-size: 15px;
     color: #555;
@@ -400,10 +405,19 @@ ul.posts {
     overflow: hidden;
   }
 
+  .search-section {
+    display: flex;
+    flex-grow: 1;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    align-items: center;
+    border-radius: 5px;
+  }
+
   i {
     color: #777;
     flex-grow: 0;
-    padding: 0 8px 0 4px;
+    padding: 0 8px;
     transition: color 0.5s;
     font-size: 15px;
   }
@@ -417,16 +431,6 @@ ul.posts {
     padding: 10px 0;
     outline: none;
     transition: all 0.5s;
-  }
-
-  .search-section {
-    display: flex;
-    flex-grow: 1;
-    margin-left: 4px;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    align-items: center;
-    border-radius: 5px;
   }
 
   .search-results {
@@ -490,10 +494,6 @@ ul.posts {
 
     i {
       color: $linkColor;
-    }
-
-    .search-section {
-      box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     }
   }
 
@@ -635,6 +635,7 @@ select.sel-lang {
 
 #vcomments.v .vwrap .vheader .vinput {
   border-bottom: 1px solid #dedede;
+  transition: border-color 0.3s;
 
   &:hover,
   &:focus {
@@ -646,13 +647,27 @@ select.sel-lang {
 
   .vbtn:active,
   .vbtn:hover {
-    color: #ba68c8;
+    color: #fff;
     border-color: #ba68c8;
-    background-color: #fff;
+    background-color: #ba68c8;
   }
 
   a:before {
     background: $linkColor;
+  }
+
+  .vpower.txt-right {
+    display: none;
+  }
+
+  .vemoji-btn::before {
+    content: "Emoji";
+    padding: 3px;
+  }
+
+  .vpreview-btn::before {
+    content: "Preview";
+    padding: 3px;
   }
 }
 
@@ -664,15 +679,9 @@ select.sel-lang {
   overflow: hidden;
   position: relative;
   padding: 10px;
-
-  &:hover,
-  &:focus {
-    border: 2px solid #ba68c8;
-  }
 }
 
 /* video iframe */
-
 .video-iframe {
   position: relative;
   width: 100%;
@@ -689,7 +698,6 @@ select.sel-lang {
 }
 
 /* Picture Caption */
-
 a+em {
   font-size: 0.9em;
   color: #666;
@@ -699,7 +707,6 @@ a+em {
 }
 
 /* Block Quote */
-
 blockquote {
   color: #555;
 }
@@ -791,15 +798,7 @@ table tr td:last-child {
 .tags a,
 .tags .tag {
   display: flex;
-  //border: 1px solid rgba(255, 255, 255, 0.8);
-  //border-radius: 999em;
-  //padding: 0 10px 0 10px;
   color: #424242;
-  //line-height: 24px;
-  //font-size: 12px;
-  //text-decoration: none;
-  //margin: 0 1px;
-  //margin-bottom: 6px;
   cursor: pointer;
   flex-grow: 1;
   text-align: center;
@@ -843,18 +842,14 @@ table tr td:last-child {
 }
 
 #tag_cloud {
-  margin: 8px -4px 25px 11px;
+  margin: 8px -4px 0 -4px;
   display: flex;
   overflow: hidden;
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: flex-start;
   transition: height 0.5s;
-
-  @media only screen and (max-width: $mobileW) {
-    margin-bottom: 0;
-  }
-
+  
   a.tag-button[rel="1"] {
     display: none;
 
@@ -864,15 +859,20 @@ table tr td:last-child {
       display: flex;
     }
   }
+
+  @media only screen and (min-width: $mobileW) {
+    margin: 8px -4px 0 11px;
+  }
 }
 
 #tag_cloud a,
 #tag_cloud .tag {
   transition-property: all;
-  transition-duration: 0.4s;
+  transition-duration: 0.2s;
   transition-timing-function: ease;
   font-size: 14px;
   border: none;
+  height: 28px;
   line-height: 28px;
   margin: 0 4px;
   margin-bottom: 8px;
@@ -898,7 +898,7 @@ table tr td:last-child {
 #tag_cloud a.tag-button--all,
 #tag_cloud .tag.tag-button--all {
   font-weight: 700;
-  color: $linkColor !important;
+  color: $linkColor;
 }
 
 #tag_cloud a.tag-button--all:hover,
@@ -907,12 +907,12 @@ table tr td:last-child {
 #tag_cloud .tag.tag-button--all:active,
 #tag_cloud a.tag-button--all.focus,
 #tag_cloud .tag.tag-button--all.focus {
-  background-color: #e4e4e4 !important;
+  // background-color: #e4e4e4 !important;
+  color: #fff;
 }
 
 // Show Tags Button
 #show-tags {
-  display: none;
   transition-property: all;
   transition-duration: 0.4s;
   transition-timing-function: ease;
@@ -923,17 +923,17 @@ table tr td:last-child {
   border-radius: 2px;
   padding: 0 12px 0 12px;
   margin-bottom: 15px;
-  margin-left: 15px;
+  display: block;
+  height: 28px;
+  text-align: center;
 
   &:hover {
     background-color: $linkColor;
     color: #fff;
   }
 
-  @media only screen and (max-width: $mobileW) {
-    display: block;
-    height: 28px;
-    text-align: center;
+  @media only screen and (min-width: $mobileW) {
+    margin-left: 15px;
   }
 }
 
