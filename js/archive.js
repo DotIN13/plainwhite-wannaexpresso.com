@@ -144,50 +144,15 @@ https://github.com/kitian616/jekyll-TeXt-theme
 
   // Tag cloud collapser
   var expanded = false;
-  // Get the offset from screen top to cloud top border
-  var offset = document.querySelector("#tag_cloud a").offsetTop;
-
-  // Initialize by adding height style
-  $(document).ready(function () {
-    var originalHeight = document.getElementById("tag_cloud").scrollHeight;
-    $("#tag_cloud").css("height", originalHeight + "px");
-  });
-
-  function getBottomline() {
-    // Get the maximum height of tag cloud
-    var lastVisited = 0;
-    if (document.getElementsByClassName("visited"))
-      lastVisited = document.getElementsByClassName("visited")[document.getElementsByClassName("visited").length - 1].offsetTop;
-    var lastHigh = $("[rel='2']").get($("[rel='2']").length - 1).offsetTop;
-    return lastVisited > lastHigh ? lastVisited : lastHigh;
-  }
 
   function updateHeight(status) {
     if (status) { // collapsing
-      $("[rel='1']").toggleClass("hover").promise().done(function () {
-        var targetHeight = getBottomline();
-        $("#tag_cloud").css("height", (targetHeight + document.querySelector("#tag_cloud a").offsetHeight + 8 - offset) + "px");
-        $("[rel='1']").toggleClass("hover");
-        setTimeout(function () {
-          $("[rel='1']").toggleClass("hover");
-        }, 450);
-      });
+      $("[rel='1']").toggleClass("hover");
       return false;
     } else { //expanding
-      $("[rel='1']").toggleClass("hover").promise().done(function () {
-        $("#tag_cloud").css("height", document.getElementById("tag_cloud").scrollHeight + "px");
-      });
+      $("[rel='1']").toggleClass("hover");
       return true;
     }
-  }
-
-  // PC Show Tags on Hover
-  if (window.innerWidth >= 768) {
-    $("#tag_cloud").hover(function () {
-      expanded = updateHeight(expanded);
-    }, function () {
-      expanded = updateHeight(expanded);
-    });
   }
 
   // Mobile Show Tags on Keypress
