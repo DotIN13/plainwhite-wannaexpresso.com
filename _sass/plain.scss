@@ -398,13 +398,12 @@ ul.posts {
     font-weight: normal;
     margin: 0;
     overflow: hidden;
-    transition: width 0.1s;
   }
 
   i {
     color: #777;
     flex-grow: 0;
-    padding: 0 8px;
+    padding: 0 8px 0 4px;
     transition: color 0.5s;
     font-size: 15px;
   }
@@ -413,9 +412,9 @@ ul.posts {
     color: #555;
     font-size: 15px;
     flex-grow: 1;
-    height: 19px;
+    height: 39px;
     border: none;
-    padding: 0;
+    padding: 10px 0;
     outline: none;
     transition: all 0.5s;
   }
@@ -423,19 +422,11 @@ ul.posts {
   .search-section {
     display: flex;
     flex-grow: 1;
-    padding: 10px 0;
+    margin-left: 4px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     align-items: center;
     border-radius: 5px;
-  }
-
-  /* faster animation for small device */
-  @media screen and (max-width: $mobileW) {
-
-    i {
-      transition: color 0.3s;
-    }
   }
 
   .search-results {
