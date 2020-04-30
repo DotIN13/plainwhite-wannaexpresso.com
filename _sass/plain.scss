@@ -388,7 +388,6 @@ ul.posts {
   display: flex;
   align-items: baseline;
   border-bottom: 1px solid #eee;
-  cursor: text;
 
   #posts-label {
     font-size: 15px;
@@ -399,7 +398,7 @@ ul.posts {
     font-weight: normal;
     margin: 0;
     overflow: hidden;
-    //transition: width 0.1s;
+    transition: width 0.1s;
   }
 
   i {
@@ -428,6 +427,7 @@ ul.posts {
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     align-items: center;
+    border-radius: 5px;
   }
 
   /* faster animation for small device */
@@ -439,7 +439,7 @@ ul.posts {
   }
 
   .search-results {
-    display: none;
+    display: flex;
     flex-direction: column;
     border-radius: 5px;
     border-top-left-radius: 0;
@@ -495,10 +495,20 @@ ul.posts {
     position: relative;
   }
 
-  &:focus-within {
+  &:hover {
+
+    i {
+      color: $linkColor;
+    }
 
     .search-section {
-      border-radius: 5px;
+      box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    }
+  }
+
+  &.focus-within {
+
+    .search-section {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
@@ -517,18 +527,6 @@ ul.posts {
       padding: 0 14px;
       margin: 0 3px;
     }
-
-    .search-results {
-      display: flex;
-    }
-
-    #posts-label {
-      width: 0;
-    }
-  }
-
-  &:hover i {
-    color: $linkColor;
   }
 }
 

@@ -38,23 +38,24 @@
     var $searchbar = document.getElementById("searchbar");
     var $postLabel = document.getElementById("posts-label");
     var $searchResults = document.querySelector(".search-results");
-    //var labelWidth = $postLabel.scrollWidth;
-    //$postLabel.style.width = labelWidth + "px";
+    var labelWidth = $postLabel.scrollWidth;
+    $postLabel.style.width = labelWidth + "px";
 
-    $labelGroup.addEventListener("click", function () {
-      //$postLabel.style.width = "0";
+    $searchbar.addEventListener("click", function (e) {
+      $searchResults.style.display = null;
+      $postLabel.style.width = "0";
+      $labelGroup.setAttribute("class", "posts-labelgroup focus-within");
       $searchbar.focus();
-      //$labelGroup.setAttribute("class", "posts-labelgroup focus-within");
-      //$searchResults.style.display = null;
+      e.preventDefault();
       $labelGroup.addEventListener("mouseleave", function () {
         document.body.onclick = searchCollapse;
       });
     }, false);
 
     var searchCollapse = function (e) {
-      //$searchResults.style.display = "none";
-      //$labelGroup.setAttribute("class", "posts-labelgroup");
-      //$postLabel.style.width = labelWidth + "px";
+      $searchResults.style.display = "none";
+      $labelGroup.setAttribute("class", "posts-labelgroup");
+      $postLabel.style.width = labelWidth + "px";
       document.body.onclick = null;
     };
   }
