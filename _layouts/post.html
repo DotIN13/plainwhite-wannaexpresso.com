@@ -83,6 +83,10 @@ layout: default
       visitor: true,
       lang: 'en'
     })
+    document.querySelector(".vicon.vemoji-btn").setAttribute("class", "fa-2x vicon vemoji-btn icon-insert_emoticon");
+    document.querySelector(".vicon.vemoji-btn").innerHTML = '';
+    document.querySelector(".vicon.vpreview-btn").setAttribute("class", "fa-2x vicon vpreview-btn icon-pageview");
+    document.querySelector(".vicon.vpreview-btn").innerHTML = '';
   </script>
   <!-- Valine -->
   {% endif %}

@@ -7,4 +7,6 @@ markup_presets:
     formats: [webp, original]
     sizes:
       mobile: 80vw
+      tablet: 60vw
+      desktop: 900px
     size: 500px

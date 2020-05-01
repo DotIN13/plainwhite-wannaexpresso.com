@@ -1,7 +1,6 @@
 @import "ext/fonts";
 @import "ext/normalize";
 @import "syntax";
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond&display=swap');
 
 $linkColor: #9C27B0;
 $mobileW: 768px;
@@ -177,6 +176,7 @@ main {
     a {
       display: block;
       font-family: 'Merriweather';
+      font-weight: 300;
       text-align: center;
       padding: 1rem 0;
       text-decoration: none;
@@ -514,14 +514,15 @@ select.sel-lang {
     display: none;
   }
 
-  .vemoji-btn::before {
-    content: "Emoji";
-    padding: 3px;
-  }
+  .vemoji-btn,
+  .vpreview-btn {
+    color: #757575;
+    transition: color 0.3s;
 
-  .vpreview-btn::before {
-    content: "Preview";
-    padding: 3px;
+    &:hover,
+    &.actived {
+      color: $linkColor;
+    }
   }
 }
 
