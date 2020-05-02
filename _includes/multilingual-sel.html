@@ -1,5 +1,5 @@
 <!-- Language Selector -->
 <a class="translate"
-    href="{% if page.lang == 'en' %}{{ page.url | remove: '/en-us'}}{% else %}{{ '/en-us' | append: page.url }}{% endif %}">
+    href="{% if page.locale == 'en_US' %}{{ page.url | remove: '/en-us'}}{% else %}{{ '/en-us' | append: page.url }}{% endif %}">
     <i class="icon-translate"></i>
 </a>

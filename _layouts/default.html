@@ -71,10 +71,7 @@
         {%- endif -%}
       </ul>
 
-      <section class="language-selection">
-        <i class="icon-translate"> </i>
-        <a href="/" {% if page.locale != 'en_US' %}class="selected"{% endif %} alt="Chinese version">中CH</a> | <a href="/en-us" {% if page.locale == 'en_US' %}class="selected"{% endif %} alt="Chinese version">英EN</a>
-      </section>
+      {% if page.locale == 'en_US' %}<a href="/" class="language-selection"><i class="icon-translate"></i>中CH</a>{% else %}<a href="/en-us/" class="language-selection"><i class="icon-translate"></i>英EN</a>{% endif %}
 
       {%- if site.plainwhite.navigation -%}
       <nav class="navigation">

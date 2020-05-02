@@ -137,14 +137,28 @@ main {
     }
 
     .language-selection {
-      padding: 0.5em;
+      background: #e3e3e3;
+      border-radius: 24px;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-bottom: 1em;
+      transition: all 0.2s;
+      font-size: 15px;
+      color: #616161;
 
       i {
-        color: #424242;
+        color: #616161;
+        margin: 0 3px;
+        transition: all 0.2s;
       }
 
-      a.selected {
-        text-decoration: underline;
+      &:hover {
+        background: $linkColor;
+        color: white;
+
+        i {
+          color: white;
+        }
       }
     }
 
@@ -180,12 +194,12 @@ main {
 }
 
 .navigation {
-  width: 30%;
 
   ul {
     list-style-type: none;
     padding: 0;
     margin-top: 0;
+    margin-bottom: 0;
 
     li:last-child {
       a {
