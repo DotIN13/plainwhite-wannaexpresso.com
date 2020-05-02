@@ -4,7 +4,7 @@ title: "About"
 subtitle: "关于"
 description: "'Tis Me."
 header-img: "img/about-bg.jpg"
-lang: en
+locale: en_US
 multilingual: true
 ---
 

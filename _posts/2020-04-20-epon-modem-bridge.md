@@ -10,6 +10,7 @@ tags:
   - Brigde
   - Router
 typora-root-url: ../
+locale: zh_CN
 ---
 
 ## 购入Raspberry Pi

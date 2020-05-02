@@ -5,6 +5,7 @@ subtitle: "About"
 description: "'Tis Me."
 header-img: "img/about-bg.jpg"
 multilingual: true
+locale: zh_CN
 ---
 
 

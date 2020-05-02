@@ -7,7 +7,7 @@
   padding-left: 40px;
 
   @media screen and (max-width: $mobileW) {
-    padding-bottom: 300px !important;
+    min-height: 900px;
   }
 }
 

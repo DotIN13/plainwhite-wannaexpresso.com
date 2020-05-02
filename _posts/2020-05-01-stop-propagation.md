@@ -7,6 +7,7 @@ tags:
   - JavaScript
   - Blog
 typora-root-url: ../
+locale: zh_CN
 ---
 
 ## Plainwhite主题

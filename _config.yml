@@ -36,10 +36,12 @@ plainwhite:
   navigation:
     - title: Home
       url: "/"
+      url_en: "/en-us/"
     - title: WoD
       url: "/wod"
     - title: About
       url: "/about"
+      url_en: "/en-us/about/"
     - title: Archive
       url: "/archive"
   analytics_id: "UA-159368053-1"

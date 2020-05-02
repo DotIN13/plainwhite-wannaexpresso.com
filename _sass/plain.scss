@@ -135,6 +135,14 @@ main {
     p {
       text-align: center;
     }
+
+    .about-footer a {
+      color: #424242;
+
+      &:hover {
+        color: $linkColor
+      }
+    }
   }
 }
 
@@ -149,6 +157,10 @@ main {
 
   .fa-stack {
     font-size: 1em;
+  }
+
+  .fa-stack-1x {
+    line-height: 1.9em;
   }
 
   padding: 0;
@@ -201,7 +213,6 @@ main {
 
   a {
     font-size: 14px;
-    border: solid 1px #e3e3e3;
     float: left;
     background-color: #e3e3e3;
     border-radius: 2px;
@@ -215,7 +226,8 @@ main {
     padding: 5px 20px;
 
     &:hover {
-      background-color: #F5F5F5;
+      background-color: $linkColor;
+      color: white;
     }
   }
 }
@@ -226,6 +238,10 @@ main {
   min-width: 150px;
   margin-top: auto;
   margin-bottom: auto;
+
+  i {
+    margin: 0 .4em 0 .2em;
+  }
 }
 
 .post-meta {
@@ -262,10 +278,11 @@ main {
     margin: 0 0.5em 10px 0;
     background-color: #e3e3e3;
     border-radius: 2px;
-    padding: 7px 6px 3px 6px;
+    padding: 4px 8px;
     transition: all 0.3s;
     display: flex;
     align-items: center;
+    font-size: 20px;
 
     &:hover {
       background-color: $linkColor;
@@ -516,7 +533,7 @@ select.sel-lang {
 
   .vemoji-btn,
   .vpreview-btn {
-    color: #757575;
+    color: #BDBDBD;
     transition: color 0.3s;
 
     &:hover,

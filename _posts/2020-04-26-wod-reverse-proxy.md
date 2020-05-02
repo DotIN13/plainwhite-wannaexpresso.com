@@ -8,6 +8,7 @@ tags:
   - Caddy
   - Reverse Proxy
 typora-root-url: ../
+locale: zh_CN
 ---
 
 ## Caddy 2

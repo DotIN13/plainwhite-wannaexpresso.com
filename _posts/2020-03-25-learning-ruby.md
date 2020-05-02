@@ -8,6 +8,7 @@ tags:
   - Programming Language
   - Linux Dev
   - Ruby
+locale: zh_CN
 ---
 
 ## Why Ruby

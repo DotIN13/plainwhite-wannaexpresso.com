@@ -10,6 +10,7 @@ tags:
   - Rouge
   - RegExp
 typora-root-url: ../
+locale: zh_CN
 ---
 
 ## 问题

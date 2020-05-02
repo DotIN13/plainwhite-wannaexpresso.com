@@ -1,12 +1,7 @@
 ---
 layout: default
+locale: en_US
 ---
-
-{% comment %}
-{%- if page.title -%}
-<h1 class="page-heading">{{ page.title }}</h1>
-{%- endif -%}
-{% endcomment %}
 
 {%- if site.posts.size > 0 -%}
 <ul class="posts">
@@ -46,11 +41,7 @@ layout: default
         <i class="icon-calendar"></i>{{ post.date | date: date_format }}</div>
     </div>
     <div class="post">
-      {% if post.locale == 'en_US' %}
       {{ post.content | excerpt | strip_html | truncate:300 }}
-      {% else %}
-      {{ post.content | excerpt | strip_html | truncate:200 }}
-      {% endif %}
     </div>
   </li>
   {%- endfor -%}

@@ -4,11 +4,11 @@ title: "Lady Gaga - Stupid Love"
 subtitle: "A Song That Makes You Wanna Dance"
 header-img: "img/in-post/post-stupid-love/stupid-love.jpg"
 author: "DotIN13"
-lang: en
 header-mask: 0.6
 tags:
   - Music
   - Lady Gaga
+locale: en_US
 ---
 
 ## Video
