@@ -71,6 +71,11 @@
         {%- endif -%}
       </ul>
 
+      <section class="language-selection">
+        <i class="icon-translate"> </i>
+        <a href="/" {% if page.locale != 'en_US' %}class="selected"{% endif %} alt="Chinese version">中CH</a> | <a href="/en-us" {% if page.locale == 'en_US' %}class="selected"{% endif %} alt="Chinese version">英EN</a>
+      </section>
+
       {%- if site.plainwhite.navigation -%}
       <nav class="navigation">
         <ul>
@@ -84,8 +89,6 @@
       {%- endif -%}
 
       <p class="about-footer">
-        <i class="icon-translate"> </i><a href="/" {% if page.locale != 'en_US' %}class="selected"{% endif %} alt="Chinese version">中CH</a> | <a href="/en-us" {% if page.locale == 'en_US' %}class="selected"{% endif %} alt="Chinese version">英EN</a>
-        <br>
         <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a>
         <a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a>
         <br>
