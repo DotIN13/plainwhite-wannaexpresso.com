@@ -13,6 +13,7 @@ modified_time: '2020-02-02T16:27:28.117+08:00'
 blogger_id: tag:blogger.com,1999:blog-7275524089009887162.post-7614211253303895269
 blogger_orig_url: https://dotin13laf.blogspot.com/2020/02/3-things-that-keep-barack-obama-up-at.html
 locale: zh_CN
+categories: [default]
 ---
 
 {% include image.html link="/img/in-post/post-obama-singapore/Barack-Obama-Singapore.jpg" alt="Former U.S. President Barack Obama | Sean Gallup | Getty Images" %}

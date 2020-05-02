@@ -9,6 +9,7 @@ tags:
   - Plugin
 typora-root-url: ../
 locale: zh_CN
+categories: [default]
 ---
 
 ## Jekyll插件

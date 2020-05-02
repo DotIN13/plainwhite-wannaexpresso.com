@@ -9,6 +9,7 @@ tags:
   - Music
   - Lady Gaga
 locale: en_US
+categories: [default]
 ---
 
 ## Video

@@ -11,6 +11,7 @@ tags:
   - RegExp
 typora-root-url: ../
 locale: zh_CN
+categories: [default]
 ---
 
 ## 问题

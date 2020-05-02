@@ -8,6 +8,7 @@ tags:
   - Tampermonkey
   - Javascript
 locale: zh_CN
+categories: [default]
 ---
 
 ## 再写脚本我就剁手
