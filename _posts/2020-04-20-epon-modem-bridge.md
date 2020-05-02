@@ -11,7 +11,6 @@ tags:
   - Router
 typora-root-url: ../
 locale: zh_CN
-categories: [default]
 ---
 
 ## 购入Raspberry Pi

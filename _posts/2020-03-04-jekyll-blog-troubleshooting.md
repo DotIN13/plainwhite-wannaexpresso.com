@@ -15,7 +15,6 @@ tags:
   - GitHub Pages
   - Coding Pages
 locale: zh_CN
-categories: [default]
 ---
 
 ## 核心问题

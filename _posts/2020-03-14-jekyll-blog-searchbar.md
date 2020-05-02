@@ -11,7 +11,6 @@ tags:
   - Blog
   - Searchbar
 locale: zh_CN
-categories: [default]
 ---
 
 ## 这不是一篇教程

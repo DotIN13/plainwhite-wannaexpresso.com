@@ -12,7 +12,6 @@ tags:
   - GitHub Pages
   - Zeit Now
 locale: zh_CN
-categories: [default]
 ---
 
 ## 来龙

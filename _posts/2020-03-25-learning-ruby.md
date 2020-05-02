@@ -9,7 +9,6 @@ tags:
   - Linux Dev
   - Ruby
 locale: zh_CN
-categories: [default]
 ---
 
 ## Why Ruby

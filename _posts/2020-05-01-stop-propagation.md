@@ -8,7 +8,6 @@ tags:
   - Blog
 typora-root-url: ../
 locale: zh_CN
-categories: [default]
 ---
 
 ## Plainwhite主题

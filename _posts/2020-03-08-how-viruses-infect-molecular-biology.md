@@ -10,7 +10,6 @@ tags:
   - MedCram
   - Online Courses
 locale: zh_CN
-categories: [default]
 ---
 
 <div class="video-iframe">
