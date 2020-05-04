@@ -3,6 +3,7 @@ layout: post
 title: "切换页面后onclick不工作 stopPropagation来救场"
 subtitle: "Onclick Not Working after Switching Pages? stopPropagation Saves the Day!"
 author: "DotIN13"
+multilingual: true
 tags:
   - JavaScript
   - Blog
