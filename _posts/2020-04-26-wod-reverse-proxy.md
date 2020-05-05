@@ -44,9 +44,34 @@ locale: zh_CN
 
 了解了原理，我们是骡子是马，拉出来溜溜。
 
-<details><summary>我的Caddyfile</summary>
+### 登陆
 
-{% highlight bash %}
+首先要处理的是登陆问题，WoD的登陆系统全部由JavaScript构成，获取到玩家填写的表单之后利用`.submit()`提交，但问题在于，Christian（WoD作者）hard-coded（写死了）提交对象为`world-of-dungeons.org`。
+
+解决方法也很简单（虽然我想了很久），将登陆页面保存到本地，并用另一个域名`login.wannaexpresso.com`提供服务。将JavaScript中的提交对象改为`canto.wannaexpresso.com`就能正常登陆了。缺点是每次登陆都要登陆登陆站，而不能直接在`canto.wannaexpresso.com`登陆。
+
+> 一点思考：如果使用Nginx，或许可以使用sub_filter功能来替换表单提交对象，就可以直接在游戏站点登陆了。但Caddy尚且没有相关的功能。
+
+然而，提交了正确的表单，却发现提交之后被直接重定向到了`world-of-dungeons.org`，这是请求头没有设置Host的缘故。在Caddyfile中添加`header-up Host canto.wannaexpresso.com`之后，一切正常。
+
+### 使用
+
+登陆之后，发现问题，任何操作都会导致弹出“请允许Cookie”的警示页面。
+
+翻阅大量资料之后了解到，服务器返回的Cookie会被浏览器保存为后端服务器域名名下的cookie，导致再次访问时不能正常调取，需要将回应头中的Set-Cookie的domain值调整为代理服务器的域名。
+
+依照Caddy的语法编写`header_down Set-Cookie world-of-dungeons.org wannaexpresso.com`之后遇到了问题，服务器返回的回应头变成了乱码。到Caddy社区一问，热心的开发者Matt一看便知问题处在Caddy 2身上，于是花了[1分钟修复+Commit](https://caddy.community/t/set-cookie-manipulation-in-reverse-proxy/7666/5)，直接让我下载即时编译版测试。
+
+我甚至不知道什么是CI，蠢蠢地档下git源码自行编译了刚刚出炉的新caddy文件，替换了服务器上的`/usr/bin/caddy`，重新开启服务器。
+
+一次成功，现在所有WoD的功能都可以通过我的反向代理服务器访问了！
+
+### Caddyfile
+
+说了这么多，来看看最终的Caddyfile吧。
+
+```bash
+# 额外搭建一个登陆站来曲线修改站内网页
 login.wannaexpresso.com {
   encode gzip
   # 将root设置到登陆页面所在的文件夹
@@ -59,6 +84,7 @@ login.wannaexpresso.com {
   header X-Forwarded-Proto {http.request.scheme}
 }
 
+# 反向代理WoD的两个游戏服务器
 canto.wannaexpresso.com {
   encode gzip
   reverse_proxy * http://canto.world-of-dungeons.org {
@@ -84,29 +110,6 @@ zhao.wannaexpresso.com {
     header_down Set-Cookie world-of-dungeons.org wannaexpresso.com
   }
 }
-{% endhighlight %}
-</details>
-
-### 登陆
-
-WoD的登陆系统全部由JavaScript构成，获取到玩家填写的表单之后利用`.submit()`提交，但问题是，Christian（WoD作者）hard-coded（写死了）提交对象为`world-of-dungeons.org`。
-
-解决方法也很简单（虽然我想了很久），将登陆页面保存到本地，并用另一个域名`login.wannaexpresso.com`提供服务。将JavaScript中的提交对象改为`canto.wannaexpresso.com`就能正常登陆了。缺点是每次登陆都要登陆登陆站，而不能直接在`canto.wannaexpresso.com`登陆。
-
-> 一点思考：如果使用Nginx，或许可以使用sub_filter功能来替换表单提交对象，就可以直接在游戏站点登陆了。但Caddy尚且没有相关的功能。
-
-然而，提交了正确的表单，却发现提交之后被直接重定向到了`world-of-dungeons.org`，这是请求头没有设置Host的缘故。在Caddyfile中添加`header-up Host canto.wannaexpresso.com`之后，一切正常。
-
-### 使用
-
-登陆之后，发现问题，任何操作都会导致弹出“请允许Cookie”的警示页面。
-
-翻阅大量资料之后了解到，服务器返回的Cookie会被浏览器保存为后端服务器域名名下的cookie，导致再次访问时不能正常调取，需要将回应头中的Set-Cookie的domain值调整为代理服务器的域名。
-
-依照Caddy的语法编写`header_down Set-Cookie world-of-dungeons.org wannaexpresso.com`之后遇到了问题，服务器返回的回应头变成了乱码。到Caddy社区一问，热心的开发者Matt一看便知问题处在Caddy 2身上，于是花了[1分钟修复+Commit](https://caddy.community/t/set-cookie-manipulation-in-reverse-proxy/7666/5)，直接让我下载即时编译版测试。
-
-我甚至不知道什么是CI，蠢蠢地档下git源码自行编译了刚刚出炉的新caddy文件，替换了服务器上的`/usr/bin/caddy`，重新开启服务器。
-
-一次成功，现在所有WoD的功能都可以通过我的反向代理服务器访问了！
+```
 
 是不是非常简单呢 ;)
