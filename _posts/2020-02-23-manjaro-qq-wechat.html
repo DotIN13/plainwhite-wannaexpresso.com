@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在Manjaro中优雅地使用QQ与Wechat
-subtitle: Using Deepin-QQ and Deepin-Wechat in Manjaro 19
+subtitle: Using QQ and Wechat in Manjaro
 date: '2020-02-23T15:08:00.000+08:00'
 author: DotIN13
 tags:
@@ -26,12 +26,20 @@ locale: zh_CN
     安装的方法很简单，只需要在archlinux或者AUR源中找到QQ for Linux即可，或者使用命令也能轻松解决。
 </p>
 {% highlight bash %}sudo pacman -S qq-linux{% endhighlight %}
+<h3>扫码闪退的解决</h3>
 <p>
-    安装之后，如果扫码闪退，可以依照如下的方法解决。这一问题据<a
-        href="https://geekeyes.cn/forum.php?mod=viewthread&tid=1080">244099121同学</a>解释是由于QQ运行并不需要最高权限导致的。
+    安装之后，如果linuxQQ扫码闪退，有如下两种解决方案。
+</p>
+<p>   
+    方案一：据<a href="https://geekeyes.cn/forum.php?mod=viewthread&tid=1080">244099121同学</a>解释是由于QQ运行并不需要最高权限导致的。
+    <br>
+    打开终端，输入<code>sudo nano /usr/share/applications/qq.desktop</code>，修改Exec行为<code>Exec=/opt/tencent-qq/qq %U --no-sandbox</code>。
 </p>
 <p>
-    打开终端，输入<code>sudo nano /usr/share/applications/qq.desktop</code>，修改Exec行为<code>Exec=/opt/tencent-qq/qq %U --no-sandbox</code>，然后再启动就不会发生闪退了。
+    方案二：也有一种说法是删除<code>~/.config/tencent-qq</code>。
+</p>
+<p>
+    我在尝试了上述两种办法之后解决了扫码后闪退的问题。
 </p>
 
 <h2 id="使用Wechat网页版">使用Wechat网页版</h2>
@@ -53,7 +61,7 @@ locale: zh_CN
     安装软件包后，打开软件，按照提示完成进一步的安装配置之后就可使用。
 </p>
 
-<h2 id="调整界面DPI">调整界面DPI</h2>
+<h3 id="调整界面DPI">调整界面DPI</h2>
 <p>
     打开界面发现字体过小，此时需要进入<code>winecfg</code>调整软件的DPI
 </p>
@@ -72,7 +80,7 @@ WINEPREFIX=~/.deepinwine/Deepin-TIM deepin-wine winecfg #修改TIM的DPI{% endhi
     来调整DPI。
 </p>
 
-<h2 id="解决Deepin-QQ无法显示图片">解决Deepin-QQ无法显示图片</h2>
+<h3 id="解决Deepin-QQ无法显示图片">解决Deepin-QQ无法显示图片</h2>
 <p>
     如遇到聊天图片与头像无法显示，或者始终处于加载中，是因为QQ的图片解析与ipv6不兼容，需要关闭ipv6。
 </p>
