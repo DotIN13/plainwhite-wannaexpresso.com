@@ -302,6 +302,51 @@ plugin :tmp_restart
 cap production puma:config
 ```
 
+### 暂时解决每次Deploy时Puma不能正常重启
+
+这应当是一个Puma的Bug，最早出现在3.8.2版本，短暂的修复后，近期再次出现。在部署之后，不能访问站点，查看`shared/log/puma_error.log`，发现Puma重启出错。
+
+一个[Workaround](https://stackoverflow.com/questions/44763777/capistrano-pumarestart-not-working-but-pumastart-does)是修改`puma:restart`任务，手动使其`puma:stop`，然后再`puma:start`。
+
+在`lib/capistrano/tasks`下建立新文件，示例如下。
+
+```ruby
+# lib/capistrano/tasks/restart_puma.rake
+namespace :puma do
+  Rake::Task[:restart].clear_actions
+
+  desc 'Overwritten puma:restart task'
+  task :restart do
+    puts 'Overwriting puma:restart to ensure that puma is running. Effectively, we are just starting Puma.'
+    puts 'A solution to this should be found.'
+    invoke 'puma:stop'
+    invoke 'puma:start'
+  end
+end
+```
+
+然后进行部署，可以看到以下输出：
+
+```shell
+Overwriting puma:restart to ensure that puma is running. Effectively, we are just starting Puma.
+A solution to this should be found.
+01:44 puma:stop
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec pumactl -S /home/ubuntu/srv…
+      01 Command stop sent success
+    ✔ 01 ubuntu@3.34.127.18 0.875s
+01:45 puma:start
+      using conf file /home/ubuntu/srv/heroes-of-ezantoh/shared/puma.rb
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec puma -C /home/ubuntu/srv/he…
+      01 Puma starting in single mode...
+      01 * Version 4.3.5 (ruby 2.7.1-p83), codename: Mysterious Traveller
+      01 * Min threads: 0, max threads: 16
+      01 * Environment: production
+      01 * Daemonizing...
+    ✔ 01 ubuntu@3.34.127.18 1.051s
+```
+
+此时Puma已经正常重启。但这一Workaround的缺陷就是不是无缝衔接，会有downtime。我们只能静待更新了。
+
 ## 检查配置
 
 使用下面的命令让Capistrano检测配置是否正确。
@@ -339,7 +384,7 @@ yourdomain.com {
 
 由于我用了Webpacker来接管JavaScript和CSS，因此我只使用file_server命令serve了`packs`文件夹。
 
-然后使用`systemctl`三件套来启动caddy服务。
+然后使用`systemctl`三件套来启动Caddy服务。
 
 ```shell
 sudo systemctl daemon-reload # 重新加载修改过的service文件
@@ -355,7 +400,7 @@ sudo systemctl start aria2 # 启动服务
 cap production deploy
 ```
 
-目前没有解决的问题是从第二次部署开始，每次部署之后需要手动启动puma。
+目前没有解决的问题是从第二次部署开始，每次部署之后需要手动启动Puma。
 
 ```shell
 cap production puma:start
