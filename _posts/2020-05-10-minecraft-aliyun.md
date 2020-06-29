@@ -22,6 +22,20 @@ locale: zh_CN
 
 羊毛不褥白不褥，我在了解之后立马申请到了一台ECS。性能还算不错，Intel Xeon×2 + 4GB RAM，不过，学习是不可能学习的，只有打打MC才能维持得了生活这样子。于是，这台服务器就顺理成章地被我改造成了一台MC原版服务器。
 
+## 配置实例安全组
+
+我将Minecraft服务器直接架设在了默认的25565端口，因此首先需要在阿里云的安全组中开启25565端口TCP入站的规则。首先打开实例页面，进入实例当前安全组进行设置，如下图。
+
+{% include image.html link="/img/in-post/post-minecraft-aliyun/security-group.png" alt="Security Group" %}
+
+然后在访问规则的入规则下点击手动创建。
+
+{% include image.html link="/img/in-post/post-minecraft-aliyun/manual.png" alt="Create Manually" %}
+
+填入Minecraft端口并保存。
+
+{% include image.html link="/img/in-post/post-minecraft-aliyun/value.png" alt="Set Rule" %}
+
 ## 配置服务端
 
 系统上我选择了Debian 9.9 x64。
