@@ -10,7 +10,7 @@
     <section class="about">
       <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">
         <picture>
-          <source type="image/webp" srcset="/img/orange320x320.webp"> 
+          <source type="image/webp" srcset="/img/orange320x320.webp">
           <img src="{{ "/img/orange240x240.png" | relative_url }}" alt="{{ site.plainwhite.name }}">
         </picture>
       </a>
@@ -21,7 +21,8 @@
       <ul class="social">
         {%- if site.plainwhite.social_links.github -%}
         <li>
-          <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}" aria-label="GitHub Social Link">
+          <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}"
+            aria-label="GitHub Social Link">
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-github fa-stack-1x fa-inverse"></i>
@@ -31,7 +32,9 @@
         {%- endif -%}
         {%- if site.plainwhite.social_links.facebook -%}
         <li>
-          <a target="_blank" rel="noreferrer" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}" aria-label="Facebook Social Link">
+          <a target="_blank" rel="noreferrer"
+            href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}"
+            aria-label="Facebook Social Link">
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-facebook fa-stack-1x fa-inverse"></i>
@@ -41,7 +44,8 @@
         {%- endif -%}
         {%- if site.plainwhite.social_links.twitter -%}
         <li>
-          <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}" aria-label="Twitter Social Link">
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}"
+            aria-label="Twitter Social Link">
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-twitter fa-stack-1x fa-inverse"></i>
@@ -51,7 +55,8 @@
         {%- endif -%}
         {%- if site.plainwhite.social_links.weibo -%}
         <li>
-          <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}" aria-label="Weibo Social Link">
+          <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}"
+            aria-label="Weibo Social Link">
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="fab icon-weibo fa-stack-1x fa-inverse"></i>
@@ -61,7 +66,9 @@
         {%- endif -%}
         {%- if site.plainwhite.social_links.bilibili -%}
         <li>
-          <a target="_blank" rel="noreferrer" href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}" aria-label="Bilibili Social Link">
+          <a target="_blank" rel="noreferrer"
+            href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}"
+            aria-label="Bilibili Social Link">
             <span class="fa-stack fa-2x">
               <i class="fas icon-circle fa-stack-2x"></i>
               <i class="icon-bilibili fa-stack-1x fa-inverse"></i>
@@ -71,14 +78,19 @@
         {%- endif -%}
       </ul>
 
-      {% if page.locale == 'en_US' %}<a href="/" class="language-selection"><i class="icon-translate"></i>中CH</a>{% else %}<a href="/en-us/" class="language-selection"><i class="icon-translate"></i>英EN</a>{% endif %}
+      {% if page.locale == 'en_US' %}
+      <a href="/" class="language-selection button"><i class="icon-translate"></i>中CH</a>
+      {% else %}
+      <a href="/en-us/" class="language-selection button"><i class="icon-translate"></i>英EN</a>
+      {% endif %}
 
       {%- if site.plainwhite.navigation -%}
       <nav class="navigation">
         <ul>
           {% for link in site.plainwhite.navigation %}
           <li>
-            <a href="{% if page.locale == 'en_US' and link.url_en %}{{ link.url_en }}{% else %}{{ link.url }}{% endif %}">{{ link.title }}</a>
+            <a
+              href="{% if page.locale == 'en_US' and link.url_en %}{{ link.url_en }}{% else %}{{ link.url }}{% endif %}">{{ link.title }}</a>
           </li>
           {% endfor %}
         </ul>
@@ -91,6 +103,18 @@
         <br>
         <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA-4.0</a>
       </p>
+
+      {%- if site.plainwhite.dark_mode -%}
+      <div>
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+      {%- endif -%}
     </section>
     <section class="content">
       {{ content }}

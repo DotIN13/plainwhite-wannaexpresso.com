@@ -1,5 +1,9 @@
 {% if page.title == "Archive" %}
-<script src="/js/archive.min.js"></script>
+<script src="/assets/js/archive.min.js"></script>
+{% endif %}
+
+{% if site.plainwhite.dark_mode %}
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
 {% endif %}
 
 {% if page.layout == "post" %}
@@ -19,7 +23,7 @@
 
 {% if page.layout == "page" or page.layout == "en-us" or page.title == "Archive" %}
 <!-- Simple Jekyll Search -->
-<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/assets/js/simple-jekyll-search.min.js"></script>
 <script>
   window.onload = function () {
     var sjs = SimpleJekyllSearch({

@@ -16,7 +16,7 @@ locale: en_US
         <i class="icon-search"></i>
         <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
       </div>
-      <div class="search-results" id="search-results" data-placeholder="NO RESULTS" style="display: none;"></div>
+      <div class="search-results" id="search-results" data-placeholder="No results" style="display: none;"></div>
     </div>
   </li>
 
@@ -34,7 +34,7 @@ locale: en_US
     <div class="post-meta">
       <div class="post-categories">
         {%- for tag in post.tags -%}
-        <a href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+        <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
         {%- endfor -%}
       </div>
       <div class="post-date">
@@ -56,12 +56,12 @@ locale: en_US
 <ul class="pagination-links">
   {% if paginator.previous_page %}
   <li class="left">
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">NEWER</a>
+    <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">NEWER</a>
   </li>
   {% endif %}
   {% if paginator.next_page %}
   <li class="right">
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER</a>
+    <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER</a>
   </li>
   {% endif %}
 </ul>

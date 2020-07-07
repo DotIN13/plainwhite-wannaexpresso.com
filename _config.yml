@@ -33,6 +33,7 @@ plainwhite:
   tagline: "LACKAWANNA<br>EXPRESSO"
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
+  dark_mode: true # set to true to add dark mode toggle
   navigation:
     - title: Home
       url: "/"

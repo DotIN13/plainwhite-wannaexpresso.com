@@ -7,3 +7,8 @@ sitemap:
 @import "fontello";
 @import "search";
 @import "tagcloud";
+
+{%- if site.plainwhite.dark_mode -%}
+  @import "toggle";
+  @import "dark";
+{%- endif -%}

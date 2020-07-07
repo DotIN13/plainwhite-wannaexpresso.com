@@ -1,0 +1,158 @@
+$darkTextColor: #f6f6f6;
+$darkLinkColor: #e584f6;
+$darkSecondary: #333;
+
+.dark,
+.dark * {
+
+  background-color: #171717;
+  color: $darkTextColor;
+  border-color: #e6e6e6;
+
+  .about .about-footer a {
+    color: $darkTextColor;
+
+    &:hover {
+      color: $darkLinkColor;
+    }
+  }
+
+  .social {
+
+    i {
+      background-color: transparent;
+    }
+    
+    .icon-circle {
+      color: $darkSecondary;
+      transition: color 0.3s;
+    }
+
+    a:hover .icon-circle {
+      color: $darkLinkColor;
+    }
+  }
+
+  .icon-translate {
+    background-color: transparent;
+  }
+
+  #posts-label {
+    color: $darkTextColor;
+    border-bottom: 1px solid #272727;
+  }
+
+  @import 'ext/solarized-dark';
+
+  .highlight,
+  .highlight * {
+    background-color: #00080a;
+    color: #93a1a1;
+  }
+
+  div.highlight-dark {
+    padding: 5px 20px;
+  }
+
+  pre.highlight-dark,
+  code {
+    font-family: 'Consolas', Menlo, monospace;
+    line-height: 1.4em;
+    tab-size: 4;
+  }
+
+  .post-categories {
+    li {
+      background-color: $darkSecondary;
+      color: #fff;
+    }
+  }
+
+  a {
+    color: $darkLinkColor;
+
+    &:hover {
+      color: $darkTextColor;
+    }
+  }
+
+  #title a {
+    color: #fff;
+
+    &:hover {
+      color: $darkLinkColor;
+    }
+  }
+
+  .posts-labelgroup {
+
+    .search-results {
+      background-color: $darkSecondary;
+
+      a {
+        color: white;
+
+        &:hover {
+          background-color: #171717;
+        }
+      }
+    }
+
+    .search-section i {
+      background-color: transparent;
+    }
+  }
+
+  .posts-labelgroup:hover {
+
+    i {
+      color: white;
+    }
+
+    input {
+      color: white;
+    }
+  }
+
+
+  .posts-labelgroup.focus-within {
+
+    .search-section {
+      background-color: $darkSecondary;
+    }
+
+    input {
+      color: $darkTextColor;
+      background-color: $darkSecondary;
+    }
+
+    i {
+      color: white;
+    }
+  }
+
+  .button {
+    background-color: $darkSecondary;
+    color: $darkTextColor;
+
+    &:hover {
+      background-color: $darkLinkColor;
+    }
+
+    & * {
+      background-color: transparent;
+    }
+  }
+}
+
+.dark table {
+
+  th,
+  td {
+    border: 1px solid $darkSecondary;
+  }
+
+  th {
+    background-color: #0d0d0d;
+  }
+}

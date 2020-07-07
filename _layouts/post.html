@@ -29,7 +29,7 @@ layout: default
     {% if page.tags %}
     <div class="post-categories">
       {%- for tag in page.tags -%}
-      <a href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+      <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
       {%- endfor -%}
     </div>
     {% endif %}
@@ -47,7 +47,7 @@ layout: default
     <ul>
       {% if page.previous.url %}
       <li class="left">
-        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+        <a class="button" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
           data-placement="top" title="{{page.previous.title}}">
           PREV<br>
           <span>{{page.previous.title}}</span>
@@ -56,7 +56,7 @@ layout: default
       {% endif %}
       {% if page.next.url %}
       <li class="right">
-        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+        <a class="button" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
           data-placement="top" title="{{page.next.title}}">
           NEXT<br>
           <span>{{page.next.title}}</span>
