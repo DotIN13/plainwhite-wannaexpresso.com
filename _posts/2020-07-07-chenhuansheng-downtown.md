@@ -11,12 +11,16 @@ locale: zh_CN
 ---
 
 <style>
-  .post p {
+  .post>p {
     text-indent: 2em;
   }
 </style>
 
-<blockquote class="g_bq">我有过一个笔名，就叫陈奂生。<br>——黄老师</blockquote>
+## 陈奂生上城 高晓声
+
+> 我有过一个笔名，就叫陈奂生。   
+> <cite>——黄老师</cite>
+
 
 ### 一
 
