@@ -16,9 +16,13 @@ locale: zh_CN
 ---
 
 <h2 id="前言">前言</h2>
-<p> 最近从<code>Manjaro</code>迁移到了<code>FydeOS</code>，想体验一下<code>Google</code>的系统，开始解决一些基本的需求，比如<code>Apple Music</code>。自带安卓容器的<code>Apple Music</code>播放闪退，网页版的<code>The Music</code>,
+<p>
+    最近从<code>Manjaro</code>迁移到了<code>FydeOS</code>，想体验一下<code>Google</code>的系统，开始解决一些基本的需求，比如<code>Apple Music</code>。自带安卓容器的<code>Apple Music</code>播放闪退，网页版的<code>The Music</code>,
     <code>Musish</code>和<code>Apple Music Beta</code>，体验只有一个字：“卡”。即便代理<code>itunes.apple.com</code>也无济于事。思来想去，唯一可行的办法就只有不拿电脑听歌了(雾)。最后，希望落在了导出<code>Apple Music</code>播放列表到网易云音乐，因为其网页版在<code>Chrome</code>的体验尚可。
 </p>
+<blockquote>
+    EDIT: 2020/08/10 网页版的<a href='https://beta.music.apple.com'>Apple Music Beta</a>在国内已经可以正常使用，但功能仍然受到限制，不能浏览私人资料库与每日推荐歌单。相信不久的将来Apple会进一步更新这些功能。
+</blockquote>
 {% include image.html link="/img/in-post/post-apple-music/Apple-Music.jpeg" alt="Apple Music Logo" %}
 <p> 打开手机上的网易云音乐，发现只能通过截图方式导入歌单。我想到了长截图，于是到酷安下载了<code>Long Shot</code>。然而，花了十几分钟导出的几万px长的截图在导入网易云后直接识别失败。抱着尝试一下的心态，我又手动截了几张导入，最后几十首歌只识别出了两首。万般无奈中，打开百度，发现自己就是在茫茫多从网易云迁移到<code>Apple Music</code>的人群之中的那个逆行者。功夫不负有心人，最后在<code>Google</code>的帮助下找到了Github上的一个小Repo:
     <a href="https://github.com/Rubioo/iTunes2NeteaseCloudMusic">iTunes2NeteaseCloudMusic</a>。</p>
