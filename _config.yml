@@ -87,9 +87,9 @@ plugins:
   - jekyll-paginate-v2
   - jekyll-minifier
   - jekyll_picture_tag
+  - jekyll-feed
 #  - jekyll-webp
 #  - jekyll-seo-tag
-#  - jekyll-feed
 
 kramdown:
   auto_ids: true

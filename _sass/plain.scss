@@ -137,7 +137,16 @@ main {
     text-align: center;
   }
 
-  .language-selection {
+  .buttons {
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+    }
+  }
+
+  .button {
     background: #e3e3e3;
     border-radius: 24px;
     padding: 5px 10px;
@@ -157,11 +166,16 @@ main {
     }
   }
 
-  .about-footer a {
-    color: #424242;
+  .about-footer {
 
-    &:hover {
-      color: $linkColor
+    a,
+    p {
+      color: #424242;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $linkColor
+      }
     }
   }
 }

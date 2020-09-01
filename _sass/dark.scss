@@ -9,7 +9,8 @@ $darkSecondary: #333;
   color: $darkTextColor;
   border-color: #e6e6e6;
 
-  .about .about-footer a {
+  .about .about-footer a,
+  .about .about-footer p {
     color: $darkTextColor;
 
     &:hover {
