@@ -80,11 +80,11 @@
 
       <ul class="buttons">
         <li>
-          {% if page.locale == 'en_US' %}
-          <a href="/" class="language-selection button"><i class="icon-translate"></i>中CH</a>
-          {% else %}
-          <a href="/en-us/" class="language-selection button"><i class="icon-translate"></i>英EN</a>
-          {% endif %}
+          {%- if page.locale == 'en_US' -%}
+          <a href="/" class="language-selection button"><i class="icon-translate"></i>中</a>
+          {%- else -%}
+          <a href="/en-us/" class="language-selection button"><i class="icon-translate"></i>EN</a>
+          {%- endif -%}
         </li>
         <li>
           <a href="/feed.xml" class="feed button"><i class="icon-rss_feed"></i>RSS</a>
