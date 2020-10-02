@@ -46,6 +46,11 @@
 <!-- Service Worker Unregistration -->
 <script src="/sw.js"></script>
 
+<!-- Darkmode Javascript-->
+{% if site.plainwhite.dark_mode %}
+<script type="text/javascript" src="{{ "/assets/js/darkmode.js" | relative_url }}"></script>
+{% endif %}
+
 <!-- CSS -->
 <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 

@@ -18,12 +18,16 @@ $darkSecondary: #333;
     }
   }
 
+  .post p {
+    color: #ddd;
+  }
+
   .social {
 
     i {
       background-color: transparent;
     }
-    
+
     .icon-circle {
       color: $darkSecondary;
       transition: color 0.3s;
@@ -86,6 +90,7 @@ $darkSecondary: #333;
   }
 
   .posts-labelgroup {
+    border-bottom: 1px solid #333;
 
     .search-results {
       background-color: $darkSecondary;

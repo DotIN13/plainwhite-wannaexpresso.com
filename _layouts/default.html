@@ -5,20 +5,31 @@
   {%- include head.html -%}
 </head>
 
+{% assign condensed_class = "condensed" %}
+
 <body>
   <main class="container">
     <section class="about">
-      <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">
-        <picture>
-          <source type="image/webp" srcset="/img/orange320x320.webp">
-          <img src="{{ "/img/orange240x240.png" | relative_url }}" alt="{{ site.plainwhite.name }}">
-        </picture>
-      </a>
-      <h2 id="title">
-        <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
-      </h2>
-      <p class="tagline">{{ site.plainwhite.tagline }}</p>
-      <ul class="social">
+      <div class="about-header">
+        <div class="about-title">
+          <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">
+            <picture>
+              <source type="image/webp" srcset="/img/orange320x320.webp">
+              <img src="{{ "/img/orange240x240.png" | relative_url }}" alt="{{ site.plainwhite.name }}">
+            </picture>
+          </a>
+          <h2 id="title">
+            <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
+          </h2>
+        </div>
+        {%- if site.plainwhite.tagline -%}
+        <p class="tagline">{{ site.plainwhite.tagline }}</p>
+        {%- endif -%}
+      </div>
+
+      {% capture footer %}
+      {%- if site.plainwhite.social_links != '' -%}
+      <ul class="social {{ condensed_class }}">
         {%- if site.plainwhite.social_links.github -%}
         <li>
           <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}"
@@ -77,8 +88,9 @@
         </li>
         {%- endif -%}
       </ul>
+      {%- endif -%}
 
-      <ul class="buttons">
+      <ul class="buttons {{ condensed_class }}">
         <li>
           {%- if page.locale == 'en_US' -%}
           <a href="/" class="language-selection button"><i class="icon-translate"></i>中</a>
@@ -92,7 +104,7 @@
       </ul>
 
       {%- if site.plainwhite.navigation -%}
-      <nav class="navigation">
+      <nav class="navigation {{ condensed_class }}">
         <ul>
           {% for link in site.plainwhite.navigation %}
           <li>
@@ -104,27 +116,32 @@
       </nav>
       {%- endif -%}
 
-      <section class="about-footer">
-      <p>
-        <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a>
-        <a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a>
-        <br>
-        <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA-4.0</a>
-      </p>
-      {%- if site.plainwhite.dark_mode -%}
-      <p>
-        Dark Mode
-        <label class="switch">
-          <input type="checkbox" id="dark-mode-toggle">
-          <span class="slider round" onclick="toggleDarkMode()"></span>
-        </label>
-      </p>
-      {%- endif -%}
+      <section class="about-footer {{ condensed_class }}">
+        <p>
+          <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a>
+          <a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a>
+          <br>
+          <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA-4.0</a>
+        </p>
+        {%- if site.plainwhite.dark_mode -%}
+        <p>
+          Dark Mode
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+        {%- endif -%}
+        {% endcapture %}
+        {{ footer }}
       </section>
     </section>
     <section class="content">
       {{ content }}
     </section>
+    <footer class="about {{ condensed_class }}">
+      {{ footer }}
+    </footer>
   </main>
   {%- if site.plainwhite.analytics_id -%}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
