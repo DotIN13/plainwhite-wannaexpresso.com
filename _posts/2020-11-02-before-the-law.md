@@ -11,7 +11,7 @@ typora-root-url: ../
 locale: zh_CN
 ---
 
-# 法律门前
+## 法律门前
 
 > 卡夫卡  著 / 杨武能  译
 >
