@@ -1,0 +1,56 @@
+.moods {
+  display: flex;
+  margin-left: -0.7em;
+  margin-right: -0.7em;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  transition: max-height 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  @media screen and (min-width: $mobileW) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 30vh;
+    flex-wrap: wrap;
+
+    &:hover {
+      max-height: 80vh;
+    }
+  }
+
+  .mood {
+    padding: 1em;
+    margin: 0.7em;
+    border: solid 1px #dadce0;
+    border-radius: 8px;
+    flex: 1 0 auto;
+
+    @media screen and (max-width: $mobileW) {
+      flex-basis: 80%;
+    }
+
+    h2 {
+      margin: 0.5em 0 0.8em 0;
+    }
+
+    article {
+      line-height: 1.35em;
+
+      * {
+        margin: 0.6em 0;
+      }
+    }
+
+    .mood-date {
+      color: #555;
+      margin: 0.8em 0 0.5em 0;
+    }
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+}
+
+.moods-container {
+  margin-bottom: 1em;
+}

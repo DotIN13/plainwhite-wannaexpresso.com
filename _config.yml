@@ -8,6 +8,7 @@ url: "https://www.wannaexpresso.com"
 avatar: "/img/orange.webp"
 
 permalink: pretty
+timezone: Asia/Shanghai
 exclude: ["node_modules","package.json","README.md"]
 
 # Gitalk settings
@@ -32,6 +33,7 @@ plainwhite:
   name: DotIN13
   tagline: "LACKAWANNA<br>EXPRESSO"
   date_format: "%b %-d, %Y"
+  mood_date_format: "%r · %b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
   dark_mode: true # set to true to add dark mode toggle
   navigation:
@@ -82,6 +84,10 @@ plainwhite:
 
 # Build settings
 # theme: plainwhite
+
+collections:
+  moods:
+    sort_by: date
 
 plugins:
   - jekyll-paginate-v2

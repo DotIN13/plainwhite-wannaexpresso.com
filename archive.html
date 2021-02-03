@@ -8,16 +8,7 @@ sitemap:
 ---
 <div class="posts archive">
   <ul style="list-style: none; padding-left: 0;">
-    <li class="posts-labelgroup" id="posts-labelgroup">
-      <h1 id="posts-label">archive</h1>
-      <div class="search-container">
-        <div class="search-section">
-          <i class="icon-search"></i>
-          <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
-        </div>
-        <div class="search-results" id="search-results" data-placeholder="NO RESULTS" style="display: none;"></div>
-      </div>
-    </li>
+    {% include posts-label.html type="archive" search=true %}
   </ul>
 
   <div id='tag_cloud' class="tags tags-sup js-tags">
