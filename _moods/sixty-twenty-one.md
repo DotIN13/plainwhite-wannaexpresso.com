@@ -1,6 +1,5 @@
 ---
 title: "60号楼201室"
-subtitle: "Sixty Twenty One"
 author: "DotIN13"
 typora-root-url: ../
 locale: zh_CN

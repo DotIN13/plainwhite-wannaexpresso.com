@@ -14,8 +14,8 @@ layout: default
     {% for mood in sorted_moods %}
     <div class="mood">
       <h2>{{ mood.title }}</h2>
-      <article>
-        {{ mood.content }}
+      <article data-full="{{ mood.content }}">
+        {{ mood.content | smart_truncate: 140 }}
       </article>
       <div class="mood-date">
         <i class="icon-calendar"></i>{{ mood.date | date: mood_date_format }}
