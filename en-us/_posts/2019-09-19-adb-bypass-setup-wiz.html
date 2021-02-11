@@ -20,14 +20,17 @@ would you want to skip setup if you can enable ADB in the settings :P).</p>
 <p>Steps:<br />
 <ol>
     <li>Connect the device using CMD or other shell application like Xshell.<br />
-        {% highlight shell %}$ cd /path/to/your/adb.exe<br />$ adb devices<br />$ adb root<br />$ adb shell{% endhighlight %}
+        {% highlight shell %}$ cd /path/to/your/adb.exe
+$ adb devices
+$ adb root
+$ adb shell{% endhighlight %}
     </li>
     <li>Mount /system partion in TWRP.</li>
-    <li>Navigate to the location of your build.prop file. In the case of perseus, it's /system_root/system.<br />
+    <li>Navigate to the location of your build.prop file. In the case of Xiaomi Mix3 (perseus), it's <code>/system_root/system</code>.<br />
         {% highlight shell %}$ cd /system_root/system{% endhighlight %}
     </li>
     <li>Add one line to the build.prop as follows.<br />
-        {% highlight shell %}$ echo "ro.setupwizard.mode=DISABLED" &gt;&gt; /system/build.prop{% endhighlight %}
+        {% highlight shell %}$ echo "ro.setupwizard.mode=DISABLED" >> /system/build.prop{% endhighlight %}
     </li>
     <li>Reboot.</li>
 </ol></p>

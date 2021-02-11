@@ -24,7 +24,7 @@ Google（即Google 搜索）App，而且登陆了Google账户，但是Feed就是
     <li>开启飞行模式（拔出SIM卡）；</li>
     <li>点进设置 → 系统 → 语言和输入法（Android 7是设置→语言和输入法），把系统语言切换成英语；</li>
     <li>在设置 → Security &amp; Location → Location（Android 7是设置→Location）里把定位服务关闭（off）；</li>
-    <li>如果已经登录了谷歌账户，负一屏内容为空白，麻烦接着从第5步开始执行，如果未登录可直接到第6步。</li>
+    <li>如果已经登录了谷歌账户，负一屏内容为空白，麻烦接着从第5步开始执行，如果未登录可直接到第8步。</li>
     <li>进入设置里 → Apps &amp; Notifcation 选项 → See All Apps（Android 7是设置→Apps）；</li>
     <li>点右上角的竖省略号，选择Show System；</li>
     <li>清除Google Services Framework 、GooglePlay Services 、Google 这三个应用数据，清除就是点Storage 选项，再点Clear Data（Google Play

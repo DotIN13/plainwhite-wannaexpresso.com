@@ -46,8 +46,9 @@ UUID=20E5F700538CA3AB                     /mnt/Xandar    ntfs    defaults       
 <p>首先使用<code>sudo blkid /dev/sda5</code>命令查看设备UUID，获得输出如下：</p>
 {% highlight shell %}/dev/sda5: LABEL="Karazhan" BLOCK_SIZE="512" UUID="8EF257AE5A2BABB0" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="ce11e894-ece4-4c1e-a358-e85789be0b58"{% endhighlight %}
 <p>得知<code>/dev/sda5</code>的UUID为8EF257AE5A2BABB0，利用nano/vim/gedit编辑<code>/etc/fstab</code>，在文件最后添加如下代码：</p>
-{% highlight shell %}UUID=8EF257AE5A2BABB0                     /mnt/Karazhan  ntfs    defaults         0 0{% endhighlight %}
-
+{% highlight shell %}UUID=8EF257AE5A2BABB0   /mnt/Karazhan  ntfs    defaults    0 0
+# 或者也可以使用PARTUUID
+PARTUUID="ce11e894-ece4-4c1e-a358-e85789be0b58UUID=8EF257AE5A2BABB0"   /mnt/Karazhan  ntfs    defaults    0 0{% endhighlight %}
 <p>将上面的命令添加进<code>fstab</code>后，为了避免可能的错误，我们可以使用<code>sudo mount -a</code>命令来检验编辑的内容是否有错。执行<code>sudo mount -a</code>命令后，用<code>df -h</code>命令查看会发现磁盘已经挂载成功，说明输入没有错误。下次重启的时候系统就可以自动进行挂载了。</p>
 {% highlight bash %}[dotin13@Manhattan ~]$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
