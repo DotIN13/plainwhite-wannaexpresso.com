@@ -135,7 +135,7 @@ Arm64架构对于Windows来说还是Experiment，对于macOS来说是Experimenta
 
 但这台电脑给了我平庸的寒假生活无穷的乐趣，因为**折腾**，既是Original Sin，又是Original Rejoice。
 
-{% include image.html link="/img/in-post/post-macbook/sleep.jpeg" alt="拿到电脑前" wrapper_class="d-inline-block" %}
+{% include image.html link="/img/in-post/post-macbook/sleep.png" alt="拿到电脑前" wrapper_class="d-inline-block" %}
 
 {% include image.html link="/img/in-post/post-macbook/unsleep.webp" alt="拿到电脑后" wrapper_class="d-inline-block" %}
 

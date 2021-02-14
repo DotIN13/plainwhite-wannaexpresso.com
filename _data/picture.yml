@@ -8,7 +8,7 @@ media_presets:
 markup_presets:
   default:
     widths: [200, 400, 600, 1600]
-    formats: [webp, original]
+    formats: [webp, png]
     media_widths: # Because a cell phone doesn't want 1600 pixels.
       mobile: [200, 400, 600] 
       tablet: [400, 600, 800]

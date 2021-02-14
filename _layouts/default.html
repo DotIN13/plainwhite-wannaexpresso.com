@@ -27,7 +27,7 @@
         {%- endif -%}
       </div>
 
-      {% capture footer %}
+      {%- capture footer -%}
       {%- if site.plainwhite.social_links != '' -%}
       <ul class="social {{ condensed_class }}">
         {%- if site.plainwhite.social_links.github -%}
@@ -132,7 +132,7 @@
           </label>
         </p>
         {%- endif -%}
-        {% endcapture %}
+        {%- endcapture -%}
         {{ footer }}
       </section>
     </section>
