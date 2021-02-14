@@ -478,14 +478,36 @@ ul.posts {
     font-family: Raleway, sans-serif;
   }
 
+  /* Images */
+  a+em {
+    font-size: 0.9em;
+    color: #666;
+    display: block;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  .float-md-end {
+    float: right;
+
+    @media screen and (max-width: $mobileW) {
+      float: none;
+    }
+  }
+
+  .d-inline-block {
+    display: inline-block;
+  }
+
   img {
     margin-left: auto;
     margin-right: auto;
     display: block;
     max-width: 80%;
+    height: auto;
 
     @media screen and (max-width: $mobileW) {
-      max-width: 100%;
+      max-width: 95%;
     }
 
     &:focus,
@@ -677,23 +699,6 @@ select.sel-lang {
   height: 100%;
   left: 0;
   top: 0;
-}
-
-/* Images */
-a+em {
-  font-size: 0.9em;
-  color: #666;
-  display: block;
-  margin-bottom: 1em;
-  text-align: center;
-}
-
-.float-md-end {
-  float: right;
-
-  @media screen and (max-width: $mobileW) {
-    float: none;
-  }
 }
 
 /* Block Quote */

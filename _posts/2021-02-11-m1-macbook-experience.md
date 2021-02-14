@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "M1 MacBook轻体验"
-subtitle: "First Impressions on the M1 MacBook"
+title: "M1 MacBook Air轻体验"
+subtitle: "First Impressions on the M1 MacBook Air"
 author: "DotIN13"
 tags:
   - Apple Silicon
@@ -79,7 +79,7 @@ Thinkbook的触控板在干手的触摸下还算柔和，但只要手上沾水�
 2. 四周严丝合缝，既没有四周缝隙，也没有普通Windows笔记本左右键一侧的下陷。
 3. 虽然无法像Windows一样轻触拖拽，松手放开，但由于全面板可按压，我已经习惯了点按时直接按下面板，甚至回到我的华硕本本上还意犹未尽，完全忘记了可以Tap & Drag。
 
-Apple所大力推荐的Haptic Feedback与Force Touch，无感，不过瑕不掩瑜。这块触摸板让我完全放弃了鼠标，2560  x 1600个像素点，尽在我的大拇指尖。
+Apple所大力推荐的Haptic Feedback与Force Touch，无感。不过，瑕不掩瑜，这块触摸板让我完全放弃了鼠标，2560  x 1600个像素点，尽在我的大拇指尖。
 
 ### 键盘
 
@@ -103,9 +103,11 @@ macOS给人的感觉就是**温度**。
 
 ### 动效
 
-我的辣爸Joy过去一直试图在Linux上找到漂亮的系统级动画，不料macOS早就已经将其内化。我过去常用（逼着自己用）的Manjaro+Gnome打开Launcher的动画是卡顿的，开启关闭应用则没有动画。相较之下，macOS打开应用时图标的跳动在与我的焦急共情；关闭时的收缩仿佛在告诉我，它只是叠起来了，正随时在等我。这种动效给人一种轻松地与计算机交流的感觉。这在Windows/Gnome上体验不到，在Sway这样追求效率的WM上更不可能存在。
+我的辣爸Joy过去一直试图在Linux上找到漂亮的系统级动画，不料macOS早就已经将其内化。我过去常用的Manjaro+Gnome打开Launcher的动画是卡顿的，开启关闭应用则没有动画。相较之下，macOS打开应用时图标的跳动在与我的焦急共情；关闭时的收缩仿佛在告诉我，它暂时折起，随时等待。这种动效给人一种轻松地与计算机交流的感觉。这在Windows/Gnome上体验不到，在Sway这样追求效率的WM上更不可能存在。
 
 ### 安全
+
+{% include image.html link="/img/in-post/post-macbook/security.png" alt="Securing My Laptop" %}
 
 macOS一直在试图保障我的安全。无论我运行什么程序，它都会检测这些程序是否是由可信的开发者制作发行的。如果不是，那么只能用上Ctrl+Open强制打开，表示自愿接受风险。相比之下，Windows只会阻止它认为危险的程序，macOS显得更加保守。
 
@@ -114,6 +116,8 @@ macOS一直在试图保障我的安全。无论我运行什么程序，它都会
 最让我感到感动的是Siri，她记得了谁是我老婆。
 
 不知怎的想到要跟这个Artificial Intelligence提一嘴Wang Wenrou是我的老婆，Siri居然回答我，设置好自己的联系人之后就可以设置老婆的卡片了。我依样画葫芦，设置好老婆的名片，对着Siri说“FaceTime my girlfriend”，FaceTime弹出了窗口，熟悉的拨号的“嘟嘟”声在我的小房间里响起……
+
+{% include image.html link="/img/in-post/post-macbook/siri.png" alt="Remembering My Girl" %}
 
 Siri记住了我宝贝老婆的名字，书前（指Mac**Book**），月下（指卤素**灯**），泪落。
 
@@ -130,6 +134,10 @@ macOS是人情味的，却也是固执的。它不愿意支持NTFS的硬盘读�
 Arm64架构对于Windows来说还是Experiment，对于macOS来说是Experimental。总有些应用还不能直接一键安装运行，例如Ruby、Minecraft、KDEConnect等等。
 
 但这台电脑给了我平庸的寒假生活无穷的乐趣，因为**折腾**，既是Original Sin，又是Original Rejoice。
+
+{% include image.html link="/img/in-post/post-macbook/sleep.jpeg" alt="拿到电脑前" wrapper_class="d-inline-block" %}
+
+{% include image.html link="/img/in-post/post-macbook/unsleep.webp" alt="拿到电脑后" wrapper_class="d-inline-block" %}
 
 ## 总结
 

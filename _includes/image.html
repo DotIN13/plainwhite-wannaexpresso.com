@@ -2,11 +2,5 @@
   <a href="{{ include.link | relative_url }}"
     data-fancybox="{% if include.gallery %}{{ include.gallery }}{% else %}gallery{% endif %}"
     data-caption="{{ include.alt }}">
-    {%- if include.link contains "gif" -%}
-    <img src="{{ include.link }}" alt="{{ include.alt }}">
-    {%- else -%}
-    {%- picture {{ include.link }} --alt {{ include.alt }} -%}
-    {%- endif -%}
-  </a>
-  <em>{{ include.alt }}</em>
-</div>
+    {%- picture {{ include.preset }} {{ include.link }} --alt {{ include.alt }} -%}
+  </a><em>{{ include.alt }}</em></div>
