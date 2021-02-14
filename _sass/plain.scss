@@ -18,7 +18,6 @@ $maxWidth: 1000px;
 body {
   font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-  ;
   font-size: 16px;
   line-height: 1.2em;
   margin: 0;
@@ -454,8 +453,9 @@ ul.posts {
 }
 
 .post {
-  font-family: "Merriweather", sans-serif;
-  font-weight: 300;
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-weight: 400;
   color: #222;
   line-height: 1.9em;
 
@@ -679,13 +679,21 @@ select.sel-lang {
   top: 0;
 }
 
-/* Picture Caption */
+/* Images */
 a+em {
   font-size: 0.9em;
   color: #666;
   display: block;
   margin-bottom: 1em;
   text-align: center;
+}
+
+.float-md-end {
+  float: right;
+
+  @media screen and (max-width: $mobileW) {
+    float: none;
+  }
 }
 
 /* Block Quote */
