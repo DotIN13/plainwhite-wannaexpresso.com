@@ -16,7 +16,7 @@ locale: zh_CN
 
 学期结束，满目B+，也不是说开发HoE多大程度上影响了学习，只是觉得心里少了些什么东西，一时间对继续开发失了兴趣。暑假开始，便用剧集与游戏麻木自己的神经。不知是谁用指头点醒了我？不知是何处来的风吹散了遮眼尘烟？某一天从床上醒来，发现自己过去的一个月，一事无成。多少的电视剧烂了尾，多少游戏永远上不去的分，何必当真？
 
-{% include image.html link="img/in-post/post-rails-development/reminiscence.png" alt="重拾" %}
+{% include image.html link="in-post/post-rails-development/reminiscence.png" alt="重拾" %}
 
 于是，重拾未竟之业，尝试寻找自己对自己的一种认可。
 

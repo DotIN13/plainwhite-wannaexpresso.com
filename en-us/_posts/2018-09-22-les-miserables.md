@@ -15,8 +15,8 @@ locale: en_US
 ---
 
 <p>Still don't know what's the use of updating this but it's just fun to write something, from time to time, which could be very long to you.</p>
-<div style="text-align: center;"><a href="/img/in-post/post-les-miserable/les-miserable-orig.jpg" data-fancybox="gallery" data-caption="End of the Show Les Miserable"><img src="/img/in-post/post-les-miserable/les-miserable.jpg" style="display:inline; width:45%"></a>
-<a href="/img/in-post/post-les-miserable/les-miserable-1-orig.jpg" data-fancybox="gallery" data-caption="End of the Show Les Miserable"><img src="/img/in-post/post-les-miserable/les-miserable-1.jpg" style="display:inline; width:45%;"></a><br></div>
+<div style="text-align: center;"><a href="post-les-miserable/les-miserable-orig.jpg" data-fancybox="gallery" data-caption="End of the Show Les Miserable"><img src="post-les-miserable/les-miserable.jpg" style="display:inline; width:45%"></a>
+<a href="post-les-miserable/les-miserable-1-orig.jpg" data-fancybox="gallery" data-caption="End of the Show Les Miserable"><img src="post-les-miserable/les-miserable-1.jpg" style="display:inline; width:45%;"></a><br></div>
 <p>Oh, sorry, there may not be a 'You'.</p>
 <p>ANYWAY.</p>
 <p>Went to watch the French version of Les Miserables this afternoon. Liked it.<br />

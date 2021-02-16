@@ -10,7 +10,7 @@ tags:
 typora-root-url: ../..
 ---
 
-{% include image.html link="/img/in-post/post-wodbasics/universe.png" alt="WoD宇宙" %}
+{% include image.html link="in-post/post-wodbasics/universe.png" alt="WoD宇宙" %}
 
 ## 定律一：先乘除后加减原则
 

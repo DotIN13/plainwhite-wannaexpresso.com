@@ -26,15 +26,15 @@ locale: zh_CN
 
 我将Minecraft服务器直接架设在了默认的25565端口，因此首先需要在阿里云的安全组中开启25565端口TCP入站的规则。首先打开实例页面，进入实例当前安全组进行设置，如下图。
 
-{% include image.html link="/img/in-post/post-minecraft-aliyun/security-group.png" alt="Security Group" %}
+{% include image.html link="in-post/post-minecraft-aliyun/security-group.png" alt="Security Group" %}
 
 然后在访问规则的入规则下点击手动创建。
 
-{% include image.html link="/img/in-post/post-minecraft-aliyun/manual.png" alt="Create Manually" %}
+{% include image.html link="in-post/post-minecraft-aliyun/manual.png" alt="Create Manually" %}
 
 填入Minecraft端口并保存。
 
-{% include image.html link="/img/in-post/post-minecraft-aliyun/value.png" alt="Set Rule" %}
+{% include image.html link="in-post/post-minecraft-aliyun/value.png" alt="Set Rule" %}
 
 ## 配置服务端
 
@@ -44,7 +44,7 @@ locale: zh_CN
 
 首先，在[Minecraft官网找到服务端下载地址](https://www.minecraft.net/zh-hans/download/server/)。
 
-{% include image.html link="/img/in-post/post-minecraft-aliyun/download-server-jar.png" alt="Acquire Server Download Link" %}
+{% include image.html link="in-post/post-minecraft-aliyun/download-server-jar.png" alt="Acquire Server Download Link" %}
 
 然后，通过SSH登陆你的服务器，用以下命令创建`/srv/minecraft`文件夹，并下载服务端文件。
 

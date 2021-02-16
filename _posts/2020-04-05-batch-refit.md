@@ -50,7 +50,7 @@ locale: zh_CN
 
 所以只要将上面提到的`<pre>`替换成这边的{% raw %}`{% highlight lang %}`{% endraw %}就阔以了。但我可不想手动操作，抱着试一试的心态，在Eric鸽鸽吹上天的VSCode里寻找批量替换的插件。没想到还真的给我找着了，[Batch Replacer](https://marketplace.visualstudio.com/items?itemName=angelomollame.batch-replacer)这一插件支持一键替换Workspace中所有的文件内容，并且语法还支持RegExp。
 
-{% include image.html link="/img/in-post/post-batch-replacer/batch-replacer.png" alt="Batch Replacer Extension" %}
+{% include image.html link="in-post/post-batch-replacer/batch-replacer.png" alt="Batch Replacer Extension" %}
 
 刚学会了RegExp的我摩拳擦掌，跃跃欲试，编写了下面这段替换代码。
 

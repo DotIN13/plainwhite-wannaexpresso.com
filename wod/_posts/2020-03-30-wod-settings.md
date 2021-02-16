@@ -23,17 +23,17 @@ typora-root-url: ../..
 
 ## 专家模式 Now I Know the Way!
 
-{% include image.html link="/img/in-post/post-wodbasics/settings.png" alt="设置在哪" %}
+{% include image.html link="in-post/post-wodbasics/settings.png" alt="设置在哪" %}
 
 啊哈！设置的入口就在侧边栏，这可难不倒你，不是吗？
 
 进入设置，展现在你眼前的是这样的一副图景...
 
-{% include image.html link="/img/in-post/post-wodbasics/select-promode.png" alt="切换到专家模式" %}
+{% include image.html link="in-post/post-wodbasics/select-promode.png" alt="切换到专家模式" %}
 
 我敢打赌你不想一直做一个新手，动动鼠标，在下拉菜单里选择专家模式！看到这个界面，不要惊慌，其实一切都都没有你想象中的难...
 
-{% include image.html link="/img/in-post/post-wodbasics/promode.png" alt="专家模式" %}
+{% include image.html link="in-post/post-wodbasics/promode.png" alt="专家模式" %}
 
 ## 页面结构 What's That Lever For?
 
@@ -41,7 +41,7 @@ Behold! 现在我将向你介绍设置页面都有些什么，当然，这篇文
 
 ### 设置档案
 
-{% include image.html link="/img/in-post/post-wodbasics/setting-files.png" alt="设置档案" %}
+{% include image.html link="in-post/post-wodbasics/setting-files.png" alt="设置档案" %}
 
 你的所有设置都被保存在一个个**设置档案**中，这样你就可以为每个地城选择不同的设置档案了，很聪明，不是吗？你可以看到在页面上部，有这样一个下拉选单，在这里，你可以选择你要操作的设置档案，并对他们进行保存、删除、加载操作；你也可以在下拉菜单选择`（新建）`设置，来新建一个设置档案。
 
@@ -49,7 +49,7 @@ Behold! 现在我将向你介绍设置页面都有些什么，当然，这篇文
 
 ### 位置
 
-{% include image.html link="/img/in-post/post-wodbasics/position.png" alt="位置设置" %}
+{% include image.html link="in-post/post-wodbasics/position.png" alt="位置设置" %}
 
 页面中部，是你将大展拳脚的战斗设置区域。`在战斗中的位置`决定了你在战斗中出现在什么位置。WoD的战斗系统中，一共有六个位置，分别是前排、左翼、右翼、中间、后排、队伍后方。
 
@@ -69,7 +69,7 @@ Behold! 现在我将向你介绍设置页面都有些什么，当然，这篇文
 
 先攻技能可以改变用以计算你的先攻的公式，所有角色在没有使用先攻技能的情况下，使用`2*敏捷+感知`作为先攻的期望值，而使用了先攻技能之后，这一期望就变成了`2*主属性+副属性+2*先攻技能等级`。很明显，先攻技能会帮助你提高出手的速度！不过，你还没有升级到能够使用它，还需要再等等...
 
-{% include image.html link="/img/in-post/post-wodbasics/battle-setting.png" alt="战斗设置" %}
+{% include image.html link="in-post/post-wodbasics/battle-setting.png" alt="战斗设置" %}
 
 在先攻技能的下方就是重头戏——战斗设置了，战斗设置分为回合前与回合中。每个英雄在回合前会行动1次，回合前行动一般包括一些自我或团队增益，你可以在**技能介绍页面**看到一个技能是否能够在回合前施放。
 
@@ -79,13 +79,13 @@ Behold! 现在我将向你介绍设置页面都有些什么，当然，这篇文
 
 ### 一般页
 
-{% include image.html link="/img/in-post/post-wodbasics/general-1.png" alt="一般设置" %}
+{% include image.html link="in-post/post-wodbasics/general-1.png" alt="一般设置" %}
 
 你可以看到除了地城设置外，还有决斗设置页面、一般页面和说明页面。顾名思义，决斗页面就是当你使用着一个设置档案与人决斗，就会调用决斗页面的设置来执行动作；一般页面处理在战斗中会遇到的其他问题；说明页面是一个可以填写的备忘录。
 
 在一般页面中，你可以设置**撤退**，当满足条件后，你的人物会在下一次回合中行动时**逃跑**，也即带着当前拾取的战利品撤退。逃跑会在一些高难度的挑战中使用，以保证通过时全体队员都能存活，获得成就。
 
-{% include image.html link="/img/in-post/post-wodbasics/general-2.png" alt="一般设置" %}
+{% include image.html link="in-post/post-wodbasics/general-2.png" alt="一般设置" %}
 
 在下方，是辅助顺序与攻击顺序，这决定了系统在执行动作时所选择的位置。同样地，执行顺序是从上至下。
 
@@ -99,7 +99,7 @@ Behold! 现在我将向你介绍设置页面都有些什么，当然，这篇文
 
 在你拥有了你的设置档案之后，你会希望你的英雄在地城中按照你设置的进行行动，为此，你必须绑定设置档案到地城。
 
-{% include image.html link="/img/in-post/post-wodbasics/binding.png" alt="绑定设置" %}
+{% include image.html link="in-post/post-wodbasics/binding.png" alt="绑定设置" %}
 
 在地城页面，你可以看到当前等级可以探索的所有地下城，你可以点击标红的这些按钮，来将你的设置档案绑定到地城，当然，如果你希望你的英雄就按照默认档案来行动，那么就保持默认不变就行！
 

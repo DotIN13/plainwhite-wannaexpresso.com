@@ -94,11 +94,11 @@ opkg install --force-depends kmod-tun
 
 加速仍旧在手机端控制，需要下载UU加速器主机版的手机APP。
 
-{% include image.html link="img/in-post/post-uu/download.png" alt="下载链接" %}
+{% include image.html link="in-post/post-uu/download.png" alt="下载链接" %}
 
 通过上面的QR或者[下载链接](https://adl.netease.com/d/g/uu/c/uu_router?from=qr)下载安装后，按照提示连接路由器。
 
-{% include image.html link="img/in-post/post-uu/img-app-screenshot-OpenWrt.jpg" alt="进入APP连接到路由器" %}
+{% include image.html link="in-post/post-uu/img-app-screenshot-OpenWrt.jpg" alt="进入APP连接到路由器" %}
 
 连接之后，将Switch连接到路由器的无线网络，在APP中找到Switch，选择游戏就可以加速了。
 
