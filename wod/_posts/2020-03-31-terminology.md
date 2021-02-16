@@ -7,7 +7,8 @@ tags:
   - WoD
   - Game
   - Terminology
-typora-root-url: ./
+typora-root-url: ../..
+locale: zh_CN
 ---
 
 ## 角色

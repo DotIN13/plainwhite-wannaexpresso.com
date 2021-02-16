@@ -8,6 +8,7 @@ tags:
   - Game
   - Settings
 typora-root-url: ../..
+locale: zh_CN
 ---
 
 <style>
