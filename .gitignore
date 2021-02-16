@@ -5,14 +5,23 @@
 */*/.DS_Store
 */.DS_Store
 .DS_Store
-.bundle
+
+# Cache
 .jekyll-cache
 .sass-cache
 .vscode
+
+# Posts
 _archive
 _posts/_archive
 _posts/_draft
+
+# Generated
 _site
+!_site/generated
+
+# Bundle
 node_modules
 vendor
 vender
+.bundle
