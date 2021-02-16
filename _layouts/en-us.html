@@ -43,12 +43,12 @@ locale: en_US
 {% if paginator.total_pages > 1 %}
 <ul class="pagination-links">
   {% if paginator.previous_page %}
-  <li class="left">
+  <li class="float-start">
     <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">NEWER</a>
   </li>
   {% endif %}
   {% if paginator.next_page %}
-  <li class="right">
+  <li class="float-end">
     <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER</a>
   </li>
   {% endif %}

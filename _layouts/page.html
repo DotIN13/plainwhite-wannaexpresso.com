@@ -63,21 +63,17 @@ layout: default
   </li>
   {%- endfor -%}
 </ul>
-
-<!-- <p class="feed-subscribe"><svg class="svg-icon orange">
-		<use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use>
-	</svg><a href="{{ "/feed.xml" | relative_url }}">Subscribe</a></p> -->
 {%- endif -%}
 
 {% if paginator.total_pages > 1 %}
 <ul class="pagination-links">
   {% if paginator.previous_page %}
-  <li class="left">
+  <li class="float-start">
     <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">NEWER</a>
   </li>
   {% endif %}
   {% if paginator.next_page %}
-  <li class="right">
+  <li class="float-end">
     <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER</a>
   </li>
   {% endif %}

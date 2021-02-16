@@ -1,0 +1,19 @@
+.float-md-end {
+    float: right;
+
+    @media screen and (max-width: $mobileW) {
+        float: none;
+    }
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.float-start {
+    float: left;
+}
+
+.float-end {
+    float: right;
+}

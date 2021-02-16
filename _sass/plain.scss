@@ -487,18 +487,6 @@ ul.posts {
     text-align: center;
   }
 
-  .float-md-end {
-    float: right;
-
-    @media screen and (max-width: $mobileW) {
-      float: none;
-    }
-  }
-
-  .d-inline-block {
-    display: inline-block;
-  }
-
   img {
     margin-left: auto;
     margin-right: auto;
@@ -559,14 +547,6 @@ ul.posts {
       }
     }
   }
-
-  .left {
-    float: left;
-  }
-
-  .right {
-    float: right;
-  }
 }
 
 .pager {
@@ -612,16 +592,6 @@ ul.posts {
           }
         }
       }
-
-
-    }
-
-    .left {
-      float: left;
-    }
-
-    .right {
-      float: right;
     }
   }
 }
