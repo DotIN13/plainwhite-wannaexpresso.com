@@ -17,7 +17,7 @@ _posts/_archive
 _posts/_draft
 
 # Generated
-_site
+_site/*
 !_site/generated
 
 # Bundle
