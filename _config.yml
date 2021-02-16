@@ -37,11 +37,6 @@ plainwhite:
   sitemap: true # set to true to generate sitemap.xml content
   dark_mode: true # set to true to add dark mode toggle
   navigation:
-    - title: Home
-      url: "/"
-      url_en: "/en-us/"
-    - title: WoD
-      url: "/wod"
     - title: About
       url: "/about"
       url_en: "/en-us/about/"

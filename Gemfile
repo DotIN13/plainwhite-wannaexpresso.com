@@ -9,4 +9,4 @@ gem "jekyll-minifier"
 gem "nokogiri"
 gem "jekyll-feed"
 gem "jekyll_picture_tag"
-gem "mini_racer"
+gem 'mini_racer', github: 'rubyjs/mini_racer', branch: 'refs/pull/186/head'

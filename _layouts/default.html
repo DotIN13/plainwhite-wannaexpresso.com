@@ -27,7 +27,20 @@
         {%- endif -%}
       </div>
 
-      {%- capture footer -%}
+      {% capture footer %}
+      <div class="buttons {{ condensed_class }}">
+        {%- if page.locale == 'en_US' -%}
+        <a href="/" class="language-selection button"><span class="icon-translate"></span></a>
+        {%- else -%}
+        <a href="/en-us/" class="language-selection button"><span class="icon-translate"></span></a>
+        {%- endif -%}
+        <a href="/feed.xml" class="feed button"><span class="icon-rss_feed"></span></a>
+        {%- if site.plainwhite.dark_mode -%}
+        <label class="dark-mode-switch"><input type="checkbox" class="dark-mode-toggle"><a href="#" class="button" onclick="toggleDarkMode()"><span class="icon-moon"></span><span class="icon-sun"></span></a>
+        </label>
+        {%- endif -%}
+      </div>
+
       {%- if site.plainwhite.social_links != '' -%}
       <ul class="social {{ condensed_class }}">
         {%- if site.plainwhite.social_links.github -%}
@@ -90,19 +103,6 @@
       </ul>
       {%- endif -%}
 
-      <ul class="buttons {{ condensed_class }}">
-        <li>
-          {%- if page.locale == 'en_US' -%}
-          <a href="/" class="language-selection button"><i class="icon-translate"></i>中</a>
-          {%- else -%}
-          <a href="/en-us/" class="language-selection button"><i class="icon-translate"></i>EN</a>
-          {%- endif -%}
-        </li>
-        <li>
-          <a href="/feed.xml" class="feed button"><i class="icon-rss_feed"></i>RSS</a>
-        </li>
-      </ul>
-
       {%- if site.plainwhite.navigation -%}
       <nav class="navigation {{ condensed_class }}">
         <ul>
@@ -117,24 +117,16 @@
       {%- endif -%}
 
       <section class="about-footer {{ condensed_class }}">
-        <p>
+        <div>
           <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a>
           <a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a>
-          <br>
-          <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA-4.0</a>
-        </p>
-        {%- if site.plainwhite.dark_mode -%}
-        <p>
-          Dark Mode
-          <label class="switch">
-            <input type="checkbox" class="dark-mode-toggle">
-            <span class="slider round" onclick="toggleDarkMode()"></span>
-          </label>
-        </p>
-        {%- endif -%}
-        {%- endcapture -%}
-        {{ footer }}
+        </div>
+        <div>
+          <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" class="icon-creative_commons">BY-SA 4.0</a>
+        </div>
       </section>
+        {% endcapture %}
+        {{ footer }}
     </section>
     <section class="content">
       {{ content }}

@@ -5,9 +5,11 @@ function toggleDarkMode() {
   if (body.classList.contains(DARK_CLASS)) {
     setCookie('theme', 'light');
     body.classList.remove(DARK_CLASS);
+    document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = false)
   } else {
     setCookie('theme', 'dark');
     body.classList.add(DARK_CLASS);
+    document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = true)
   }
 }
 
@@ -23,7 +25,6 @@ function setCookie(name, value, days) {
 
 function deleteCookie(name) { setCookie(name, '', -1); }
 
-
 const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 var theme = getCookie('theme');
 if ((theme === null && userPrefersDark) || theme === 'dark') {
@@ -35,13 +36,13 @@ if ((theme === null && userPrefersDark) || theme === 'dark') {
     checkDarkDone = true;
   };
 
-  function toggleSwitch() {
+  function checkSwitch() {
     document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = true);
-  };
+  };  
 
   // Attempt both requestAnimationFrame and DOMContentLoaded, whichever comes first.
   if (window.requestAnimationFrame) window.requestAnimationFrame(checkDark);
   window.addEventListener('DOMContentLoaded', checkDark);
 
-  window.addEventListener('DOMContentLoaded', toggleSwitch);
+  window.addEventListener('DOMContentLoaded', checkSwitch);
 }

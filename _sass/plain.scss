@@ -9,6 +9,21 @@ $bigScreenW: 1600px;
 $leftWidth: 220px;
 $maxWidth: 1000px;
 
+@mixin button {
+
+  background: #e3e3e3;
+  cursor: pointer;
+  font-size: 15px;
+  color: #616161;
+  margin: 0 4px;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover {
+    background: $linkColor;
+    color: white;
+  }
+}
+
 *,
 *:before,
 *:after {
@@ -34,7 +49,7 @@ video {
 
 a {
   color: #000;
-  transition: color 0.3s;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &:hover {
     color: $linkColor;
@@ -124,7 +139,7 @@ main {
     white-space: pre-wrap;
     line-height: normal;
     text-align: center;
-    transition: color 0.3s;
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
     &:hover {
       color: $linkColor;
@@ -158,45 +173,34 @@ main {
   }
 
   .buttons {
-    padding-left: 0;
-
-    li {
-      display: inline-block;
-      list-style: none;
-      padding-left: 2px;
-      padding-right: 2px;
-    }
+    margin-bottom: 0.3em;
   }
 
   .button {
-    background: #e3e3e3;
+
     border-radius: 24px;
     padding: 5px 10px;
-    cursor: pointer;
-    margin-bottom: 1em;
-    transition: all 0.2s;
-    font-size: 15px;
-    color: #616161;
-
-    i {
-      margin-right: 3px;
-    }
-
-    &:hover {
-      background: $linkColor;
-      color: white;
-    }
+    @include button;
   }
 
   .about-footer {
+    margin: 1em 0;
 
-    a,
-    p {
-      color: #424242;
-      transition: color 0.3s;
+    div {
+      text-align: center;
 
-      &:hover {
-        color: $linkColor
+      a {
+        color: #666;
+        transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+        &:hover {
+          color: $linkColor
+        }
+      }
+
+      .icon-creative_commons:before {
+        margin-right: 3px;
+        color: #777;
       }
     }
   }
@@ -322,7 +326,7 @@ footer.about {
     }*/
     margin-right: 10px;
     margin-bottom: 10px;
-    transition: background-color 0.2s;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     text-decoration: none;
     padding: 5px 20px;
 
@@ -362,6 +366,12 @@ i.icon-calendar {
 
 .post-link {
   text-decoration: none;
+  transition: none;
+
+  h2,
+  h3 {
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
 }
 
 .multilingual-title {
@@ -379,7 +389,6 @@ i.icon-calendar {
     margin: 0 0.5em 10px 0;
     border-radius: 2px;
     padding: 4px 8px;
-    transition: all 0.3s;
     display: flex;
     align-items: center;
     font-size: 20px;
@@ -536,7 +545,7 @@ ul.posts {
       background-color: #ededed;
       padding: 6px 25px;
       border-radius: 2px;
-      transition: all 0.2s;
+      transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       display: inline-block;
       min-width: 95px;
       text-align: center;
@@ -572,7 +581,6 @@ ul.posts {
         background-color: #ededed;
         padding: 6px 25px;
         border-radius: 2px;
-        transition: all 0.2s;
         display: inline-block;
         min-width: 95px;
         text-align: center;
@@ -580,7 +588,7 @@ ul.posts {
         span {
           font-size: 0.8em;
           color: #555;
-          transition: all 0.2s;
+          transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         }
 
         &:hover {
@@ -635,6 +643,7 @@ select.sel-lang {
 
   .vemoji-btn,
   .vpreview-btn {
+    font-size: 1.5em;
     color: #BDBDBD;
     transition: color 0.3s;
 

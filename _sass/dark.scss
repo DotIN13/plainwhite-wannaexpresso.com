@@ -11,7 +11,7 @@ $darkSecondary: #333;
 
   .about .about-footer a,
   .about .about-footer p {
-    color: $darkTextColor;
+    color: #666;
 
     &:hover {
       color: $darkLinkColor;
@@ -81,6 +81,21 @@ $darkSecondary: #333;
     }
   }
 
+  .navigation a {
+    color: $darkTextColor;
+      
+      &:hover {
+        color: $darkLinkColor;
+      }
+  }
+
+  a.post-link:hover {
+
+    h2, h3 {
+      color: $darkLinkColor;
+    }
+  }
+
   #title a {
     color: #fff;
 
@@ -137,7 +152,9 @@ $darkSecondary: #333;
     }
   }
 
-  .button {
+  .button,
+  #tag-cloud .tag-button,
+  #show-tags {
     background-color: $darkSecondary;
     color: $darkTextColor;
 
