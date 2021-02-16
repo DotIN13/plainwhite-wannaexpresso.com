@@ -1,5 +1,5 @@
 <div class="post-img{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
-  <a href="{{ include.link | relative_url }}"
+  <a href="/assets/img{{ include.link | relative_url }}"
     data-fancybox="{% if include.gallery %}{{ include.gallery }}{% else %}gallery{% endif %}"
     data-caption="{{ include.alt }}">
     {%- picture {{ include.preset }} {{ include.link }} --alt {{ include.alt }} -%}

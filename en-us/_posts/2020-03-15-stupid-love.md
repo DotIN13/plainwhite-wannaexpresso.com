@@ -2,7 +2,7 @@
 layout: post
 title: "Lady Gaga - Stupid Love"
 subtitle: "A Song That Makes You Wanna Dance"
-header-img: "img/in-post/post-stupid-love/stupid-love.jpg"
+header-img: "assets/img/in-post/post-stupid-love/stupid-love.jpg"
 author: "DotIN13"
 header-mask: 0.6
 tags:

@@ -5,7 +5,7 @@ email: dotin13@126.com
 description: "Act local, think global with DotIN13!"
 show_excerpts: true # set to true to show excerpts on the homepage
 url: "https://www.wannaexpresso.com"
-avatar: "/img/orange.webp"
+avatar: "/assets/img/orange.webp"
 
 permalink: pretty
 timezone: Asia/Shanghai
@@ -192,6 +192,6 @@ jekyll-minifier:
 # Site configuration for the Jekyll Picture Tag
 #
 picture:
-  source: img
+  source: assets/img
   output: generated
   suppress_warnings: true

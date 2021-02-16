@@ -3,7 +3,7 @@ layout: post
 title: "About"
 subtitle: "关于"
 description: "'Tis Me."
-header-img: "img/about-bg.jpg"
+header-img: "assets/img/about-bg.jpg"
 locale: en_US
 multilingual: true
 ---

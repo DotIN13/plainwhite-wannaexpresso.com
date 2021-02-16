@@ -2,7 +2,7 @@
 layout: post
 title: "Jekyll博客搭建答疑解惑"
 subtitle: "Jekyll Blog Troubleshooting"
-header-img: "img/in-post/post-jekyll-troubleshooting/jekyll.png"
+header-img: "assets/img/in-post/post-jekyll-troubleshooting/jekyll.png"
 author: "DotIN13"
 header-mask: 0.6
 catalog: true
