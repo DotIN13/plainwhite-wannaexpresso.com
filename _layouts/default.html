@@ -30,13 +30,13 @@
       {% capture footer %}
       <div class="buttons {{ condensed_class }}">
         {%- if page.locale == 'en_US' -%}
-        <a href="/" class="language-selection button"><span class="icon-translate-off"></span></a>
+        <a href="/" class="language-selection button" aria-label="Change locale to Chinese."><span class="icon-translate-off"></span></a>
         {%- else -%}
-        <a href="/en-us/" class="language-selection button"><span class="icon-translate"></span></a>
+        <a href="/en-us/" class="language-selection button" aria-label="Change locale to English."><span class="icon-translate"></span></a>
         {%- endif -%}
-        <a href="/feed.xml" class="feed button"><span class="icon-rss_feed"></span></a>
+        <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span class="icon-rss_feed"></span></a>
         {%- if site.plainwhite.dark_mode -%}
-        <label class="dark-mode-switch"><input type="checkbox" class="dark-mode-toggle"><a href="#" class="button" onclick="toggleDarkMode()"><span class="icon-moon"></span><span class="icon-sun"></span></a>
+        <label class="dark-mode-switch" for="dark-mode-switch" aria-label="dark-mode-switch"><input type="checkbox" class="dark-mode-toggle" id="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button" onclick="toggleDarkMode()"><span class="icon-moon"></span><span class="icon-sun"></span></a>
         </label>
         {%- endif -%}
       </div>
