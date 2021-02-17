@@ -1,0 +1,25 @@
+<li>
+  <a class="post-link" href="{{ include.post.url | relative_url }}">
+    <h2 class="post-title">{{ include.post.title | escape }}</h2>
+    {% if include.post.subtitle %}
+    <h3 class="post-subtitle">{{ include.post.subtitle }}</h3>
+    {% endif %}
+  </a>
+  <div class="post-meta">
+    <div class="post-categories">
+      {%- for tag in include.post.tags -%}
+      <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+      {%- endfor -%}
+    </div>
+    <div class="post-date">
+      <i class="icon-calendar"></i>{{ include.post.date | date: date_format }}
+    </div>
+  </div>
+  <div class="post">
+    {% if include.post.locale == 'en_US' %}
+    {{ include.post.content | excerpt | strip_html | truncate:300 }}
+    {% else %}
+    {{ include.post.content | excerpt | strip_html | truncate:200 }}
+    {% endif %}
+  </div>
+</li>

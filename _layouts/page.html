@@ -5,62 +5,21 @@ layout: default
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 {%- assign mood_date_format = site.plainwhite.mood_date_format | default: "%r · %b %-d, %Y" -%}
 
-<ul class="posts moods-container">
-  {% include posts-label.html type='moods' search=false %}
-
-  {%- if site.moods.size > 0 -%}
-  <li class="moods">
-    {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
-    {% for mood in sorted_moods %}
-    <div class="mood">
-      <h2>{{ mood.title }}</h2>
-      <article data-full="{{ mood.content }}">
-        {{ mood.content | smart_truncate: 140 }}
-      </article>
-      <div class="mood-date">
-        <i class="icon-calendar"></i>{{ mood.date | date: mood_date_format }}
-      </div>
-    </div>
-    {% endfor %}
-  </li>
-  {%- endif -%}
+{%- if site.posts.size > 0 -%}
+<ul class="posts">
+  {% include posts-label.html type="posts" search=true %}
+  {%- for post in paginator.posts limit: 1 -%}
+  {%- include post-intro.html post=post -%}
+  {%- endfor -%}
 </ul>
+{%- endif -%}
+
+{{ content }}
 
 {%- if site.posts.size > 0 -%}
-
 <ul class="posts">
-
-  {% if page.url contains "wod" %}{% assign post_type = "wod" %}{% else %}{% assign post_type = "posts" %}{% endif %}
-  {% include posts-label.html type=post_type search=true %}
-
-  {{ content }}
-
-  {%- for post in paginator.posts -%}
-  <li>
-    <a class="post-link" href="{{ post.url | relative_url }}">
-      <h2 class="post-title">{{ post.title | escape }}</h2>
-      {% if post.subtitle %}
-      <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-      {% endif %}
-    </a>
-    <div class="post-meta">
-      <div class="post-categories">
-        {%- for tag in post.tags -%}
-        <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
-        {%- endfor -%}
-      </div>
-      <div class="post-date">
-        <i class="icon-calendar"></i>{{ post.date | date: date_format }}
-      </div>
-    </div>
-    <div class="post">
-      {% if post.locale == 'en_US' %}
-      {{ post.content | excerpt | strip_html | truncate:300 }}
-      {% else %}
-      {{ post.content | excerpt | strip_html | truncate:200 }}
-      {% endif %}
-    </div>
-  </li>
+  {%- for post in paginator.posts offset: 1 -%}
+  {%- include post-intro.html post=post -%}
   {%- endfor -%}
 </ul>
 {%- endif -%}
