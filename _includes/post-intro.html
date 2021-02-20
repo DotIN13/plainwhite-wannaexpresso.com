@@ -17,9 +17,9 @@
   </div>
   <div class="post">
     {% if include.post.locale == 'en_US' %}
-    {{ include.post.content | excerpt | strip_html | truncate:300 }}
+    {{ include.post.content | excerpt | strip_html | strip | truncate:300 }}
     {% else %}
-    {{ include.post.content | excerpt | strip_html | truncate:200 }}
+    {{ include.post.content | excerpt | strip_html | strip | truncate:200 }}
     {% endif %}
   </div>
 </li>
