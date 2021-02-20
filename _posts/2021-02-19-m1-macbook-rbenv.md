@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "在M1 Macbook上优雅地安装Rbenv+Ruby"
-subtitle: "Using Rbenv+Ruby on M1 Macbook"
+title: "在M1 MacBook上优雅地安装Rbenv+Ruby"
+subtitle: "Using Rbenv+Ruby on M1 MacBook"
 author: "DotIN13"
 tags:
   - Apple Silicon
-  - Macbook
+  - MacBook
   - Rbenv
   - Ruby
   - Homebrew
@@ -13,9 +13,9 @@ typora-root-url: ../
 locale: zh_CN
 ---
 
-## Ruby on M1 Macbook
+## Ruby on M1 MacBook
 
-看起来有不少尝鲜购入M1 Macbook的朋友装上了x86的homebrew，导致在编译Ruby时遇到了错误。事实上，如果使用了正确的arm64 Homebrew，就已经可以正常地编译使用rbenv+Ruby了。
+看起来有不少尝鲜购入M1 MacBook的朋友装上了x86的homebrew，导致在编译Ruby时遇到了错误。事实上，如果使用了正确的ARM64 Homebrew，就已经可以正常地编译使用rbenv+Ruby了。
 
 {% include image.html link="in-post/post-macbook/ruby-versions.png" alt="My Ruby Environment" %}
 
@@ -25,7 +25,7 @@ locale: zh_CN
 
 ### 1. Homebrew
 
-Ruby编译需要安装arm64版本的openssl，所以需要安装3.0.0以上版本适用于Apple Silicon的Homebrew。默认运行[官方网站]([
+Ruby编译需要安装ARM64版本的openssl，所以需要安装3.0.0以上版本适用于Apple Silicon的Homebrew。默认运行[官方网站]([
 Homebrewbrew.sh](https://brew.sh/))的脚本即可安装正确版本的Homebrew，新版Homebrew的工作目录在`/opt/homebrew`。
 
 ```shell
@@ -51,7 +51,7 @@ $ which brew
 brew install rbenv
 ```
 
-使用ruby-build编译arm64的Ruby还需要安装对应的arm64版本readline和openssl。
+使用ruby-build编译ARM64的Ruby还需要安装对应的ARM64版本readline和openssl。
 
 ```
 brew install readline

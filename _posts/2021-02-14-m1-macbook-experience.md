@@ -83,7 +83,7 @@ Apple所大力推荐的Haptic Feedback与Force Touch，无感。不过，瑕不�
 
 ### 键盘
 
-听说Macbook惯用的蝴蝶键盘经过多年的迭代也仅仅是勉强可用。
+听说MacBook惯用的蝴蝶键盘经过多年的迭代也仅仅是勉强可用。
 
 但2020年，剪刀脚键盘，轻装上阵。MacBook的这张键盘打破了我的惟键程论，虽然键程相较Thinkbook确实短一些，但回弹力度足够，凹陷的键帽更加贴合手指，打字还是比较舒服的。摸过老婆覆了膜的同款键盘，加上了TPU键盘膜确实回弹体验稍差，一时间不知道是不是该继续裸奔下去。
 
@@ -131,7 +131,7 @@ macOS是人情味的，却也是固执的。它不愿意支持NTFS的硬盘读�
 
 ## 折腾
 
-Arm64架构对于Windows来说还是Experiment，对于macOS来说是Experimental。总有些应用还不能直接一键安装运行，例如Ruby、Minecraft、KDEConnect等等。
+ARM64架构对于Windows来说还是Experiment，对于macOS来说是Experimental。总有些应用还不能直接一键安装运行，例如Ruby、Minecraft、KDEConnect等等。
 
 但这台电脑给了我平庸的寒假生活无穷的乐趣，因为**折腾**，既是Original Sin，又是Original Rejoice。
 
