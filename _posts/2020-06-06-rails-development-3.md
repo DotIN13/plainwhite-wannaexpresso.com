@@ -4,7 +4,7 @@ title: "RoR开发日志三 Capistrano + Puma + Caddy部署特辑"
 subtitle: "Ruby on Rails Development Log Three: Capistrano + Puma + Caddy"
 author: "DotIN13"
 tags:
-  - Linux Dev
+  - Linux
   - Ruby
   - Ruby on Rails
   - WoD

@@ -6,7 +6,7 @@ author: DotIN13
 catalog: true
 tags:
   - Programming Language
-  - Linux Dev
+  - Linux
   - Ruby
 locale: zh_CN
 ---

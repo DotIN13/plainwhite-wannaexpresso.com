@@ -6,7 +6,7 @@ header-img: "assets/img/in-post/post-jekyll-troubleshooting/jekyll.png"
 author: "DotIN13"
 header-mask: 0.6
 tags:
-  - Linux Dev
+  - Linux
   - Jekyll
   - Blog
   - Searchbar

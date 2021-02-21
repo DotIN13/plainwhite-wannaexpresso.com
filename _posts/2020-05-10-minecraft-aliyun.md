@@ -4,7 +4,7 @@ title: "在阿里云ECS上搭建Minecraft原版服务器"
 subtitle: "Vanilla Minecraft Server on Alibaba Cloud ECS"
 author: "DotIN13"
 tags:
-  - Linux Dev
+  - Linux
   - Game
   - Minecraft
   - Alibaba Cloud

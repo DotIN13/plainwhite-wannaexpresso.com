@@ -4,7 +4,7 @@ title: "RoR开发日志一"
 subtitle: "Ruby on Rails Development Log One"
 author: "DotIN13"
 tags:
-  - Linux Dev
+  - Linux
   - Ruby
   - Ruby on Rails
   - WoD

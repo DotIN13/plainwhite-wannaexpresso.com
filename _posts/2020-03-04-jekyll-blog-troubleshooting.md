@@ -7,7 +7,7 @@ author: "DotIN13"
 header-mask: 0.6
 catalog: true
 tags:
-  - Linux Dev
+  - Linux
   - Jekyll
   - Blog
   - Highlight.js

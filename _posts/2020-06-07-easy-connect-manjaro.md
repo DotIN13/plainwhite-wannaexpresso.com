@@ -4,7 +4,7 @@ title: "如何在Manjaro Linux优雅地使用EasyConnect"
 subtitle: "Elegantly Use EasyConnect on Manjaro Linux"
 author: "DotIN13"
 tags:
-  - Linux Dev
+  - Linux
   - EasyConnect
   - Manjaro
 typora-root-url: ../

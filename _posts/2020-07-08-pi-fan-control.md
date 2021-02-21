@@ -4,8 +4,8 @@ title: "树莓派自动风扇控制系统"
 subtitle: "Raspberry Pi Fan Control"
 author: "DotIN13"
 tags:
-  - RaspberryPi
-  - Linux Dev
+  - Raspberry Pi
+  - Linux
   - Python
 typora-root-url: ../
 locale: zh_CN
