@@ -1,0 +1,38 @@
+{% if paginator.page == 1 and site.moods.size > 0 %}
+<div id="moods-container">
+  {% include posts-label.html type='moods' search=false %}
+  <div class="moods-track">
+  <ul class="moods" data-mood-focus="0">
+    {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
+    {% for mood in sorted_moods %}
+    <li class="mood">
+      <div class="mood-content" data-fancybox data-animation-duration="700" data-src="#{{ mood.date | date: '%s' }}" href="javascript:;">
+        <h2>{{ mood.title }}</h2>
+        <article>
+          {{ mood.content | smart_truncate: 140 }}
+        </article>
+        <div class="mood-meta">
+          <i class="icon-calendar"></i>
+          <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
+          <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
+        </div>
+      </div>
+      <div style="display: none;" id="{{ mood.date | date: '%s' }}" class="animated-modal">
+        <h2>{{ mood.title }}</h2>
+        <div class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_full_format }}</div>
+        <article>{{ mood.content }}</article>
+      </div>
+    </li>
+    {% endfor %}
+    <li class="mood--placeholder">.</li>
+  </ul>
+  <button class="mood-button--prev mood-button hide">
+    <div class="mood-arrow--prev mood-arrow"></div>
+  </button>
+  <button class="mood-button--next mood-button">
+    <div class="mood-arrow--next mood-arrow"></div>
+  </button>
+  </div>
+
+</div>
+{% endif %}

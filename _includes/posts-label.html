@@ -1,5 +1,5 @@
 
-<li class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup">
+<div class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup">
   <h1 class="posts-label">{{ include.type }}</h1>
   {% if include.search %}
   <div class="search-container">
@@ -10,4 +10,4 @@
     <div class="search-results" id="search-results" data-placeholder="No results" style="display: none;"></div>
   </div>
   {% endif %}
-</li>
+</div>

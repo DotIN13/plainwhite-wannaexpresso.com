@@ -5,26 +5,3 @@ pagination:
 locale: zh_CN
 noindex: true
 ---
-
-{% if paginator.page == 1 %}
-<ul class="posts moods-container">
-  {% include posts-label.html type='moods' search=false %}
-
-  {%- if site.moods.size > 0 -%}
-  <li class="moods">
-    {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
-    {% for mood in sorted_moods %}
-    <div class="mood">
-      <h2>{{ mood.title }}</h2>
-      <article data-full="{{ mood.content }}">
-        {{ mood.content | smart_truncate: 140 }}
-      </article>
-      <div class="mood-date">
-        <i class="icon-calendar"></i>{{ mood.date | date: mood_date_format }}
-      </div>
-    </div>
-    {% endfor %}
-  </li>
-  {%- endif -%}
-</ul>
-{% endif %}

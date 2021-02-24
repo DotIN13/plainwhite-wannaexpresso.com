@@ -10,6 +10,21 @@ avatar: "/assets/img/orange.webp"
 permalink: pretty
 timezone: Asia/Shanghai
 exclude: ["node_modules","package.json","README.md"]
+defaults:
+  - 
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      fancybox: true
+  - 
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      fancybox: true
+      fancy-gallery: true
+
 
 # Gitalk settings
 gitalk_clientid: false
@@ -33,7 +48,9 @@ plainwhite:
   name: DotIN13
   tagline: "LACKAWANNA<br>EXPRESSO"
   date_format: "%b %-d, %Y"
-  mood_date_format: "%r · %b %-d, %Y"
+  mood_date_format: "%b %-d, %Y"
+  mood_time_format: "%r"
+  mood_date_full_format: "%r · %b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
   dark_mode: true # set to true to add dark mode toggle
   navigation:

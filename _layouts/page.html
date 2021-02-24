@@ -3,7 +3,6 @@ layout: default
 ---
 
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
-{%- assign mood_date_format = site.plainwhite.mood_date_format | default: "%r · %b %-d, %Y" -%}
 
 {%- if site.posts.size > 0 -%}
 <ul class="posts">
@@ -13,6 +12,8 @@ layout: default
   {%- endfor -%}
 </ul>
 {%- endif -%}
+
+{% include moods.html %}
 
 {{ content }}
 
