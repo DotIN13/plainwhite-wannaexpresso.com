@@ -2,9 +2,14 @@ $darkTextColor: #f6f6f6;
 $darkLinkColor: #e584f6;
 $darkSecondary: #333;
 
-.dark,
-.dark * {
+body.dark {
+  background-color: #171717;
+}
 
+.dark main,
+.dark main * {
+
+  /* General */
   background-color: #171717;
   color: $darkTextColor;
   border-color: #e6e6e6;
@@ -42,11 +47,7 @@ $darkSecondary: #333;
     background-color: transparent;
   }
 
-  #posts-label {
-    color: $darkTextColor;
-    border-bottom: 1px solid #272727;
-  }
-
+  /* Code highlighting */
   @import 'ext/solarized-dark';
 
   .highlight,
@@ -66,6 +67,7 @@ $darkSecondary: #333;
     tab-size: 4;
   }
 
+  /* Tag pills */
   .post-categories {
     li {
       background-color: $darkSecondary;
@@ -73,6 +75,7 @@ $darkSecondary: #333;
     }
   }
 
+  /* Links */
   a {
     color: $darkLinkColor;
 
@@ -104,14 +107,24 @@ $darkSecondary: #333;
     }
   }
 
-  .posts-labelgroup {
-    border-bottom: 1px solid #333;
+  /* LabelGroup */
+  .posts-label {
+    color: $darkTextColor;
+    border-bottom: 1px solid #272727;
+  }
 
+  .labelgroup {
+    border-bottom: 1px solid #333;
+  }
+
+  #posts-labelgroup {
+    
     .search-results {
       background-color: $darkSecondary;
 
       a {
         color: white;
+        background-color: $darkSecondary;
 
         &:hover {
           background-color: #171717;
@@ -124,7 +137,7 @@ $darkSecondary: #333;
     }
   }
 
-  .posts-labelgroup:hover {
+  #posts-labelgroup:hover {
 
     i {
       color: white;
@@ -136,7 +149,7 @@ $darkSecondary: #333;
   }
 
 
-  .posts-labelgroup.focus-within {
+  #posts-labelgroup.focus-within {
 
     .search-section {
       background-color: $darkSecondary;
@@ -152,6 +165,7 @@ $darkSecondary: #333;
     }
   }
 
+  /* Archive tagcloud */
   .button,
   #tag-cloud .tag-button,
   #show-tags {
@@ -166,8 +180,21 @@ $darkSecondary: #333;
       background-color: transparent;
     }
   }
+
+  /* Moods */
+  .mood-button {
+
+    .mood-arrow {
+      border-color: $darkTextColor;
+    }
+
+    &::before {
+      background-color: $darkSecondary;
+    }
+  }
 }
 
+/* Table */
 .dark table {
 
   th,
