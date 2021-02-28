@@ -36,8 +36,7 @@
         {%- endif -%}
         <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span class="icon-rss_feed"></span></a>
         {%- if site.plainwhite.dark_mode -%}
-        <label class="dark-mode-switch" for="dark-mode-switch" aria-label="dark-mode-switch"><input type="checkbox" class="dark-mode-toggle" id="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button" onclick="toggleDarkMode()"><span class="icon-moon"></span><span class="icon-sun"></span></a>
-        </label>
+        <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a>
         {%- endif -%}
       </div>
 
@@ -145,7 +144,6 @@
     gtag('config', '{{ site.plainwhite.analytics_id }}');
   </script>
   {%- endif -%}
-  {% include footer.html %}
 </body>
 
 </html>

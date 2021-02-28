@@ -5,12 +5,14 @@ layout: default
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 
 {%- if site.posts.size > 0 -%}
-<ul class="posts">
+<div class="posts">
   {% include posts-label.html type="posts" search=true %}
-  {%- for post in paginator.posts limit: 1 -%}
-  {%- include post-intro.html post=post -%}
-  {%- endfor -%}
-</ul>
+  <ul>
+    {%- for post in paginator.posts limit: 1 -%}
+    {%- include post-intro.html post=post -%}
+    {%- endfor -%}
+  </ul>
+</div>
 {%- endif -%}
 
 {% include moods.html %}
@@ -18,11 +20,13 @@ layout: default
 {{ content }}
 
 {%- if site.posts.size > 0 -%}
-<ul class="posts">
-  {%- for post in paginator.posts offset: 1 -%}
-  {%- include post-intro.html post=post -%}
-  {%- endfor -%}
-</ul>
+<div class="posts">
+  <ul>
+    {%- for post in paginator.posts offset: 1 -%}
+    {%- include post-intro.html post=post -%}
+    {%- endfor -%}
+  </ul>
+</div>
 {%- endif -%}
 
 {% if paginator.total_pages > 1 %}

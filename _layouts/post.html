@@ -66,29 +66,8 @@ layout: default
     </ul>
   </div>
 
-  {% if site.valine_appid %}
-  <!-- valine 评论框 start -->
+  {% if site.valine %}
   <div id="vcomments"></div>
-  <!-- valine 评论框 end -->
-
-  <!-- Valine -->
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>
-    new Valine({
-      el: '#vcomments',
-      appId: '{{site.valine_appid}}',
-      appKey: '{{site.valine_apikey}}',
-      placeholder: 'Your comment here...',
-      avatar: 'identicon',
-      visitor: true,
-      lang: 'en'
-    })
-    document.querySelector(".vicon.vemoji-btn").setAttribute("class", "fa-2x vicon vemoji-btn icon-insert_emoticon");
-    document.querySelector(".vicon.vemoji-btn").innerHTML = '';
-    document.querySelector(".vicon.vpreview-btn").setAttribute("class", "fa-2x vicon vpreview-btn icon-pageview");
-    document.querySelector(".vicon.vpreview-btn").innerHTML = '';
-  </script>
-  <!-- Valine -->
   {% endif %}
 
   {%- if site.plainwhite.disqus_shortname -%}
