@@ -1,7 +1,5 @@
-/* Modules */
+/** Modules */
 import Valine from 'valine'
-import SimpleJekyllSearch from 'simple-jekyll-search'
-import "@fancyapps/fancybox"
 
 window.addEventListener('DOMContentLoaded', () => {
     /* Valine */
@@ -18,20 +16,4 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelector(".vicon.vemoji-btn").innerHTML = '';
         document.querySelector(".vicon.vpreview-btn").innerHTML = '';
     }
-
-    $('[data-fancybox="gallery"]').fancybox({
-        buttons: [
-            'download',
-            'thumbs',
-            'close'
-        ]
-    });
-
-    $('a[href^="http"]').each(function () {
-        $(this).attr('target', '_blank');
-    });
 })
-
-/* CSS */
-import './stylesheets/custom.scss';
-import '@fancyapps/fancybox/dist/jquery.fancybox.css'

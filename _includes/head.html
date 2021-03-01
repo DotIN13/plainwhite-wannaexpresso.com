@@ -42,7 +42,8 @@
 
 <!-- Webpack -->
 <script src="{{ "/assets/public/application-bundle.js" | relative_url }}"></script>
-<script src="{{ "/assets/public/utilities-bundle.js" | relative_url }}"></script>
+<link rel="stylesheet" href="{{ "/assets/public/application.css" | relative_url }}">
+<script src="/assets/public/{{ page.javascript }}-bundle.js"></script>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/favicon.png">

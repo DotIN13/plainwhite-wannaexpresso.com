@@ -5,16 +5,22 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-const { LibManifestPlugin } = require('webpack');
-
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // https://webpack.js.org/configuration/
 module.exports = {
     mode: "production",
     watch: false,
     entry: {
-        utilities: glob.sync('./_webpack/javascript/*.js'),
-        application: path.join(__dirname, "_webpack/application")
+        archive: {
+            import: ['./_webpack/javascript/archive/archive', './_webpack/javascript/pages/search'],
+        },
+        pages: glob.sync('./_webpack/javascript/pages/*'),
+        posts: glob.sync('./_webpack/javascript/posts/*'),
+        application: {
+            import: glob.sync('./_webpack/javascript/application/*'),
+        },
     },
     output: {
         path: path.resolve(__dirname, 'assets/public'),
@@ -32,7 +38,7 @@ module.exports = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: ['style-loader', 'css-loader',
+                use: [MiniCssExtractPlugin.loader, 'css-loader',
                     {
                         loader: 'sass-loader',
                         options: {
@@ -63,5 +69,12 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new WebpackAssetsManifest(),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+        }),
     ],
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
+    },
 };

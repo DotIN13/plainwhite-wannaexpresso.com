@@ -156,13 +156,14 @@ https://github.com/kitian616/jekyll-TeXt-theme
   }
 
   // Mobile Show Tags on Keypress
-  $("#show-tags").click(function () {
-    expanded = updateHeight(expanded);
-    if ($(".icon-expand_more").length) {
-      $(".icon-expand_more").removeClass("icon-expand_more").addClass("icon-expand_less");
-    } else {
-      $(".icon-expand_less").removeClass("icon-expand_less").addClass("icon-expand_more");
-    }
+  window.addEventListener('DOMContentLoaded', () => {
+    $("#show-tags").click(function () {
+      expanded = updateHeight(expanded);
+      if ($(".icon-expand_more").length) {
+        $(".icon-expand_more").removeClass("icon-expand_more").addClass("icon-expand_less");
+      } else {
+        $(".icon-expand_less").removeClass("icon-expand_less").addClass("icon-expand_more");
+      }
+    })
   })
-
 })();

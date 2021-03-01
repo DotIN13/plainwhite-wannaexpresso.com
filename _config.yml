@@ -16,12 +16,14 @@ defaults:
       type: "pages"
     values:
       fancybox: true
+      javascript: pages
   - scope:
       path: ""
       type: "posts"
     values:
       fancybox: true
       fancy-gallery: true
+      javascript: posts
 
 # Gitalk settings
 gitalk_clientid: false
