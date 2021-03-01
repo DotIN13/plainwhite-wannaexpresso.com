@@ -17,7 +17,7 @@ locale: zh_CN
 
 ## 别了，Thinkbook
 
-{% include image.html link="in-post/post-macbook/idlefish.jpg" alt="Thinkbook Sold" wrapper_class="float-md-end" %}
+{% include post-image.html link="post-macbook/idlefish.jpg" alt="Thinkbook Sold" wrapper_class="float-md-end" %}
 
 4500大洋购置的Thinkbook 14 2021锐龙版金玉其外，败絮其中。纸面上拓展性过人、高色域、性能释放达到25W，事实上呢，屏幕不通透，略微侧看便有彩色颗粒；触摸板没有玻璃覆盖，手汗稍多便非常涩爪，贴上磨砂膜同样影响手感。对于我这种轻度办公用户来说，相较于原先的ASUS U3000UQ几乎没有本质的提升，反而在显示、触控方面体验降级。于是，50包邮解余愁。
 
@@ -27,7 +27,7 @@ locale: zh_CN
 
 老婆用的是旧款的Intel MacBook Air，摸一爪子，温润，略有些心动。寒假回家旁敲侧击，周旋至浦东Apple Store，一举又骗得8999大洋的M1 MBA。私心里想着要和老婆搭配，不要Pro，不要银色，只要那金色的Air，店员几乎有些不解，我莞尔一笑，他便也心领神会不再多问，给我取来机子下了单。
 
-{% include image.html link="in-post/post-macbook/in-store.jpg" alt="New MacBook"%}
+{% include post-image.html link="post-macbook/in-store.jpg" alt="New MacBook"%}
 
 包装盒很紧，是正品，孩子很喜欢，下次还会再来。
 
@@ -41,7 +41,7 @@ locale: zh_CN
 
 如果说Thinkbook代表的是廉价的工业感、商业感，U3000UQ电脑代表的是一种刻意的高级感，那么MacBook Air代表的就是一种温润如玉的华丽感，用某位知名前游戏综艺UP主的话来说，就是低调奢华。
 
-{% include image.html link="in-post/post-macbook/old-laptops.png" alt="Thinkbook 14 Gen 2 & U3000UQ"%}
+{% include post-image.html link="post-macbook/old-laptops.png" alt="Thinkbook 14 Gen 2 & U3000UQ"%}
 
 Thinkbook的设计语言偏于硬朗，外壳棱角分明，四角接近直角，屏幕较厚。C面塑料，导致刚性不足，轻轻抬起左侧机身就会弯折；触摸板四周缝隙大，没有CNC切边处理，廉价感是这款机型的代名词。华硕U3000UQ则几乎是在模仿Apple的设计语言，使用圆弧作为机身的大部分过渡手段，磨砂全金属外壳，试图营造一种高端商务范。但事实上，在细节上，华硕远不能做到Apple的水平，A面的拉丝工艺割手感足足，磨砂机身达不到苹果的细腻，底部的音响开孔没有使用CNC工艺，显得极不平整。可远观，不可近品。
 
@@ -89,7 +89,7 @@ Apple所大力推荐的Haptic Feedback与Force Touch，无感。不过，瑕不�
 
 除了回弹，键盘背光非常温柔。每一颗键帽单独的LED确实让键盘的背光更加均匀，更有安全感。
 
-{% include image.html link="in-post/post-macbook/keys.jpg" alt="Keyboard Backlight"%}
+{% include post-image.html link="post-macbook/keys.jpg" alt="Keyboard Backlight"%}
 
 但有一点令人不解的是[中英文切换键时常失灵](https://www.zhihu.com/question/338779279)，从拼音切换到英文后，再按下`中/英`切换键，偶尔会发现没有反应，偶尔又会出现无法切换，大写灯亮起的情况。Born to be imperfect?
 
@@ -107,7 +107,7 @@ macOS给人的感觉就是**温度**。
 
 ### 安全
 
-{% include image.html link="in-post/post-macbook/security.png" alt="Securing My Laptop" %}
+{% include post-image.html link="post-macbook/security.png" alt="Securing My Laptop" %}
 
 macOS一直在试图保障我的安全。无论我运行什么程序，它都会检测这些程序是否是由可信的开发者制作发行的。如果不是，那么只能用上Ctrl+Open强制打开，表示自愿接受风险。相比之下，Windows只会阻止它认为危险的程序，macOS显得更加保守。
 
@@ -117,7 +117,7 @@ macOS一直在试图保障我的安全。无论我运行什么程序，它都会
 
 不知怎的想到要跟这个Artificial Intelligence提一嘴Wang Wenrou是我的老婆，Siri居然回答我，设置好自己的联系人之后就可以设置老婆的卡片了。我依样画葫芦，设置好老婆的名片，对着Siri说“FaceTime my girlfriend”，FaceTime弹出了窗口，熟悉的拨号的“嘟嘟”声在我的小房间里响起……
 
-{% include image.html link="in-post/post-macbook/siri.png" alt="Remembering My Girl" %}
+{% include post-image.html link="post-macbook/siri.png" alt="Remembering My Girl" %}
 
 Siri记住了我宝贝老婆的名字，书前（指Mac**Book**），月下（指卤素**灯**），泪落。
 
@@ -135,9 +135,9 @@ ARM64架构对于Windows来说还是Experiment，对于macOS来说是Experimenta
 
 但这台电脑给了我平庸的寒假生活无穷的乐趣，因为**折腾**，既是Original Sin，又是Original Rejoice。
 
-{% include image.html link="in-post/post-macbook/sleep.png" alt="拿到电脑前" wrapper_class="d-inline-block" %}
+{% include post-image.html link="post-macbook/sleep.png" alt="拿到电脑前" wrapper_class="d-inline-block" %}
 
-{% include image.html link="in-post/post-macbook/unsleep.png" alt="拿到电脑后" wrapper_class="d-inline-block" %}
+{% include post-image.html link="post-macbook/unsleep.png" alt="拿到电脑后" wrapper_class="d-inline-block" %}
 
 ## 总结
 

@@ -11,7 +11,7 @@ typora-root-url: ../..
 locale: zh_CN
 ---
 
-{% include image.html link="in-post/post-wodbasics/universe.png" alt="WoD宇宙" %}
+{% include post-image.html link="post-wodbasics/universe.png" alt="WoD宇宙" %}
 
 ## 定律一：先乘除后加减原则
 

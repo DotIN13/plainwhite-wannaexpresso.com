@@ -12,11 +12,7 @@
     <section class="about">
       <div class="about-header">
         <div class="about-title">
-          <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">
-            <picture>
-              <source type="image/webp" srcset="/assets/img/orange320x320.webp">
-              <img src="{{ "/assets/img/orange240x240.png" | relative_url }}" alt="{{ site.plainwhite.name }}">
-            </picture>
+          <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}" id="avatar" data-caption="{{ site.plainwhite.name }}" data-webpack="true" data-path="/assets/img/orange.webp">
           </a>
           <h2 id="title">
             <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>

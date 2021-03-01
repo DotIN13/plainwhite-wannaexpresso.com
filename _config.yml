@@ -88,8 +88,8 @@ plainwhite:
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+# header_pages:
+#  - about.md
 
 # Build settings
 # theme: plainwhite
@@ -100,8 +100,8 @@ collections:
 
 plugins:
   - jekyll-paginate-v2
-  - jekyll_picture_tag
   - jekyll-feed
+#   - jekyll_picture_tag
 #   - jekyll-minifier
 #   - jekyll-webp
 #   - jekyll-seo-tag
@@ -168,38 +168,38 @@ pagination:
 
 ############################################################
 
-jekyll-minifier:
-  preserve_php: true # Default: false
-  remove_spaces_inside_tags: true # Default: true
-  remove_multi_spaces: true # Default: true
-  remove_comments: true # Default: true
-  remove_intertag_spaces: true # Default: false
-  remove_quotes: false # Default: false
-  compress_css: true # Default: true
-  compress_javascript: true # Default: true
-  compress_json: true # Default: true
-  simple_doctype: false # Default: false
-  remove_script_attributes: false # Default: false
-  remove_style_attributes: false # Default: false
-  remove_link_attributes: false # Default: false
-  remove_form_attributes: false # Default: false
-  remove_input_attributes: false # Default: false
-  remove_javascript_protocol: false # Default: false
-  remove_http_protocol: false # Default: false
-  remove_https_protocol: false # Default: false
-  preserve_line_breaks: false # Default: false
-  simple_boolean_attributes: false # Default: false
-  compress_js_templates: false # Default: false
-  # Enable ES6
-  uglifier_args:
-    harmony: true
+# jekyll-minifier:
+#   preserve_php: true # Default: false
+#   remove_spaces_inside_tags: true # Default: true
+#   remove_multi_spaces: true # Default: true
+#   remove_comments: true # Default: true
+#   remove_intertag_spaces: true # Default: false
+#   remove_quotes: false # Default: false
+#   compress_css: true # Default: true
+#   compress_javascript: true # Default: true
+#   compress_json: true # Default: true
+#   simple_doctype: false # Default: false
+#   remove_script_attributes: false # Default: false
+#   remove_style_attributes: false # Default: false
+#   remove_link_attributes: false # Default: false
+#   remove_form_attributes: false # Default: false
+#   remove_input_attributes: false # Default: false
+#   remove_javascript_protocol: false # Default: false
+#   remove_http_protocol: false # Default: false
+#   remove_https_protocol: false # Default: false
+#   preserve_line_breaks: false # Default: false
+#   simple_boolean_attributes: false # Default: false
+#   compress_js_templates: false # Default: false
+#   # Enable ES6
+#   uglifier_args:
+#     harmony: true
 
 #######################################################
 
 ############################################################
 # Site configuration for the Jekyll Picture Tag
 #
-picture:
-  source: assets/img
-  output: generated
-  suppress_warnings: true
+# picture:
+#   source: assets/img
+#   output: generated
+#   suppress_warnings: true

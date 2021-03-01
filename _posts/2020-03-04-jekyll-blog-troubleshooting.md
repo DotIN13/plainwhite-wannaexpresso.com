@@ -2,7 +2,7 @@
 layout: post
 title: "Jekyll博客搭建答疑解惑"
 subtitle: "Jekyll Blog Troubleshooting"
-header-img: "assets/img/in-post/post-jekyll-troubleshooting/jekyll.png"
+header-img: "assets/img/post-jekyll-troubleshooting/jekyll.png"
 author: "DotIN13"
 header-mask: 0.6
 catalog: true
@@ -160,7 +160,7 @@ $('[data-fancybox="gallery"]').fancybox({
 
 为了让自己的小伙伴访问博客的速度更快，我使用了`GitHub+Coding`的方式搭建博客，利用`dnspod`做分境内外的分别解析。在Coding申请证书时发现总是失败，最后通过暂停`GitHub`解析的方式成功申请了证书。
 
-{% include image.html link="in-post/post-jekyll-troubleshooting/dnspod.jpg" alt="Pause GutHub DNS Resolution" %}*Pause GitHub DNS Resolution, Screenshot from Cote's Blog*
+{% include post-image.html link="post-jekyll-troubleshooting/dnspod.jpg" alt="Pause GutHub DNS Resolution" %}*Pause GitHub DNS Resolution, Screenshot from Cote's Blog*
 
 在暂停`GitHub`解析后，Let's Encrypt就可以正确访问博客，创建证书了。
 

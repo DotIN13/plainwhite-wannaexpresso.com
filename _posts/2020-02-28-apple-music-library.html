@@ -23,7 +23,7 @@ locale: zh_CN
 <blockquote>
     EDIT: 2020/08/10 网页版的<a href='https://beta.music.apple.com'>Apple Music Beta</a>在国内已经可以正常使用，但功能仍然受到限制，不能浏览私人资料库与每日推荐歌单；更重要的是，音乐播放仍然卡顿。相信不久的将来Apple会进一步改善网页版的使用体验。
 </blockquote>
-{% include image.html link="in-post/post-apple-music/Apple-Music.jpeg" alt="Apple Music Logo" %}
+{% include post-image.html link="post-apple-music/Apple-Music.jpeg" alt="Apple Music Logo" %}
 <p> 打开手机上的网易云音乐，发现只能通过截图方式导入歌单。我想到了长截图，于是到酷安下载了<code>Long Shot</code>。然而，花了十几分钟导出的几万px长的截图在导入网易云后直接识别失败。抱着尝试一下的心态，我又手动截了几张导入，最后几十首歌只识别出了两首。万般无奈中，打开百度，发现自己就是在茫茫多从网易云迁移到<code>Apple Music</code>的人群之中的那个逆行者。功夫不负有心人，最后在<code>Google</code>的帮助下找到了Github上的一个小Repo:
     <a href="https://github.com/Rubioo/iTunes2NeteaseCloudMusic">iTunes2NeteaseCloudMusic</a>。</p>
 <h2 id="借助iTunes2NeteaseMusic导入歌单">借助iTunes2NeteaseMusic导入歌单</h2>
@@ -31,9 +31,9 @@ locale: zh_CN
 <p> 到<a href="https://github.com/Rubioo/iTunes2NeteaseCloudMusic/releases">Release</a>界面下载最新的软件，解压后备用。 </p>
 <h3 id="从iTunes导出酷狗歌单文件">从iTunes导出酷狗歌单文件</h3>
 <p> 你的<code>iTunes Music Library.xml</code>通常存放在<code>C:\Users\<User>\Music\iTunes</code>。将该xml文件复制到你刚刚解压的文件夹中。然后拖拽xml文件到iTunes2NeteaseCloudMusic.exe上面，如图所示：<br>
-    {% include image.html link="in-post/post-apple-music/4.png" alt="Instrustion 1" %}<br>你也可以使用命令行：<code>iTunes2NeteaseCloudMusic.exe "/path/to/file/iTunes Music Library.xml"</code>。稍等片刻，你将可以在解压的文件夹中看到以你的歌单名命名的<code>.kgl</code>酷狗音乐歌单文件了。
+    {% include post-image.html link="post-apple-music/4.png" alt="Instrustion 1" %}<br>你也可以使用命令行：<code>iTunes2NeteaseCloudMusic.exe "/path/to/file/iTunes Music Library.xml"</code>。稍等片刻，你将可以在解压的文件夹中看到以你的歌单名命名的<code>.kgl</code>酷狗音乐歌单文件了。
 </p>
 <h3 id="将酷狗歌单文件导入网易云">将酷狗歌单文件导入网易云</h3>
 <p> 由于不可言说的原因，网易云在新版的客户端中删除了导入酷狗歌单文件的入口，因此我们只能使用旧版的PC客户端。旧版的网易云音乐2.0可以在<a
         href="http://down.tech.sina.com.cn/content/62387.html">此处</a>下载安装。安装完成后，打开登录，点击头像，下拉菜单中点选<code>导入歌单</code>，选择导入酷狗歌单，如下图。<br>
-        {% include image.html link="in-post/post-apple-music/1.png" alt="Instruction 2" %}<br>稍等片刻，你就可以在你的歌单列表中看到你熟悉的<code>Apple Music</code>歌单了。 </p>
+        {% include post-image.html link="post-apple-music/1.png" alt="Instruction 2" %}<br>稍等片刻，你就可以在你的歌单列表中看到你熟悉的<code>Apple Music</code>歌单了。 </p>

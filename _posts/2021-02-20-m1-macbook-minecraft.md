@@ -36,7 +36,7 @@ locale: zh_CN
 
 Minecraft使用的是在macOS上比Oracle Java更加高效的Zulu Java 11 JDK for macOS ARM64；由于HMCL调用JavaFX渲染界面，需要使用JavaFX，因此这里我下载JDK FX版本，打开[下载页面](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk-fx)，如下图选择版本，下载DMG安装。
 
-{% include image.html link="in-post/post-macbook/zulu11.png" alt="Zulu Java 11 JDK Download" %}
+{% include post-image.html link="post-macbook/zulu11.png" alt="Zulu Java 11 JDK Download" %}
 
 安装好之后，可以运行`/usr/libexec/java_home -V`查看系统中所有Java的版本。
 
@@ -69,7 +69,7 @@ java -jar HMCL-3.3.181.jar # 打开HMCL
 
 HMCL已经可以正常打开，此时如同往常一样，进入`版本列表`->`安装新游戏版本`，安装1.16.5版本Minecraft，并同时安装Forge。
 
-{% include image.html link="in-post/post-macbook/HMCL.png" alt="Download 1.16.5 w/ Forge with HMCL" %}
+{% include post-image.html link="post-macbook/HMCL.png" alt="Download 1.16.5 w/ Forge with HMCL" %}
 
 ## 3. 下载预编译的库文件
 
@@ -89,7 +89,7 @@ mv m1-multimc-hack/lwjglfat.jar .minecraft/libraries/org/lwjgl/lwjgl/3.2.1/lwjgl
 
 点击侧边栏中我们刚才安装的游戏版本，如`1.16.5-forge`，点击上方工具栏中的`扳手🔧`，确保下方的Java版本选中了刚才安装的Zulu JDK 11，并设置合适的内存大小。然后点击`生成启动脚本`，可以将脚本保存到`~/Games/Minecraft/start.sh`。
 
-{% include image.html link="in-post/post-macbook/minecraft-script.png" alt="导出启动脚本" %}
+{% include post-image.html link="post-macbook/minecraft-script.png" alt="导出启动脚本" %}
 
 如下编辑`start.sh`并保存。
 
@@ -108,17 +108,17 @@ cd ~/Games/Minecraft # 进入游戏目录
 ./start.sh # 美妙的Minecraft启动界面映入眼帘
 ```
 
-{% include image.html link="in-post/post-macbook/minecraft-starting.png" alt="启动中..." %}
+{% include post-image.html link="post-macbook/minecraft-starting.png" alt="启动中..." %}
 
-{% include image.html link="in-post/post-macbook/minecraft-splashscreen.png" alt="主界面" %}
+{% include post-image.html link="post-macbook/minecraft-splashscreen.png" alt="主界面" %}
 
 打开Minecraft的过程很快，经过我的尝试，安装30个模组之后启动速度大约在一分钟以内；切换语言大约20秒内完成。游戏过程也较为稳定，没有出现过崩溃现象。
 
 仅安装Forge进入游戏大约有110-120FPS，此时CPU占用100%，配置内存2GiB时实际占用2.8GiB。
 
-{% include image.html link="in-post/post-macbook/minecraft-cpu.png" alt="CPU占用100%" %}
+{% include post-image.html link="post-macbook/minecraft-cpu.png" alt="CPU占用100%" %}
 
-{% include image.html link="in-post/post-macbook/minecraft-mem.png" alt="内存占用2.8GiB" %}
+{% include post-image.html link="post-macbook/minecraft-mem.png" alt="内存占用2.8GiB" %}
 
 ## 一个Minecraft的梦想
 

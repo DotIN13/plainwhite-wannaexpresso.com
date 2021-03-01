@@ -17,7 +17,7 @@ locale: zh_CN
 
 可能是吃得太饱，最近剁手了一片Raspberry Pi 4B。于是便打算搭建一个Aria2下载站，这就涉及到公网IP和端口转发的问题了。
 
-{% include image.html link="in-post/post-modem-bridge/raspberrypi.jpg" alt="RaspberryPi 4B" %}
+{% include post-image.html link="post-modem-bridge/raspberrypi.jpg" alt="RaspberryPi 4B" %}
 
 于是便兴冲冲给电信打电话，也不知客服是真不知假不知，总之是推说不清楚情况，转单给维修师傅。维修师傅一查，不得了，本就是公网IP，电话那头听上去很忙的样子，随口问了我一句会不会端口转发，也不等我回话，就直接帮我结了单，挂了电话。
 
@@ -39,7 +39,7 @@ locale: zh_CN
 
 不久师傅又来电，后台修改失败，我便折中地提出由我自己来修改。师傅欣然答应，帮我查找了登陆信息。可当我登陆上`192.168.1.1`的光猫界面，一下傻眼了。这配置界面可比一般的路由器要高端不少，甚至还能看到光纤的光信号特征数据。黑猫里摸瞎子，在网上搜集了不少资料，总算是有了些头绪。
 
-{% include image.html link="in-post/post-modem-bridge/modem.png" alt="ONT Settings" %}
+{% include post-image.html link="post-modem-bridge/modem.png" alt="ONT Settings" %}
 
 在`网络`->`宽带设置`里找到连接名称，下拉菜单选取名字里带有INTERNET字样的选项。点击可以看到拨号的帐号与密码，将模式修改为Brigde（桥接）。
 

@@ -34,15 +34,15 @@ Python：零基础。
 
 电路设计如图，全部照抄。
 
-{% include image.html link="in-post/post-pi-fan/circut.jpg" alt="Circut Design" %}
+{% include post-image.html link="post-pi-fan/circut.jpg" alt="Circut Design" %}
 
-{% include image.html link="in-post/post-pi-fan/emulation.jpg" alt="Weld Guide" %}
+{% include post-image.html link="post-pi-fan/emulation.jpg" alt="Weld Guide" %}
 
 ## 成品
 
 我在实际操作的时候，直接将公对母杜邦线一剪为二，母头用于连接GPIO，公头用于和风扇自带的母头空中对接。
 
-{% include image.html link="in-post/post-pi-fan/final.jpg" alt="My Work" %}
+{% include post-image.html link="post-pi-fan/final.jpg" alt="My Work" %}
 
 ## 使用
 

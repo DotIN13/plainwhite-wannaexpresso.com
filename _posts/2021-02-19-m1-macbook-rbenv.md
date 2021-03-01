@@ -17,7 +17,7 @@ locale: zh_CN
 
 看起来有不少尝鲜购入M1 MacBook的朋友装上了x86的homebrew，导致在编译Ruby时遇到了错误。事实上，如果使用了正确的ARM64 Homebrew，就已经可以正常地编译使用rbenv+Ruby了。
 
-{% include image.html link="in-post/post-macbook/ruby-versions.png" alt="My Ruby Environment" %}
+{% include post-image.html link="post-macbook/ruby-versions.png" alt="My Ruby Environment" %}
 
 系统自带的是Ruby-2.6.3，我已经成功使用rbenv安装了2.7.2用来写作Jekyll，并且准备用3.0.0来继续开发我的Rails项目。
 

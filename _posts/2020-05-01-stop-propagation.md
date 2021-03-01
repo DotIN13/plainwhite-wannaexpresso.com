@@ -15,7 +15,7 @@ locale: zh_CN
 
 在网上兜兜转转，发现用Hux主题的朋友实在是非常多，可见这一主题观感、实用度上还是很能笼络人心的。不过既然大家都在用，难免显得有些缺乏个性，于是便又上网搜刮，更换到了[@thelehhman制作的Plainwhite](https://github.com/thelehhman/plainwhite-jekyll)。主题本身很棒，不过非常简单，很多功能都需要手动添加，比如——搜索功能。
 
-{% include image.html link="in-post/post-searchbar/searchbar.gif" alt="Plainwhite Searchbar" %}
+{% include post-image.html link="post-searchbar/searchbar.gif" alt="Plainwhite Searchbar" %}
 
 搜索功能，之前已经在Hux主题上折腾过了，为Hux Blog添加了一个[简单的Bootstrap风格搜索框](/2020/03/14/jekyll-blog-searchbar/)。不过，Plainwhite主题本身非常简洁，简洁到我不知道该往哪里加搜索框才能保证页面的纯净，思来想去，最后决定放在Page页面的顶部。
 

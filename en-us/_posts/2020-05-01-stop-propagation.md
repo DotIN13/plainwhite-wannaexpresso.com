@@ -15,7 +15,7 @@ locale: en_US
 
 After surfing the NET for a while, I found that there were really a lot of people using Hux Blog Jekyll theme, which was a solid proof the theme stands out both visually and pragmatically. But as it seemed everyone's using it, I thought it would be a loss of personality if I kept it as well. So I scrolled through the Internet and switched to [@thelehhman's Plainwhite](https://github.com/thelehhman/plainwhite-jekyll). The theme itself was great, however, it's so simple that I had to add manually many features, such as the search bar.
 
-{% include image.html link="in-post/post-searchbar/searchbar.gif" alt="Plainwhite Searchbar" %}
+{% include post-image.html link="post-searchbar/searchbar.gif" alt="Plainwhite Searchbar" %}
 
 I have previously implemented [search module on Hux Blog](/2020/03/14/jekyll-blog-searchbar/), so I had the experience. However, you can see that the Plainwhite theme is so minimalistic that I couldn't decide where to hoist a search bar. Finally I decided to go with the `posts` label on the top of the page.
 

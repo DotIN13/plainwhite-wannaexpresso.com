@@ -59,6 +59,17 @@ module.exports = {
                 test: /search\.json/,
                 type: 'asset/resource',
             },
+            {
+                test: /\.(jpe?g|png|webp|webp)$/i,
+                use: [{
+                    loader: 'responsive-loader',
+                    options: {
+                        adapter: require('responsive-loader/sharp'),
+                        sizes: [320, 640, 960, 1600],
+                        outputPath: 'img',
+                    }
+                }]
+            },
         ],
     },
     plugins: [

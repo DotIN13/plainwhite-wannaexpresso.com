@@ -2,7 +2,7 @@
 layout: post
 title: "从GitHub Page迁移到Zeit Now"
 subtitle: "Moving Jekyll Blog to Zeit Now"
-header-img: "assets/img/in-post/post-jekyll-troubleshooting/jekyll.png"
+header-img: "assets/img/post-jekyll-troubleshooting/jekyll.png"
 author: "DotIN13"
 header-mask: 0.6
 tags:
