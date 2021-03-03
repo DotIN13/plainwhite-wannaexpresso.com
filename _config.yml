@@ -9,7 +9,7 @@ avatar: "/assets/img/orange.webp"
 
 permalink: pretty
 timezone: Asia/Shanghai
-exclude: ["node_modules", "package.json", "README.md", "webpack.config.js", "_webpack"]
+exclude: ["node_modules", "package.json", "README.md", "webpack.*.js", "_webpack"]
 defaults:
   - scope:
       path: ""

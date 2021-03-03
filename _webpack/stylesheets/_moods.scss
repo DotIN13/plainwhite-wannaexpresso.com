@@ -3,11 +3,6 @@
   opacity: 1;
 }
 
-#moods-container {
-  @extend .posts;
-  padding-left: 40px;
-}
-
 .moods-track {
   position: relative;
   margin: 1em 0;

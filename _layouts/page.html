@@ -2,10 +2,8 @@
 layout: default
 ---
 
-{%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
-
 {%- if site.posts.size > 0 -%}
-<div class="posts">
+<div class="posts-container">
   {% include posts-label.html type="posts" search=true %}
   <ul>
     {%- for post in paginator.posts limit: 1 -%}
@@ -20,26 +18,26 @@ layout: default
 {{ content }}
 
 {%- if site.posts.size > 0 -%}
-<div class="posts">
+<div class="posts-container">
   <ul>
     {%- for post in paginator.posts offset: 1 -%}
     {%- include post-intro.html post=post -%}
     {%- endfor -%}
   </ul>
+
+  {% if paginator.total_pages > 1 %}
+  <ul class="pagination-links">
+    {% if paginator.previous_page %}
+    <li class="float-start">
+      <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">NEWER</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="float-end">
+      <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER</a>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
 </div>
 {%- endif -%}
-
-{% if paginator.total_pages > 1 %}
-<ul class="pagination-links">
-  {% if paginator.previous_page %}
-  <li class="float-start">
-    <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">NEWER</a>
-  </li>
-  {% endif %}
-  {% if paginator.next_page %}
-  <li class="float-end">
-    <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER</a>
-  </li>
-  {% endif %}
-</ul>
-{% endif %}

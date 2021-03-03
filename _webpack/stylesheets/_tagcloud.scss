@@ -3,14 +3,6 @@
   display: none !important;
 }
 
-.archive {
-  padding-left: 40px;
-
-  @media screen and (max-width: $mobileW) {
-    min-height: 900px;
-  }
-}
-
 .tags {
   margin-bottom: -5px;
 }

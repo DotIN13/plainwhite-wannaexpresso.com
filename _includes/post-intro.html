@@ -1,3 +1,5 @@
+{%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
+
 <li>
   <a class="post-link" href="{{ include.post.url | relative_url }}">
     <h2 class="post-title">{{ include.post.title | escape }}</h2>

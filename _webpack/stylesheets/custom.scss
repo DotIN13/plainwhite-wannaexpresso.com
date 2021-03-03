@@ -1,11 +1,14 @@
+/* Variables */
 $linkColor: #9C27B0;
-$mobileW: 768px;
 $smallMobileW: 480px;
+$mobileW: 600px;
 $midScreenW: 1024px;
 $bigScreenW: 1600px;
+
 $leftWidth: 220px;
 $maxWidth: 1000px;
 
+/* Mixins */
 @mixin button {
     background: #e3e3e3;
     cursor: pointer;
@@ -20,6 +23,16 @@ $maxWidth: 1000px;
     }
 }
 
+@mixin sans-serif {
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+
+@mixin serif {
+    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+
 @import "ext/fonts";
 @import "ext/normalize";
 @import "syntax";
@@ -31,6 +44,8 @@ $maxWidth: 1000px;
 @import "toggle";
 @import "dark";
 
+/* General */
+
 *,
 *:before,
 *:after {
@@ -38,8 +53,7 @@ $maxWidth: 1000px;
 }
 
 body {
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-    font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    @include sans-serif();
     font-size: 16px;
     line-height: 1.2em;
     margin: 0;
@@ -74,59 +88,60 @@ h2 {
 main {
     margin: 0 90px;
     display: flex;
-    height: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 
-    @media screen and (min-width: $bigScreenW) {
+    @media screen and (min-width: $bigScreenW + 1) {
         margin: 0 auto;
-        max-width: 1440px;
+        width: 86%;
     }
 
     @media screen and (max-width: 1280px) {
         margin: 0 75px;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: $midScreenW) {
+        flex-direction: column;
+        padding: 0 30px;
         margin: 0 35px;
     }
 
     @media screen and (max-width: $mobileW) {
         margin: 0 10px;
-        flex-direction: column;
     }
 
     @media screen and (max-width: $smallMobileW) {
+        padding: 0 20px;
         margin: 0;
     }
 
     .content {
-        @media screen and (min-width: $mobileW + 1) {
-            max-width: calc(100% - #{$leftWidth});
-            margin-left: $leftWidth;
-            width: 100%;
-        }
+        width: 100%;
+        overflow: auto;
     }
 }
 
+/* About */
 .about {
     display: flex;
     height: 100vh;
-    padding-bottom: 5vh;
+    flex: 1 0 $leftWidth;
+    padding-top: 3vh;
+    position: sticky;
+    top: 0;
+
+    @media screen and (max-width: $midScreenW) {
+        position: inherit;
+        padding-top: 15vh;
+        height: auto;
+    }
 
     @media screen and (max-width: $mobileW) {
-        height: auto;
-        padding: 5vh 30px;
+        padding-top: 5vh;
     }
 
-    @media screen and (max-width: $smallMobileW) {
-        padding: 5vh 20px;
-    }
-
-    @media screen and (min-width: $mobileW + 1) {
-        position: fixed;
-        max-width: 280px;
-    }
-
-    min-width: $leftWidth;
+    max-width: 280px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -184,10 +199,9 @@ main {
     }
 
     .button {
-
         border-radius: 24px;
         padding: 5px 10px;
-        @include button;
+        @include button();
     }
 
     .about-footer {
@@ -206,15 +220,14 @@ main {
             }
         }
     }
+
 }
 
-footer.about {
-    display: none;
-}
+section.about {
 
-@media screen and (max-width: $mobileW) {
+    /* Responsive about */
+    @media screen and (max-width: $midScreenW) {
 
-    section.about {
         .condensed {
             display: none;
         }
@@ -244,18 +257,23 @@ footer.about {
             }
         }
     }
+}
 
-    footer.about.condensed {
+footer.about.condensed {
+    display: none;
+    padding-top: 40px;
+
+    @media screen and (max-width: $midScreenW) {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 40px;
-
-        @media screen and (max-width: $smallMobileW) {
-            margin: 0 20px;
-        }
-
+        align-self: center;
+        margin: 20px 40px 10px 40px;
         border-top: 1px solid #eee;
+    }
+
+    @media screen and (max-width: $smallMobileW) {
+        margin: 20px 20px 10px 40px;
     }
 }
 
@@ -294,7 +312,7 @@ footer.about {
 
         a {
             display: block;
-            font-family: 'Merriweather';
+            @include serif();
             font-weight: 300;
             text-align: center;
             padding: 1rem 0;
@@ -319,23 +337,14 @@ footer.about {
     padding: 0;
 
     a {
+        @include button();
         font-size: 14px;
         float: left;
-        background-color: #e3e3e3;
         border-radius: 2px;
-        /*@media screen and (max-width: $mobileW) {
-    margin-top: 5px;
-    }*/
         margin-right: 10px;
         margin-bottom: 10px;
-        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         text-decoration: none;
         padding: 5px 20px;
-
-        &:hover {
-            background-color: $linkColor;
-            color: white;
-        }
     }
 }
 
@@ -412,49 +421,49 @@ i.icon-calendar {
     margin-top: 0;
 }
 
-.post-container {
+.post-container,
+.posts-container,
+#moods-container,
+.archive-container {
     list-style-type: none;
-    margin: 45px 30px;
-    max-width: $maxWidth;
+    margin: 45px 30px 45px 0;
+    width: 66%;
+    padding-left: 60px;
 
-    /*@media screen and (max-width: $smallMobileW) {
-    padding: 0 !important;
-    margin-top: 0;
-  }*/
-    @media screen and (max-width: $smallMobileW) {
-        margin-left: 20px;
-        margin-right: 20px;
+    @media screen and (max-width: $bigScreenW) {
+        width: 72%;
     }
 
-    @media screen and (max-width: $mobileW) {
-        padding: 0 !important;
+    @media screen and (max-width: $midScreenW) {
+        width: 100%;
+        margin: 0;
         margin-top: 0;
+        padding: 0;
     }
 }
 
-.posts {
-    list-style-type: none;
-    margin: 35px 30px 45px 30px;
-    max-width: $maxWidth;
-    padding-left: 40px;
+#moods-container {
+    width: 100%;
+}
 
-    /*@media screen and (max-width: $smallMobileW) {
-    padding: 0 !important;
-    margin-top: 0;
-  }*/
-    @media screen and (max-width: $smallMobileW) {
-        margin-left: 20px;
-        margin-right: 20px;
+.archive-container {
+    width: 72%;
+
+    @media screen and (max-width: $bigScreenW) {
+        width: 87%;
     }
 
-    @media screen and (max-width: $mobileW) {
-        padding: 0 !important;
-        margin-top: 0;
+    @media screen and (max-width: $midScreenW) {
+        width: 100%;
     }
+}
+
+.posts-container {
+    margin-top: 35px;
 
     ul {
         list-style-type: none;
-        padding: 0;
+        padding-left: 0;
     }
 
     .post-title {
@@ -462,14 +471,8 @@ i.icon-calendar {
     }
 }
 
-.post-container {
-    padding-left: 30px;
-    max-width: $maxWidth;
-}
-
 .post {
-    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-    font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    @include serif();
     font-weight: 400;
     color: #222;
     line-height: 1.9em;
@@ -490,11 +493,12 @@ i.icon-calendar {
     h4,
     h5,
     h6 {
-        font-family: Raleway, sans-serif;
+        @include sans-serif();
     }
 
     /* Images */
     a+em {
+        @include sans-serif();
         font-size: 0.9em;
         color: #666;
         display: block;
@@ -506,11 +510,11 @@ i.icon-calendar {
         margin-left: auto;
         margin-right: auto;
         display: block;
-        max-width: 80%;
+        width: 80%;
         height: auto;
 
         @media screen and (max-width: $mobileW) {
-            max-width: 95%;
+            width: 95%;
         }
 
         &:focus,
@@ -525,41 +529,19 @@ i.icon-calendar {
 }
 
 /* pagination */
-.pagination-links {
+ul.pagination-links {
     list-style-type: none;
-    margin: 45px 30px;
     padding-bottom: 60px;
-    max-width: $maxWidth;
-
-    @media screen and (max-width: $smallMobileW) {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    @media screen and (max-width: $mobileW) {
-        padding: 0;
-        padding-bottom: 40px;
-        margin-top: 0;
-    }
 
     li {
 
         a {
-            line-height: 1.2em;
-            font-size: 0.95em;
+            @include button();
             text-decoration: none;
-            background-color: #ededed;
             padding: 6px 25px;
             border-radius: 2px;
-            transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
             display: inline-block;
             min-width: 95px;
-            text-align: center;
-
-            &:hover {
-                background-color: $linkColor;
-                color: white;
-            }
         }
     }
 }

@@ -6,6 +6,7 @@ description: "'Tis Me."
 header-img: "assets/img/about-bg.jpg"
 multilingual: true
 locale: zh_CN
+javascript: posts
 ---
 
 
