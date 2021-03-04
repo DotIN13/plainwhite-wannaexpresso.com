@@ -17,7 +17,7 @@
             return document.querySelector(".mood-button--next")
         },
         get track() {
-            return document.querySelector(".moods")
+            return document.querySelector(".mood-track")
         },
         get index() {
             return parseInt(this.track.dataset.moodFocus)
@@ -56,13 +56,12 @@
     }
 
     function bindMoodUtilities() {
-        if (document.getElementById("moods-container")) {
+        if (document.querySelector(".mood")) {
             moods.buttonPrev.addEventListener("click", prevMood)
             moods.buttonNext.addEventListener("click", nextMood)
             moods.track.addEventListener("scroll", scrollControl)
         }
     }
-
 
     window.addEventListener("DOMContentLoaded", bindMoodUtilities)
 })()

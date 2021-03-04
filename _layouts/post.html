@@ -43,28 +43,26 @@ layout: default
     {% include anchor-headings.html beforeHeading=true anchorBody="#" html=content %}
   </div>
 
-  <div class="pager">
-    <ul>
-      {% if page.previous.url %}
-      <li class="float-start">
-        <a class="button" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
-          data-placement="top" title="{{page.previous.title}}">
-          PREV<br>
-          <span>{{page.previous.title}}</span>
-        </a>
-      </li>
-      {% endif %}
-      {% if page.next.url %}
-      <li class="float-end">
-        <a class="button" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
-          data-placement="top" title="{{page.next.title}}">
-          NEXT<br>
-          <span>{{page.next.title}}</span>
-        </a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
+  <ul class="post-pager">
+    {% if page.next.url %}
+    <li class="pager--next">
+      <a class="button" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+        data-placement="top" title="{{page.next.title}}">
+        NEXT<br>
+        <span>{{page.next.title}}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if page.previous.url %}
+    <li class="pager--prev">
+      <a class="button" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
+        data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+        PREV<br>
+        <span>{{page.previous.title}}</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
 
   {% if site.valine %}
   <div id="vcomments"></div>
@@ -78,7 +76,8 @@ layout: default
       this.page.identifier = '{{ page.url | absolute_url }}';
     };
     (function () {
-      var d = document, s = d.createElement('script');
+      var d = document,
+        s = d.createElement('script');
       s.src = 'https://{{ site.plainwhite.disqus_shortname }}.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());
       (d.head || d.body).appendChild(s);
