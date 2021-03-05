@@ -12,7 +12,8 @@
     <section class="about">
       <div class="about-header">
         <div class="about-title">
-          <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}" id="avatar" data-caption="{{ site.plainwhite.name }}" data-webpack="true" data-path="/assets/img/orange.webp">
+          <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}" id="avatar"
+            data-caption="{{ site.plainwhite.name }}" data-webpack="true" data-path="/assets/img/orange.webp">
           </a>
           <h2 id="title">
             <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
@@ -26,13 +27,17 @@
       {% capture footer %}
       <div class="buttons {{ condensed_class }}">
         {%- if page.locale == 'en_US' -%}
-        <a href="/" class="language-selection button" aria-label="Change locale to Chinese."><span class="icon-translate-off"></span></a>
+        <a href="/" class="language-selection button" aria-label="Change locale to Chinese."><span
+            class="icon-translate-off"></span></a>
         {%- else -%}
-        <a href="/en-us/" class="language-selection button" aria-label="Change locale to English."><span class="icon-translate"></span></a>
+        <a href="/en-us/" class="language-selection button" aria-label="Change locale to English."><span
+            class="icon-translate"></span></a>
         {%- endif -%}
         <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span class="icon-rss_feed"></span></a>
         {%- if site.plainwhite.dark_mode -%}
-        <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a>
+        <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#"
+          aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span
+            class="icon-sun"></span></a>
         {%- endif -%}
       </div>
 
@@ -120,8 +125,8 @@
           <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a>
         </div>
       </section>
-        {% endcapture %}
-        {{ footer }}
+      {% endcapture %}
+      {{ footer }}
     </section>
     <section class="content">
       {{ content }}
@@ -134,7 +139,10 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
     gtag('js', new Date());
 
     gtag('config', '{{ site.plainwhite.analytics_id }}');

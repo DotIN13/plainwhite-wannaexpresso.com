@@ -207,10 +207,18 @@ main {
         }
     }
 
-    img {
-        max-width: 150px;
+    #avatar img {
         border-radius: 0.2rem;
         cursor: pointer;
+
+        @media screen and (max-width: $midScreenW) {
+            max-height: 105px;
+            width: auto;
+        }
+
+        @media screen and (max-width: $mobileW) {
+            max-height: 90px;
+        }
     }
 
     a {
@@ -267,10 +275,6 @@ section.about {
                 flex-direction: row;
                 align-items: flex-end;
                 margin-bottom: 10px;
-
-                img {
-                    max-height: 4.2em;
-                }
 
                 h2 {
                     margin: 10px;
@@ -509,11 +513,15 @@ i.icon-calendar {
         margin-left: auto;
         margin-right: auto;
         display: block;
-        width: 80%;
+        max-width: 76%;
+        max-height: 64vh;
         height: auto;
+        width: auto;
 
         @media screen and (max-width: $mobileW) {
             width: 95%;
+            max-width: none;
+            max-height: none;
         }
 
         &:focus,

@@ -7,6 +7,8 @@ const {
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 
 // https://webpack.js.org/configuration/
 module.exports = {
@@ -70,6 +72,13 @@ module.exports = {
         new WebpackAssetsManifest(),
         new MiniCssExtractPlugin({
             filename: '[name].css',
+        }),
+        new HtmlWebpackPlugin(),
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            as(entry) {
+                if (/\.woff2?$/.test(entry)) return 'font';
+            }
         }),
     ],
     optimization: {

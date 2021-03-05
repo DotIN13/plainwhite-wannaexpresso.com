@@ -1,8 +1,9 @@
 /* Modules */
 import "@fancyapps/fancybox"
 import responsiveGenerator from '../responsive-img'
-import avatar from '/assets/img/orange.webp?sizes[]=70,sizes[]=120,sizes[]=150,sizes[]=320&format=png'
-import avatarWebp from '/assets/img/orange.webp?sizes[]=70,sizes[]=120,sizes[]=150,sizes[]=320&format=webp'
+import avatarAvif from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=avif'
+import avatarWebp from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=webp'
+const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-width: 1600px) 240px, 240px"
 
 window.addEventListener('DOMContentLoaded', () => {
     $('[data-fancybox="gallery"]').fancybox({
@@ -13,7 +14,17 @@ window.addEventListener('DOMContentLoaded', () => {
         ]
     });
 
-    responsiveGenerator(document.getElementById('avatar'), avatar, avatarWebp, true)
+    responsiveGenerator(document.getElementById('avatar'), [avatarAvif, avatarWebp], avatarSizes, false, {
+        width: 150,
+        height: 150
+    })
+    // const link = document.createElement('link')
+    // link.rel = "preload"
+    // link.href = avatarWebp.src
+    // link.as = "image"
+    // link.setAttribute("imagesrcset", avatarWebp.srcSet)
+    // link.setAttribute("imagesizes", avatarSizes)
+    // document.head.appendChild(link)
 })
 
 /* CSS */
