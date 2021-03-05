@@ -18,13 +18,6 @@ window.addEventListener('DOMContentLoaded', () => {
         width: 150,
         height: 150
     })
-    // const link = document.createElement('link')
-    // link.rel = "preload"
-    // link.href = avatarWebp.src
-    // link.as = "image"
-    // link.setAttribute("imagesrcset", avatarWebp.srcSet)
-    // link.setAttribute("imagesizes", avatarSizes)
-    // document.head.appendChild(link)
 })
 
 /* CSS */
