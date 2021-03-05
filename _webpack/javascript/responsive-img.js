@@ -7,7 +7,7 @@ export default function (el, imgObjs = [], sizes, lazy = true, dim = {
     img.alt = el.dataset.caption
     const srcObj = imgObjs[imgObjs.length - 1]
     img.src = srcObj.src
-    img.loading = lazy ? 'lazy' : 'auto'
+    img.loading = lazy ? 'lazy' : 'eager'
     if (dim["original"]) {
         img.width = srcObj.width
         img.height = srcObj.height
