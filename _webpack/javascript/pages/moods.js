@@ -64,8 +64,8 @@ function scrollControl() {
 
 /** Mood images */
 function renderMoodImages() {
-    document.querySelectorAll('.mood-header-image').forEach((el) => {
-        responsiveGenerator(el, [imagesAvif[el.dataset.path], imagesWebp[el.dataset.path]], imageSizes)
+    document.querySelectorAll('.mood-header-image').forEach((el, index) => {
+        responsiveGenerator(el, [imagesAvif[el.dataset.path], imagesWebp[el.dataset.path]], imageSizes, index > 1)
     })
 }
 
