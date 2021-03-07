@@ -1,4 +1,4 @@
-export default function (el, imgObjs = [], sizes, lazy = true, dim = {
+export function responsiveGenerator (el, imgObjs, sizes, lazy = true, dim = {
     original: true
 }) {
     const pic = document.createElement('picture')
@@ -26,4 +26,10 @@ export default function (el, imgObjs = [], sizes, lazy = true, dim = {
 
     pic.appendChild(img)
     el.appendChild(pic)
+}
+
+export function importAll(r) {
+    let images = {}
+    r.keys().map(x => images[x.replace(/^\.\//, '')] = r(x))
+    return images
 }

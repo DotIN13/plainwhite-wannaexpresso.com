@@ -2,20 +2,26 @@
 <ul class="mood-track" data-mood-focus="0">
   {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
   {% for mood in sorted_moods %}
-  <li class="mood">
-    <div class="mood-content" data-fancybox data-animation-duration="700" data-src="#{{ mood.date | date: '%s' }}"
-      href="javascript:;">
-      <h2>{{ mood.title }}</h2>
-      <article>
-        {{ mood.content | smart_truncate: 140 }}
-      </article>
-      <div class="mood-meta">
-        <i class="icon-calendar"></i>
-        <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
-        <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
+  <li class="mood" data-fancybox data-animation-duration="700" data-src="#{{ mood.date | date: '%s' }}"
+    href="javascript:;">
+    <div class="mood-excerpt">
+      {% if mood.header-image %}
+      <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}"
+        data-webpack=true></div>
+      {% endif %}
+      <div class="mood-content">
+        <h2>{{ mood.title }}</h2>
+        <article>
+          {% if mood.header-image %}{{ mood.content | smart_truncate: 88 }}{% else %}{{ mood.content | smart_truncate: 168 }}{% endif %}
+        </article>
       </div>
     </div>
-    <div style="display: none;" id="{{ mood.date | date: '%s' }}" class="animated-modal">
+    <div class="mood-meta">
+      <i class="icon-calendar"></i>
+      <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
+      <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
+    </div>
+    <div style="display: none;" id="{{ mood.date | date: '%s' }}" class="animated-modal mood-full">
       <h2>{{ mood.title }}</h2>
       <div class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_full_format }}</div>
       <article>{{ mood.content }}</article>

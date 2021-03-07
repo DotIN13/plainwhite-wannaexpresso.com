@@ -54,6 +54,8 @@ module Jekyll
   module SmartTruncate
     def smart_truncate(input, num_words = 100, after = '...')
       doc = Nokogiri::HTML(input)
+      return '' if doc.root.nil?
+
       words = smart_truncate_doc(doc, num_words)
 
       body = doc.root.children.first

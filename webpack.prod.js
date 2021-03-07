@@ -1,11 +1,12 @@
-const { merge } = require('webpack-merge');
+const {
+    merge
+} = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: 'production',
-  module: {
-    rules: [
-        {
+    mode: 'production',
+    module: {
+        rules: [{
             test: /\.(jpe?g|png|webp|webp)$/i,
             use: [{
                 loader: 'responsive-loader',
@@ -15,7 +16,6 @@ module.exports = merge(common, {
                     outputPath: 'img',
                 }
             }]
-        },
-    ],
-},
+        }],
+    },
 });
