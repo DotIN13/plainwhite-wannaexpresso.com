@@ -9,6 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 // https://webpack.js.org/configuration/
 module.exports = {
@@ -73,12 +74,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
-        new HtmlWebpackPlugin(),
-        new PreloadWebpackPlugin({
-            rel: 'preload',
-            as(entry) {
-                if (/\.woff2?$/.test(entry)) return 'font';
-            }
+        new WorkboxPlugin.InjectManifest({
+            swSrc: './_webpack/javascript/service-worker.js',
+            swDest: path.resolve(__dirname, "service-worker.js"),
+            modifyURLPrefix: {
+                '': '/assets/public/',
+            },
         }),
     ],
     optimization: {

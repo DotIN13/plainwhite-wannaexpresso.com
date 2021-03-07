@@ -499,6 +499,10 @@ i.icon-calendar {
         @include sans-serif();
     }
 
+    .post-img {
+        margin-top: 1.5em;
+    }
+
     /* Images */
     a+em {
         @include sans-serif();

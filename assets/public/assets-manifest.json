@@ -1,4 +1,5 @@
 {
+  "../../service-worker.js": "../../service-worker.js",
   "1.png?format=avif": "img/9b985615fa24e9eeab883941dea2af81-960.avif",
   "1.png?format=webp": "img/db6955570ea52d6940936d7350d6a81a-960.webp",
   "4.png?format=avif": "img/8a6c862f52141a75e513395ec8c7b57a-640.avif",
@@ -233,7 +234,6 @@
   "img/zulu11.png?format=webp": "img/67ec8cb8e8b8001260aac67d0da458af-1600.webp",
   "in-store.jpg?format=avif": "img/973fe47e1f59004fb017034a39fb4849-960.avif",
   "in-store.jpg?format=webp": "img/31b0cd10672f425abf476d1c03c3cc0a-960.webp",
-  "index.html": "index.html",
   "jekyll.png?format=avif": "img/a0e750543326ca105b133f6cd917ee58-960.avif",
   "jekyll.png?format=webp": "img/16c62fe03f826559756539365e172348-960.webp",
   "keys.jpg?format=avif": "img/e5e6686b7ffa4971c4e46f6368e026de-960.avif",

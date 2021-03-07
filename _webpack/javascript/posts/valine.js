@@ -12,8 +12,13 @@ window.addEventListener('DOMContentLoaded', () => {
         visitor: true,
         lang: 'en'
     })
+
     if (document.getElementById('vcomments')) {
-        document.querySelector(".vicon.vemoji-btn").innerHTML = '';
-        document.querySelector(".vicon.vpreview-btn").innerHTML = '';
+        document.querySelector(".vicon.vemoji-btn").innerHTML = ''
+        document.querySelector(".vicon.vpreview-btn").innerHTML = ''
+        let markdownLink = document.querySelector(".vpanel .markdown").parentElement
+        markdownLink.ariaLabel = "Markdown Guidelines"
+        markdownLink.rel = "nofollow noopener noreferrer"
+        document.querySelector(".vpower.txt-right").remove()
     }
 })
