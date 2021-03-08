@@ -3,206 +3,217 @@ $darkLinkColor: #e584f6;
 $darkSecondary: #333;
 
 body.dark {
-  background-color: #171717;
+    background-color: #171717;
 }
 
 .dark main,
 .dark main * {
 
-  /* General */
-  background-color: #171717;
-  color: $darkTextColor;
-  border-color: #e6e6e6;
-
-  .about .about-footer a,
-  .about .about-footer p {
-    color: #666;
-
-    &:hover {
-      color: $darkLinkColor;
-    }
-  }
-
-  .post p {
-    color: #ddd;
-  }
-
-  .social {
-
-    i {
-      background-color: transparent;
-    }
-
-    .icon-circle {
-      color: $darkSecondary;
-      transition: color 0.3s;
-    }
-
-    a:hover .icon-circle {
-      color: $darkLinkColor;
-    }
-  }
-
-  .icon-translate {
-    background-color: transparent;
-  }
-
-  /* Code highlighting */
-  @import 'ext/solarized-dark';
-
-  .highlight,
-  .highlight * {
-    background-color: #00080a;
-    color: #93a1a1;
-  }
-
-  div.highlight-dark {
-    padding: 5px 20px;
-  }
-
-  pre.highlight-dark,
-  code {
-    font-family: 'Consolas', Menlo, monospace;
-    line-height: 1.4em;
-    tab-size: 4;
-  }
-
-  /* Tag pills */
-  .post-categories {
-    li {
-      background-color: $darkSecondary;
-      color: #fff;
-    }
-  }
-
-  /* Links */
-  a {
-    color: $darkLinkColor;
-
-    &:hover {
-      color: $darkTextColor;
-    }
-  }
-
-  .navigation a {
+    /* General */
+    background-color: #171717;
     color: $darkTextColor;
-      
-      &:hover {
-        color: $darkLinkColor;
-      }
-  }
+    border-color: #e6e6e6;
 
-  a.post-link:hover {
-
-    h2, h3 {
-      color: $darkLinkColor;
-    }
-  }
-
-  #title a {
-    color: #fff;
-
-    &:hover {
-      color: $darkLinkColor;
-    }
-  }
-
-  /* LabelGroup */
-  .posts-label {
-    color: $darkTextColor;
-    border-bottom: 1px solid #272727;
-  }
-
-  .labelgroup {
-    border-bottom: 1px solid #333;
-  }
-
-  #posts-labelgroup {
-    
-    .search-results {
-      background-color: $darkSecondary;
-
-      a {
-        color: white;
-        background-color: $darkSecondary;
+    .about .about-footer a,
+    .about .about-footer p {
+        color: #666;
 
         &:hover {
-          background-color: #171717;
+            color: $darkLinkColor;
         }
-      }
     }
 
-    .search-section i {
-      background-color: transparent;
-    }
-  }
+    .about #pwa-install {
+        background-color: #6f4177;
+        color: #df93e8;
 
-  #posts-labelgroup:hover {
-
-    i {
-      color: white;
-    }
-
-    input {
-      color: white;
-    }
-  }
-
-
-  #posts-labelgroup.focus-within {
-
-    .search-section {
-      background-color: $darkSecondary;
+        &.expand {
+            background-color: $linkColor;
+            color: white;
+        }
     }
 
-    input {
-      color: $darkTextColor;
-      background-color: $darkSecondary;
+    .post p {
+        color: #ddd;
     }
 
-    i {
-      color: white;
-    }
-  }
+    .social {
 
-  /* Archive tagcloud */
-  .button,
-  #tag-cloud .tag-button,
-  #show-tags {
-    background-color: $darkSecondary;
-    color: $darkTextColor;
+        i {
+            background-color: transparent;
+        }
 
-    &:hover {
-      background-color: $darkLinkColor;
-    }
+        .icon-circle {
+            color: $darkSecondary;
+            transition: color 0.3s;
+        }
 
-    & * {
-      background-color: transparent;
-    }
-  }
-
-  /* Moods */
-  .mood-button {
-
-    .mood-arrow {
-      border-color: $darkTextColor;
+        a:hover .icon-circle {
+            color: $darkLinkColor;
+        }
     }
 
-    &::before {
-      background-color: $darkSecondary;
+    .icon-translate {
+        background-color: transparent;
     }
-  }
+
+    /* Code highlighting */
+    @import 'ext/solarized-dark';
+
+    .highlight,
+    .highlight * {
+        background-color: #00080a;
+        color: #93a1a1;
+    }
+
+    div.highlight-dark {
+        padding: 5px 20px;
+    }
+
+    pre.highlight-dark,
+    code {
+        font-family: 'Consolas', Menlo, monospace;
+        line-height: 1.4em;
+        tab-size: 4;
+    }
+
+    /* Tag pills */
+    .post-categories {
+        li {
+            background-color: $darkSecondary;
+            color: #fff;
+        }
+    }
+
+    /* Links */
+    a {
+        color: $darkLinkColor;
+
+        &:hover {
+            color: $darkTextColor;
+        }
+    }
+
+    .navigation a {
+        color: $darkTextColor;
+
+        &:hover {
+            color: $darkLinkColor;
+        }
+    }
+
+    a.post-link:hover {
+
+        h2,
+        h3 {
+            color: $darkLinkColor;
+        }
+    }
+
+    #title a {
+        color: #fff;
+
+        &:hover {
+            color: $darkLinkColor;
+        }
+    }
+
+    /* LabelGroup */
+    .posts-label {
+        color: $darkTextColor;
+        border-bottom: 1px solid #272727;
+    }
+
+    .labelgroup {
+        border-bottom: 1px solid #333;
+    }
+
+    #posts-labelgroup {
+
+        .search-results {
+            background-color: $darkSecondary;
+
+            a {
+                color: white;
+                background-color: $darkSecondary;
+
+                &:hover {
+                    background-color: #171717;
+                }
+            }
+        }
+
+        .search-section i {
+            background-color: transparent;
+        }
+    }
+
+    #posts-labelgroup:hover {
+
+        i {
+            color: white;
+        }
+
+        input {
+            color: white;
+        }
+    }
+
+
+    #posts-labelgroup.focus-within {
+
+        .search-section {
+            background-color: $darkSecondary;
+        }
+
+        input {
+            color: $darkTextColor;
+            background-color: $darkSecondary;
+        }
+
+        i {
+            color: white;
+        }
+    }
+
+    /* Archive tagcloud */
+    .button,
+    #tag-cloud .tag-button,
+    #show-tags {
+        background-color: $darkSecondary;
+        color: $darkTextColor;
+
+        &:hover {
+            background-color: $darkLinkColor;
+        }
+
+        & * {
+            background-color: transparent;
+        }
+    }
+
+    /* Moods */
+    .mood-button {
+
+        .mood-arrow {
+            border-color: $darkTextColor;
+        }
+
+        &::before {
+            background-color: $darkSecondary;
+        }
+    }
 }
 
 /* Table */
 .dark table {
 
-  th,
-  td {
-    border: 1px solid $darkSecondary;
-  }
+    th,
+    td {
+        border: 1px solid $darkSecondary;
+    }
 
-  th {
-    background-color: #0d0d0d;
-  }
+    th {
+        background-color: #0d0d0d;
+    }
 }

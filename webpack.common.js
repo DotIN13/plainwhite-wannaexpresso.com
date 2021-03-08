@@ -79,6 +79,7 @@ module.exports = {
             modifyURLPrefix: {
                 '': '/assets/public/',
             },
+            maximumFileSizeToCacheInBytes: 256000,
         }),
         new PreloadWebpackPlugin({
             rel: 'preload',

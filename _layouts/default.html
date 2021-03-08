@@ -27,18 +27,17 @@
       {% capture footer %}
       <div class="buttons {{ condensed_class }}">
         {%- if page.locale == 'en_US' -%}
-        <a href="/" class="language-selection button" aria-label="Change locale to Chinese."><span
-            class="icon-translate-off"></span></a>
+        <a href="/" class="language-selection button icon-translate-off" aria-label="Change locale to Chinese."></a>
         {%- else -%}
-        <a href="/en-us/" class="language-selection button" aria-label="Change locale to English."><span
-            class="icon-translate"></span></a>
+        <a href="/en-us/" class="language-selection button icon-translate" aria-label="Change locale to English."></a>
         {%- endif -%}
-        <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span class="icon-rss_feed"></span></a>
+        <a href="/feed.xml" class="feed button icon-rss_feed" aria-label="RSS Feed"></a>
         {%- if site.plainwhite.dark_mode -%}
         <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#"
           aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span
             class="icon-sun"></span></a>
         {%- endif -%}
+        <a href="#" id="pwa-install" class="install button flex-hidden icon-install" aria-label="Install as Web Application"><span>Install</span></a>
       </div>
 
       {%- if site.plainwhite.social_links != '' -%}

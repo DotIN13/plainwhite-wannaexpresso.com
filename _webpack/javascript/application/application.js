@@ -6,6 +6,7 @@ import avatarWebp from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=
 const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-width: 1600px) 240px, 240px"
 
 window.addEventListener('DOMContentLoaded', () => {
+    /** Initialize fancybox */
     $('[data-fancybox="gallery"]').fancybox({
         buttons: [
             'download',
@@ -14,20 +15,11 @@ window.addEventListener('DOMContentLoaded', () => {
         ]
     });
 
+    /** Render avatar image */
     responsiveGenerator(document.getElementById('avatar'), [avatarAvif, avatarWebp], avatarSizes, false, {
         width: 150,
         height: 150
     })
-
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js').then(registration => {
-            console.log('SW registered: ', registration);
-          }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-        });
-      }
 })
 
 /* CSS */
