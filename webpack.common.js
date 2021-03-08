@@ -7,7 +7,6 @@ const {
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
@@ -80,6 +79,12 @@ module.exports = {
             modifyURLPrefix: {
                 '': '/assets/public/',
             },
+        }),
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            as(entry) {
+                if (/\.woff2?$/.test(entry)) return 'font';
+            }
         }),
     ],
     optimization: {
