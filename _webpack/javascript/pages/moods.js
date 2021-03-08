@@ -1,9 +1,8 @@
 import { responsiveGenerator, importAll } from '../responsive-img'
 
-const imagesAvif = importAll(require.context('/assets/img/in-mood?format=avif', true, /\.(jpe?g|png|webp|webp)$/i))
-const imagesWebp = importAll(require.context('/assets/img/in-mood?format=webp', true, /\.(jpe?g|png|webp|webp)$/i))
+const imagesAvif = importAll(require.context('/assets/img/in-mood?sizes[]=320,sizes[]=540&format=avif', true, /\.(jpe?g|png|webp|webp)$/i))
+const imagesWebp = importAll(require.context('/assets/img/in-mood?sizes[]=320,sizes[]=540&format=webp', true, /\.(jpe?g|png|webp|webp)$/i))
 const imageSizes = "(max-width: 1024px) 280px, (max-width: 1600px) 484px, 484px"
-
 
 const moods = {
     get focus() {
@@ -11,19 +10,24 @@ const moods = {
         return focus ? focus : document.querySelector(".mood")
     },
     get all() {
-        return document.querySelectorAll(".mood")
+        delete this.all
+        return this.all = document.querySelectorAll(".mood")
     },
     get count() {
-        return this.all.length
+        delete this.count
+        return this.count = this.all.length
     },
     get buttonPrev() {
-        return document.querySelector(".mood-button--prev")
+        delete this.buttonPrev
+        return this.buttonPrev = document.querySelector(".mood-button--prev")
     },
     get buttonNext() {
-        return document.querySelector(".mood-button--next")
+        delete this.buttonNext
+        return this.buttonNext = document.querySelector(".mood-button--next")
     },
     get track() {
-        return document.querySelector(".mood-track")
+        delete this.track
+        return this.track = document.querySelector(".mood-track")
     },
     get index() {
         return parseInt(this.track.dataset.moodFocus)
@@ -57,6 +61,7 @@ function prevMood() {
     moods.index = (moods.index - 1) >= 0 ? moods.index - 1 : 0
 }
 
+/** Hide mood scroll button if scrolled to the edge of the track */
 function scrollControl() {
     moods.buttonPrev.classList.toggle("hide", !moods.track.scrollLeft)
     moods.buttonNext.classList.toggle("hide", moods.track.scrollLeft >= (moods.track.scrollWidth - moods.track.offsetWidth) * .8)
