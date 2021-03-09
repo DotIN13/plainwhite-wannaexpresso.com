@@ -2,151 +2,148 @@
 <html lang="{% if page.locale == 'en_US' %}en{% else %}zh{% endif %}">
 
 <head>
-  {%- include head.html -%}
+    {%- include head.html -%}
 </head>
 
 {% assign condensed_class = "condensed" %}
 
 <body>
-  <main class="container">
-    <section class="about">
-      <div class="about-header">
-        <div class="about-title">
-          <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}" id="avatar"
-            data-caption="{{ site.plainwhite.name }}" data-webpack="true" data-path="/assets/img/orange.webp">
-          </a>
-          <h2 id="title">
-            <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
-          </h2>
-        </div>
-        {%- if site.plainwhite.tagline -%}
-        <p class="tagline">{{ site.plainwhite.tagline }}</p>
-        {%- endif -%}
-      </div>
+    <main class="container">
+        <section class="about">
+            <div class="about-header">
+                <div class="about-title">
+                    <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}" id="avatar" data-caption="{{ site.plainwhite.name }}" data-webpack="true" data-path="/assets/img/orange.webp">
+                    </a>
+                    <h2 id="title">
+                        <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
+                    </h2>
+                </div>
+                {%- if site.plainwhite.tagline -%}
+                <p class="tagline">{{ site.plainwhite.tagline }}</p>
+                {%- endif -%}
+            </div>
 
-      {% capture footer %}
-      <div class="buttons {{ condensed_class }}">
-        {%- if page.locale == 'en_US' -%}
-        <a href="/" class="language-selection button icon-translate-off" aria-label="Change locale to Chinese."></a>
-        {%- else -%}
-        <a href="/en-us/" class="language-selection button icon-translate" aria-label="Change locale to English."></a>
-        {%- endif -%}
-        <a href="/feed.xml" class="feed button icon-rss_feed" aria-label="RSS Feed"></a>
-        {%- if site.plainwhite.dark_mode -%}
-        <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#"
-          aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span
-            class="icon-sun"></span></a>
-        {%- endif -%}
-        <a href="#" id="pwa-install" class="install button flex-hidden icon-install" aria-label="Install as Web Application"><span>Install</span></a>
-      </div>
+            <div class="buttons">
+                {%- if page.locale == 'en_US' -%}
+                <a href="/" class="language-selection button icon-translate-off" aria-label="Change locale to Chinese."></a>
+                {%- else -%}
+                <a href="/en-us/" class="language-selection button icon-translate" aria-label="Change locale to English."></a>
+                {%- endif -%}
+                <a href="/feed.xml" class="feed button icon-rss_feed" aria-label="RSS Feed"></a>
+                {%- if site.plainwhite.dark_mode -%}
+                <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a>
+                {%- endif -%}
+                <a href="#" id="pwa-install" class="install button flex-hidden icon-install" aria-label="Install as Web Application"><span>Install</span></a>
+            </div>
 
-      {%- if site.plainwhite.social_links != '' -%}
-      <ul class="social {{ condensed_class }}">
-        {%- if site.plainwhite.social_links.github -%}
-        <li>
-          <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}"
-            aria-label="GitHub Social Link">
-            <span class="fa-stack fa-2x">
-              <i class="fas icon-circle fa-stack-2x"></i>
-              <i class="fab icon-github fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.facebook -%}
-        <li>
-          <a target="_blank" rel="noreferrer"
-            href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}"
-            aria-label="Facebook Social Link">
-            <span class="fa-stack fa-2x">
-              <i class="fas icon-circle fa-stack-2x"></i>
-              <i class="fab icon-facebook fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.twitter -%}
-        <li>
-          <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}"
-            aria-label="Twitter Social Link">
-            <span class="fa-stack fa-2x">
-              <i class="fas icon-circle fa-stack-2x"></i>
-              <i class="fab icon-twitter fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.weibo -%}
-        <li>
-          <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}"
-            aria-label="Weibo Social Link">
-            <span class="fa-stack fa-2x">
-              <i class="fas icon-circle fa-stack-2x"></i>
-              <i class="fab icon-weibo fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        {%- endif -%}
-        {%- if site.plainwhite.social_links.bilibili -%}
-        <li>
-          <a target="_blank" rel="noreferrer"
-            href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}"
-            aria-label="Bilibili Social Link">
-            <span class="fa-stack fa-2x">
-              <i class="fas icon-circle fa-stack-2x"></i>
-              <i class="icon-bilibili fa-stack-1x fa-inverse"></i>
-            </span>
-          </a>
-        </li>
-        {%- endif -%}
-      </ul>
-      {%- endif -%}
+            {% capture footer %}
+            {%- if site.plainwhite.social_links != '' -%}
+            <ul class="social {{ condensed_class }}">
+                {%- if site.plainwhite.social_links.github -%}
+                <li>
+                    <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}" aria-label="GitHub Social Link">
+                        <span class="fa-stack fa-2x">
+                            <i class="fas icon-circle fa-stack-2x"></i>
+                            <i class="fab icon-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {%- endif -%}
+                {%- if site.plainwhite.social_links.facebook -%}
+                <li>
+                    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}" aria-label="Facebook Social Link">
+                        <span class="fa-stack fa-2x">
+                            <i class="fas icon-circle fa-stack-2x"></i>
+                            <i class="fab icon-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {%- endif -%}
+                {%- if site.plainwhite.social_links.twitter -%}
+                <li>
+                    <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}" aria-label="Twitter Social Link">
+                        <span class="fa-stack fa-2x">
+                            <i class="fas icon-circle fa-stack-2x"></i>
+                            <i class="fab icon-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {%- endif -%}
+                {%- if site.plainwhite.social_links.weibo -%}
+                <li>
+                    <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}" aria-label="Weibo Social Link">
+                        <span class="fa-stack fa-2x">
+                            <i class="fas icon-circle fa-stack-2x"></i>
+                            <i class="fab icon-weibo fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {%- endif -%}
+                {%- if site.plainwhite.social_links.bilibili -%}
+                <li>
+                    <a target="_blank" rel="noreferrer" href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}" aria-label="Bilibili Social Link">
+                        <span class="fa-stack fa-2x">
+                            <i class="fas icon-circle fa-stack-2x"></i>
+                            <i class="icon-bilibili fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {%- endif -%}
+            </ul>
+            {%- endif -%}
 
-      {%- if site.plainwhite.navigation -%}
-      <nav class="navigation {{ condensed_class }}">
-        <ul>
-          {% for link in site.plainwhite.navigation %}
-          <li>
-            <a
-              href="{% if page.locale == 'en_US' and link.url_en %}{{ link.url_en }}{% else %}{{ link.url }}{% endif %}">{{ link.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {%- endif -%}
+            {%- if site.plainwhite.navigation -%}
+            <nav class="navigation {{ condensed_class }}">
+                <ul>
+                    {% for link in site.plainwhite.navigation %}
+                    <li>
+                        <a href="{% if page.locale == 'en_US' and link.url_en %}{{ link.url_en }}{% else %}{{ link.url }}{% endif %}">{{ link.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {%- endif -%}
 
-      <section class="about-footer {{ condensed_class }}">
-        <div>
-          <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a>
-          <a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a>
-        </div>
-        <div>
-          <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a>
-        </div>
-      </section>
-      {% endcapture %}
-      {{ footer }}
-    </section>
-    <section class="content">
-      {{ content }}
-    </section>
-    <footer class="about {{ condensed_class }}">
-      {{ footer }}
-    </footer>
-  </main>
-  {%- if site.plainwhite.analytics_id -%}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+            <section class="about-footer {{ condensed_class }}">
+                <div>
+                    <a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a>
+                    <a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a>
+                </div>
+                <div>
+                    <a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a>
+                </div>
+            </section>
+            {% endcapture %}
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+            {{ footer }}
 
-    gtag('config', '{{ site.plainwhite.analytics_id }}');
-  </script>
-  {%- endif -%}
+        </section>
+
+        <section class="content">
+
+            {{ content }}
+
+        </section>
+
+        <footer class="about {{ condensed_class }}">
+
+            {{ footer }}
+
+        </footer>
+    </main>
+    {%- if site.plainwhite.analytics_id -%}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', '{{ site.plainwhite.analytics_id }}');
+    </script>
+    {%- endif -%}
 </body>
 
 </html>

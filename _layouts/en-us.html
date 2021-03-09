@@ -4,15 +4,15 @@ locale: en_US
 ---
 
 <div class="posts-container">
-{%- if site.posts.size > 0 -%}
-  {% include posts-label.html type="posts" search=true %}
-  <ul>
-    {%- for post in paginator.posts -%}
-    {%- include post-intro.html post=post -%}
-    {%- endfor -%}
-  </ul>
-{%- endif -%}
+    {%- if site.posts.size > 0 -%}
+    {% include posts-label.html type="posts" search=true %}
+    <ul>
+        {%- for post in paginator.posts -%}
+        {%- include post-intro.html post=post -%}
+        {%- endfor -%}
+    </ul>
+    {%- endif -%}
 
-{% include pagination-links.html %}
+    {% include pagination-links.html %}
 
 </div>
