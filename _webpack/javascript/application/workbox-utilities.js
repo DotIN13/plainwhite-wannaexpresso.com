@@ -28,7 +28,9 @@ async function installPWA() {
     // prompt() can only be called once.
     window.deferredPrompt = null;
     // Hide the install button.
-    installButton.classList.toggle('hidden', true);
+    console.log('toggled')
+    installButton.classList.toggle('flex-hidden', true);
+    if (result.outcome == 'dismissed') localStorage.setItem("installationRejected", "true");
 }
 
 function animateInstallButton() {
@@ -55,6 +57,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Register service worker
     registerWorker()
+    // Keep installation button hidden if user diliberately dismissed installation
+    if (!localStorage.getItem("installationRejected") || Number(localStorage.getItem("pageview")) % 10 == 0) {
+        installButton.classList.remove("flex-hidden")
+    }
 
     // PWA Install Handling
     window.addEventListener('beforeinstallprompt', (event) => {
@@ -62,14 +68,15 @@ window.addEventListener("DOMContentLoaded", () => {
         // Stash the event so it can be triggered later.
         window.deferredPrompt = event
         installButton.addEventListener('click', installPWA, false)
-        // Remove the 'hidden' class from the install button container
-        installButton.classList.remove("flex-hidden")
+        // Enable installButton
+        installButton.classList.remove("disabled")
         // Use animation to attract installation
         if (!localStorage.getItem("installationPrompted")) {
+            // Animate button if shown for the first time
             animateInstallButton()
         }
         else {
-            bindButtonHovering().then(() => wait(1500)).then(() => installButton.classList.add("dim"))
+            bindButtonHovering()
         }
     });
 

@@ -256,28 +256,24 @@ main {
     }
 
     #pwa-install {
-        background-color: #ffd3eb;
-        color: #9935a5;
+        color: #a160a9;
         flex: 1 1 35px;
         transform-origin: left;
         transition-property: flex, padding, margin;
         transition: 0.3s ease, color 0.2s ease;
 
-        &.dim {
+        // Disable default hovering effects
+        &:hover {
             background-color: $buttonBackground;
-            color: #9c4da5;
+        }
+
+        // Stay disabled if beforeinstallprompt was not fired
+        &.disabled {
+            color: #9e9e9e;
         }
 
         &.flex-hidden {
-            flex: 1 0 0;
-            padding: 0;
-            margin: 0;
-
-            &::before {
-                opacity: 0;
-                position: absolute;
-                transform: scaleX(0);
-            }
+            display: none;
         }
 
         &::before {

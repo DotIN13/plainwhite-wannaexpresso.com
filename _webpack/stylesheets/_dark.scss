@@ -27,8 +27,9 @@ body.dark {
         background-color: #6f4177;
         color: #df93e8;
 
-        &.dim {
-            background-color: $darkSecondary;
+        &.disabled {
+            color: #888;
+            background-color: #333;
         }
 
         &.expand {
