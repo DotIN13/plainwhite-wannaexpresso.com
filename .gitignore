@@ -10,6 +10,7 @@
 .jekyll-cache
 .sass-cache
 .vscode
+.webpack-cache
 
 # Posts
 _archive
