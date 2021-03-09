@@ -9,9 +9,11 @@ $bigScreenW: 1600px;
 $leftWidth: 220px;
 $maxWidth: 1000px;
 
+$buttonBackground: #e3e3e3;
+
 /* Mixins */
 @mixin button {
-    background: #e3e3e3;
+    background: $buttonBackground;
     cursor: pointer;
     font-size: 15px;
     color: #616161;
@@ -258,8 +260,13 @@ main {
         color: #9935a5;
         flex: 1 1 35px;
         transform-origin: left;
-        transition-property: flex, padding, margin, color;
-        transition: 0.3s ease;
+        transition-property: flex, padding, margin;
+        transition: 0.3s ease, color 0.2s ease;
+
+        &.dim {
+            background-color: $buttonBackground;
+            color: #9c4da5;
+        }
 
         &.flex-hidden {
             flex: 1 0 0;
@@ -277,8 +284,8 @@ main {
             transform-origin: left;
             opacity: 1;
             transform: scaleX(1);
-            transition-property: transform, opacity, color;
-            transition: 0.3s ease;
+            transition-property: transform, opacity;
+            transition: 0.3s ease, color 0.2s ease;
         }
 
         span {
@@ -290,7 +297,7 @@ main {
             overflow: hidden;
             vertical-align: bottom;
             transition-property: opacity, width, margin-left;
-            transition: 0.3s ease;
+            transition: 0.3s ease, color 0.2s ease;
         }
 
         &.expand {
@@ -602,7 +609,7 @@ i.icon-calendar {
 }
 
 .button {
-    background-color: #e3e3e3;
+    background-color: $buttonBackground;
 }
 
 /* pagination */

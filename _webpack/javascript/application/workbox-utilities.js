@@ -45,7 +45,7 @@ function animateInstallButton() {
         })
 }
 
-function bindButtonHovering() {
+async function bindButtonHovering() {
     installButton.addEventListener('mouseover', () => installButton.classList.add('expand'))
     installButton.addEventListener('mouseleave', () => installButton.classList.remove('expand'))
 }
@@ -65,9 +65,11 @@ window.addEventListener("DOMContentLoaded", () => {
         // Remove the 'hidden' class from the install button container
         installButton.classList.remove("flex-hidden")
         // Use animation to attract installation
-        if (!localStorage.getItem("installationPrompted")) { animateInstallButton() }
+        if (!localStorage.getItem("installationPrompted")) {
+            animateInstallButton()
+        }
         else {
-            bindButtonHovering()
+            bindButtonHovering().then(() => wait(1500)).then(() => installButton.classList.add("dim"))
         }
     });
 

@@ -27,6 +27,10 @@ body.dark {
         background-color: #6f4177;
         color: #df93e8;
 
+        &.dim {
+            background-color: $darkSecondary;
+        }
+
         &.expand {
             background-color: $linkColor;
             color: white;
