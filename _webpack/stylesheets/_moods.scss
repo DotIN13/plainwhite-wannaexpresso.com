@@ -1,110 +1,116 @@
 @mixin modal-animation-end {
-  transform: translateY(0);
-  opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .mood-section {
-  position: relative;
+    position: relative;
 }
 
 .mood-track {
-  list-style: none;
-  display: flex;
-  overflow: auto;
-  padding: 0;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  position: relative;
-  justify-content: space-between;
+    list-style: none;
+    display: flex;
+    overflow: auto;
+    padding: 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    position: relative;
+    justify-content: space-between;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .mood {
-  border: 1px solid #dadce0;
-  border-radius: 8px;
-  flex: 0 0 280px;
-  margin: 4px 8px 20px;
-  position: relative;
-  transition: all .5s ease;
-  vertical-align: top;
-  width: 280px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    flex: 0 0 280px;
+    margin: 4px 8px 20px;
+    position: relative;
+    transition: all .5s ease;
+    vertical-align: top;
+    width: 280px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-  @media screen and (min-width: $midScreenW) {
-    flex: 0 0 484px;
-    margin: 16px 20px;
-    width: 484px;
-    min-height: 440px;
-  }
-
-  @media screen and (min-width: $mobileW) {
-    &:hover {
-      box-shadow: 0 2px 3px 0 rgba(60, 64, 67, 0.15), 0 6px 10px 4px rgba(60, 64, 67, 0.15);
+    @media screen and (min-width: $midScreenW) {
+        flex: 0 0 484px;
+        margin: 16px 20px;
+        width: 484px;
+        min-height: 440px;
     }
-  }
-
-  &:first-child {
-    margin-left: 0;
 
     @media screen and (min-width: $mobileW) {
-      margin-left: 0.8rem;
+        &:hover {
+            box-shadow: 0 2px 3px 0 rgba(60, 64, 67, 0.15), 0 6px 10px 4px rgba(60, 64, 67, 0.15);
+        }
     }
-  }
+
+    &:first-child {
+        margin-left: 0;
+
+        @media screen and (min-width: $mobileW) {
+            margin-left: 0.8rem;
+        }
+    }
+}
+
+.mood-excerpt:first-child,
+.mood-content:first-child,
+.mood-header-image img {
+    overflow: hidden;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .mood-header-image img {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  height: 213px;
-  width: 100%;
-  object-fit: cover;
-  // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
-  display: block;
+    height: 213px;
+    width: 100%;
+    object-fit: cover;
+    // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
+    display: block;
 }
 
 .mood-content {
-  padding: 2rem 1.6rem 1.5rem 1.6rem;
+    padding: 2rem 1.6rem 1.5rem 1.6rem;
 
-  h2 {
-    margin: 1.8em 0 1.6em 0;
+    h2 {
+        margin: 1.8em 0 1.6em 0;
 
-    @media screen and (max-width: $midScreenW) {
-      margin-bottom: 0.8em;
+        @media screen and (max-width: $midScreenW) {
+            margin-bottom: 0.8em;
+        }
     }
-  }
 
-  article {
-    line-height: 1.35em;
+    article {
+        line-height: 1.35em;
 
-    * {
-      margin: 0.6em 0;
+        * {
+            margin: 0.6em 0;
+        }
     }
-  }
 }
 
 .mood-meta {
-  color: #555;
-  padding: 1em 1.6em 2em 1.6em;
-  margin: 1.5rem 0 0.5rem 0;
+    color: #555;
+    padding: 1em 1.6em 2em 1.6em;
+    margin: 1.5rem 0 0.5rem 0;
 
-  .mood-time {
-    display: none;
+    .mood-time {
+        display: none;
 
-    @media screen and (min-width: $mobileW) {
-      display: inline;
+        @media screen and (min-width: $mobileW) {
+            display: inline;
+        }
     }
-  }
 }
 
 .mood-header-image+.mood-content {
-  padding-top: 0;
-  padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 /*
@@ -114,19 +120,19 @@
 */
 
 .mood--placeholder {
-  border: none;
-  display: flex;
-  flex: 1 0 20%;
-  list-style: none;
-  margin: 10px;
-  min-width: 20%;
-  position: relative;
-  visibility: hidden;
+    border: none;
+    display: flex;
+    flex: 1 0 20%;
+    list-style: none;
+    margin: 10px;
+    min-width: 20%;
+    position: relative;
+    visibility: hidden;
 
-  @media screen and (min-width: 768px) {
-    flex: 1 0 30%;
-    min-width: 30%;
-  }
+    @media screen and (min-width: 768px) {
+        flex: 1 0 30%;
+        min-width: 30%;
+    }
 }
 
 /*
@@ -136,87 +142,87 @@
 */
 
 .mood-button {
-  background: 0 0;
-  background-color: transparent !important;
-  border: none;
-  display: none;
-  padding: 0;
-  position: absolute;
-  top: 50%;
+    background: 0 0;
+    background-color: transparent !important;
+    border: none;
+    display: none;
+    padding: 0;
+    position: absolute;
+    top: 50%;
 
-  @media screen and (min-width: $mobileW) {
-    display: inline-block;
-    height: 68px;
-    opacity: 1;
-    padding: 3px;
-    transition: visibility .2s, opacity .2s ease-in-out;
-    visibility: visible;
-    width: 68px;
-  }
+    @media screen and (min-width: $mobileW) {
+        display: inline-block;
+        height: 68px;
+        opacity: 1;
+        padding: 3px;
+        transition: visibility .2s, opacity .2s ease-in-out;
+        visibility: visible;
+        width: 68px;
+    }
 
-  &.hide {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-  }
+    &.hide {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
 
-  &.mood-button--prev {
-    left: 5px;
-  }
+    &.mood-button--prev {
+        left: 5px;
+    }
 
-  &.mood-button--next {
-    right: 5px;
-  }
-
-  &::before {
-    background: #fff;
-    border-radius: 50%;
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: .8;
-    width: 100%;
-    box-shadow: 0 1px 2px 0 rgba(30, 30, 30, .12);
-    transition: all 0.3s ease;
-  }
-
-  &:hover::before {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
-    opacity: 1;
-  }
-
-  &:focus {
-    outline: 0;
+    &.mood-button--next {
+        right: 5px;
+    }
 
     &::before {
-      box-shadow: 0 0 0 3px #ff94c2, 0 5px 4px rgba(0, 0, 0, .12);
-      opacity: 1;
+        background: #fff;
+        border-radius: 50%;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: .8;
+        width: 100%;
+        box-shadow: 0 1px 2px 0 rgba(30, 30, 30, .12);
+        transition: all 0.3s ease;
     }
-  }
 
-  .mood-arrow {
-    background-color: transparent !important;
-    border-top: solid 2px #414141;
-    border-right: solid 2px #414141;
-    height: 18px;
-    position: absolute;
-    top: 25px;
-    width: 18px;
-  }
+    &:hover::before {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
+        opacity: 1;
+    }
+
+    &:focus {
+        outline: 0;
+
+        &::before {
+            box-shadow: 0 0 0 3px #ff94c2, 0 5px 4px rgba(0, 0, 0, .12);
+            opacity: 1;
+        }
+    }
+
+    .mood-arrow {
+        background-color: transparent !important;
+        border-top: solid 2px #414141;
+        border-right: solid 2px #414141;
+        height: 18px;
+        position: absolute;
+        top: 25px;
+        width: 18px;
+    }
 
 
-  .mood-arrow--prev {
-    transform: rotate(-135deg);
-    left: calc(50% - 5px);
-    transition: left .5s;
-  }
+    .mood-arrow--prev {
+        transform: rotate(-135deg);
+        left: calc(50% - 5px);
+        transition: left .5s;
+    }
 
-  .mood-arrow--next {
-    transform: rotate(45deg);
-    right: calc(50% - 5px);
-    transition: right .5s;
-  }
+    .mood-arrow--next {
+        transform: rotate(45deg);
+        right: calc(50% - 5px);
+        transition: right .5s;
+    }
 }
 
 /*
@@ -228,47 +234,47 @@
 
 /* Start state */
 .animated-modal {
-  max-width: 550px;
-  border-radius: 8px;
-  overflow: hidden;
+    max-width: 550px;
+    border-radius: 8px;
+    overflow: hidden;
 
-  transform: translateY(-50px);
-  transition: all .7s;
+    transform: translateY(-50px);
+    transition: all .7s;
 }
 
 .animated-modal {
 
-  h2,
-  article,
-  .mood-date {
-    transform: translateY(-50px);
-    opacity: 0;
+    h2,
+    article,
+    .mood-date {
+        transform: translateY(-50px);
+        opacity: 0;
 
-    transition-property: transform, opacity;
-    transition-duration: .4s;
-  }
+        transition-property: transform, opacity;
+        transition-duration: .4s;
+    }
 }
 
 /* Final state */
 .fancybox-slide--current .animated-modal {
-  @include modal-animation-end();
-
-  h2,
-  article,
-  div {
     @include modal-animation-end();
-  }
 
-  /* Reveal content with different delays */
-  h2 {
-    transition-delay: .1s;
-  }
+    h2,
+    article,
+    div {
+        @include modal-animation-end();
+    }
 
-  .mood-date {
-    transition-delay: .2s;
-  }
+    /* Reveal content with different delays */
+    h2 {
+        transition-delay: .1s;
+    }
 
-  article {
-    transition-delay: .3s;
-  }
+    .mood-date {
+        transition-delay: .2s;
+    }
+
+    article {
+        transition-delay: .3s;
+    }
 }

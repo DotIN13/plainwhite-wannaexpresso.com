@@ -25,5 +25,6 @@ module.exports = merge(common, {
     cache: {
         type: "filesystem",
         cacheDirectory: path.resolve(__dirname, '.webpack-cache'),
+        version: 'production',
     }
 });
