@@ -16,12 +16,14 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 // Add offline fallback cache when installing
 const FALLBACK_CACHE_NAME = 'offline-fallbacks';
-// This assumes /404.html is a URL for your self-contained
+// This assumes /offline.html is a URL for your self-contained
 // (no external images or styles) offline page.
+// Notice that path like "/404" cannot be properly used as fallback
 const FALLBACK_HTML_URL = '/offline.html';
 // Build fallback asset array
 // let offlineCaches = placeholderImage.images.map((img) => `${img.path}`)
 // offlineCaches.push(FALLBACK_HTML_URL)
+
 // Populate the cache with the offline HTML page when the
 // service worker is installed.
 self.addEventListener('install', async (event) => {
