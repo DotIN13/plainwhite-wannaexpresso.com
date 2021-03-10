@@ -24,7 +24,7 @@ body.dark {
     }
 
     .about #pwa-install {
-        background-color: #6f4177;
+        background-color: $darkSecondary;
         color: #df93e8;
 
         &.disabled {

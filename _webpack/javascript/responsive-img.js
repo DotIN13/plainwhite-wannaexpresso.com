@@ -1,6 +1,4 @@
-export function responsiveGenerator (el, imgObjs, sizes, lazy = true, dim = {
-    original: true
-}) {
+export function responsiveGenerator(el, imgObjs, sizes, lazy = true, dim = { original: true }) {
     const pic = document.createElement('picture')
     const img = document.createElement('img')
 
@@ -11,7 +9,8 @@ export function responsiveGenerator (el, imgObjs, sizes, lazy = true, dim = {
     if (dim["original"]) {
         img.width = srcObj.width
         img.height = srcObj.height
-    } else {
+    }
+    else {
         img.width = dim["width"]
         img.height = dim["height"]
     }
@@ -30,6 +29,6 @@ export function responsiveGenerator (el, imgObjs, sizes, lazy = true, dim = {
 
 export function importAll(r) {
     let images = {}
-    r.keys().map(x => images[x.replace(/^\.\//, '')] = r(x))
+    r.keys().map(imgPath => images[imgPath.replace(/^\.\//, '')] = r(imgPath))
     return images
 }

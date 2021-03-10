@@ -11,7 +11,7 @@ avatar: "/assets/img/orange.webp"
 
 permalink: pretty
 timezone: Asia/Shanghai
-exclude: ["node_modules", "package.json", "README.md", "webpack.common.js", "webpack.prod.js", "webpack.dev.js", "_webpack", ".eslintrc.yml"]
+exclude: ["node_modules", ".webpack-cache", "package.json", "README.md", "webpack.common.js", "webpack.prod.js", "webpack.dev.js", "_webpack", ".eslintrc.yml"]
 defaults:
   - scope:
       path: ""
