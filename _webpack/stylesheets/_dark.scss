@@ -199,17 +199,21 @@ body.dark {
 
     /* Moods */
     .mood {
-        border-color: #888;
+        border: solid 2px #888;
 
-        &:hover {
-            background-color: #171717;
-            box-shadow: 0px 4px 12px 5px #333232;
+        @media screen and (min-width: $midScreenW + 1) {
+
+            &:hover {
+                background-color: #171717;
+                box-shadow: 0px 4px 12px 5px #333232;
+            }
         }
-        
+
         * {
             background: transparent;
         }
     }
+
     .mood-button {
 
         .mood-arrow {

@@ -20,97 +20,104 @@
     &::-webkit-scrollbar {
         display: none;
     }
-}
 
-.mood {
-    border: 2px solid #eee;;
-    border-radius: 8px;
-    flex: 0 0 280px;
-    margin: 4px 8px 20px;
-    position: relative;
-    transition: all .5s ease;
-    vertical-align: top;
-    width: 280px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    .mood {
+        border: 2px solid #eee;
+        border-radius: 8px;
+        flex: 0 0 280px;
+        margin: 4px 8px 20px;
+        position: relative;
+        transition: flex .5s ease, margin .5s ease, width .5s ease, border .5s, box-shadow 0.5s ease;
+        vertical-align: top;
+        width: 280px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-    @media screen and (min-width: $midScreenW) {
-        flex: 0 0 484px;
-        margin: 16px 20px;
-        width: 484px;
-        min-height: 440px;
-    }
-
-    @media screen and (min-width: $mobileW) {
-        &:hover {
-            box-shadow: 0 2px 3px 0 rgba(60, 64, 67, 0.15), 0 6px 10px 4px rgba(60, 64, 67, 0.15);
-        }
-    }
-
-    &:first-child {
-        margin-left: 0;
-
-        @media screen and (min-width: $mobileW) {
-            margin-left: 0.8rem;
-        }
-    }
-}
-
-.mood-excerpt:first-child,
-.mood-content:first-child,
-.mood-header-image img {
-    overflow: hidden;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.mood-header-image img {
-    height: 213px;
-    width: 100%;
-    object-fit: cover;
-    // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
-    display: block;
-}
-
-.mood-content {
-    padding: 2rem 1.6rem 1.5rem 1.6rem;
-
-    h2 {
-        margin: 1.8em 0 1.6em 0;
 
         @media screen and (max-width: $midScreenW) {
-            margin-bottom: 0.8em;
+
+            &.focus {
+                border: solid 2px #ff94c2;
+                box-shadow: 0 0 0 1px #ff94c2;
+            }
+        }
+
+        @media screen and (min-width: $midScreenW + 1) {
+            flex: 0 0 484px;
+            margin: 16px 20px;
+            width: 484px;
+            min-height: 440px;
+
+            &:hover {
+                box-shadow: 0 2px 3px 0 rgba(60, 64, 67, 0.15), 0 6px 10px 4px rgba(60, 64, 67, 0.15);
+            }
+        }
+
+        &:first-child {
+            margin-left: 0;
+
+            @media screen and (min-width: $mobileW + 1) {
+                margin-left: 0.8rem;
+            }
         }
     }
 
-    article {
-        line-height: 1.35em;
+    .mood-excerpt:first-child,
+    .mood-content:first-child,
+    .mood-header-image img {
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
 
-        * {
-            margin: 0.6em 0;
+    .mood-header-image img {
+        height: 213px;
+        width: 100%;
+        object-fit: cover;
+        // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
+        display: block;
+    }
+
+    .mood-content {
+        padding: 2rem 1.6rem 1.5rem 1.6rem;
+
+        h2 {
+            margin: 1.8em 0 1.6em 0;
+
+            @media screen and (max-width: $midScreenW) {
+                margin-bottom: 0.8em;
+            }
+        }
+
+        article {
+            line-height: 1.35em;
+
+            * {
+                margin: 0.6em 0;
+            }
         }
     }
-}
 
-.mood-meta {
-    color: #555;
-    padding: 1em 1.6em 2em 1.6em;
-    margin: 1.5rem 0 0.5rem 0;
+    .mood-meta {
+        color: #555;
+        padding: 1em 1.6em 2em 1.6em;
+        margin: 1.5rem 0 0.5rem 0;
 
-    .mood-time {
-        display: none;
+        .mood-time {
+            display: none;
 
-        @media screen and (min-width: $mobileW) {
-            display: inline;
+            @media screen and (min-width: $mobileW) {
+                display: inline;
+            }
         }
     }
-}
 
-.mood-header-image+.mood-content {
-    padding-top: 0;
-    padding-bottom: 0;
+    .mood-header-image+.mood-content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
 
 /*
