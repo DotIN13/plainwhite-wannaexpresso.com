@@ -33,8 +33,10 @@
     "develop": "bundle exec jekyll clean && run-p develop:{webpack,jekyll}",
     "develop:jekyll": "sleep 5 && bundle exec jekyll serve --watch",
     "develop:webpack": "webpack --config webpack.dev.js --progress --watch",
-    "dryrun": "run-s dryrun:webpack dryrun:jekyll",
-    "dryrun:jekyll": "JEKYLL_ENV=production bundle exec jekyll serve --watch",
-    "dryrun:webpack": "webpack --progress --config webpack.prod.js"
+    "dryrun": "run-s build:webpack build:jekyll dryrun:caddy",
+    "build": "run-s build:webpack build:jekyll",
+    "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
+    "build:webpack": "webpack --progress --config webpack.prod.js",
+    "dryrun:caddy": "caddy run"
   }
 }
