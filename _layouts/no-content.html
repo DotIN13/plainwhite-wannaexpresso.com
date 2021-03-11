@@ -1,14 +1,33 @@
 ---
 noindex: true
 sitemap:
-  exclude: 'yes'
+exclude: 'yes'
 ---
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    {%- include head.html -%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-site-verification" content="zrVlHARQzSGPX8n0jKJdP_fCO0AvtLXxoPmYkJh-oXw" />
+    <meta name="description" content="{{ site.description }}">
+    <meta name="keywords" content="{{ site.keyword }}">
+    <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
+    <meta lang="{% if page.locale == 'en_US' %}en{% else %}zh{% endif %}">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Favicon -->
+    {% include favicon.html %}
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <!-- Noindex -->
+    <meta name="robots" content="noindex" />
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,600&family=Merriweather:wght@300;400&family=Raleway:wght@300;400;700&display=swap');
+        
         h2 {
             font-feature-settings: "lnum";
             background-color: #ddd;
@@ -21,6 +40,8 @@ sitemap:
         }
 
         body {
+            font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+            font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
