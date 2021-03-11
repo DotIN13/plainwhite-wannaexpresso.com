@@ -28,8 +28,7 @@ async function installPWA() {
     // prompt() can only be called once.
     window.deferredPrompt = null;
     // Hide the install button.
-    console.log('toggled')
-    installButton.classList.toggle('flex-hidden', true);
+    // installButton.classList.toggle('flex-hidden', true);
     if (result.outcome == 'dismissed') localStorage.setItem("installationRejected", "true");
 }
 
@@ -58,9 +57,9 @@ window.addEventListener("DOMContentLoaded", () => {
     // Register service worker
     registerWorker()
     // Keep installation button hidden if user diliberately dismissed installation
-    if (!localStorage.getItem("installationRejected") || Number(localStorage.getItem("pageview")) % 10 == 0) {
-        installButton.classList.remove("flex-hidden")
-    }
+    // if (!localStorage.getItem("installationRejected") || Number(localStorage.getItem("pageview")) % 10 == 0) {
+    //     installButton.classList.remove("flex-hidden")
+    // }
 
     // PWA Install Handling
     window.addEventListener('beforeinstallprompt', (event) => {
