@@ -1,4 +1,6 @@
 export function responsiveGenerator(el, imgObjs, sizes, lazy = true, dim = { original: true }) {
+    if (!el) return
+
     const pic = document.createElement('picture')
     const img = document.createElement('img')
 

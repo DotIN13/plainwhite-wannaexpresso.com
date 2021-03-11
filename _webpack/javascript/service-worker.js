@@ -6,6 +6,7 @@ import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 // Used to limit entries in cache, remove entries after a certain period of time
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute } from 'workbox-precaching';
+import { googleFontsCache } from 'workbox-recipes';
 
 import placeholderImage from "/assets/img/placeholder.jpeg?sizes[]=1020&format=webp&publicPath=assets/public/img"
 
@@ -35,29 +36,7 @@ self.addEventListener('install', async (event) => {
 
 
 // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
-registerRoute(
-    ({ url }) => url.origin === 'https://fonts.googleapis.com',
-    new StaleWhileRevalidate({
-        cacheName: 'google-fonts-stylesheets',
-    })
-);
-
-// Cache the underlying font files with a cache-first strategy for 1 year.
-registerRoute(
-    ({ url }) => url.origin === 'https://fonts.gstatic.com',
-    new CacheFirst({
-        cacheName: 'google-fonts-webfonts',
-        plugins: [
-            new CacheableResponsePlugin({
-                statuses: [0, 200],
-            }),
-            new ExpirationPlugin({
-                maxAgeSeconds: 60 * 60 * 24 * 365,
-                maxEntries: 30,
-            }),
-        ],
-    })
-);
+googleFontsCache();
 
 /*
  *********************************************************
@@ -93,14 +72,8 @@ registerRoute(
  *********************************************************
  */
 
-// Cache CSS, JS, and Web Worker requests with a Stale While Revalidate strategy
-registerRoute(
-    // Check to see if the request's destination is style for stylesheets, script for JavaScript, or worker for web worker
-    ({ request }) =>
-    request.destination === 'style' ||
-    request.destination === 'script' ||
-    request.destination === 'worker',
-    // Use a Stale While Revalidate caching strategy
+// Use a Stale While Revalidate caching strategy
+let staleWhileRevalidate =
     new StaleWhileRevalidate({
         // Put all cached files in a cache named 'assets'
         cacheName: 'assets',
@@ -110,8 +83,22 @@ registerRoute(
                 statuses: [200],
             }),
         ],
-    }),
+    })
+
+// Cache CSS, JS, and Web Worker requests with a Stale While Revalidate strategy
+registerRoute(
+    // Check to see if the request's destination is style for stylesheets, script for JavaScript, or worker for web worker
+    ({ request }) =>
+    request.destination === 'style' ||
+    request.destination === 'script' ||
+    request.destination === 'worker',
+    staleWhileRevalidate
 );
+
+// Cache json with a Stale While Revalidate strategy
+registerRoute(
+    new RegExp('/.*\\.json'), staleWhileRevalidate
+)
 
 /*
  *********************************************************

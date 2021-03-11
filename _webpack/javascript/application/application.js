@@ -23,5 +23,5 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 /* CSS */
-import '../../stylesheets/custom.scss';
+import '../../stylesheets/custom.scss'
 import '@fancyapps/fancybox/dist/jquery.fancybox.css'
