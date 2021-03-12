@@ -85,9 +85,11 @@ sshfs [user@]host:[dir] mountpoint [options]
 
 初次挂载不成功，因为macFUSE需要向系统添加内核插件。macFUSE提示，要进入`系统设置->安全与隐私`（`System Preferences -> Security and Privicy`）关闭系统安全机制，才能够正确加载挂载所需的内核插件。
 
+{% include post-image.html link="post-macbook/system-ext.png" alt="Prompt To Enable System Extentions" %}
+
 依照[Apple官方指南](https://support.apple.com/zh-cn/guide/mac-help/mchl768f7291/11.0/mac/11.0)进入恢复模式进行修改。
 
-1. 在搭载 Apple 芯片的 Mac 上，选取苹果`菜单-关机`。
+1. 在搭载 Apple 芯片的 Mac 上，选取苹果`菜单->关机`。
 
 2. 按住电源按钮直至看到`正在载入启动选项`。
 
@@ -97,7 +99,7 @@ sshfs [user@]host:[dir] mountpoint [options]
 
    Mac 将以恢复模式（Recovery Mode）打开。
 
-4. 在`macOS 恢复`中，选取`实用工具-启动安全性实用工具`（Startup Security Utilities）。
+4. 在`macOS 恢复`中，选取`实用工具->启动安全性实用工具`（Startup Security Utilities）。
 
 5. 选择要用于设定安全策略的启动磁盘。
 
@@ -110,21 +112,18 @@ sshfs [user@]host:[dir] mountpoint [options]
    - *完整安全性：*确保只有当前的操作系统或者当前 Apple 信任的签名操作系统软件才能运行。此模式要求在安装软件时接入网络。
    - *降低安全性：*允许运行 Apple 信任过的任何版本的签名操作系统软件。
 
-8. 我们需要选择`降低安全性`来启用macFUSE，输入管理员用户名和密码，然后执行以下一项操作：
+8. 我们需要选择`降低安全性`来启用macFUSE，输入管理员用户名和密码：
 
    - 选择“允许用户管理来自被认可开发者的内核扩展”复选框以允许使用旧版内核扩展的软件进行安装。
-   - 选择“允许远程管理内核扩展和软件自动更新”复选框以授权使用 MDM 解决方案远程管理旧版内核扩展和软件更新。
 
-9. 点按`好`。
+9. 点按`好`，重新启动 Mac 以使更改生效。
 
-10. 重新启动 Mac 以使更改生效。
-
-此时再进入`系统设置->安全与隐私`，发现下方已经多出了一个选项，可以运行任何来源的系统软件。选择后，再次运行`sshfs`命令，已经可以挂载。
+此时再进入`系统设置->安全与隐私`，发现下方已经多出了一个选项，选择后，可以运行任何来源的系统软件。再次运行`sshfs`命令，已经可以挂载。
 
 ## 乏善可陈的疗效
 
 然而，在我花了几个小时安装、挂载成功之后，竟觉食之无味，弃之可惜。
 
-使用FileZilla可以达到30MB/s内网的传输速度，而挂载的SSHFS文件系统仅仅能达到数百KB/s，完全无法流畅串流视频。
+使用FileZilla可以达到30MB/s内网的传输速度，而挂载的SSHFS文件系统仅仅能达到数十KB/s，完全无法流畅串流视频。
 
 不总是止步，不总是成功；不总是成功，不总是止步。
