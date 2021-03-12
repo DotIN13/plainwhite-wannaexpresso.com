@@ -25,5 +25,9 @@
     "description": "View all posts.",
     "url": "/archive?source=pwa",
     "icons": [{ "src": "pwa/icons/baseline_archive_black_48.png", "sizes": "144x144" }]
+  }],
+  "related_applications": [{
+    "platform": "webapp",
+    "url": "https://www.wannaexpresso.com/manifest.json"
   }]
 }

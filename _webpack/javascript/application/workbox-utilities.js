@@ -56,6 +56,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Register service worker
     registerWorker()
+    // Hide the install button if already installed
+    navigator.getInstalledRelatedApps().then((result) => {
+        if (result.length) installButton.classList.add("flex-hidden")
+    })
+
     // Keep installation button hidden if user diliberately dismissed installation
     // if (!localStorage.getItem("installationRejected") || Number(localStorage.getItem("pageview")) % 10 == 0) {
     //     installButton.classList.remove("flex-hidden")
