@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 gemspec
 
-ruby "~> 3.0.0"
-gem "jekyll"
-gem "jekyll-paginate-v2"
-gem "jekyll-minifier"
-gem "nokogiri"
-gem "jekyll-feed"
+ruby '~> 3.0.0'
+gem 'aws-record'
+gem 'jekyll'
+gem 'jekyll-feed'
+gem 'jekyll-minifier'
+gem 'jekyll-paginate-v2'
 gem 'mini_racer', github: 'rubyjs/mini_racer', branch: 'refs/pull/186/head'
-gem "aws-record"
+gem 'nokogiri'
+
+group :development do
+  gem 'rubocop'
+  gem 'rubocop-rake', require: false
+end
 # gem "jekyll_picture_tag"
