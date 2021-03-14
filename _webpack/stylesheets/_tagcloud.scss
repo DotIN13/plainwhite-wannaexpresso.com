@@ -27,6 +27,7 @@
   transition: height 0.5s;
 
   .tag-button {
+    text-decoration: none;
 
     @media only screen and (min-width: $mobileW) {
       margin-right: 5px;

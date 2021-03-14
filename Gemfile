@@ -5,6 +5,7 @@ gemspec
 
 ruby '~> 3.0.0'
 gem 'aws-record'
+gem 'aws-sdk-dynamodb'
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-minifier'
