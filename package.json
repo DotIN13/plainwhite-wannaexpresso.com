@@ -28,7 +28,6 @@
     "webpack-merge": "^5.7.3",
     "workbox-webpack-plugin": "^6.1.1"
   },
-  "dependencies": {},
   "scripts": {
     "develop": "bundle exec jekyll clean && run-p develop:{webpack,jekyll}",
     "develop:jekyll": "sleep 5 && bundle exec jekyll serve --watch",

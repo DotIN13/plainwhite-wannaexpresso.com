@@ -25,3 +25,5 @@ node_modules
 vendor
 vender
 .bundle
+
+.vercel

@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 gemspec
 
+ruby "~> 2.7.0"
 gem 'aws-record'
 gem 'aws-sdk-dynamodb'
 gem 'jekyll'
