@@ -12,7 +12,7 @@
   ],
   "functions": {
     "api/*.rb": {
-      "": "@vercel/ruby",
+      "runtime": "@vercel/ruby",
       "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)"
     }
   }
