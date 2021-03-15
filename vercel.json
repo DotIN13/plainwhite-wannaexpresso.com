@@ -12,7 +12,6 @@
   ],
   "functions": {
     "api/*.rb": {
-      "runtime": "ruby",
       "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)"
     }
   }
