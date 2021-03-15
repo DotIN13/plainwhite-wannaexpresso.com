@@ -3,9 +3,10 @@
 source 'https://rubygems.org'
 gemspec
 
-ruby "~> 2.7.0"
-gem 'aws-record'
+ruby '~> 2.7.x'
+
 gem 'aws-sdk-dynamodb'
+gem 'dynamoid'
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-minifier'
@@ -14,6 +15,7 @@ gem 'mini_racer', github: 'rubyjs/mini_racer', branch: 'refs/pull/186/head'
 gem 'nokogiri'
 
 group :development do
+  gem 'rake'
   gem 'rubocop'
   gem 'rubocop-rake', require: false
 end

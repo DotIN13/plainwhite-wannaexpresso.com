@@ -11,7 +11,18 @@ avatar: "/assets/img/orange.webp"
 
 permalink: pretty
 timezone: Asia/Shanghai
-exclude: ["node_modules", ".webpack-cache", "package.json", "README.md", "webpack.common.js", "webpack.prod.js", "webpack.dev.js", "_webpack", ".eslintrc.yml"]
+exclude:
+  [
+    "node_modules",
+    ".webpack-cache",
+    "package.json",
+    "README.md",
+    "webpack.common.js",
+    "webpack.prod.js",
+    "webpack.dev.js",
+    "_webpack",
+    ".eslintrc.yml",
+  ]
 defaults:
   - scope:
       path: ""
@@ -40,10 +51,11 @@ netease_comment: false
 # Valine settings
 valine: true
 
+# sass:
+#   sass_dir: _sass
+#   style: compressed
+
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-sass:
-  sass_dir: _sass
-  style: compressed
 plainwhite:
   name: DotIN13
   tagline: "LACKAWANNA<br>EXPRESSO"
@@ -198,7 +210,6 @@ jekyll-minifier:
   # Enable ES6
   uglifier_args:
     harmony: false
-
 #######################################################
 
 ############################################################
