@@ -2,7 +2,7 @@ import * as dynamoose from "dynamoose";
 dynamoose.aws.sdk.config.update({
     "accessKeyId": process.env.DYNAMOID_KEY_ID,
     "secretAccessKey": process.env.DYNAMOID_KEY_SECRET,
-    "region": "us-east-1"
+    "region": "us-west-1"
 });
 
 const schema = new dynamoose.Schema({
