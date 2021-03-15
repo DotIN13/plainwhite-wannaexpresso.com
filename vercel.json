@@ -11,7 +11,7 @@
     }
   ],
   "functions": {
-    "api/*.rb": {
+    "api/*.js": {
       "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)"
     }
   }
