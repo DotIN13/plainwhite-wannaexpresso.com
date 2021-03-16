@@ -8,7 +8,7 @@ dynamoose.aws.sdk.config.update({
     "region": "us-west-1"
 });
 
-const articles = fs.readFile("app/assets/articles.json", (err, data) => {
+const articles = fs.readFile("_site/app/assets/articles.json", (err, data) => {
     if (err) throw err
 
     return JSON.parse(data)
