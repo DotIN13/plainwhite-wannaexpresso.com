@@ -9,11 +9,5 @@
       "status": 404,
       "dest": "/404.html"
     }
-  ],
-  "functions": {
-    "api/*.js": {
-      "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)",
-      "includeFiles": "**/app/**/*"
-    }
-  }
+  ]
 }

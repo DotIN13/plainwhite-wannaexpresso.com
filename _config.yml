@@ -21,7 +21,8 @@ exclude:
     "webpack.dev.js",
     "_webpack",
     ".eslintrc.yml",
-    ".rubocop.yml"
+    ".rubocop.yml",
+    "Caddyfile"
   ]
 defaults:
   - scope:
