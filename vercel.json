@@ -13,7 +13,7 @@
   "functions": {
     "api/*.js": {
       "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)",
-      "includeFiles": "app/**/*"
+      "includeFiles": "_site/app/**/*,app/**/*"
     }
   }
 }
