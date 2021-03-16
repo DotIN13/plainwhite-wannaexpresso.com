@@ -10,6 +10,8 @@
 .sass-cache
 .vscode
 .webpack-cache
+.pnp.*
+.pnp/
 
 # Posts
 _archive
@@ -25,4 +27,5 @@ vendor
 vender
 .bundle
 
+# Vercel
 .vercel

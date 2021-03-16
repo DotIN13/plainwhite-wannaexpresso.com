@@ -13,7 +13,7 @@ permalink: pretty
 timezone: Asia/Shanghai
 exclude:
   [
-    "node_modules",
+    ".pnp",
     ".webpack-cache",
     "package.json",
     "README.md",

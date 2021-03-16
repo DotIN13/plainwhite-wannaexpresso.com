@@ -12,7 +12,8 @@
   ],
   "functions": {
     "api/*.js": {
-      "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)"
+      "excludeFiles": "**/*.@(webp|png|avif|jp?(e)g)",
+      "includeFiles": "app/**/*"
     }
   }
 }
