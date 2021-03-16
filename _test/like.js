@@ -1,7 +1,14 @@
 const dynamoose = require("dynamoose")
 const fs = require("fs")
-const articles = require('../_site/app/assets/articles.json')
+// const articles = require('../_site/app/assets/articles.json')
 dynamoose.aws.ddb.local()
+
+const articles = fs.readFile("_site/app/assets/articles.json", (err, data) => {
+    if (err) throw err
+
+    // console.log(JSON.parse(data))
+    return JSON.parse(data)
+})
 
 
 const schema = new dynamoose.Schema({

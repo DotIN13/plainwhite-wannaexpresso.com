@@ -1,11 +1,18 @@
 import * as dynamoose from "dynamoose"
-import articles from "_site/app/assets/articles.json"
+import fs from "fs"
+// import articles from "_site/app/assets/articles.json"
 
 dynamoose.aws.sdk.config.update({
     "accessKeyId": process.env.DYNAMOID_KEY_ID,
     "secretAccessKey": process.env.DYNAMOID_KEY_SECRET,
     "region": "us-west-1"
 });
+
+const articles = fs.readFile("app/assets/articles.json", (err, data) => {
+    if (err) throw err
+
+    return JSON.parse(data)
+})
 
 const schema = new dynamoose.Schema({
     "article_id": {
