@@ -5,8 +5,6 @@ gemspec
 
 ruby '~> 2.7.x'
 
-gem 'aws-sdk-dynamodb'
-gem 'dynamoid'
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-minifier'
@@ -20,3 +18,5 @@ group :development do
   gem 'rubocop-rake', require: false
 end
 # gem "jekyll_picture_tag"
+# gem 'aws-sdk-dynamodb'
+# gem 'dynamoid'

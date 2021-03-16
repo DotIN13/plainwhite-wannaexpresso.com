@@ -11,7 +11,6 @@
 .vscode
 .webpack-cache
 .pnp.*
-.pnp/
 
 # Posts
 _archive

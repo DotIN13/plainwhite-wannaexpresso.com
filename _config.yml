@@ -13,7 +13,6 @@ permalink: pretty
 timezone: Asia/Shanghai
 exclude:
   [
-    ".pnp",
     ".webpack-cache",
     "package.json",
     "README.md",
@@ -22,6 +21,7 @@ exclude:
     "webpack.dev.js",
     "_webpack",
     ".eslintrc.yml",
+    ".rubocop.yml"
   ]
 defaults:
   - scope:
