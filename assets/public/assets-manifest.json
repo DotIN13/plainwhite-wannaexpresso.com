@@ -67,7 +67,6 @@
   "img": "img/8cd466e952b589db4e8462bae2da45b8-1020.webp",
   "img-app-screenshot-OpenWrt.jpg?format=avif": "img/4e7f1a73ef2cdd973d71db7d869512bf-472.avif",
   "img-app-screenshot-OpenWrt.jpg?format=webp": "img/daead12cd519cab2a054e2a5343c404a-472.webp",
-  "img/web_heart_animation.png?size=2900": "img/922d81edd85932d06451e35d734429a9-2900.png",
   "in-store.jpg?format=avif": "img/a2e1430f2b3e49b070147018c9d25bd4-1600.avif",
   "in-store.jpg?format=webp": "img/440e133d957903146fdfcc4701c61a69-1600.webp",
   "jekyll.png?format=avif": "img/37fb403580af39f731b06ffe29eced8f-1600.avif",
@@ -184,6 +183,7 @@
   "value.png?format=webp": "img/232f076944083b8e108d278f0283a613-1573.webp",
   "web-wechat.jpg?format=avif": "img/dee682bf5bd3082a3eb2b691ddcea3f2-640.avif",
   "web-wechat.jpg?format=webp": "img/8ff172a7e9300e5151be44a057a85078-640.webp",
+  "web_heart_animation.png?size=2900": "img/922d81edd85932d06451e35d734429a9-2900.png",
   "zulu11.png?format=avif": "img/6e3c92a2a9bbeaac0ca20dc0e217d654-1600.avif",
   "zulu11.png?format=webp": "img/67ec8cb8e8b8001260aac67d0da458af-1600.webp"
 }
