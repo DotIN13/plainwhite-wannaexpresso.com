@@ -154,6 +154,10 @@ main {
     }
 }
 
+.button {
+    background-color: $buttonBackground;
+}
+
 /* About */
 .about {
     display: flex;
@@ -604,8 +608,38 @@ i.icon-calendar {
     }
 }
 
-.button {
-    background-color: $buttonBackground;
+/* Heart-shaped like button */
+
+@keyframes heart-burst {
+    from {
+        background-position: left;
+    }
+
+    to {
+        background-position: right;
+    }
+}
+
+.heart {
+    display: block;
+    cursor: pointer;
+    height: 51px;
+    width: 50px;
+    background-image: url('../../assets/img/web_heart_animation.png?size=2900');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 2900%;
+    opacity: 0.8;
+
+    &.active {
+        opacity: 1;
+        background-position: right;
+    }
+    
+    &.heart--animating {
+        opacity: 1;
+        animation: heart-burst .8s steps(28) 1;
+    }
 }
 
 /* pagination */

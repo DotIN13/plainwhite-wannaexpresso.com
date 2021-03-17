@@ -1,3 +1,6 @@
+$moodPadding: 2.6em;
+$smallMoodPadding: 2em;
+
 @mixin modal-animation-end {
     transform: translateY(0);
     opacity: 1;
@@ -81,7 +84,11 @@
     }
 
     .mood-content {
-        padding: 2rem 1.6rem 1.5rem 1.6rem;
+        padding: 2em $moodPadding 1.5em $moodPadding;
+
+        @media (max-width: $midScreenW) {
+            padding: 2em $smallMoodPadding 1.5em $smallMoodPadding;
+        }
 
         h2 {
             margin: 1.8em 0 1.6em 0;
@@ -101,14 +108,20 @@
     }
 
     .mood-meta {
+        display: flex;
+        align-items: center;
         color: #555;
-        padding: 1em 1.6em 2em 1.6em;
+        padding: 1em $moodPadding 2em $moodPadding;
         margin: 1.5rem 0 0.5rem 0;
+
+        @media (max-width: $midScreenW) {
+            padding: 1em $smallMoodPadding 2em $smallMoodPadding;
+        }
 
         .mood-time {
             display: none;
 
-            @media screen and (min-width: $mobileW) {
+            @media screen and (min-width: $midScreenW + 1) {
                 display: inline;
             }
         }

@@ -17,9 +17,12 @@
       </div>
     </div>
     <div class="mood-meta">
+      <div class="mood-created-at">
       <i class="icon-calendar"></i>
       <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
       <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
+      </div>
+      <div class="mood-like"><span class="heart" data-like="{{ mood.id }}"></span></div>
     </div>
     <div style="display: none;" id="{{ mood.date | date: '%s' }}" class="animated-modal mood-full">
       <h2>{{ mood.title }}</h2>
