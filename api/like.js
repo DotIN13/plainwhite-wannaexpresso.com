@@ -1,6 +1,5 @@
 import * as dynamoose from "dynamoose"
-import fs from "fs"
-// import articles from "_site/app/assets/articles.json"
+import articles from "_site/app/assets/articles.json"
 
 dynamoose.aws.sdk.config.update({
     "accessKeyId": process.env.DYNAMOID_KEY_ID,
@@ -8,23 +7,23 @@ dynamoose.aws.sdk.config.update({
     "region": "us-west-1"
 });
 
+const schema = new dynamoose.Schema({
+    "article_id": {
+        "type": String,
+        "hashKey": true,
+        "validate": (val) => Object.values(articles).indexOf(val) != -1
+    },
+    "identity": {
+        "type": String,
+        "rangeKey": true
+    }
+}, {
+    "timestamps": true
+})
+const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })
+
 module.exports = async (req, res) => {
     try {
-        const articles = await fetch("/app/assets/articles.json").then((response) => response.json())
-        const schema = new dynamoose.Schema({
-            "article_id": {
-                "type": String,
-                "hashKey": true,
-                "validate": (val) => Object.values(articles).indexOf(val) != -1
-            },
-            "identity": {
-                "type": String,
-                "rangeKey": true
-            }
-        }, {
-            "timestamps": true
-        })
-        const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })
         const like = await WannaLikes.create({
             "article_id": req.query.article_id,
             "identity": req.headers["x-forwarded-for"] + req.headers["user-agent"]
