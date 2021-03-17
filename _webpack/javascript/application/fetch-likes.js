@@ -15,7 +15,7 @@ export default () => {
             likables.forEach(el => {
                 const number = document.createElement("div")
                 number.innerHTML = json[el.dataset.like].count
-                el.nearest(".mood-meta").appendChild(number)
+                el.closest(".mood-meta").appendChild(number)
             })
         })
 }
