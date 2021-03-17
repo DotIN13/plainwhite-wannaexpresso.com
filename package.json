@@ -35,13 +35,11 @@
     "workbox-webpack-plugin": "^6.1.1"
   },
   "scripts": {
-    "develop": "bundle exec jekyll clean && run-p develop:{webpack,jekyll}",
+    "develop": "bundle exec jekyll clean && run-s develop:jekyll develop:webpack",
     "develop:jekyll": "sleep 5 && bundle exec jekyll serve --watch",
     "develop:webpack": "webpack --config webpack.dev.js --progress --watch",
-    "dryrun": "run-s build:webpack build:jekyll dryrun:caddy",
-    "build": "run-s build:webpack build:jekyll",
-    "vercel-build": "run-s build:bundle",
-    "build:bundle": "yarn install && yarn exec bundle install --deployment",
+    "dryrun": "run-s build dryrun:caddy",
+    "build": "run-s build:jekyll build:webpack",
     "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
     "build:webpack": "webpack --progress --config webpack.prod.js",
     "dryrun:caddy": "caddy run"

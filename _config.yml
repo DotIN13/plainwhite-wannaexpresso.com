@@ -1,3 +1,4 @@
+# Site info
 title: LACKAWANNA EXPRESSO
 SEOTitle: DOTIN13'S BLOG
 keyword: "DotIN13's Life, Linux Tips, Life Hacks, Tech Gadgets, International Politics"
@@ -5,10 +6,12 @@ chrome-tab-theme-color: "#ff94c2"
 author: DotIN13
 email: dotin13@126.com
 description: "Act local, think global with DotIN13!"
-show_excerpts: true # set to true to show excerpts on the homepage
 url: "https://www.wannaexpresso.com"
 avatar: "/assets/img/orange.webp"
 
+# Build configs
+destination: dist
+show_excerpts: true # set to true to show excerpts on the homepage
 permalink: pretty
 timezone: Asia/Shanghai
 exclude:
@@ -22,7 +25,9 @@ exclude:
     "_webpack",
     ".eslintrc.yml",
     ".rubocop.yml",
-    "Caddyfile"
+    "Caddyfile",
+    "yarn.lock",
+    "vercel.json"
   ]
 defaults:
   - scope:

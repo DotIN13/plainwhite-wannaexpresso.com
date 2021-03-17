@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="google-site-verification" content="zrVlHARQzSGPX8n0jKJdP_fCO0AvtLXxoPmYkJh-oXw"/><meta name="description" content="Act local, think global with DotIN13!"><meta name="keywords" content="Linux, Ruby, Ruby on Rails, and WoD"><meta name="theme-color" content="#ff94c2"><meta lang="zh"><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png?v=2bA3g2vyYK"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png?v=2bA3g2vyYK"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png?v=2bA3g2vyYK"><link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg?v=2bA3g2vyYK" color="#dc2267"><link rel="shortcut icon" href="/assets/img/favicon/favicon.ico?v=2bA3g2vyYK"><meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/img/favicon/browserconfig.xml?v=2bA3g2vyYK"><meta property="og:title" content="RoR开发日志三 Capistrano + Puma + Caddy部署特辑 - DOTIN13'S BLOG"><meta property="og:type" content="article"><meta property="og:description" content="Web App Hosting 尝试过AWS Elastic Beanstalk和Azure Web App，前者出现的missing credentials直接把我劝退，因为还要我自己手动登陆EC2修改配置，那我还不如直接建一个EC2；后者则只支持Ruby 2.6，并且免费套餐不支持自定义域名。此外，这类一揽子服务使用的是Nginx，而我想用Caddy，没有为什么，用Caddy V2就是..."><meta property="article:published_time" content="2020-06-06T00:00:00Z"><meta property="article:author" content="DotIN13"><meta property="article:tag" content="Linux"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:tag" content="WoD"><meta property="og:image" content="https://www.wannaexpresso.com/assets/img/orange.webp"><meta property="og:url" content="https://www.wannaexpresso.com/2020/06/06/rails-development-3/"><meta property="og:site_name" content="DOTIN13'S BLOG"><link rel="canonical" href="https://www.wannaexpresso.com/2020/06/06/rails-development-3/"><script src="/assets/public/application-bundle.js"></script><link rel="stylesheet" href="/assets/public/application.css"><script src="/assets/public/posts-bundle.js"></script><title>RoR开发日志三 Capistrano + Puma + Caddy部署特辑 - DOTIN13'S BLOG</title></head><body><main class="container"><section class="about"><div class="about-header"><div class="about-title"><a href="/" id="avatar" data-caption="DotIN13" data-webpack="true" data-path="/assets/img/orange.webp"></a><h2 id="title"><a href="/">DotIN13</a></h2></div><p class="tagline">LACKAWANNA<br>EXPRESSO</p></div><div class="buttons"><a href="/en-us/" class="language-selection button icon-translate" aria-label="Change locale to English."></a><a href="/feed.xml" class="feed button icon-rss_feed" aria-label="RSS Feed"></a><input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a><a href="#" id="pwa-install" class="install button icon-install disabled" aria-label="Install as Web Application"><span>Install</span></a></div><ul class="social condensed"><li><a target="_blank" rel="noreferrer" href="https://github.com/DotIN13" aria-label="GitHub Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/peter.zhang.1466" aria-label="Facebook Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://twitter.com/DotIN13" aria-label="Twitter Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://space.bilibili.com/4471331" aria-label="Bilibili Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="icon-bilibili fa-stack-1x fa-inverse"></i></span></a></li></ul><nav class="navigation condensed"><ul><li><a href="/about">About</a></li><li><a href="/archive">Archive</a></li></ul></nav><section class="about-footer condensed"><div><a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a></div><div><a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a></div></section></section><section class="content"><div class="post-container"><a class="post-link" href="/2020/06/06/rails-development-3/"><h2 class="post-title">RoR开发日志三 Capistrano + Puma + Caddy部署特辑</h2><h3 class="post-subtitle">Ruby on Rails Development Log Three: Capistrano + Puma + Caddy</h3></a><div class="post-meta"><div class="post-categories"><a class="button" href="/archive/?tag=Linux" title="Linux">Linux</a><a class="button" href="/archive/?tag=Ruby" title="Ruby">Ruby</a><a class="button" href="/archive/?tag=Ruby+on+Rails" title="Ruby on Rails">Ruby on Rails</a><a class="button" href="/archive/?tag=WoD" title="WoD">WoD</a></div><div class="post-misc"><div class="post-date"><i class="icon-calendar"></i>Jun 6, 2020</div></div></div><div class="post"><h2 id="web-app-hosting"><a href="#web-app-hosting">#</a> Web App Hosting </h2><p>尝试过AWS Elastic Beanstalk和Azure Web App，前者出现的missing credentials直接把我劝退，因为还要我自己手动登陆EC2修改配置，那我还不如直接建一个EC2；后者则只支持Ruby 2.6，并且免费套餐不支持自定义域名。此外，这类一揽子服务使用的是Nginx，而我想用Caddy，没有为什么，用Caddy V2就是帅气！综合考量下来，我还是选择直接使用AWS EC2来部署我的应用。</p><p>一开始我选择手动<code class="language-plaintext highlighter-rouge">git push</code> + <code class="language-plaintext highlighter-rouge">git pull</code>，不过稍微有些麻烦，于是决定部署一个Capistrano来自动化部署过程。</p><h2 id="配置环境"><a href="#配置环境">#</a> 配置环境 </h2><h3 id="ruby"><a href="#ruby">#</a> Ruby </h3><p>安装Ruby 2.7.1时发现Ubuntu的软件库还停留在2.7.0，于是使用rbenv来安装Ruby，废话不多说，直接上命令。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fully update server packages</span>
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span>
+
+<span class="c"># Choose Time zone=&gt;Asia=&gt;Shanghai</span>
+<span class="nb">sudo </span>dpkg-reconfigure tzdata
+
+<span class="c"># Install rails dependencies, include libpq-dev if you are using postreSQL</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> build-essential git-core bison openssl libreadline6-dev curl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3  autoconf libc6-dev libpcre3-dev curl libcurl4-nss-dev libxml2-dev libxslt-dev imagemagick nodejs libffi-dev libpq-dev
+
+<span class="c"># Clone rbenv repo</span>
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+<span class="c"># Setup rbenv</span>
+<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'eval "$(rbenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">exec</span> <span class="nv">$SHELL</span>
+
+<span class="c"># Clone ruby-build plugin</span>
+git clone https://github.com/rbenv/ruby-build.git <span class="s2">"</span><span class="si">$(</span>rbenv root<span class="si">)</span><span class="s2">"</span>/plugins/ruby-build
+
+<span class="c"># Install Ruby 2.7.1; this might take some time</span>
+rbenv <span class="nb">install </span>2.7.1
+rbenv global 2.7.1
+
+<span class="c"># Check ruby version</span>
+ruby <span class="nt">-v</span>
+</code></pre></div></div><h3 id="bundler"><a href="#bundler">#</a> Bundler </h3><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Bundler</span>
+gem <span class="nb">install </span>bundler
+rbenv rehash
+</code></pre></div></div><h3 id="yarn"><a href="#yarn">#</a> Yarn </h3><p>由于系统自带软件源一般不包含我们所需要的Yarn，直接apt安装会安装错误的包，因此需要参照Yarn Documentation的<a href="https://classic.yarnpkg.com/en/docs/install" target="_blank" rel="nofollow noopener noreferrer">各系统安装教程</a>。我使用了Ubuntu的对应命令来安装Yarn。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Configure package source</span>
+curl <span class="nt">-sS</span> https://dl.yarnpkg.com/debian/pubkey.gpg | <span class="nb">sudo </span>apt-key add -
+<span class="nb">echo</span> <span class="s2">"deb https://dl.yarnpkg.com/debian/ stable main"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/yarn.list
+
+<span class="c"># Install yarn</span>
+<span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>yarn
+</code></pre></div></div><p>在依次运行上述命令之后，Ruby环境就配置完成了。</p><h2 id="capistrano"><a href="#capistrano">#</a> Capistrano </h2><p>Capistrano是一个Ruby Gem，其作用就是当你在本地运行部署命令时，在服务器执行相应脚本，来完成自动从git获取代码、编译、运行服务器等操作。</p><p>首先需要在<code class="language-plaintext highlighter-rouge">Gemfile</code>中添加该Gem，只需要添加到development组即可。</p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+
+  <span class="o">...</span>
+
+  <span class="c1"># Use capistrano for automated deployment</span>
+  <span class="n">gem</span> <span class="s2">"capistrano"</span><span class="p">,</span> <span class="s2">"~&gt; 3.10"</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
+  <span class="n">gem</span> <span class="s2">"capistrano-rails"</span><span class="p">,</span> <span class="s2">"~&gt; 1.5"</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
+  <span class="n">gem</span> <span class="s2">"capistrano-yarn"</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
+  <span class="n">gem</span> <span class="s2">"capistrano-rbenv"</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
+  <span class="n">gem</span> <span class="s1">'capistrano3-puma'</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
+<span class="k">end</span>
+</code></pre></div></div><p>由于我使用了Puma，因此使用了capistrano3-puma gem。</p><p>然后需要执行bundle命令来生成Capistrano的各个配置文件。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>cap <span class="nb">install</span>
+</code></pre></div></div><p>默认的文件结构如下。</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── Capfile
+├── config
+│   ├── deploy
+│   │   ├── production.rb
+│   │   └── staging.rb
+│   └── deploy.rb
+└── lib
+    └── capistrano
+            └── tasks
+</code></pre></div></div><h3 id="配置capfile"><a href="#配置capfile">#</a> 配置Capfile </h3><p>首先我在Capfile中添加/Uncomment了部署的各项步骤。</p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Capfile</span>
+<span class="c1"># Load DSL and set up stages</span>
+<span class="nb">require</span> <span class="s2">"capistrano/setup"</span>
+
+<span class="c1"># Include default deployment tasks</span>
+<span class="nb">require</span> <span class="s2">"capistrano/deploy"</span>
+
+<span class="c1"># Load the SCM plugin appropriate to your project:</span>
+<span class="c1">#</span>
+<span class="c1"># require "capistrano/scm/hg"</span>
+<span class="c1"># install_plugin Capistrano::SCM::Hg</span>
+<span class="c1"># or</span>
+<span class="c1"># require "capistrano/scm/svn"</span>
+<span class="c1"># install_plugin Capistrano::SCM::Svn</span>
+<span class="c1"># or</span>
+<span class="nb">require</span> <span class="s2">"capistrano/scm/git"</span>
+<span class="n">install_plugin</span> <span class="no">Capistrano</span><span class="o">::</span><span class="no">SCM</span><span class="o">::</span><span class="no">Git</span>
+
+<span class="c1"># Include tasks from other gems included in your Gemfile</span>
+<span class="c1">#</span>
+<span class="c1"># For documentation on these, see for example:</span>
+<span class="c1">#</span>
+<span class="c1">#   https://github.com/capistrano/rvm</span>
+<span class="c1">#   https://github.com/capistrano/rbenv</span>
+<span class="c1">#   https://github.com/capistrano/chruby</span>
+<span class="c1">#   https://github.com/capistrano/bundler</span>
+<span class="c1">#   https://github.com/capistrano/rails</span>
+<span class="c1">#   https://github.com/capistrano/passenger</span>
+<span class="c1">#</span>
+<span class="c1"># require "capistrano/rvm"</span>
+<span class="nb">require</span> <span class="s1">'capistrano/rails'</span>
+<span class="nb">require</span> <span class="s2">"capistrano/rbenv"</span>
+<span class="c1"># require "capistrano/chruby"</span>
+<span class="c1"># require "capistrano/bundler"</span>
+<span class="c1"># require "capistrano/rails/assets"</span>
+<span class="c1"># require "capistrano/rails/migrations"</span>
+<span class="c1"># require "capistrano/passenger"</span>
+<span class="nb">require</span> <span class="s1">'capistrano/puma'</span>
+<span class="n">install_plugin</span> <span class="no">Capistrano</span><span class="o">::</span><span class="no">Puma</span>
+
+<span class="c1"># Load custom tasks from `lib/capistrano/tasks` if you have any defined</span>
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="s2">"lib/capistrano/tasks/*.rake"</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">import</span> <span class="n">r</span> <span class="p">}</span>
+</code></pre></div></div><p>由于<code class="language-plaintext highlighter-rouge">capistrano/rails</code>包含了<code class="language-plaintext highlighter-rouge">bundler</code>、<code class="language-plaintext highlighter-rouge">rails/assets</code>、<code class="language-plaintext highlighter-rouge">rails/migrations</code>，因此只需要添加<code class="language-plaintext highlighter-rouge">capistrano/rails</code>即可。而Yarn则被包含在了<code class="language-plaintext highlighter-rouge">rails/assets</code>中（禁止套娃）。</p><h3 id="配置deployrb"><a href="#配置deployrb">#</a> 配置deploy.rb </h3><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/deploy.rb</span>
+<span class="c1"># config valid for current version and patch releases of Capistrano</span>
+<span class="n">lock</span> <span class="s2">"~&gt; 3.14.0"</span>
+
+<span class="sb">`ssh-add`</span>
+
+<span class="n">set</span> <span class="ss">:application</span><span class="p">,</span> <span class="s2">"&lt;application name&gt;"</span>
+<span class="n">set</span> <span class="ss">:repo_url</span><span class="p">,</span> <span class="s2">"&lt;git repo ssh&gt;"</span>
+
+<span class="o">...</span>
+
+<span class="c1"># Default deploy_to directory is /var/www/my_app_name</span>
+<span class="n">set</span> <span class="ss">:deploy_to</span><span class="p">,</span> <span class="s2">"&lt;deployment folder on server&gt;"</span>
+
+<span class="o">...</span>
+
+<span class="c1"># Default value for :linked_files is []</span>
+<span class="n">append</span> <span class="ss">:linked_files</span><span class="p">,</span> <span class="s2">"config/database.yml"</span><span class="p">,</span> <span class="s2">"config/master.key"</span><span class="p">,</span> <span class="s2">"config/application.yml"</span>
+
+<span class="c1"># Default value for linked_dirs is []</span>
+<span class="n">append</span> <span class="ss">:linked_dirs</span><span class="p">,</span> <span class="s2">"log"</span><span class="p">,</span> <span class="s2">"tmp/pids"</span><span class="p">,</span> <span class="s2">"tmp/cache"</span><span class="p">,</span> <span class="s2">"tmp/sockets"</span><span class="p">,</span> <span class="s2">"public/system"</span>
+
+<span class="o">...</span>
+</code></pre></div></div><p><code class="language-plaintext highlighter-rouge">&lt;application name&gt;</code>指你的应用名称，<code class="language-plaintext highlighter-rouge">&lt;git repo ssh&gt;</code>指代码Repo的SSH地址，<code class="language-plaintext highlighter-rouge">&lt;deployment folder on server&gt;</code>指你想部署的服务器文件夹。</p><p><code class="language-plaintext highlighter-rouge">:linked_files</code>和<code class="language-plaintext highlighter-rouge">:linked_dir</code>是指各环境共享的文件，存储在<code class="language-plaintext highlighter-rouge">deploy_folder/shared</code>文件夹中，Capistrano会用<code class="language-plaintext highlighter-rouge">symlink</code>的方式来保证每次部署都使用的是<code class="language-plaintext highlighter-rouge">shared</code>文件夹中的这些文件。其中<code class="language-plaintext highlighter-rouge">shared/config/database.yml</code>、<code class="language-plaintext highlighter-rouge">shared/config/master.key</code>这两个文件需要手动创建，从本地复制即可。由于我使用的是figaro来存储环境变量，因此额外添加了<code class="language-plaintext highlighter-rouge">shared/config/application.yml</code>。</p><h2 id="配置ssh"><a href="#配置ssh">#</a> 配置SSH </h2><p>需要为Capistrano配置两套SSH key，一套用于本地运行部署命令时连接到服务器，一套用于服务器连接git。</p><h3 id="本地连接服务器"><a href="#本地连接服务器">#</a> 本地连接服务器 </h3><p>我只有一个production服务器，因此只配置<code class="language-plaintext highlighter-rouge">config/deploy/production.rb</code></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/deploy/production.rb</span>
+
+<span class="o">...</span>
+
+<span class="n">server</span> <span class="s2">"&lt;server ip&gt;"</span><span class="p">,</span> <span class="ss">user: </span><span class="s2">"ubuntu"</span><span class="p">,</span> <span class="ss">roles: </span><span class="sx">%w{app db web}</span><span class="p">,</span> <span class="ss">my_property: :my_value</span>
+
+<span class="o">...</span>
+
+<span class="n">set</span> <span class="ss">:ssh_options</span><span class="p">,</span> <span class="p">{</span>
+  <span class="ss">keys: </span><span class="sx">%w(~/.ssh/&lt;aws ssh pem&gt;)</span><span class="p">,</span>
+  <span class="ss">forward_agent: </span><span class="kp">true</span><span class="p">,</span>
+  <span class="ss">auth_methods: </span><span class="sx">%w(publickey)</span>
+<span class="p">}</span>
+
+<span class="o">...</span>
+</code></pre></div></div><p>我直接使用了ubuntu用户来部署。<code class="language-plaintext highlighter-rouge">&lt;server ip&gt;</code>是服务器IP，<code class="language-plaintext highlighter-rouge">~/.ssh/&lt;aws ssh pem&gt;</code>是亚马逊提供的用于连接服务器的pem。</p><h3 id="服务器连接git"><a href="#服务器连接git">#</a> 服务器连接Git </h3><p>首先在服务器上运行keygen</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen
+</code></pre></div></div><p>一路回车使用默认设置创建<code class="language-plaintext highlighter-rouge">~/.ssh/id-rsa.pub</code>。这是你的服务器的身份标识，将其倒入Github之后，Github就可以识别服务器，从而达到不需要密码使用git命令的目的。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> ~/.ssh/id-rsa.pub
+</code></pre></div></div><p>复制上述命令产生的key。</p><p>打开Github-&gt;设置-&gt;SSH Key，添加SSH Key，将我刚刚复制的key填入。</p><p>此时在服务器上运行git命令访问我的Repo就不需要密码了，可以使用<code class="language-plaintext highlighter-rouge">git clone</code>来测试一下。此处需要注意remote url要使用ssh的格式，如<code class="language-plaintext highlighter-rouge">git@github.com:user/repo.git</code>。</p><h2 id="puma"><a href="#puma">#</a> Puma </h2><p>接下来需要配置Puma。</p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/puma.rb</span>
+<span class="c1"># Puma can serve each request in a thread from an internal thread pool.</span>
+<span class="c1"># The `threads` method setting takes two numbers: a minimum and maximum.</span>
+<span class="c1"># Any libraries that use thread pools should be configured to match</span>
+<span class="c1"># the maximum value specified for Puma. Default is set to 5 threads for minimum</span>
+<span class="c1"># and maximum; this matches the default thread size of Active Record.</span>
+<span class="c1">#</span>
+<span class="n">max_threads_count</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"RAILS_MAX_THREADS"</span><span class="p">)</span> <span class="p">{</span> <span class="mi">5</span> <span class="p">}</span>
+<span class="n">min_threads_count</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"RAILS_MIN_THREADS"</span><span class="p">)</span> <span class="p">{</span> <span class="n">max_threads_count</span> <span class="p">}</span>
+<span class="n">threads</span> <span class="n">min_threads_count</span><span class="p">,</span> <span class="n">max_threads_count</span>
+
+<span class="c1"># Specifies the `port` that Puma will listen on to receive requests; default is 3000.</span>
+<span class="c1">#</span>
+<span class="n">port</span>        <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"PORT"</span><span class="p">)</span> <span class="p">{</span> <span class="mi">3000</span> <span class="p">}</span>
+
+<span class="c1"># Specifies the `environment` that Puma will run in.</span>
+<span class="c1">#</span>
+<span class="n">environment</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"RAILS_ENV"</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"development"</span> <span class="p">}</span>
+
+<span class="c1"># Specifies the `pidfile` that Puma will use.</span>
+<span class="n">pidfile</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"PIDFILE"</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"tmp/pids/server.pid"</span> <span class="p">}</span>
+
+<span class="c1"># Specifies the number of `workers` to boot in clustered mode.</span>
+<span class="c1"># Workers are forked web server processes. If using threads and workers together,</span>
+<span class="c1"># the concurrency of the application would be max `threads` * `workers.`</span>
+<span class="c1"># Workers do not work on JRuby or Windows (both of which do not support</span>
+<span class="c1"># processes).</span>
+<span class="c1">#</span>
+<span class="n">workers</span> <span class="no">ENV</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"WEB_CONCURRENCY"</span><span class="p">)</span> <span class="p">{</span> <span class="mi">2</span> <span class="p">}</span> <span class="c1"># &lt;------ uncomment this line</span>
+
+<span class="c1"># Use the `preload_app!` method when specifying a `workers` number.</span>
+<span class="c1"># This directive tells Puma to first boot the application and load code</span>
+<span class="c1"># before forking the application. This takes advantage of Copy On Write</span>
+<span class="c1"># process behavior so workers use less memory.</span>
+<span class="c1">#</span>
+<span class="n">preload_app!</span> <span class="c1"># &lt;------ uncomment this line</span>
+
+<span class="c1"># Allow Puma to be restarted by the `Rails restart` command.</span>
+<span class="n">plugin</span> <span class="ss">:tmp_restart</span>
+</code></pre></div></div><p>以上是一个默认的Production Puma配置示例，将其保存后，使用<code class="language-plaintext highlighter-rouge">cap</code>命令将其上传到<code class="language-plaintext highlighter-rouge">shared</code>文件夹中备用。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cap production puma:config
+</code></pre></div></div><h3 id="暂时解决每次deploy时puma不能正常重启"><a href="#暂时解决每次deploy时puma不能正常重启">#</a> 暂时解决每次Deploy时Puma不能正常重启 </h3><p>这应当是一个Puma的Bug，最早出现在3.8.2版本，短暂的修复后，近期再次出现。在部署之后，不能访问站点，查看<code class="language-plaintext highlighter-rouge">shared/log/puma_error.log</code>，发现Puma重启出错。</p><p>一个<a href="https://stackoverflow.com/questions/44763777/capistrano-pumarestart-not-working-but-pumastart-does" target="_blank" rel="nofollow noopener noreferrer">Workaround</a>是修改<code class="language-plaintext highlighter-rouge">puma:restart</code>任务，手动使其<code class="language-plaintext highlighter-rouge">puma:stop</code>，然后再<code class="language-plaintext highlighter-rouge">puma:start</code>。</p><p>在<code class="language-plaintext highlighter-rouge">lib/capistrano/tasks</code>下建立新文件，示例如下。</p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib/capistrano/tasks/restart_puma.rake</span>
+<span class="n">namespace</span> <span class="ss">:puma</span> <span class="k">do</span>
+  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="p">[</span><span class="ss">:restart</span><span class="p">].</span><span class="nf">clear_actions</span>
+
+  <span class="n">desc</span> <span class="s1">'Overwritten puma:restart task'</span>
+  <span class="n">task</span> <span class="ss">:restart</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="s1">'Overwriting puma:restart to ensure that puma is running. Effectively, we are just starting Puma.'</span>
+    <span class="nb">puts</span> <span class="s1">'A solution to this should be found.'</span>
+    <span class="n">invoke</span> <span class="s1">'puma:stop'</span>
+    <span class="n">invoke</span> <span class="s1">'puma:start'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div><p>然后进行部署，可以看到以下输出：</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Overwriting puma:restart to ensure that puma is running. Effectively, we are just starting Puma.
+A solution to this should be found.
+01:44 puma:stop
+      01 <span class="nv">$HOME</span>/.rbenv/bin/rbenv <span class="nb">exec </span>bundle <span class="nb">exec </span>pumactl <span class="nt">-S</span> /home/ubuntu/srv…
+      01 Command stop sent success
+    ✔ 01 ubuntu@3.34.127.18 0.875s
+01:45 puma:start
+      using conf file /home/ubuntu/srv/heroes-of-ezantoh/shared/puma.rb
+      01 <span class="nv">$HOME</span>/.rbenv/bin/rbenv <span class="nb">exec </span>bundle <span class="nb">exec </span>puma <span class="nt">-C</span> /home/ubuntu/srv/he…
+      01 Puma starting <span class="k">in </span>single mode...
+      01 <span class="k">*</span> Version 4.3.5 <span class="o">(</span>ruby 2.7.1-p83<span class="o">)</span>, codename: Mysterious Traveller
+      01 <span class="k">*</span> Min threads: 0, max threads: 16
+      01 <span class="k">*</span> Environment: production
+      01 <span class="k">*</span> Daemonizing...
+    ✔ 01 ubuntu@3.34.127.18 1.051s
+</code></pre></div></div><p>此时Puma已经正常重启。但这一Workaround的缺陷就是不是无缝衔接，会有downtime。我们只能静待更新了。</p><h2 id="检查配置"><a href="#检查配置">#</a> 检查配置 </h2><p>使用下面的命令让Capistrano检测配置是否正确。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cap production deploy:check
+</code></pre></div></div><p>如果出现问题，请用你的<code class="language-plaintext highlighter-rouge">technical sophistication</code>来解决。</p><h2 id="caddy"><a href="#caddy">#</a> Caddy </h2><p>Caddy的配置相对简单，首先参看我过去的博文<a href="/2020/04/21/aria-pi/">安装Caddy V2</a>。</p><p>然后修改/新建<code class="language-plaintext highlighter-rouge">/etc/caddy/Caddyfile</code>。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Caddyfile</span>
+yourdomain.com <span class="o">{</span>
+	root <span class="k">*</span> &lt;deployment folder&gt;/current/public/
+	route <span class="o">{</span>
+		file_server /packs<span class="k">*</span>
+		reverse_proxy unix/&lt;deployment folder&gt;/shared/tmp/sockets/puma.sock <span class="o">{</span>
+			header_up X-Forwarded-For <span class="o">{</span>remote_host<span class="o">}</span>
+			header_up X-Forwarded-Port <span class="o">{</span>server_port<span class="o">}</span>
+			header_up X-Forwarded-Proto <span class="o">{</span>scheme<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div><p><code class="language-plaintext highlighter-rouge">&lt;deployment folder&gt;</code>是刚刚在<code class="language-plaintext highlighter-rouge">deploy.rb</code>设置的部署文件夹。思路是使用<code class="language-plaintext highlighter-rouge">route</code>命令来保证能优先访问到JavaScript和CSS等资源文件，然后在不是访问<code class="language-plaintext highlighter-rouge">packs</code>文件夹下的文件的情况下，将请求转发到puma。</p><blockquote><p>Note: 需要提醒的是Caddy V2的unix连接格式是这样的：<code class="language-plaintext highlighter-rouge">unix//foder/server.sock</code>，而并不是以<code class="language-plaintext highlighter-rouge">unix:///</code>开头。</p></blockquote><p>由于我用了Webpacker来接管JavaScript和CSS，因此我只使用file_server命令serve了<code class="language-plaintext highlighter-rouge">packs</code>文件夹。</p><p>然后使用<code class="language-plaintext highlighter-rouge">systemctl</code>三件套来启动Caddy服务。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl daemon-reload <span class="c"># 重新加载修改过的service文件</span>
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>aria2 <span class="c"># 开启自启动</span>
+<span class="nb">sudo </span>systemctl start aria2 <span class="c"># 启动服务</span>
+</code></pre></div></div><h2 id="部署"><a href="#部署">#</a> 部署 </h2><p>最后的部署过程比较简单。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cap production deploy
+</code></pre></div></div><p>目前没有解决的问题是从第二次部署开始，每次部署之后需要手动启动Puma。</p><div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cap production puma:start
+</code></pre></div></div><p>其余已经非常完美了。</p></div><ul class="post-pager"><li class="pager--next"><a class="button" href="/2020/06/07/easy-connect-manjaro/" data-toggle="tooltip" data-placement="top" title="如何在Manjaro Linux优雅地使用EasyConnect"> NEXT<br><span>如何在Manjaro Linux优雅地使用EasyConnect</span></a></li><li class="pager--prev"><a class="button" href="/2020/06/04/rails-development-2/" data-toggle="tooltip" data-placement="top" title="RoR开发日志二"> PREV<br><span>RoR开发日志二</span></a></li></ul><div id="vcomments"></div></div></section><footer class="about condensed"><ul class="social condensed"><li><a target="_blank" rel="noreferrer" href="https://github.com/DotIN13" aria-label="GitHub Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/peter.zhang.1466" aria-label="Facebook Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://twitter.com/DotIN13" aria-label="Twitter Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://space.bilibili.com/4471331" aria-label="Bilibili Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="icon-bilibili fa-stack-1x fa-inverse"></i></span></a></li></ul><nav class="navigation condensed"><ul><li><a href="/about">About</a></li><li><a href="/archive">Archive</a></li></ul></nav><section class="about-footer condensed"><div><a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a></div><div><a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a></div></section></footer></main><script async src="https://www.googletagmanager.com/gtag/js?id=UA-159368053-1"></script><script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159368053-1');
+    </script></body></html>

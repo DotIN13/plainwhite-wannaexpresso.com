@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="google-site-verification" content="zrVlHARQzSGPX8n0jKJdP_fCO0AvtLXxoPmYkJh-oXw"/><meta name="description" content="Act local, think global with DotIN13!"><meta name="keywords" content="Raspberry Pi, Linux, and Python"><meta name="theme-color" content="#ff94c2"><meta lang="zh"><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png?v=2bA3g2vyYK"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png?v=2bA3g2vyYK"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png?v=2bA3g2vyYK"><link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg?v=2bA3g2vyYK" color="#dc2267"><link rel="shortcut icon" href="/assets/img/favicon/favicon.ico?v=2bA3g2vyYK"><meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/img/favicon/browserconfig.xml?v=2bA3g2vyYK"><meta property="og:title" content="树莓派自动风扇控制系统 - DOTIN13'S BLOG"><meta property="og:type" content="article"><meta property="og:description" content="一次不求甚解的尝试 电路设计：零基础。 Python：零基础。 照抄：Aerandir14@Instructable Circuts。 本文遵循CC-BY-NC-SA 4.0证书. 材料 Raspberry Pi 4B×1 5V风扇×1 实验板×1 NPN三极管2N2222A×1 1KΩ电阻×1 公对母杜邦线×3 电路设计 电路设计如图，全部照抄。..."><meta property="article:published_time" content="2020-07-08T00:00:00Z"><meta property="article:author" content="DotIN13"><meta property="article:tag" content="Raspberry Pi"><meta property="article:tag" content="Linux"><meta property="article:tag" content="Python"><meta property="og:image" content="https://www.wannaexpresso.com/assets/img/orange.webp"><meta property="og:url" content="https://www.wannaexpresso.com/2020/07/08/pi-fan-control/"><meta property="og:site_name" content="DOTIN13'S BLOG"><link rel="canonical" href="https://www.wannaexpresso.com/2020/07/08/pi-fan-control/"><script src="/assets/public/application-bundle.js"></script><link rel="stylesheet" href="/assets/public/application.css"><script src="/assets/public/posts-bundle.js"></script><title>树莓派自动风扇控制系统 - DOTIN13'S BLOG</title></head><body><main class="container"><section class="about"><div class="about-header"><div class="about-title"><a href="/" id="avatar" data-caption="DotIN13" data-webpack="true" data-path="/assets/img/orange.webp"></a><h2 id="title"><a href="/">DotIN13</a></h2></div><p class="tagline">LACKAWANNA<br>EXPRESSO</p></div><div class="buttons"><a href="/en-us/" class="language-selection button icon-translate" aria-label="Change locale to English."></a><a href="/feed.xml" class="feed button icon-rss_feed" aria-label="RSS Feed"></a><input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a><a href="#" id="pwa-install" class="install button icon-install disabled" aria-label="Install as Web Application"><span>Install</span></a></div><ul class="social condensed"><li><a target="_blank" rel="noreferrer" href="https://github.com/DotIN13" aria-label="GitHub Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/peter.zhang.1466" aria-label="Facebook Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://twitter.com/DotIN13" aria-label="Twitter Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://space.bilibili.com/4471331" aria-label="Bilibili Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="icon-bilibili fa-stack-1x fa-inverse"></i></span></a></li></ul><nav class="navigation condensed"><ul><li><a href="/about">About</a></li><li><a href="/archive">Archive</a></li></ul></nav><section class="about-footer condensed"><div><a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a></div><div><a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a></div></section></section><section class="content"><div class="post-container"><a class="post-link" href="/2020/07/08/pi-fan-control/"><h2 class="post-title">树莓派自动风扇控制系统</h2><h3 class="post-subtitle">Raspberry Pi Fan Control</h3></a><div class="post-meta"><div class="post-categories"><a class="button" href="/archive/?tag=Raspberry+Pi" title="Raspberry Pi">Raspberry Pi</a><a class="button" href="/archive/?tag=Linux" title="Linux">Linux</a><a class="button" href="/archive/?tag=Python" title="Python">Python</a></div><div class="post-misc"><div class="post-date"><i class="icon-calendar"></i>Jul 8, 2020</div></div></div><div class="post"><h2 id="一次不求甚解的尝试"><a href="#一次不求甚解的尝试">#</a> 一次不求甚解的尝试 </h2><p>电路设计：零基础。</p><p>Python：零基础。</p><p>照抄：<a href="https://www.instructables.com/id/PWM-Regulated-Fan-Based-on-CPU-Temperature-for-Ras/" target="_blank" rel="nofollow noopener noreferrer">Aerandir14@Instructable Circuts</a>。</p><p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a><em>本文遵循<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0证书</a>.<em></em></em></p><h2 id="材料"><a href="#材料">#</a> 材料 </h2><ol><li>Raspberry Pi 4B×1</li><li>5V风扇×1</li><li>实验板×1</li><li>NPN三极管2N2222A×1</li><li>1KΩ电阻×1</li><li>公对母杜邦线×3</li></ol><h2 id="电路设计"><a href="#电路设计">#</a> 电路设计 </h2><p>电路设计如图，全部照抄。</p><div class="post-img"><a href="/assets/img/in-post/post-pi-fan/circut.jpg" data-fancybox="gallery" data-caption="Circut Design" data-path="post-pi-fan/circut.jpg" data-webpack="true"></a><em>Circut Design</em></div><div class="post-img"><a href="/assets/img/in-post/post-pi-fan/emulation.jpg" data-fancybox="gallery" data-caption="Weld Guide" data-path="post-pi-fan/emulation.jpg" data-webpack="true"></a><em>Weld Guide</em></div><h2 id="成品"><a href="#成品">#</a> 成品 </h2><p>我在实际操作的时候，直接将公对母杜邦线一剪为二，母头用于连接GPIO，公头用于和风扇自带的母头空中对接。</p><div class="post-img"><a href="/assets/img/in-post/post-pi-fan/final.jpg" data-fancybox="gallery" data-caption="My Work" data-path="post-pi-fan/final.jpg" data-webpack="true"></a><em>My Work</em></div><h2 id="使用"><a href="#使用">#</a> 使用 </h2><p>使用<a href="https://www.instructables.com/id/PWM-Regulated-Fan-Based-on-CPU-Temperature-for-Ras/" target="_blank" rel="nofollow noopener noreferrer">Aerandir14@Instructable Circuts</a>制作的<code class="language-plaintext highlighter-rouge">calib.py</code>，尝试调整风扇转速，了解风扇不同转速下的噪音情况。</p><p><code class="language-plaintext highlighter-rouge">python calib.py</code>之后，系统会提示输入风扇速度，回车确认。</p><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/python
+# -*- coding: utf-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="n">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1">#import os
+</span>
+<span class="n">FAN_PIN</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">WAIT_TIME</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">PWM_FREQ</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="n">GPIO</span><span class="p">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="p">.</span><span class="n">BCM</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="n">FAN_PIN</span><span class="p">,</span> <span class="n">GPIO</span><span class="p">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="n">GPIO</span><span class="p">.</span><span class="n">LOW</span><span class="p">)</span>
+
+<span class="n">fan</span><span class="o">=</span><span class="n">GPIO</span><span class="p">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">FAN_PIN</span><span class="p">,</span><span class="n">PWM_FREQ</span><span class="p">)</span>
+<span class="n">fan</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">hyst</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">tempSteps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">speedSteps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">cpuTempOld</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fanSpeed</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Fan Speed: "</span><span class="p">))</span>
+        <span class="n">fan</span><span class="p">.</span><span class="n">ChangeDutyCycle</span><span class="p">(</span><span class="n">fanSpeed</span><span class="p">)</span>
+
+
+<span class="k">except</span><span class="p">(</span><span class="nb">KeyboardInterrupt</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Fan ctrl interrupted by keyboard"</span><span class="p">)</span>
+    <span class="n">GPIO</span><span class="p">.</span><span class="n">cleanup</span><span class="p">()</span>
+    <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">()</span>
+</code></pre></div></div><p>然后使用<a href="https://www.instructables.com/id/PWM-Regulated-Fan-Based-on-CPU-Temperature-for-Ras/" target="_blank" rel="nofollow noopener noreferrer">Aerandir14@Instructable Circuts</a>制作的<code class="language-plaintext highlighter-rouge">ctrl.py</code>控制风扇转速，依照自身喜好调节<code class="language-plaintext highlighter-rouge">tempSteps</code>与<code class="language-plaintext highlighter-rouge">speedSteps</code>之后使用<code class="language-plaintext highlighter-rouge">python ctrl.py</code>运行。</p><p><code class="language-plaintext highlighter-rouge">tempSteps</code>中的每一个温度对应一个<code class="language-plaintext highlighter-rouge">speedSteps</code>的速度，如果温度介于两个设定之间，将会自动线性计算需要的转速。</p><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/python
+# -*- coding: utf-8 -*-
+</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="n">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Configuration
+</span><span class="n">FAN_PIN</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1"># BCM pin used to drive transistor's base
+</span><span class="n">WAIT_TIME</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># [s] Time to wait between each refresh
+</span><span class="n">FAN_MIN</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># [%] Fan minimum speed.
+</span><span class="n">PWM_FREQ</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># [Hz] Change this value if fan has strange behavior
+</span>
+<span class="c1"># Configurable temperature and fan speed steps
+</span><span class="n">tempSteps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>  <span class="c1"># [°C]
+</span><span class="n">speedSteps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>  <span class="c1"># [%]
+</span>
+<span class="c1"># Fan speed will change only of the difference of temperature is higher than hysteresis
+</span><span class="n">hyst</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Setup GPIO pin
+</span><span class="n">GPIO</span><span class="p">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="p">.</span><span class="n">BCM</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="n">FAN_PIN</span><span class="p">,</span> <span class="n">GPIO</span><span class="p">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="n">GPIO</span><span class="p">.</span><span class="n">LOW</span><span class="p">)</span>
+<span class="n">fan</span> <span class="o">=</span> <span class="n">GPIO</span><span class="p">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">FAN_PIN</span><span class="p">,</span> <span class="n">PWM_FREQ</span><span class="p">)</span>
+<span class="n">fan</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cpuTemp</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fanSpeed</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cpuTempOld</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fanSpeedOld</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># We must set a speed value for each temperature step
+</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">speedSteps</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tempSteps</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Numbers of temp steps and speed steps are different"</span><span class="p">)</span>
+    <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># Read CPU temperature
+</span>        <span class="n">cpuTempFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/sys/class/thermal/thermal_zone0/temp"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+        <span class="n">cpuTemp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cpuTempFile</span><span class="p">.</span><span class="n">read</span><span class="p">())</span> <span class="o">/</span> <span class="mi">1000</span>
+        <span class="n">cpuTempFile</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="c1"># Calculate desired fan speed
+</span>        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cpuTemp</span> <span class="o">-</span> <span class="n">cpuTempOld</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">hyst</span><span class="p">:</span>
+            <span class="c1"># Below first value, fan will run at min speed.
+</span>            <span class="k">if</span> <span class="n">cpuTemp</span> <span class="o">&lt;</span> <span class="n">tempSteps</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">fanSpeed</span> <span class="o">=</span> <span class="n">speedSteps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># Above last value, fan will run at max speed
+</span>            <span class="k">elif</span> <span class="n">cpuTemp</span> <span class="o">&gt;=</span> <span class="n">tempSteps</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tempSteps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">fanSpeed</span> <span class="o">=</span> <span class="n">speedSteps</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tempSteps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># If temperature is between 2 steps, fan speed is calculated by linear interpolation
+</span>            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tempSteps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">cpuTemp</span> <span class="o">&gt;=</span> <span class="n">tempSteps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cpuTemp</span> <span class="o">&lt;</span> <span class="n">tempSteps</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]):</span>
+                        <span class="n">fanSpeed</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">speedSteps</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">speedSteps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                         <span class="o">/</span> <span class="p">(</span><span class="n">tempSteps</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">tempSteps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                         <span class="o">*</span> <span class="p">(</span><span class="n">cpuTemp</span> <span class="o">-</span> <span class="n">tempSteps</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                         <span class="o">+</span> <span class="n">speedSteps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">fanSpeed</span> <span class="o">!=</span> <span class="n">fanSpeedOld</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">fanSpeed</span> <span class="o">!=</span> <span class="n">fanSpeedOld</span>
+                        <span class="ow">and</span> <span class="p">(</span><span class="n">fanSpeed</span> <span class="o">&gt;=</span> <span class="n">FAN_MIN</span> <span class="ow">or</span> <span class="n">fanSpeed</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)):</span>
+                    <span class="n">fan</span><span class="p">.</span><span class="n">ChangeDutyCycle</span><span class="p">(</span><span class="n">fanSpeed</span><span class="p">)</span>
+                    <span class="n">fanSpeedOld</span> <span class="o">=</span> <span class="n">fanSpeed</span>
+            <span class="n">cpuTempOld</span> <span class="o">=</span> <span class="n">cpuTemp</span>
+
+        <span class="c1"># Wait until next refresh
+</span>        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">WAIT_TIME</span><span class="p">)</span>
+
+
+<span class="c1"># If a keyboard interrupt occurs (ctrl + c), the GPIO is set to 0 and the program exits.
+</span><span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Fan ctrl interrupted by keyboard"</span><span class="p">)</span>
+    <span class="n">GPIO</span><span class="p">.</span><span class="n">cleanup</span><span class="p">()</span>
+    <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">()</span>
+</code></pre></div></div><h2 id="自动运行"><a href="#自动运行">#</a> 自动运行 </h2><p>测试完毕，使用systemd配置后台运行。修改<code class="language-plaintext highlighter-rouge">/etc/systemd/system/fanctrl.service</code>。</p><div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Unit]
+<span class="nv">Description</span><span class="o">=</span>PWM Fan Control
+<span class="nv">After</span><span class="o">=</span>mediacenter.service
+
+<span class="o">[</span>Service]
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">User</span><span class="o">=</span>root
+<span class="nv">ExecStart</span><span class="o">=</span> /usr/bin/python &lt;path to ctrl.py&gt;
+<span class="nv">Restart</span><span class="o">=</span>always
+
+<span class="o">[</span>Install]
+<span class="nv">WantedBy</span><span class="o">=</span>default.target
+</code></pre></div></div><p>然后使用systemctl三件套启动服务。</p><div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl daemon-reload
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>fanctrl
+<span class="nb">sudo </span>systemctl start fanctrl
+</code></pre></div></div><h2 id="大功告成"><a href="#大功告成">#</a> 大功告成 </h2><p>如果你和我一样是个温控强迫症，温度超过50度就感觉要崩溃；如果你和我一样，觉得店家附赠的风扇太吵，那么就来尝试动手制作吧！让风扇再也不会吵到楼下保安。愿世界再也没有噪音。</p></div><ul class="post-pager"><li class="pager--next"><a class="button" href="/2020/08/01/pi-reboot/" data-toggle="tooltip" data-placement="top" title="如何安全重启树莓派"> NEXT<br><span>如何安全重启树莓派</span></a></li><li class="pager--prev"><a class="button" href="/2020/07/07/chenhuansheng-downtown/" data-toggle="tooltip" data-placement="top" title="陈奂生上城"> PREV<br><span>陈奂生上城</span></a></li></ul><div id="vcomments"></div></div></section><footer class="about condensed"><ul class="social condensed"><li><a target="_blank" rel="noreferrer" href="https://github.com/DotIN13" aria-label="GitHub Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/peter.zhang.1466" aria-label="Facebook Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://twitter.com/DotIN13" aria-label="Twitter Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://space.bilibili.com/4471331" aria-label="Bilibili Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="icon-bilibili fa-stack-1x fa-inverse"></i></span></a></li></ul><nav class="navigation condensed"><ul><li><a href="/about">About</a></li><li><a href="/archive">Archive</a></li></ul></nav><section class="about-footer condensed"><div><a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a></div><div><a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a></div></section></footer></main><script async src="https://www.googletagmanager.com/gtag/js?id=UA-159368053-1"></script><script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159368053-1');
+    </script></body></html>

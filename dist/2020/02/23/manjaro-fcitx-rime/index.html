@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="google-site-verification" content="zrVlHARQzSGPX8n0jKJdP_fCO0AvtLXxoPmYkJh-oXw"/><meta name="description" content="Act local, think global with DotIN13!"><meta name="keywords" content="Linux, Fcitx, and Rime"><meta name="theme-color" content="#ff94c2"><meta lang="zh"><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png?v=2bA3g2vyYK"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png?v=2bA3g2vyYK"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png?v=2bA3g2vyYK"><link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg?v=2bA3g2vyYK" color="#dc2267"><link rel="shortcut icon" href="/assets/img/favicon/favicon.ico?v=2bA3g2vyYK"><meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/img/favicon/browserconfig.xml?v=2bA3g2vyYK"><meta property="og:title" content="在Linux/Manjaro中使用Fcitx+Rime - DOTIN13'S BLOG"><meta property="og:type" content="article"><meta property="og:description" content="安装Fcitx+Rime Linux中的中文输入法与Windows上的输入法有所不同，不像Windows中一个输入法软件即可提供输入服务，在Linux中首先需要安装基础输入法软件Fcitx或者iBus，再通过Addon的方式添加各家的输入法解决方案如Google Pinyin、Sogou Pinyin等，本篇推荐的方案就是Fcitx加Rime的组合。其中，Rime的..."><meta property="article:published_time" content="2020-02-23T11:25:00Z"><meta property="article:author" content="DotIN13"><meta property="article:tag" content="Linux"><meta property="article:tag" content="Fcitx"><meta property="article:tag" content="Rime"><meta property="og:image" content="https://www.wannaexpresso.com/assets/img/orange.webp"><meta property="og:url" content="https://www.wannaexpresso.com/2020/02/23/manjaro-fcitx-rime/"><meta property="og:site_name" content="DOTIN13'S BLOG"><link rel="canonical" href="https://www.wannaexpresso.com/2020/02/23/manjaro-fcitx-rime/"><script src="/assets/public/application-bundle.js"></script><link rel="stylesheet" href="/assets/public/application.css"><script src="/assets/public/posts-bundle.js"></script><title>在Linux/Manjaro中使用Fcitx+Rime - DOTIN13'S BLOG</title></head><body><main class="container"><section class="about"><div class="about-header"><div class="about-title"><a href="/" id="avatar" data-caption="DotIN13" data-webpack="true" data-path="/assets/img/orange.webp"></a><h2 id="title"><a href="/">DotIN13</a></h2></div><p class="tagline">LACKAWANNA<br>EXPRESSO</p></div><div class="buttons"><a href="/en-us/" class="language-selection button icon-translate" aria-label="Change locale to English."></a><a href="/feed.xml" class="feed button icon-rss_feed" aria-label="RSS Feed"></a><input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a><a href="#" id="pwa-install" class="install button icon-install disabled" aria-label="Install as Web Application"><span>Install</span></a></div><ul class="social condensed"><li><a target="_blank" rel="noreferrer" href="https://github.com/DotIN13" aria-label="GitHub Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/peter.zhang.1466" aria-label="Facebook Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://twitter.com/DotIN13" aria-label="Twitter Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://space.bilibili.com/4471331" aria-label="Bilibili Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="icon-bilibili fa-stack-1x fa-inverse"></i></span></a></li></ul><nav class="navigation condensed"><ul><li><a href="/about">About</a></li><li><a href="/archive">Archive</a></li></ul></nav><section class="about-footer condensed"><div><a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a></div><div><a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a></div></section></section><section class="content"><div class="post-container"><a class="post-link" href="/2020/02/23/manjaro-fcitx-rime/"><h2 class="post-title">在Linux/Manjaro中使用Fcitx+Rime</h2><h3 class="post-subtitle">Using Fcitx+Rime in Manjaro</h3></a><div class="post-meta"><div class="post-categories"><a class="button" href="/archive/?tag=Linux" title="Linux">Linux</a><a class="button" href="/archive/?tag=Fcitx" title="Fcitx">Fcitx</a><a class="button" href="/archive/?tag=Rime" title="Rime">Rime</a></div><div class="post-misc"><div class="post-date"><i class="icon-calendar"></i>Feb 23, 2020</div></div></div><div class="post"><h2 id="安装Fcitx+Rime"><a href="#安装Fcitx+Rime">#</a> 安装Fcitx+Rime </h2><div><p>Linux中的中文输入法与Windows上的输入法有所不同，不像Windows中一个输入法软件即可提供输入服务，在Linux中首先需要安装基础输入法软件Fcitx或者iBus，再通过Addon的方式添加各家的输入法解决方案如Google Pinyin、Sogou Pinyin等，本篇推荐的方案就是Fcitx加Rime的组合。其中，Rime的官方名称是中州韻輸入法引擎，官方网站是<a href="https://rime.im/">Rime.im</a>，其默认用作输入繁体，因此需要一定的配置才能输入简体字。</p><img border="0" src="post-rime/rime.jpg"/><p>Manjaro的软件安装策略使得安装应用程序非常便利，直接安裝以下软件包： <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>pacman <span class="nt">-S</span> fcitx-im <span class="c">#安裝全部fcitx組件</span>
+<span class="nb">sudo </span>pacman <span class="nt">-S</span> fcitx-rime <span class="c">#安裝rime</span>
+<span class="nb">sudo </span>pacman <span class="nt">-S</span> fcitx-configtool <span class="c">#安裝fcitx圖形管理工具</span></code></pre></figure></p></div><h2 id="选择Rime"><a href="#选择Rime">#</a> 选择Rime </h2><div><p>打开fcitx-configtool后，在Input Method选项卡中点击加号弹出搜索对话框，搜索Rime，点击OK添加。默认的输入法切换按键是<code>Ctrl+Space</code>，切换到Rime后再按Shift可以切换中英文。</p><p>一个值得注意的地方是Rime会接管部分的Fcitx设置，比如候选项数量。</p><p> 然後修改<code>~/.xprofile</code>文件，將如下內容添加進文件中。 </p></div><figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
+<span class="nb">export </span><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
+<span class="nb">export </span><span class="nv">XMODIFIERS</span><span class="o">=</span><span class="s2">"@im=fcitx"</span></code></pre></figure><h2 id="具体的Rime配置"><a href="#具体的Rime配置">#</a> 具体的Rime配置 </h2><div><p>自定义Rime是一桩技术活，本篇只介绍我所使用的配置，你的个性配置可以参考<a href="https://github.com/rime/home/wiki/CustomizationGuide">GitHub</a>。 </p><p>当用户需要对Rime中的各种设定做小幅的调节，最直接、但不完全正确的做法是：编辑build文件夹（<code>~/.config/fcitx/rime/build</code>）中那些.yaml 文档。但由于更新后总会覆盖build文件夹中的文件，这么做的弊端不言而喻，因此推荐在用户文件夹（<code>~/.config/fcitx/rime</code>）创建custom文件，来进行自定义。创建的文件应当符合以下文件名格式：主体部份（「.」之前）与要定制的文件相同、次级扩展名（「.yaml」之前）为.custom。例如源文件为<code>luna_pinyin.schema.yaml</code>，你的自定义文件就为<code>luna_pinyin.custom.yaml</code>。 </p><details><summary> 我的配置文件<a href="https://github.com/DotIN13/rime_luna_customization/raw/master/luna_pinyin.custom.yaml"><code>luna_pinyin.custom.yaml</code></a>如下，其主要任务便是提供简体字输出。 </summary><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># luna_pinyin.custom.yaml</span>
+<span class="c1">#</span>
+<span class="c1"># 【朙月拼音】模糊音定製模板</span>
+<span class="c1">#   佛振配製 :-)</span>
+<span class="c1">#</span>
+<span class="c1"># 位置：</span>
+<span class="c1"># ~/.config/fcitx/rime  (Linux)</span>
+<span class="c1"># ~/Library/Rime  (Mac OS)</span>
+<span class="c1"># %APPDATA%\Rime  (Windows)</span>
+<span class="c1">#</span>
+<span class="c1"># 於重新部署後生效</span>
+<span class="c1">#</span>
+
+<span class="na">patch</span><span class="pi">:</span>
+  <span class="na">switches</span><span class="pi">:</span>                   <span class="c1"># 注意缩进</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">ascii_mode</span>
+      <span class="na">reset</span><span class="pi">:</span> <span class="m">0</span>                <span class="c1"># reset 0 的作用是当从其他输入法切换到本输入法重设为指定状态</span>
+      <span class="na">states</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">中文</span><span class="pi">,</span> <span class="nv">西文</span> <span class="pi">]</span>   <span class="c1"># 选择输入方案后通常需要立即输入中文，故重设 ascii_mode = 0</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">full_shape</span>
+      <span class="na">states</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">半角</span><span class="pi">,</span> <span class="nv">全角</span> <span class="pi">]</span>   <span class="c1"># 而全／半角则可沿用之前方案的用法。</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">simplification</span>
+      <span class="na">reset</span><span class="pi">:</span> <span class="m">1</span>                <span class="c1"># 增加这一行：默认启用「繁→簡」转换。</span>
+      <span class="na">states</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">漢字</span><span class="pi">,</span> <span class="nv">汉字</span> <span class="pi">]</span>
+
+  <span class="s1">'</span><span class="s">speller/algebra'</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">erase/^xx$/</span>                      <span class="c1"># 第一行保留</span>
+
+    <span class="c1"># 模糊音定義</span>
+    <span class="c1"># 需要哪組就刪去行首的 # 號，單雙向任選</span>
+    <span class="c1">#- derive/^([zcs])h/$1/             # zh, ch, sh =&amp;gt; z, c, s</span>
+    <span class="c1">#- derive/^([zcs])([^h])/$1h$2/     # z, c, s =&amp;gt; zh, ch, sh</span>
+
+    <span class="c1">#- derive/^n/l/                     # n =&amp;gt; l</span>
+    <span class="c1">#- derive/^l/n/                     # l =&amp;gt; n</span>
+
+    <span class="c1"># 這兩組一般是單向的</span>
+    <span class="c1">#- derive/^r/l/                     # r =&amp;gt; l</span>
+
+    <span class="c1">#- derive/^ren/yin/                 # ren =&amp;gt; yin, reng =&amp;gt; ying</span>
+    <span class="c1">#- derive/^r/y/                     # r =&amp;gt; y</span>
+
+    <span class="c1"># 下面 hu &amp;lt;=&amp;gt; f 這組寫法複雜一些，分情況討論</span>
+    <span class="c1">#- derive/^hu$/fu/                  # hu =&amp;gt; fu</span>
+    <span class="c1">#- derive/^hong$/feng/              # hong =&amp;gt; feng</span>
+    <span class="c1">#- derive/^hu([in])$/fe$1/          # hui =&amp;gt; fei, hun =&amp;gt; fen</span>
+    <span class="c1">#- derive/^hu([ao])/f$1/            # hua =&amp;gt; fa, ...</span>
+
+    <span class="c1">#- derive/^fu$/hu/                  # fu =&amp;gt; hu</span>
+    <span class="c1">#- derive/^feng$/hong/              # feng =&amp;gt; hong</span>
+    <span class="c1">#- derive/^fe([in])$/hu$1/          # fei =&amp;gt; hui, fen =&amp;gt; hun</span>
+    <span class="c1">#- derive/^f([ao])/hu$1/            # fa =&amp;gt; hua, ...</span>
+
+    <span class="c1"># 韻母部份</span>
+    <span class="c1">#- derive/^([bpmf])eng$/$1ong/      # meng = mong, ...</span>
+    <span class="pi">-</span> <span class="s">derive/([ei])n$/$1ng/</span>            <span class="c1"># en =&amp;gt; eng, in =&amp;gt; ing</span>
+    <span class="pi">-</span> <span class="s">derive/([ei])ng$/$1n/</span>            <span class="c1"># eng =&amp;gt; en, ing =&amp;gt; in</span>
+
+    <span class="c1"># 樣例足夠了，其他請自己總結……</span>
+
+    <span class="c1"># 反模糊音？</span>
+    <span class="c1"># 誰說方言沒有普通話精確、有模糊音，就能有反模糊音。</span>
+    <span class="c1"># 示例爲分尖團的中原官話：</span>
+    <span class="c1">#- derive/^ji$/zii/   # 在設計者安排下鳩佔鵲巢，尖音i只好雙寫了</span>
+    <span class="c1">#- derive/^qi$/cii/</span>
+    <span class="c1">#- derive/^xi$/sii/</span>
+    <span class="c1">#- derive/^ji/zi/</span>
+    <span class="c1">#- derive/^qi/ci/</span>
+    <span class="c1">#- derive/^xi/si/</span>
+    <span class="c1">#- derive/^ju/zv/</span>
+    <span class="c1">#- derive/^qu/cv/</span>
+    <span class="c1">#- derive/^xu/sv/</span>
+    <span class="c1"># 韻母部份，只能從大面上覆蓋</span>
+    <span class="c1">#- derive/^([bpm])o$/$1eh/          # bo =&amp;gt; beh, ...</span>
+    <span class="c1">#- derive/(^|[dtnlgkhzcs]h?)e$/$1eh/  # ge =&amp;gt; geh, se =&amp;gt; sheh, ...</span>
+    <span class="c1">#- derive/^([gkh])uo$/$1ue/         # guo =&amp;gt; gue, ...</span>
+    <span class="c1">#- derive/^([gkh])e$/$1uo/          # he =&amp;gt; huo, ...</span>
+    <span class="c1">#- derive/([uv])e$/$1o/             # jue =&amp;gt; juo, lve =&amp;gt; lvo, ...</span>
+    <span class="c1">#- derive/^fei$/fi/                 # fei =&amp;gt; fi</span>
+    <span class="c1">#- derive/^wei$/vi/                 # wei =&amp;gt; vi</span>
+    <span class="c1">#- derive/^([nl])ei$/$1ui/          # nei =&amp;gt; nui, lei =&amp;gt; lui</span>
+    <span class="c1">#- derive/^([nlzcs])un$/$1vn/       # lun =&amp;gt; lvn, zun =&amp;gt; zvn, ... </span>
+    <span class="c1">#- derive/^([nlzcs])ong$/$1iong/    # long =&amp;gt; liong, song =&amp;gt; siong, ...</span>
+    <span class="c1"># 這個辦法雖從拼寫上做出了區分，然而受詞典制約，候選字仍是混的。</span>
+    <span class="c1"># 只有真正的方音輸入方案纔能做到！但「反模糊音」這個玩法快速而有效！</span>
+
+    <span class="c1"># 模糊音定義先於簡拼定義，方可令簡拼支持以上模糊音</span>
+    <span class="pi">-</span> <span class="s">abbrev/^([a-z]).+$/$1/</span>           <span class="c1"># 簡拼（首字母）</span>
+    <span class="pi">-</span> <span class="s">abbrev/^([zcs]h).+$/$1/</span>          <span class="c1"># 簡拼（zh, ch, sh）</span>
+
+    <span class="c1"># 以下是一組容錯拼寫，《漢語拼音》方案以前者爲正</span>
+    <span class="pi">-</span> <span class="s">derive/^([nl])ve$/$1ue/</span>          <span class="c1"># nve = nue, lve = lue</span>
+    <span class="pi">-</span> <span class="s">derive/^([jqxy])u/$1v/</span>           <span class="c1"># ju = jv,</span>
+    <span class="pi">-</span> <span class="s">derive/un$/uen/</span>                  <span class="c1"># gun = guen,</span>
+    <span class="pi">-</span> <span class="s">derive/ui$/uei/</span>                  <span class="c1"># gui = guei,</span>
+    <span class="pi">-</span> <span class="s">derive/iu$/iou/</span>                  <span class="c1"># jiu = jiou,</span>
+
+    <span class="c1"># 自動糾正一些常見的按鍵錯誤</span>
+    <span class="pi">-</span> <span class="s">derive/([aeiou])ng$/$1gn/</span>        <span class="c1"># dagn =&amp;gt; dang </span>
+    <span class="pi">-</span> <span class="s">derive/([dtngkhrzcs])o(u|ng)$/$1o/</span>  <span class="c1"># zho =&amp;gt; zhong|zhou</span>
+    <span class="pi">-</span> <span class="s">derive/ong$/on/</span>                  <span class="c1"># zhonguo =&amp;gt; zhong guo</span>
+    <span class="pi">-</span> <span class="s">derive/ao$/oa/</span>                   <span class="c1"># hoa =&amp;gt; hao</span>
+    <span class="pi">-</span> <span class="s">derive/([iu])a(o|ng?)$/a$1$2/</span>    <span class="c1"># tain =&amp;gt; tian</span>
+
+  <span class="c1"># 分尖團後 v =&amp;gt; ü 的改寫條件也要相應地擴充：</span>
+  <span class="c1">#'translator/preedit_format':</span>
+  <span class="c1">#  - "xform/([nljqxyzcs])v/$1ü/"</span>
+  
+  <span class="c1"># 候选词数量设定为9</span>
+  <span class="s2">"</span><span class="s">menu/page_size"</span><span class="pi">:</span> <span class="s">9</span></code></pre></figure></details></div><h2 id="Fcitx的皮肤"><a href="#Fcitx的皮肤">#</a> Fcitx的皮肤 </h2><div><p>自Fcitx 4.0以来，已经可以安装第三方皮肤，例如<a href="https://github.com/winjeg/fcitx-skins">GitHub</a>上就有一些不错的Material Style皮肤，可以依照自身喜好选择。</p></div></div><ul class="post-pager"><li class="pager--next"><a class="button" href="/2020/02/23/manjaro-v2ray/" data-toggle="tooltip" data-placement="top" title="在Linux/Manjaro中使用V2Ray"> NEXT<br><span>在Linux/Manjaro中使用V2Ray</span></a></li><li class="pager--prev"><a class="button" href="/2020/02/02/three-things-barack-obama/" data-toggle="tooltip" data-placement="top" title="3 Things That Keep Barack Obama Up at Night"> PREV<br><span>3 Things That Keep Barack Obama Up at Night</span></a></li></ul><div id="vcomments"></div></div></section><footer class="about condensed"><ul class="social condensed"><li><a target="_blank" rel="noreferrer" href="https://github.com/DotIN13" aria-label="GitHub Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-github fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://www.facebook.com/peter.zhang.1466" aria-label="Facebook Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-facebook fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://twitter.com/DotIN13" aria-label="Twitter Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="fab icon-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a target="_blank" rel="noreferrer" href="https://space.bilibili.com/4471331" aria-label="Bilibili Social Link"><span class="fa-stack fa-2x"><i class="fas icon-circle fa-stack-2x"></i><i class="icon-bilibili fa-stack-1x fa-inverse"></i></span></a></li></ul><nav class="navigation condensed"><ul><li><a href="/about">About</a></li><li><a href="/archive">Archive</a></li></ul></nav><section class="about-footer condensed"><div><a href="https://icp.gov.moe" rel="noreferrer" target="_blank">Moe ICP </a><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">20201620</a></div><div><a rel="noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a></div></section></footer></main><script async src="https://www.googletagmanager.com/gtag/js?id=UA-159368053-1"></script><script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159368053-1');
+    </script></body></html>

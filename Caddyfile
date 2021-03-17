@@ -1,4 +1,4 @@
 localhost:4000 {
-  root _site
+  root dist
   file_server
 }

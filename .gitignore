@@ -17,9 +17,6 @@ _archive
 _posts/_archive
 _posts/_draft
 
-# Generated
-_site/
-
 # Bundle
 node_modules
 vendor
