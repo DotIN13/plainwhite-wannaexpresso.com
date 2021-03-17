@@ -11,7 +11,11 @@ export default () => {
         })
         .then((res) => res.json())
         .then((json) => {
-            console.log(json)
-            likables.forEach(el => el.dataset.likes = json[el.dataset.like])
+            // console.log(json)
+            likables.forEach(el => {
+                const number = document.createElement("div")
+                number.innerHTML = json[el.dataset.like].count
+                el.nearest(".mood-meta").appendChild(number)
+            })
         })
 }
