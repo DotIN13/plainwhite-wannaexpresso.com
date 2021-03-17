@@ -1,5 +1,5 @@
 import * as dynamoose from "dynamoose"
-import articles from "app/assets/articles.json"
+import articles from "dist/app/assets/articles.json"
 
 dynamoose.aws.sdk.config.update({
     "accessKeyId": process.env.DYNAMOID_KEY_ID,

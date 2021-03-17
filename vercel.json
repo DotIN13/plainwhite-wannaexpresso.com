@@ -12,7 +12,7 @@
   ],
   "functions": {
     "api/*.js": {
-      "includeFiles": "**/app/**/*"
+      "includeFiles": "dist/app/**/*"
     }
   }
 }
