@@ -1,11 +1,13 @@
 import * as dynamoose from "dynamoose"
-import articles from "dist/app/assets/articles.json"
+import articles from "../dist/app/assets/articles.json"
 
 dynamoose.aws.sdk.config.update({
     "accessKeyId": process.env.DYNAMOID_KEY_ID,
     "secretAccessKey": process.env.DYNAMOID_KEY_SECRET,
     "region": "us-west-1"
 });
+
+// dynamoose.aws.ddb.local()
 
 const schema = new dynamoose.Schema({
     "article_id": {
