@@ -24,7 +24,8 @@ const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "thr
 module.exports = async (req, res) => {
     try {
         let likes = {}
-        await req.body.forEach(id => {
+        console.log(req.body)
+        await JSON.parse(req.body).forEach(id => {
             likes[id] = WannaLikes.query("article_id").eq(id).count().exec().count
         })
         // Respond with a object populated with key value pairs of IDs and counts
