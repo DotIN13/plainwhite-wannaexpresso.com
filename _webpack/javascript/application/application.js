@@ -8,7 +8,7 @@ import fetchLikes from './fetch-likes'
 
 let removeActive = (e) => e.target.classList.remove("active")
 let addActive = (e) => e.target.classList.add("active")
-let animateHeart = (e) => {
+let postLike = (e) => {
     e.stopPropagation()
     // Animate heart after clicking
     e.target.classList.add("heart--animating")
@@ -17,7 +17,7 @@ let animateHeart = (e) => {
 }
 
 function bindHeartActions(heart) {
-    heart.addEventListener("click", animateHeart)
+    heart.addEventListener("click", postLike)
     heart.addEventListener("animationend", (e) => e.target.classList.remove("heart--animating"))
     heart.addEventListener("mouseover", addActive)
     heart.addEventListener("mouseleave", removeActive)
@@ -29,7 +29,8 @@ function like(heart) {
             heart.classList.add("active")
             heart.removeEventListener("mouseover", addActive)
             heart.removeEventListener("mouseleave", removeActive)
-            heart.removeEventListener("click", animateHeart)
+            heart.removeEventListener("click", postLike)
+            heart.closest(".meta-like").querySelector(".like-count").innerHTML += 1
         }
     })
 }
