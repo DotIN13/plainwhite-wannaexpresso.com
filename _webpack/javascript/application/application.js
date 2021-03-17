@@ -30,7 +30,8 @@ function like(heart) {
             heart.removeEventListener("mouseover", addActive)
             heart.removeEventListener("mouseleave", removeActive)
             heart.removeEventListener("click", postLike)
-            heart.closest(".meta-like").querySelector(".like-count").innerHTML += 1
+            const likes = Number(heart.closest(".meta-like").querySelector(".like-count").innerHTML) || 0
+            heart.closest(".meta-like").querySelector(".like-count").innerHTML = likes + 1
         }
     })
 }
