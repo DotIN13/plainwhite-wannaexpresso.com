@@ -27,7 +27,8 @@ exclude:
     ".rubocop.yml",
     "Caddyfile",
     "yarn.lock",
-    "vercel.json"
+    "vercel.json",
+    "api"
   ]
 defaults:
   - scope:
