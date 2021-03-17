@@ -3,7 +3,7 @@ export default () => {
     const likables = document.querySelectorAll(".heart")
     // Get all article IDs with like counts to retrieve
     const likableIds = Array.from(likables).map(h => h.dataset.like)
-    
+
     fetch("/api/get_likes", {
             body: JSON.stringify(likableIds),
             method: "POST",
@@ -13,9 +13,8 @@ export default () => {
         .then((json) => {
             // console.log(json)
             likables.forEach(el => {
-                const number = document.createElement("div")
-                number.innerHTML = json[el.dataset.like].count
-                el.closest(".mood-meta").appendChild(number)
+                const count = json[el.dataset.like].count
+                if (count > 0) el.closest(".meta-like").querySelector(".like-count").innerHTML = count
             })
         })
 }

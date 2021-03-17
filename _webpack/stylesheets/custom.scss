@@ -623,12 +623,12 @@ i.icon-calendar {
 .heart {
     display: block;
     cursor: pointer;
-    height: 51px;
+    height: 50px;
     width: 50px;
     background-image: url('../../assets/img/web_heart_animation.png?size=2900');
     background-position: left;
     background-repeat: no-repeat;
-    background-size: 2900%;
+    background-size: cover;
     opacity: 0.8;
 
     &.active {

@@ -125,6 +125,19 @@ $smallMoodPadding: 2em;
                 display: inline;
             }
         }
+
+        .mood-like {
+            position: relative;
+
+            .heart {
+                position: absolute;
+                top: -24px;
+            }
+        }
+
+        .mood-like-count {
+            margin-left: 35px;
+        }
     }
 
     .mood-header-image+.mood-content {
