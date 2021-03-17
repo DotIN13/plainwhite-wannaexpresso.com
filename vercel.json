@@ -10,7 +10,7 @@
       "dest": "/404.html"
     }
   ],
-  "functions":{
+  "functions": {
     "api/*.js": {
       "includeFiles": "**/app/**/*"
     }
