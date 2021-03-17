@@ -21,4 +21,4 @@ const schema = new dynamoose.Schema({
     "timestamps": true
 })
 
-export const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })
+export let WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })

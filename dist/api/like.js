@@ -1,4 +1,4 @@
-import { WannaLikes } from "dist/app/assets/models/likes"
+import { WannaLikes } from "dist/app/models/likes"
 
 module.exports = async (req, res) => {
     try {
