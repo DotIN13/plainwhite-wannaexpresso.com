@@ -25,3 +25,7 @@ vender
 
 # Vercel
 .vercel
+
+# dist
+dist/*
+!dist/app/
