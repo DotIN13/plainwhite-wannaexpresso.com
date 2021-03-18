@@ -19,7 +19,7 @@ export const likes = {
     removeHeartActions: function (heart) {
         heart.removeEventListener("mouseover", this.addActive)
         heart.removeEventListener("mouseleave", this.removeActive)
-        heart.removeEventListener("click", this.like)
+        heart.removeEventListener("click", this.like.bind(this))
     },
     postLike: function (heart) {
         fetch(`/api/like?article_id=${heart.dataset.like}`).then((res) => {
