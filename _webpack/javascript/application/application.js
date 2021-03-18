@@ -4,37 +4,7 @@ import { responsiveGenerator } from '../responsive-img'
 import avatarAvif from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=avif'
 import avatarWebp from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=webp'
 const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-width: 1600px) 240px, 240px"
-import fetchLikes from './fetch-likes'
-
-let removeActive = (e) => e.target.classList.remove("active")
-let addActive = (e) => e.target.classList.add("active")
-let postLike = (e) => {
-    e.stopPropagation()
-    // Animate heart after clicking
-    e.target.classList.add("heart--animating")
-    // Try to like article
-    like(e.target)
-}
-
-function bindHeartActions(heart) {
-    heart.addEventListener("click", postLike)
-    heart.addEventListener("animationend", (e) => e.target.classList.remove("heart--animating"))
-    heart.addEventListener("mouseover", addActive)
-    heart.addEventListener("mouseleave", removeActive)
-}
-
-function like(heart) {
-    fetch(`/api/like?article_id=${heart.dataset.like}`).then((res) => {
-        if (res.ok) {
-            heart.classList.add("active")
-            heart.removeEventListener("mouseover", addActive)
-            heart.removeEventListener("mouseleave", removeActive)
-            heart.removeEventListener("click", postLike)
-            const likes = Number(heart.closest(".meta-like").querySelector(".like-count").innerHTML) || 0
-            heart.closest(".meta-like").querySelector(".like-count").innerHTML = likes + 1
-        }
-    })
-}
+import { likes } from '../likes'
 
 window.addEventListener('DOMContentLoaded', () => {
     /** Initialize fancybox */
@@ -53,9 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     /** Heart-shaped like button animations */
-    document.querySelectorAll('.heart').forEach((el) => bindHeartActions(el))
-
-    fetchLikes()
+    likes.bindHeartActions()
+    likes.fetch()
 })
 
 /* CSS */
