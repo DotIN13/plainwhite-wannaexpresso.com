@@ -17,6 +17,7 @@ export const likes = {
         })
     },
     removeHeartActions: function (heart) {
+        heart.classList.add("active")
         heart.removeEventListener("mouseover", this.addActive)
         heart.removeEventListener("mouseleave", this.removeActive)
         heart.removeEventListener("click", this.like.bind(this))
@@ -24,14 +25,13 @@ export const likes = {
     postLike: function (heart) {
         fetch(`/api/like?article_id=${heart.dataset.like}`).then((res) => {
             if (res.ok) {
-                heart.classList.add("active")
                 this.removeHeartActions(heart)
                 const count = Number(heart.closest(".meta-like").querySelector(".like-count").innerHTML) || 0
                 heart.closest(".meta-like").querySelector(".like-count").innerHTML = count + 1
             }
         })
     },
-    fetch: () => {
+    fetch: function () {
         // Get all like buttons
         const likables = document.querySelectorAll(".heart")
         // Get all article IDs with like counts to retrieve
@@ -46,8 +46,10 @@ export const likes = {
             .then((json) => {
                 console.log(json)
                 likables.forEach(el => {
-                    const count = json[el.dataset.like]
+                    const count = json[el.dataset.like].count
+                    const liked = json[el.dataset.like].liked
                     if (count > 0) el.closest(".meta-like").querySelector(".like-count").innerHTML = count
+                    if (liked) this.removeHeartActions(el)
                 })
             })
     }
