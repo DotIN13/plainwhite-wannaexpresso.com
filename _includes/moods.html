@@ -20,7 +20,7 @@
                 <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
                 <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
             </div>
-            <div class="mood-like like-button"><span class="heart" data-like="{{ mood.id }}"></span></div>
+            <div class="mood-like like-button"><span class="heart" data-like="{{ mood.id }}" data-liked="false"></span></div>
             <div class="mood-like-count like-count"></div>
         </div>
         <div style="display: none;" id="{{ mood.date | date: '%s' }}" class="animated-modal mood-full">

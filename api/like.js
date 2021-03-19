@@ -26,11 +26,22 @@ const schema = new dynamoose.Schema({
 const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })
 
 module.exports = async (req, res) => {
+    const id = req.query.article_id
+    const identity = req.headers["x-forwarded-for"] + req.headers["user-agent"]
+    let like
+    console.log("Processing", id)
     try {
-        const like = await WannaLikes.create({
-            "article_id": req.query.article_id,
-            "identity": req.headers["x-forwarded-for"] + req.headers["user-agent"]
-        })
+        if (req.query.cancel) {
+            like = await WannaLikes.delete({ "article_id": id, "identity": identity })
+            console.log("Deleted like for", id)
+        }
+        else {
+            like = await WannaLikes.create({
+                "article_id": id,
+                "identity": identity
+            })
+            console.log("Liked", id)
+        }
         res.status(200).send(like)
     }
     catch (err) {
