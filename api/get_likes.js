@@ -8,27 +8,29 @@ dynamoose.aws.sdk.config.update({
 
 // dynamoose.aws.ddb.local()
 
-const schema = new dynamoose.Schema({
+const countSchema = new dynamoose.Schema({
     "article_id": {
         "type": String,
         "hashKey": true
     },
-    "identity": {
-        "type": String,
-        "rangeKey": true
+    "likes": {
+        "type": Number,
+        "default": 0,
+        "required": true
     }
 }, {
     "timestamps": true
-})
+});
 
-const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })
+const WannaLikeCounts = dynamoose.model("wanna_like_counts", countSchema, { "create": true, "throughput": 5, "prefix": "dynamoose_" });
 
 module.exports = async (req, res) => {
     try {
         let likes = {}
         for (const id of JSON.parse(req.body))
-            likes[id] = await WannaLikes.query("article_id").eq(id).count().exec()
+            likes[id] = (await WannaLikeCounts.get({ "article_id": id }))?.likes
         // Respond with a object populated with key value pairs of IDs and counts
+        // console.log(likes)
         res.status(200).send(likes)
     }
     catch (err) {

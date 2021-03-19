@@ -40,6 +40,7 @@
     "develop:webpack": "webpack --config webpack.dev.js --progress --watch",
     "dryrun": "run-s build dryrun:caddy",
     "build": "run-s build:webpack build:jekyll",
+    "build:bundle": "bundle install",
     "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
     "build:webpack": "webpack --progress --config webpack.prod.js",
     "dryrun:caddy": "caddy run"

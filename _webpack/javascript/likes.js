@@ -44,9 +44,9 @@ export const likes = {
             })
             .then((res) => res.json())
             .then((json) => {
-                // console.log(json)
+                console.log(json)
                 likables.forEach(el => {
-                    const count = json[el.dataset.like].count
+                    const count = json[el.dataset.like]
                     if (count > 0) el.closest(".meta-like").querySelector(".like-count").innerHTML = count
                 })
             })
