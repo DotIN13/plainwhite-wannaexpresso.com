@@ -42,14 +42,14 @@ $smallMoodPadding: 2em;
         @media screen and (max-width: $midScreenW) {
 
             &.focus {
-                border: solid 2px #ff94c2;
+                border: 2px solid #ff94c2;
                 box-shadow: 0 0 0 1px #ff94c2;
             }
         }
 
         @media screen and (min-width: $midScreenW + 1) {
             flex: 0 0 484px;
-            margin: 16px 20px;
+            margin: 16px 20px 18px 20px;
             width: 484px;
             min-height: 440px;
 
@@ -59,10 +59,10 @@ $smallMoodPadding: 2em;
         }
 
         &:first-child {
-            margin-left: 0;
+            margin-left: 10px;
 
             @media screen and (min-width: $mobileW + 1) {
-                margin-left: 0.8rem;
+                margin-left: 0.8em;
             }
         }
     }
