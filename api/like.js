@@ -1,5 +1,5 @@
-import * as dynamoose from "dynamoose"
-import articles from "../dist/app/assets/articles.json"
+import * as dynamoose from "dynamoose";
+import articles from "../dist/app/assets/articles.json";
 
 dynamoose.aws.sdk.config.update({
     "accessKeyId": process.env.DYNAMOID_KEY_ID,
@@ -21,30 +21,37 @@ const schema = new dynamoose.Schema({
     }
 }, {
     "timestamps": true
-})
+});
 
-const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" })
+const WannaLikes = dynamoose.model("wanna_likes", schema, { "create": true, "throughput": 5, "prefix": "dynamoose_" });
 
 module.exports = async (req, res) => {
-    const id = req.query.article_id
-    const identity = req.headers["x-forwarded-for"] + req.headers["user-agent"]
-    let like
-    console.log("Processing", id)
+    const id = req.query.article_id;
+    const identity = req.headers["x-forwarded-for"] + req.headers["user-agent"];
+    let like;
+    console.log(`Processing ${req.query.cancel ? "cancel task" : "like task"} for`, id);
     try {
+        // Delete like if cancel params were provided
         if (req.query.cancel) {
-            like = await WannaLikes.delete({ "article_id": id, "identity": identity })
-            console.log("Deleted like for", id)
+            // Get like item for deletion
+            like = await WannaLikes.get({ "article_id": id, "identity": identity });
+            // Delete like if found existing one
+            if (like) { await like.delete(); }
+            // Throw an error if existing like was not found
+            if (!like) { throw new Error("No existing likes to delete"); }
+            console.log("Deleted like for", id);
         }
         else {
             like = await WannaLikes.create({
                 "article_id": id,
                 "identity": identity
-            })
-            console.log("Liked", id)
+            });
+            console.log("Liked", id);
         }
-        res.status(200).send(like)
+        res.status(200).send(like);
     }
     catch (err) {
-        res.status(500).send(err)
+        console.log("Processing ended with error", err)
+        res.status(500).send(err);
     }
 }

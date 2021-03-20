@@ -20,10 +20,10 @@ const postLike = function(e) {
     // Like if not liking, liking status shoud be set in dataset
     if (e.target.dataset.liked == "false") {
         // console.log("Liking")
-        like(e.target)
+        like(e.target);
     } else {
         // console.log("Deleting")
-        like(e.target, true)
+        like(e.target, true);
     }
 }
 
@@ -33,7 +33,7 @@ const like = function(heart, cancel = false) {
         if (res.ok) {
             if (!cancel) removeHeartActions(heart);
             if (cancel) addHeartActions(heart);
-            heart.dataset.liked = !cancel
+            heart.dataset.liked = !cancel;
             const count = Number(heart.closest(".meta-like").querySelector(".like-count").innerHTML) || 0;
             heart.closest(".meta-like").querySelector(".like-count").innerHTML = count + (cancel ? -1 : 1);
             
