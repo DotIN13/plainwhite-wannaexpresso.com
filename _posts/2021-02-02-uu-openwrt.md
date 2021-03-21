@@ -35,8 +35,10 @@ ssh root@192.168.2.1
 
 加速器插件安装相当简单，官方提供了脚本自动安装。首先，下载安装脚本到当前目录。
 
+> 脚本地址时有更新，请以官网[官方教程](https://router.uu.163.com/app/baike/public/5f963c9304c215e129ca40e8.html)为准。
+
 ```shell
-wget http://uu.gdl.netease.com/uuplugin-script/202010221713/install.sh -O install.sh
+wget http://uu.gdl.netease.com/uuplugin-script/202012111056/install.sh -O install.sh
 ```
 
 然后直接运行脚本。
@@ -72,7 +74,7 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/mips
 opkg update
 ```
 
-#### 安装kmod-tun
+#### 安装
 
 我的OpenWrt内核版本已经老旧，仍然在运行4.4版本的linux内核。因此运行`opkg install kmod-tun`安装kmod-tun时提示内核版本过旧。
 
