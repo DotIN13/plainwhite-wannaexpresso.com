@@ -1,9 +1,7 @@
 const path = require('path');
 const glob = require("glob");
 const webpack = require('webpack');
-const {
-    CleanWebpackPlugin
-} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
@@ -29,10 +27,15 @@ module.exports = {
     resolve: {
         extensions: ['.json', '.js', '.jsx'],
         modules: ['node_modules'],
+        alias: {
+            "react": "preact/compat",
+            "react-dom/test-utils": "preact/test-utils",
+            "react-dom": "preact/compat",
+        },
     },
     module: {
         rules: [{
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },

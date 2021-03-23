@@ -3,7 +3,9 @@ env:
   es2021: true
   serviceworker: true
   jquery: true
-extends: 'eslint:recommended'
+extends:
+  - "eslint:recommended"
+  - "preact"
 parserOptions:
   ecmaVersion: 12
   sourceType: module

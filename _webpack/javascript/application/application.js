@@ -7,24 +7,24 @@ const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-w
 import { bindHeartActions, fetchLikes } from '../likes'
 
 window.addEventListener('DOMContentLoaded', () => {
-    /** Initialize fancybox */
-    $('[data-fancybox="gallery"]').fancybox({
-        buttons: [
-            'download',
-            'thumbs',
-            'close'
-        ]
-    });
+  /** Initialize fancybox */
+  $('[data-fancybox="gallery"]').fancybox({
+    buttons: [
+      'download',
+      'thumbs',
+      'close'
+    ]
+  });
 
-    /** Render avatar image */
-    responsiveGenerator(document.getElementById('avatar'), [avatarAvif, avatarWebp], avatarSizes, false, {
-        width: 150,
-        height: 150
-    })
+  /** Render avatar image */
+  responsiveGenerator(document.getElementById('avatar'), [avatarAvif, avatarWebp], avatarSizes, false, {
+    width: 150,
+    height: 150
+  })
 
-    /** Heart-shaped like button animations */
-    bindHeartActions()
-    fetchLikes()
+  /** Heart-shaped like button animations */
+  bindHeartActions();
+  fetchLikes();
 })
 
 /* CSS */

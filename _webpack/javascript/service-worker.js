@@ -29,7 +29,7 @@ googleFontsCache();
  */
 
 pageCache({
-    "cacheName": 'cached-navigations'
+    cacheName: 'cached-navigations'
 });
 
 /*
@@ -39,7 +39,7 @@ pageCache({
  */
 
 staticResourceCache({
-    "cacheName": 'assets'
+    cacheName: 'assets'
 });
 
 // Cache json with a Stale While Revalidate strategy
@@ -66,6 +66,6 @@ registerRoute(
 imageCache();
 
 offlineFallback({
-    "pageFallback": "/offline.html",
-    "imageFallback": placeholderImage.src
+    pageFallback: "/offline.html",
+    imageFallback: placeholderImage.src
 });
