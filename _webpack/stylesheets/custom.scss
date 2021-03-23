@@ -405,6 +405,10 @@ footer.about.condensed {
         margin-bottom: 10px;
         text-decoration: none;
         padding: 5px 20px;
+
+        &:first-child {
+            margin-left: 0;
+        }
     }
 }
 
