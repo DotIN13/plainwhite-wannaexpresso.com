@@ -11,50 +11,10 @@ $maxWidth: 1000px;
 
 $buttonBackground: #e3e3e3;
 
-/* Mixins */
-@mixin button {
-    background: $buttonBackground;
-    cursor: pointer;
-    font-size: 15px;
-    color: #616161;
-    margin: 0 4px;
-    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 200ms ease;
-
-    &:hover {
-        background: $linkColor;
-        color: white;
-    }
-}
-
-@mixin sans-serif {
-    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-    font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-}
-
-@mixin serif {
-    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-    font-display: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
-}
-
-@mixin pager {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "next prev";
-    column-gap: 5%;
-
-    .pager--prev {
-        grid-area: prev;
-    }
-
-    .pager--next {
-        grid-area: next;
-    }
-}
-
+/* Imports */
 @import "ext/fonts";
-@import "ext/normalize";
+@import "mixins";
+@import 'modern-normalize';
 @import "syntax";
 @import "utility";
 @import "fontello";

@@ -1,11 +1,6 @@
 $moodPadding: 2.6em;
 $smallMoodPadding: 2em;
 
-@mixin modal-animation-end {
-    transform: translateY(0);
-    opacity: 1;
-}
-
 .mood-section {
     position: relative;
 }
@@ -37,7 +32,7 @@ $smallMoodPadding: 2em;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        overflow: hidden;
 
         @media screen and (max-width: $midScreenW) {
 
@@ -71,8 +66,6 @@ $smallMoodPadding: 2em;
     .mood-content:first-child,
     .mood-header-image img {
         overflow: hidden;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
     }
 
     .mood-header-image img {
