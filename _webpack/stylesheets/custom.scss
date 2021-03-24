@@ -68,12 +68,12 @@ h2 {
 main {
     margin: 0 90px;
     display: grid;
-    grid-template-columns: [about-start] 220px [about-end content-start] 1fr [content-end];
+    grid-template-columns: [about-start] 220px [about-end content-start] calc(100% - 220px) [content-end];
     grid-row: auto;
     grid-template-areas: "about content";
 
     @media screen and (min-width: $bigScreenW + 1) {
-        grid-template-columns: [about-start] 280px [about-end content-start] 1fr [content-end];
+        grid-template-columns: [about-start] 280px [about-end content-start] calc(100% - 280px) [content-end];
         margin: 0 auto;
         max-width: 1360px;
     }
@@ -83,7 +83,7 @@ main {
     }
 
     @media screen and (max-width: $midScreenW) {
-        grid-template-columns: auto;
+        grid-template-columns: 100%;
         grid-template-rows: [about-start] auto [about-end content-start] auto [content-end footer-start] auto [footer-end];
         grid-template-areas: "about""content""footer";
         row-gap: 30px;
@@ -106,7 +106,7 @@ main {
 
     .content {
         grid-area: content;
-        overflow: auto;
+        overflow: visible;
     }
 
     footer.about.condensed {
