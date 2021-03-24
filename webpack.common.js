@@ -81,7 +81,7 @@ module.exports = {
       modifyURLPrefix: {
         '': '/assets/public/',
       },
-      maximumFileSizeToCacheInBytes: 256000,
+      maximumFileSizeToCacheInBytes: 296000,
       exclude: [/\.(jpe?g|png|webp|avif)$/i],
     }),
     new PreloadWebpackPlugin({

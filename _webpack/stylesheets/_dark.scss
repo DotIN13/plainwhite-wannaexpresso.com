@@ -1,247 +1,252 @@
 $darkTextColor: #f6f6f6;
 $darkLinkColor: #e584f6;
 $darkSecondary: #333;
+$darkBack: #171717;
 
 body.dark {
-    background-color: #171717;
+  background-color: $darkBack;
 }
 
 .dark main,
 .dark main * {
 
-    /* General */
-    background-color: #171717;
+  /* General */
+  background-color: $darkBack;
+  color: $darkTextColor;
+  border-color: #e6e6e6;
+
+  .about .about-footer a,
+  .about .about-footer p {
+    color: #666;
+
+    &:hover {
+      color: $darkLinkColor;
+    }
+  }
+
+  .about #pwa-install {
+    background-color: $darkSecondary;
+    color: #df93e8;
+
+    &.disabled {
+      color: #888;
+      background-color: #333;
+    }
+
+    &.expand {
+      background-color: $linkColor;
+      color: white;
+    }
+  }
+
+  .post p {
+    color: #ddd;
+  }
+
+  .social {
+
+    i {
+      background-color: transparent;
+    }
+
+    .icon-circle {
+      color: $darkSecondary;
+      transition: color 0.3s;
+    }
+
+    a:hover .icon-circle {
+      color: $darkLinkColor;
+    }
+  }
+
+  .icon-translate {
+    background-color: transparent;
+  }
+
+  /* Code highlighting */
+  @import 'ext/solarized-dark';
+
+  .highlight,
+  .highlight * {
+    background-color: #00080a;
+    color: #93a1a1;
+  }
+
+  div.highlight-dark {
+    padding: 5px 20px;
+  }
+
+  pre.highlight-dark,
+  code {
+    font-family: 'Consolas', Menlo, monospace;
+    line-height: 1.4em;
+    tab-size: 4;
+  }
+
+  /* Tag pills */
+  .post-categories {
+    li {
+      background-color: $darkSecondary;
+      color: #fff;
+    }
+  }
+
+  /* Links */
+  a {
+    color: $darkLinkColor;
+
+    &:hover {
+      color: $darkTextColor;
+    }
+  }
+
+  .navigation a {
     color: $darkTextColor;
-    border-color: #e6e6e6;
 
-    .about .about-footer a,
-    .about .about-footer p {
-        color: #666;
-
-        &:hover {
-            color: $darkLinkColor;
-        }
+    &:hover {
+      color: $darkLinkColor;
     }
+  }
 
-    .about #pwa-install {
+  a.post-link:hover {
+
+    h2,
+    h3 {
+      color: $darkLinkColor;
+    }
+  }
+
+  #title a {
+    color: #fff;
+
+    &:hover {
+      color: $darkLinkColor;
+    }
+  }
+
+  /* LabelGroup */
+  .posts-label {
+    color: $darkTextColor;
+  }
+
+  .labelgroup {
+    border-bottom: 1px solid #333;
+  }
+
+  #posts-labelgroup {
+
+    .search-results {
+      background-color: $darkSecondary;
+
+      a {
+        color: white;
         background-color: $darkSecondary;
-        color: #df93e8;
-
-        &.disabled {
-            color: #888;
-            background-color: #333;
-        }
-
-        &.expand {
-            background-color: $linkColor;
-            color: white;
-        }
-    }
-
-    .post p {
-        color: #ddd;
-    }
-
-    .social {
-
-        i {
-            background-color: transparent;
-        }
-
-        .icon-circle {
-            color: $darkSecondary;
-            transition: color 0.3s;
-        }
-
-        a:hover .icon-circle {
-            color: $darkLinkColor;
-        }
-    }
-
-    .icon-translate {
-        background-color: transparent;
-    }
-
-    /* Code highlighting */
-    @import 'ext/solarized-dark';
-
-    .highlight,
-    .highlight * {
-        background-color: #00080a;
-        color: #93a1a1;
-    }
-
-    div.highlight-dark {
-        padding: 5px 20px;
-    }
-
-    pre.highlight-dark,
-    code {
-        font-family: 'Consolas', Menlo, monospace;
-        line-height: 1.4em;
-        tab-size: 4;
-    }
-
-    /* Tag pills */
-    .post-categories {
-        li {
-            background-color: $darkSecondary;
-            color: #fff;
-        }
-    }
-
-    /* Links */
-    a {
-        color: $darkLinkColor;
 
         &:hover {
-            color: $darkTextColor;
+          background-color: $darkBack;
         }
-    }
-
-    .navigation a {
-        color: $darkTextColor;
-
-        &:hover {
-            color: $darkLinkColor;
-        }
-    }
-
-    a.post-link:hover {
-
-        h2,
-        h3 {
-            color: $darkLinkColor;
-        }
-    }
-
-    #title a {
-        color: #fff;
-
-        &:hover {
-            color: $darkLinkColor;
-        }
-    }
-
-    /* LabelGroup */
-    .posts-label {
-        color: $darkTextColor;
-    }
-
-    .labelgroup {
-        border-bottom: 1px solid #333;
-    }
-
-    #posts-labelgroup {
-
-        .search-results {
-            background-color: $darkSecondary;
-
-            a {
-                color: white;
-                background-color: $darkSecondary;
-
-                &:hover {
-                    background-color: #171717;
-                }
-            }
-        }
-
-        .search-section i {
-            background-color: transparent;
-        }
-    }
-
-    #posts-labelgroup:hover {
-
-        i {
-            color: white;
-        }
-
-        input {
-            color: white;
-        }
-    }
-
-
-    #posts-labelgroup.focus-within {
-
-        .search-section {
-            background-color: $darkSecondary;
-        }
-
-        input {
-            color: $darkTextColor;
-            background-color: $darkSecondary;
-        }
-
-        i {
-            color: white;
-        }
-    }
-
-    /* Archive tagcloud */
-    .button,
-    #tag-cloud .tag-button,
-    #show-tags {
-        background-color: $darkSecondary;
-        color: $darkTextColor;
-
-        &:hover {
-            background-color: $darkLinkColor;
-        }
-
-        & * {
-            background-color: transparent;
-        }
-    }
-
-    /* Moods */
-    .mood {
-        border: 2px solid #888;
-
-        @media screen and (min-width: $midScreenW + 1) {
-
-            &:hover {
-                background-color: #171717;
-                box-shadow: 0px 4px 12px 5px #333232;
-            }
-        }
-
-        &>* {
-            background: transparent;
-        }
-    }
-
-    .mood-button {
-
-        .mood-arrow {
-            border-color: $darkTextColor;
-        }
-
-        &::before {
-            background-color: $darkSecondary;
-        }
-    }
-
-    .heart {
-        background-color: transparent;
-    }
-
-    .modal__overlay {
-        background: rgba(0, 0, 0, 0.75);
       }
+    }
+
+    .search-section i {
+      background-color: transparent;
+    }
+  }
+
+  #posts-labelgroup:hover {
+
+    i {
+      color: white;
+    }
+
+    input {
+      color: white;
+    }
+  }
+
+
+  #posts-labelgroup.focus-within {
+
+    .search-section {
+      background-color: $darkSecondary;
+    }
+
+    input {
+      color: $darkTextColor;
+      background-color: $darkSecondary;
+    }
+
+    i {
+      color: white;
+    }
+  }
+
+  /* Archive tagcloud */
+  .button,
+  #tag-cloud .tag-button,
+  #show-tags {
+    background-color: $darkSecondary;
+    color: $darkTextColor;
+
+    &:hover {
+      background-color: $darkLinkColor;
+    }
+
+    & * {
+      background-color: transparent;
+    }
+  }
+
+  /* Moods */
+  .mood {
+    border: 2px solid #888;
+
+    @media screen and (min-width: $midScreenW + 1) {
+
+      &:hover {
+        background-color: $darkBack;
+        box-shadow: 0px 4px 12px 5px #333232;
+      }
+    }
+
+    &>* {
+      background: transparent;
+    }
+  }
+
+  .mood-button {
+
+    .mood-arrow {
+      border-color: $darkTextColor;
+    }
+
+    &::before {
+      background-color: $darkSecondary;
+    }
+  }
+
+  .heart {
+    background-color: transparent;
+  }
+
+  .modal__overlay {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .modal__container {
+    background-color: $darkBack;
+  }
 }
 
 /* Table */
 .dark table {
 
-    th,
-    td {
-        border: 1px solid $darkSecondary;
-    }
+  th,
+  td {
+    border: 1px solid $darkSecondary;
+  }
 
-    th {
-        background-color: #0d0d0d;
-    }
+  th {
+    background-color: #0d0d0d;
+  }
 }

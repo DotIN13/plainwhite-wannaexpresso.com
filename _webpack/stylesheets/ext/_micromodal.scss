@@ -4,43 +4,44 @@
 
 .modal {
   z-index: 999;
-}
 
-.modal__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.modal__container {
-  background-color: #fff;
-  padding: 30px;
-  max-width: 500px;
-  max-height: 100vh;
-  border-radius: 4px;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
+  .modal__container {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 500px;
+    max-height: 100vh;
+    border-radius: 4px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
 
-.modal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.modal__close {
-  background: transparent;
-  border: 0;
-}
+  .modal__close {
+    background: transparent;
+    border: 0;
+    outline: none;
+  }
 
-.modal__header .modal__close:before {
-  content: "\2715";
+  .modal__header .modal__close:before {
+    content: "\2715";
+  }
 }
 
 /**************************\

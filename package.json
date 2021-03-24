@@ -6,6 +6,8 @@
     "@fancyapps/fancybox": "^3.5.7",
     "@vue/preload-webpack-plugin": "^2.0.0",
     "babel-loader": "^8.2.2",
+    "browserslist": "^4.16.3",
+    "browserslist-ga": "^0.0.12",
     "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.9.1",
     "css-loader": "^5.1.0",
@@ -60,5 +62,14 @@
   "dependencies": {
     "dynamoose": "^2.7.2",
     "npm-run-all": "^4.1.5"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 5%",
+    "edge 79",
+    "firefox 68",
+    "chrome 69",
+    "safari 12",
+    "and_uc 11"
+  ]
 }
