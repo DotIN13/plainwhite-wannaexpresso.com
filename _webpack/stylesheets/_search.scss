@@ -11,7 +11,7 @@ main {
   border-bottom: 1px solid #eee;
 
   /* Firefox flex hack */
-  @-moz-document url-prefix() { 
+  @-moz-document url-prefix() {
     align-items: center;
   }
 
@@ -69,7 +69,7 @@ main {
     z-index: 3;
     padding: 10px 0;
     font-size: 15px;
-    border: 1px solid rgba(223,225,229,0);
+    border: 1px solid rgba(223, 225, 229, 0);
 
     &:empty::before {
       content: attr(data-placeholder);
@@ -123,8 +123,8 @@ main {
     .search-section {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
-      border: 1px solid rgba(223,225,229,0);
+      box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+      border: 1px solid rgba(223, 225, 229, 0);
       border-bottom: solid 1px #eee;
       z-index: 3;
       margin: 0 auto;
