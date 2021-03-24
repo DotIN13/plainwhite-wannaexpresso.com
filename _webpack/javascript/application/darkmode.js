@@ -1,4 +1,4 @@
-let checkDarkDone
+let checkDarkDone;
 
 function toggleDarkMode() {
     const DARK_CLASS = 'dark';
@@ -7,24 +7,24 @@ function toggleDarkMode() {
     if (body.classList.contains(DARK_CLASS)) {
         setCookie('theme', 'light');
         body.classList.remove(DARK_CLASS);
-        document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = false)
+        document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = false);
     }
     else {
         setCookie('theme', 'dark');
         body.classList.add(DARK_CLASS);
-        document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = true)
+        document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = true);
     }
 }
 
 function getCookie(name) {
-    const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    const v = document.cookie.match(`(^|;) ?${name}=([^;]*)(;|$)`);
     return v ? v[2] : null;
 }
 
 function setCookie(name, value, days) {
     let d = new Date;
     d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
-    document.cookie = name + "=" + value + ";path=/;SameSite=strict;expires=" + d.toGMTString();
+    document.cookie = `${name}=${value};path=/;SameSite=strict;expires=${d.toGMTString()}`;
 }
 
 // function deleteCookie(name) {
@@ -41,7 +41,7 @@ function checkSwitch() {
 }
 
 const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-var theme = getCookie('theme');
+const theme = getCookie('theme');
 if ((theme === null && userPrefersDark) || theme === 'dark') {
     checkDarkDone = false;
 
@@ -52,5 +52,5 @@ if ((theme === null && userPrefersDark) || theme === 'dark') {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dark-mode-toggle+a.button').forEach((el) => el.addEventListener('click', toggleDarkMode))
+    document.querySelectorAll('.dark-mode-toggle+a.button').forEach((el) => el.addEventListener('click', toggleDarkMode));
 })
