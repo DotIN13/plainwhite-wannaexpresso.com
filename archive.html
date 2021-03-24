@@ -7,12 +7,13 @@ noindex: true
 sitemap:
   exclude: 'yes'
 ---
+
 <div class="archive-container">
     <ul style="list-style: none; padding-left: 0;">
         {% include posts-label.html type="archive" search=true %}
     </ul>
 
-    <div id='tag-cloud' class="tags tags-sup js-tags">
+    <div id='tag-cloud' class="tags tags-sup js-tags" data-expand=false>
         <a class="tag-button tag-button--all" data-encode="" href="#">
             Show All
             <span class="sup">{{site.posts.size}}</span>
@@ -20,7 +21,8 @@ sitemap:
 
         {% capture tags %}
         {% for tag in site.tags %}
-        <a href="#" data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" data-encode="{{ tag[0] | strip | url_encode }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+        {% assign tag_encoded = tag[0] | strip | url_encode %}
+        <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" href="?tag={{ tag_encoded }}" data-encode="{{ tag_encoded }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
             {{ tag[0] }}
             <span class="sup">{{ tag[1].size }}</span>
         </a>__SEPERATOR__
@@ -34,7 +36,7 @@ sitemap:
     </div>
 
     <!-- Article List -->
-    <div class="mini-post-list js-result d-none">
+    <div class="mini-post-list js-result">
         {%- assign _sorted_list = site.posts -%}
         {%- assign _sorted_list = _sorted_list | sort: 'date' -%}
         {%- assign _sorted_list = _sorted_list | reverse -%}

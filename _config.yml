@@ -28,7 +28,8 @@ exclude:
     "Caddyfile",
     "yarn.lock",
     "vercel.json",
-    "api"
+    "api",
+    "yarn-error.log"
   ]
 defaults:
   - scope:

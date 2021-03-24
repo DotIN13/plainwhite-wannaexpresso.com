@@ -1,169 +1,91 @@
-/*
-Credits: this script is shamelessly borrowed from
-https://github.com/kitian616/jekyll-TeXt-theme
-*/
-(function () {
-  function queryString() {
-    // This function is anonymous, is executed immediately and
-    // the return value is assigned to QueryString!
-    var i = 0, queryObj = {}, pair;
-    var queryStr = window.location.search.substring(1);
-    var queryArr = queryStr.split('&');
-    for (i = 0; i < queryArr.length; i++) {
-      pair = queryArr[i].split('=');
-      // If first entry with this name
-      if (typeof queryObj[pair[0]] === 'undefined') {
-        queryObj[pair[0]] = pair[1];
-        // If second entry with this name
-      } else if (typeof queryObj[pair[0]] === 'string') {
-        queryObj[pair[0]] = [queryObj[pair[0]], pair[1]];
-        // If third or later entry with this name
-      } else {
-        queryObj[pair[0]].push(pair[1]);
-      }
-    }
-    return queryObj;
-  }
+String.prototype.empty = function() {
+    if (this.trim() === "") return true;
+    return false;
+}
 
-  var setUrlQuery = (function () {
-    var baseUrl = window.location.href.split('?')[0];
-    return function (query) {
-      if (typeof query === 'string') {
-        window.history.replaceState(null, '', baseUrl + query);
-      } else {
-        window.history.replaceState(null, '', baseUrl);
-      }
-    };
-  })();
-
-  $(document).ready(function () {
-    var $tags = $('.js-tags');
-    var $articleTags = $tags.find('.tag-button');
-    var $tagShowAll = $tags.find('.tag-button--all');
-    var $result = $('.js-result');
-    var $sections = $result.find('section');
-    var sectionArticles = []
-    var $lastFocusButton = null;
-    var sectionTopArticleIndex = [];
-    var hasInit = false;
-
-    $sections.each(function () {
-      sectionArticles.push($(this).find('.item'));
-    });
-
-    function init() {
-      var i, index = 0;
-      for (i = 0; i < $sections.length; i++) {
-        sectionTopArticleIndex.push(index);
-        index += $sections.eq(i).find('.item').length;
-      }
-      sectionTopArticleIndex.push(index);
-    }
-
-    function searchButtonsByTag(_tag/*raw tag*/) {
-      if (!_tag) {
-        return $tagShowAll;
-      }
-      var _buttons = $articleTags.filter('[data-encode="' + _tag + '"]');
-      if (_buttons.length === 0) {
-        return $tagShowAll;
-      }
-      return _buttons;
-    }
-
-    function buttonFocus(target) {
-      if (target) {
-        target.addClass('focus');
-        target.addClass('visited');
-        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
-        $lastFocusButton = target;
-      }
-    }
-
-    function tagSelect(tag/*raw tag*/, target) {
-      var result = {}, $articles;
-      var i, j, k, _tag;
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        $articles = sectionArticles[i];
-        for (j = 0; j < $articles.length; j++) {
-          if (tag === '' || tag === undefined) {
-            result[i] || (result[i] = {});
-            result[i][j] = true;
-          } else {
-            var tags = $articles.eq(j).data('tags').split(',');
-            for (k = 0; k < tags.length; k++) {
-              if (tags[k] === tag) {
-                result[i] || (result[i] = {});
-                result[i][j] = true; break;
-              }
-            }
-          }
+const tagCloud = {
+    get element() { return document.getElementById("tag-cloud") },
+    get tags() {
+        return document.querySelectorAll(".tag-button")
+    },
+    // Use data-encode for identification
+    set focus(val) {
+        this.element.dataset.index = val;
+        for (const tag of this.tags) {
+            const match = val == tag.dataset.encode;
+            tag.classList.toggle("focus", match);
+            if (match) tag.classList.add("visited");
         }
-      }
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        result[i] && $sections.eq(i).removeClass('d-none');
-        result[i] || $sections.eq(i).addClass('d-none');
-        for (j = 0; j < sectionArticles[i].length; j++) {
-          if (result[i] && result[i][j]) {
-            sectionArticles[i].eq(j).removeClass('d-none');
-          } else {
-            sectionArticles[i].eq(j).addClass('d-none');
-          }
-        }
-      }
-
-      hasInit || ($result.removeClass('d-none'), hasInit = true);
-
-
-      if (target) {
-        buttonFocus(target);
-        _tag = target.attr('data-encode');
-        if (_tag === '' || typeof _tag !== 'string') {
-          setUrlQuery();
-        } else {
-          setUrlQuery('?tag=' + _tag);
-        }
-      } else {
-        buttonFocus(searchButtonsByTag(tag));
-      }
+        sort(val);
+    },
+    get focus() {
+        return this.element.dataset.index;
     }
+}
 
-    var query = queryString(),
-      _tag = query.tag;
-
-    init();
-    tagSelect(_tag);
-
-    $tags.on('click', 'a', function () {   /* only change */
-      tagSelect($(this).data('encode'), $(this));
-    });
-
-  });
-
-  // Tag cloud collapser
-  var expanded = false;
-
-  function updateHeight(status) {
-    if (status) { // collapsing
-      $("[rel='1']").toggleClass("hover");
-      return false;
-    } else { //expanding
-      $("[rel='1']").toggleClass("hover");
-      return true;
+const handle = {
+    get element() {
+        return document.getElementById("show-tags");
+    },
+    set stateExpand(val) {
+      this.element.dataset.expand = val;
+    },
+    get stateExpand() {
+      return this.element.dataset.expand == "true";
+    },
+    toggle() {
+      tagCloud.tags.forEach((el) => el.classList.toggle("expand", !this.stateExpand));
+      this.stateExpand = !this.stateExpand;
     }
-  }
+}
 
-  // Mobile Show Tags on Keypress
-  window.addEventListener('DOMContentLoaded', () => {
-    $("#show-tags").click(function () {
-      expanded = updateHeight(expanded);
-      if ($(".icon-expand_more").length) {
-        $(".icon-expand_more").removeClass("icon-expand_more").addClass("icon-expand_less");
-      } else {
-        $(".icon-expand_less").removeClass("icon-expand_less").addClass("icon-expand_more");
-      }
-    })
-  })
-})();
+const sort = (encodedTag) => {
+    // console.log("Clicked post tag with ecoded tag", encodedTag);
+    const years = document.querySelectorAll(".mini-post-list section");
+    for (const year of years) {
+        // console.log("Querying year", year);
+        const posts = year.querySelectorAll(".post-preview.item");
+        let yearDisplay = false;
+        for (const post of posts) {
+            // console.log("Querying post", post)
+            // Match given tag in post tags
+            const postDisplay = post.dataset.tags.split(",").indexOf(encodedTag) != -1 || encodedTag.empty();
+            // console.log(encodedTag, "macthed", post.dataset.tags.split(","), "with", postDisplay)
+            // Add d-none if no match
+            post.classList.toggle("d-none", !postDisplay);
+            // Remove year d-none if match
+            yearDisplay = postDisplay ? true : yearDisplay;
+        }
+        year.classList.toggle("d-none", !yearDisplay);
+    }
+}
+
+const setUrlQuery = (query) => {
+    const url = new URL(window.location);
+    if (!(query["tag"].empty()))
+        url.searchParams.set("tag", query["tag"]);
+    window.history.pushState({ tag: query["tag"] }, "", url);
+}
+
+const loadQuery = () => {
+    const url = new URL(window.location);
+    const queryVal = url.searchParams.get("tag");
+    // Only sort when the query exists
+    if (queryVal) tagCloud.focus = queryVal;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    for (const tag of tagCloud.tags) {
+        tag.addEventListener("click", (e) => {
+            e.preventDefault();
+            tagCloud.focus = e.target.dataset.encode;
+            // When loading query, it is not necessary to setUrlQuery again
+            setUrlQuery({ tag: tagCloud.focus });
+        })
+    }
+    loadQuery();
+    // When going back, honour given query
+    window.onpopstate = () => loadQuery();
+
+    handle.element.addEventListener("click", handle.toggle)
+})

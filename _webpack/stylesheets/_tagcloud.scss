@@ -40,6 +40,7 @@
       font-size: 80%;
       position: relative;
       top: -4px;
+      pointer-events: none;
     }
 
     &:hover,
@@ -53,7 +54,7 @@
   a.tag-button[rel="1"] {
     display: none;
 
-    &.hover,
+    &.expand,
     &.focus,
     &.visited {
       display: block;
