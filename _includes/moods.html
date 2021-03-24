@@ -1,40 +1,48 @@
 {% include posts-label.html type='moods' search=false %}
 <ul class="mood-track" data-mood-focus="0">
-    {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
-    {% for mood in sorted_moods %}
-    <li class="mood" data-fancybox data-animation-duration="700" data-src="#{{ mood.date | date: '%s' }}" href="javascript:;">
-        <div class="mood-excerpt">
-            {% if mood.header-image %}
-            <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-webpack=true></div>
-            {% endif %}
-            <div class="mood-content">
-                <h2>{{ mood.title }}</h2>
-                <article>
-                    {% if mood.header-image %}{{ mood.content | smart_truncate: 88 }}{% else %}{{ mood.content | smart_truncate: 168 }}{% endif %}
-                </article>
-            </div>
-        </div>
-        <div class="mood-meta meta-like">
-            <div class="mood-created-at">
-                <i class="icon-calendar"></i>
-                <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
-                <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
-            </div>
-            <div class="mood-like like-button"><span class="heart" data-like="{{ mood.id }}" data-liked="false"></span></div>
-            <div class="mood-like-count like-count"></div>
-        </div>
-        <div style="display: none;" id="{{ mood.date | date: '%s' }}" class="animated-modal mood-full">
-            <h2>{{ mood.title }}</h2>
-            <div class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_full_format }}</div>
-            <article>{{ mood.content }}</article>
-        </div>
-    </li>
-    {% endfor %}
-    <li class="mood--placeholder">.</li>
+  {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
+  {% for mood in sorted_moods %}
+  {% assign timestamp_id = mood.date | date: '%s' %}
+  <li class="mood" data-micromodal-trigger="{{ timestamp_id }}" data-fancybox data-animation-duration="700" data-src="#{{ timestamp_id }}" href="javascript:;">
+    <div class="mood-excerpt">
+      {% if mood.header-image %}
+      <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-webpack=true></div>
+      {% endif %}
+      <div class="mood-content">
+        <h2>{{ mood.title }}</h2>
+        <article>
+          {% if mood.header-image %}{{ mood.content | smart_truncate: 88 }}{% else %}{{ mood.content | smart_truncate: 168 }}{% endif %}
+        </article>
+      </div>
+    </div>
+    <div class="mood-meta meta-like">
+      <div class="mood-created-at">
+        <i class="icon-calendar"></i>
+        <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
+        <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
+      </div>
+      <div class="mood-like like-button"><span class="heart" data-like="{{ mood.id }}" data-liked="false"></span></div>
+      <div class="mood-like-count like-count"></div>
+    </div>
+  </li>
+  <div class="modal micromodal-slide mood-full" id="{{ timestamp_id }}" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-{{ timestamp_id }}-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-{{ timestamp_id }}-title">{{ mood.title }}</h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <div class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_full_format }}</div>
+        <article class="modal__content">{{ mood.content }}</article>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <li class="mood--placeholder">.</li>
 </ul>
 <button aria-label="previous mood item" class="mood-button--prev mood-button hide">
-    <div class="mood-arrow--prev mood-arrow"></div>
+  <div class="mood-arrow--prev mood-arrow"></div>
 </button>
 <button aria-label="next mood item" class="mood-button--next mood-button">
-    <div class="mood-arrow--next mood-arrow"></div>
+  <div class="mood-arrow--next mood-arrow"></div>
 </button>

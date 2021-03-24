@@ -227,6 +227,10 @@ body.dark {
     .heart {
         background-color: transparent;
     }
+
+    .modal__overlay {
+        background: rgba(0, 0, 0, 0.75);
+      }
 }
 
 /* Table */
