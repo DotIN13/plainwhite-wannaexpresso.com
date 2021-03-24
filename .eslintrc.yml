@@ -11,4 +11,10 @@ parserOptions:
   sourceType: module
   ecmaFeatures:
     jsx: true
-rules: {}
+rules:
+  indent:
+   - "error"
+   - 2
+  semi:
+   - "warn"
+   - "always"

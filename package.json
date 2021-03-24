@@ -46,12 +46,15 @@
     "develop": "bundle exec jekyll clean && run-p develop:{webpack,jekyll}",
     "develop:jekyll": "sleep 5 && bundle exec jekyll serve --watch",
     "develop:webpack": "webpack --config webpack.dev.js --progress --watch",
-    "dryrun": "run-s build dryrun:caddy",
+    "dryrun": "run-s build caddy",
     "build": "run-s build:webpack build:jekyll",
     "build:bundle": "bundle install",
     "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
     "build:webpack": "webpack --progress --config webpack.prod.js",
-    "dryrun:caddy": "caddy run"
+    "caddy": "caddy run",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "lint": "eslint _webpack/",
+    "lint:fix": "eslint --fix _webpack/"
   },
   "dependencies": {
     "dynamoose": "^2.7.2",
