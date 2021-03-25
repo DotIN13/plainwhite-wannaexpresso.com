@@ -25,7 +25,6 @@
     transition: flex .5s ease, margin .5s ease, width .5s ease, border .5s, box-shadow 0.5s ease;
     vertical-align: top;
     width: 280px;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -57,6 +56,14 @@
         margin-left: 0.8em;
       }
     }
+
+    img {
+      height: auto;
+      width: 100%;
+      // object-fit: cover;
+      // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
+      display: block;
+    }
   }
 
   .mood-excerpt:first-child,
@@ -65,16 +72,9 @@
     overflow: hidden;
   }
 
-  .mood-header-image img {
-    height: auto;
-    width: 100%;
-    // object-fit: cover;
-    // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
-    display: block;
-  }
-
   .mood-content {
     padding: 2em $moodPadding 1.5em $moodPadding;
+    cursor: pointer;
 
     @media (max-width: $midScreenW) {
       padding: 2em $smallMoodPadding 1.5em $smallMoodPadding;
@@ -101,7 +101,7 @@
     display: flex;
     align-items: center;
     color: #555;
-    padding: 1em $moodPadding 1.5em $moodPadding;
+    padding: 1em $moodPadding 2em $moodPadding;
     margin: 0.5em 0;
 
     @media (max-width: $midScreenW) {
@@ -245,21 +245,5 @@
     transform: rotate(45deg);
     right: calc(50% - 5px);
     transition: right .5s;
-  }
-}
-
-// Mood medium zoom
-
-.mood-zoom__wrapper {
-  position: fixed;
-  display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  
-
-  .mood-zoom__container {
-    flex: 1;
   }
 }

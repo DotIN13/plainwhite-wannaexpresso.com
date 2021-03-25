@@ -17,7 +17,7 @@ locale: zh_CN
 
 ## 别了，Thinkbook
 
-{% include post-image.html link="post-macbook/idlefish.jpg" alt="Thinkbook Sold" wrapper_class="float-md-end" %}
+{% include post-image.html link="post-macbook/idlefish.jpg" alt="Thinkbook Sold" wrapper_class="float-md-end ml-md-1 mt-0" %}
 
 4500大洋购置的Thinkbook 14 2021锐龙版金玉其外，败絮其中。纸面上拓展性过人、高色域、性能释放达到25W，事实上呢，屏幕不通透，略微侧看便有彩色颗粒；触摸板没有玻璃覆盖，手汗稍多便非常涩爪，贴上磨砂膜同样影响手感。对于我这种轻度办公用户来说，相较于原先的ASUS U3000UQ几乎没有本质的提升，反而在显示、触控方面体验降级。于是，50包邮解余愁。
 

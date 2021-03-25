@@ -3,12 +3,12 @@
   {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
   {% for mood in sorted_moods %}
   {% assign timestamp_id = mood.date | date: '%s' %}
-  <li class="mood" data-micromodal-trigger="{{ timestamp_id }}" href="#">
+  <li class="mood" href="#">
     <div class="mood-excerpt">
       {% if mood.header-image %}
-      <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-webpack=true></div>
+      <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-responsive=true></div>
       {% endif %}
-      <div class="mood-content">
+      <div class="mood-content" data-micromodal-trigger="{{ timestamp_id }}">
         <h2>{{ mood.title }}</h2>
         <article>
           {% if mood.header-image %}{{ mood.content | smart_truncate: 88 }}{% else %}{{ mood.content | smart_truncate: 168 }}{% endif %}
@@ -50,9 +50,3 @@
   </div>
 </div>
 {% endfor %}
-
-<template id="mood-zoom">
-  <div class="mood-zoom__wrapper">
-    <div class="mood-zoom__container" data-zoom-container></div>
-  </div>
-</template>

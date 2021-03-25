@@ -168,14 +168,15 @@ main {
   #avatar img {
     border-radius: 0.2rem;
     cursor: pointer;
+    height: 136px;
+    width: auto;
 
     @media screen and (max-width: $midScreenW) {
-      max-height: 105px;
-      width: auto;
+      height: 105px;
     }
 
     @media screen and (max-width: $mobileW) {
-      max-height: 90px;
+      height: 90px;
     }
   }
 
@@ -284,6 +285,7 @@ main {
 section.about {
 
   /* Responsive about */
+  
   @media screen and (max-width: $midScreenW) {
 
     .condensed {
@@ -526,25 +528,27 @@ i.icon-calendar {
     @include sans-serif();
   }
 
-  .post-img {
-    margin-top: 1.5em;
-  }
-
   /* Images */
-  .post-img__container+em {
-    @include sans-serif();
-    font-size: 0.9em;
-    color: #666;
-    display: block;
-    margin-bottom: 1em;
-    text-align: center;
+
+  .post-img__container {
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    em {
+      @include sans-serif();
+      font-size: 0.9em;
+      color: #666;
+      display: block;
+      margin-bottom: 1em;
+    }
   }
 
   img {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    max-width: 76%;
     max-height: 64vh;
     height: auto;
     width: auto;
@@ -554,12 +558,12 @@ i.icon-calendar {
       max-width: none;
       max-height: none;
     }
-
-    &:focus,
-    &:hover {
-      cursor: zoom-in;
-    }
   }
+}
+
+.post-img__zoomable {
+  width: 100%;
+  height: auto;
 }
 
 /* Heart-shaped like button */
@@ -597,6 +601,7 @@ i.icon-calendar {
 }
 
 /* pagination */
+
 .pagination-links {
   @include pager();
   padding-top: 45px;
@@ -662,6 +667,7 @@ select.sel-lang {
 }
 
 /* Vcomments */
+
 #vcomments.v .vwrap .vheader .vinput {
   border-bottom: 1px solid #dedede;
   transition: border-color 0.3s;
@@ -723,6 +729,7 @@ select.sel-lang {
 }
 
 /* video iframe */
+
 .video-iframe {
   position: relative;
   width: 100%;
@@ -739,6 +746,7 @@ select.sel-lang {
 }
 
 /* Block Quote */
+
 blockquote {
   color: #555;
 }
@@ -765,6 +773,7 @@ blockquote.g_bq {
 }
 
 /* GitHub table styling */
+
 table {
   padding: 0;
   word-break: initial;
@@ -818,4 +827,11 @@ table tr td:last-child {
       color: $pinky;
     }
   }
+}
+
+// React medium zoom images
+
+div[data-rmiz-modal-content] img {
+  height: auto;
+  width: 100%;
 }

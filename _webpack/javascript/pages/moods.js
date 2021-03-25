@@ -1,9 +1,9 @@
-import { responsiveGenerator, importAll } from '../responsive-img';
+import { ZoomableImage, importAll } from '../responsive-img';
+import { h, render } from 'preact';
 
-const imagesAvif = importAll(require.context('/assets/img/in-mood?sizes[]=320,sizes[]=540&format=avif', true, /\.(jpe?g|png|webp|webp)$/i));
-const imagesWebp = importAll(require.context('/assets/img/in-mood?sizes[]=320,sizes[]=540&format=webp', true, /\.(jpe?g|png|webp|webp)$/i));
+const imagesAvif = importAll(require.context('/assets/img/in-mood?sizes[]=540,sizes[]=960&format=avif', true, /\.(jpe?g|png|webp|webp)$/i));
+const imagesWebp = importAll(require.context('/assets/img/in-mood?sizes[]=540,sizes[]=960&format=webp', true, /\.(jpe?g|png|webp|webp)$/i));
 const imageSizes = "(max-width: 1024px) 280px, (max-width: 1600px) 484px, 484px";
-import mediumZoom from 'medium-zoom';
 
 const moods = {
   get section() {
@@ -88,18 +88,13 @@ function updateScrollIndex() {
 
 /** Mood images */
 function renderMoodImages() {
-  const zoom = mediumZoom([], {
-    template: "#mood-zoom",
-    container: "[data-zoom-container]"
-  });
   document.querySelectorAll('.mood-header-image').forEach((el, index) => {
-    const img = responsiveGenerator(el, [imagesAvif[el.dataset.path], imagesWebp[el.dataset.path]], imageSizes, index > 1);
-    zoom.attach(img);
-    img.addEventListener("click", e => {
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      zoom.open({target: img});
-    });
+    render(<ZoomableImage
+      avif={imagesAvif[el.dataset.path]}
+      webp={imagesWebp[el.dataset.path]}
+      lazy={index > 1}
+      sizes={imageSizes}
+    />, el);
   });
 }
 

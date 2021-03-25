@@ -32,3 +32,15 @@
 .d-none {
   display: none;
 }
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.ml-md-1 {
+  margin-left: 1em;
+
+  @media screen and (max-width: $mobileW) {
+    margin-left: none;
+  }
+}

@@ -1,14 +1,23 @@
 body.dark {
   background-color: $darkBack;
+
+  // React zoom overlay
+  div[data-rmiz-overlay] {
+    background-color: #171717d4 !important;
+  }
 }
 
 .dark main,
 .dark main * {
-
-  /* General */
-  background-color: $darkBack;
   color: $darkTextColor;
   border-color: #e6e6e6;
+}
+
+.dark main {
+  background-color: $darkBack;
+}
+
+.dark main {
 
   .about .about-footer a,
   .about .about-footer p,
@@ -111,9 +120,6 @@ body.dark {
 
   .labelgroup {
     border-bottom: 1px solid #333;
-  }
-
-  #posts-labelgroup {
 
     .search-results {
       background-color: $darkSecondary;
@@ -124,12 +130,18 @@ body.dark {
       }
     }
 
-    .search-section i {
-      background-color: transparent;
+    .search-section {
+      i {
+        background-color: transparent;
+      }
+
+      input {
+        background-color: transparent;
+      }
     }
   }
 
-  #posts-labelgroup:hover {
+  .labelgroup:hover {
 
     i {
       color: white;
@@ -141,7 +153,7 @@ body.dark {
   }
 
 
-  #posts-labelgroup.focus-within {
+  .labelgroup.focus-within {
 
     .search-section {
       background-color: $darkSecondary;
@@ -201,6 +213,7 @@ body.dark {
     background-color: transparent;
   }
 
+  // MicroModal
   .modal__overlay {
     background: rgba(0, 0, 0, 0.75);
   }
@@ -208,9 +221,15 @@ body.dark {
   .modal__container {
     background-color: $darkBack;
   }
+
+  // React Zoom
+  div[data-responsive] button {
+    background-color: transparent;
+  }
 }
 
 /* Table */
+
 .dark table {
 
   th,
