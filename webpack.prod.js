@@ -12,7 +12,7 @@ module.exports = merge(common, {
         loader: 'responsive-loader',
         options: {
           adapter: require('responsive-loader/sharp'),
-          sizes: [320, 640, 960, 1600],
+          sizes: [320, 640, 960],
           outputPath: 'img',
         }
       }]
