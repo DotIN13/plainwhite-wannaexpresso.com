@@ -3,7 +3,7 @@
   {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
   {% for mood in sorted_moods %}
   {% assign timestamp_id = mood.date | date: '%s' %}
-  <li class="mood" data-micromodal-trigger="{{ timestamp_id }}" data-fancybox data-animation-duration="700" data-src="#{{ timestamp_id }}" href="javascript:;">
+  <li class="mood" data-micromodal-trigger="{{ timestamp_id }}" href="#">
     <div class="mood-excerpt">
       {% if mood.header-image %}
       <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-webpack=true></div>

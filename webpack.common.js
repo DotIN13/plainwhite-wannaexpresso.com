@@ -1,6 +1,5 @@
 const path = require('path');
 const glob = require("glob");
-const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -65,11 +64,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-    }),
     new CleanWebpackPlugin(),
     new WebpackAssetsManifest(),
     new MiniCssExtractPlugin({
