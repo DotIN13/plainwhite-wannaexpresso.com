@@ -13,6 +13,10 @@ figure.highlight {
   margin: 0;
 }
 
+pre.highlight {
+  overflow: auto;
+}
+
 pre.highlight,
 code {
   font-family: "Fira Code", Menlo, Monaco, Consolas, "Courier New", "Songti SC", 思源宋体, 华文宋体, "AR PL New Sung", "文鼎ＰＬ简报宋", 新宋体, 中易宋体, 全字库正宋体, 文泉驿点阵宋, AR PL UMing, 新细明体, 细明体, monospace;
