@@ -45,3 +45,11 @@
     grid-area: next;
   }
 }
+
+@mixin darkLink($before, $after: $darkLinkColor) {
+  color: $before;
+
+  &:hover {
+    color: $after;
+  }
+}

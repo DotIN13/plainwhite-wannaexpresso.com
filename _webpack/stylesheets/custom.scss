@@ -1,24 +1,13 @@
-/* Variables */
-$linkColor: #9C27B0;
-$pinky: #ff94c2;
-$smallMobileW: 480px;
-$mobileW: 600px;
-$midScreenW: 1024px;
-$bigScreenW: 1600px;
-
-$leftWidth: 220px;
-$maxWidth: 1000px;
-
-$buttonBackground: #e3e3e3;
-
 /* Imports */
+
+@import 'modern-normalize';
+@import "variables";
+@import "mixins";
 @import "ext/micromodal";
 @import "ext/fonts";
-@import "mixins";
-@import 'modern-normalize';
 @import "syntax";
 @import "utility";
-@import "fontello";
+@import "ext/fontello";
 @import "search";
 @import "tagcloud";
 @import "moods";
