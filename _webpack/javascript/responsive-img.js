@@ -21,12 +21,13 @@ export function responsiveGenerator(el, imgObjs, sizes, lazy = true, dim = { ori
     const source = document.createElement("source");
     source.srcset = obj.srcSet;
     source.sizes = sizes;
-    source.type = `image/${  obj.src.split(".").pop()}`;
+    source.type = `image/${obj.src.split(".").pop()}`;
     pic.appendChild(source);
   });
 
   pic.appendChild(img);
   el.appendChild(pic);
+  return img;
 }
 
 export function importAll(r) {

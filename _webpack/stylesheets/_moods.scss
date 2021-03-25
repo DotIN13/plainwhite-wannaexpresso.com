@@ -66,9 +66,9 @@
   }
 
   .mood-header-image img {
-    height: 213px;
+    height: auto;
     width: 100%;
-    object-fit: cover;
+    // object-fit: cover;
     // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
     display: block;
   }
@@ -101,8 +101,8 @@
     display: flex;
     align-items: center;
     color: #555;
-    padding: 1em $moodPadding 2em $moodPadding;
-    margin: 1.5rem 0 0.5rem 0;
+    padding: 1em $moodPadding 1.5em $moodPadding;
+    margin: 0.5em 0;
 
     @media (max-width: $midScreenW) {
       padding: 1em $smallMoodPadding 2em $smallMoodPadding;
@@ -245,5 +245,21 @@
     transform: rotate(45deg);
     right: calc(50% - 5px);
     transition: right .5s;
+  }
+}
+
+// Mood medium zoom
+
+.mood-zoom__wrapper {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+
+  .mood-zoom__container {
+    flex: 1;
   }
 }

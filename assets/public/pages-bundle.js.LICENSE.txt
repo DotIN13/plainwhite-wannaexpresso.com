@@ -3,3 +3,5 @@
   * Copyright 2015-2020, Christian Fei
   * Licensed under the MIT License.
   */
+
+/*! medium-zoom 1.0.6 | MIT License | https://github.com/francoischalifour/medium-zoom */

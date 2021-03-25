@@ -3,6 +3,7 @@ import { responsiveGenerator, importAll } from '../responsive-img';
 const imagesAvif = importAll(require.context('/assets/img/in-mood?sizes[]=320,sizes[]=540&format=avif', true, /\.(jpe?g|png|webp|webp)$/i));
 const imagesWebp = importAll(require.context('/assets/img/in-mood?sizes[]=320,sizes[]=540&format=webp', true, /\.(jpe?g|png|webp|webp)$/i));
 const imageSizes = "(max-width: 1024px) 280px, (max-width: 1600px) 484px, 484px";
+import mediumZoom from 'medium-zoom';
 
 const moods = {
   get section() {
@@ -87,13 +88,23 @@ function updateScrollIndex() {
 
 /** Mood images */
 function renderMoodImages() {
+  const zoom = mediumZoom([], {
+    template: "#mood-zoom",
+    container: "[data-zoom-container]"
+  });
   document.querySelectorAll('.mood-header-image').forEach((el, index) => {
-    responsiveGenerator(el, [imagesAvif[el.dataset.path], imagesWebp[el.dataset.path]], imageSizes, index > 1);
+    const img = responsiveGenerator(el, [imagesAvif[el.dataset.path], imagesWebp[el.dataset.path]], imageSizes, index > 1);
+    zoom.attach(img);
+    img.addEventListener("click", e => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      zoom.open({target: img});
+    });
   });
 }
 
 /** Global functions */
-function bindMoodUtilities() {
+function moodInit() {
   if (document.querySelector(".mood")) {
     renderMoodImages();
     moods.buttonPrev.addEventListener("click", prevMood);
@@ -103,4 +114,4 @@ function bindMoodUtilities() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", bindMoodUtilities);
+window.addEventListener("DOMContentLoaded", moodInit);

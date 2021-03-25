@@ -531,7 +531,7 @@ i.icon-calendar {
   }
 
   /* Images */
-  a+em {
+  .post-img__container+em {
     @include sans-serif();
     font-size: 0.9em;
     color: #666;
