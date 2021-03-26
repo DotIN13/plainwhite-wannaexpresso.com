@@ -46,10 +46,6 @@ body.dark {
 
   .social {
 
-    i {
-      background-color: transparent;
-    }
-
     .icon-circle {
       color: $darkSecondary;
       transition: color 0.3s;
@@ -58,10 +54,6 @@ body.dark {
     a:hover .icon-circle {
       color: $darkLinkColor;
     }
-  }
-
-  .icon-translate {
-    background-color: transparent;
   }
 
   /* Code highlighting */
@@ -131,9 +123,6 @@ body.dark {
     }
 
     .search-section {
-      i {
-        background-color: transparent;
-      }
 
       input {
         background-color: transparent;
@@ -174,11 +163,7 @@ body.dark {
   #tag-cloud .tag-button,
   #show-tags {
     background-color: $darkSecondary;
-    @include darkLink($darkTextColor);
-
-    * {
-      background-color: transparent;
-    }
+    @include darkLink($darkTextColor, $darkTextColor);
   }
 
   /* Moods */
@@ -209,10 +194,6 @@ body.dark {
     }
   }
 
-  .heart {
-    background-color: transparent;
-  }
-
   // MicroModal
   .modal__overlay {
     background: rgba(0, 0, 0, 0.75);
@@ -220,11 +201,6 @@ body.dark {
 
   .modal__container {
     background-color: $darkBack;
-  }
-
-  // React Zoom
-  div[data-responsive] button {
-    background-color: transparent;
   }
 }
 

@@ -1,6 +1,9 @@
-import Zoom from 'react-medium-image-zoom';
+// import "preact/debug";
 import { h } from 'preact';
+import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
+// import {useState, useCallback} from 'preact/hooks';
+// import { Controlled as ControlledZoom } from 'react-medium-image-zoom';
 
 Array.prototype.last = function () { return this[this.length - 1]; };
 
@@ -25,44 +28,35 @@ export const Picture = (props) => {
   </picture>;
 };
 
+// const useToggler = () => {
+//   const [isZoomed, setIsZoomed] = useState(false);
+
+//   const toggleZoom = useCallback(e => {
+//     e.stopPropagation();
+//     setIsZoomed(!isZoomed);
+//   }, [isZoomed]);
+
+//   const handleZoomChange = useCallback(shouldZoom => {
+//     setIsZoomed(shouldZoom);
+//   }, []);
+
+//   return { isZoomed, handleZoomWrapper, handleZoomChange };
+// };
+
 export const ZoomableImage = (props) => {
-  return <Zoom>
-    <Picture avif={props.avif} webp={props.webp} sizes={props.sizes} style={props.style} lazy={props.lazy} />
-  </Zoom>;
+  // const { isZoomed, handleZoomWrapper, handleZoomChange } = useToggler();
+
+  const handleZoomWrapper = e => e.stopPropagation();
+
+  return <div class="react-zoom-wrapper" onClick={handleZoomWrapper}>
+    {/* <ControlledZoom isZoomed={isZoomed} onZoomChange={handleZoomChange}>
+      <Picture {...props} />
+    </ControlledZoom> */}
+    <Zoom>
+      <Picture {...props} />
+    </Zoom>
+  </div>;
 };
-
-// export function responsiveGenerator(el, imgObjs, sizes, lazy = true, dim = { original: true }) {
-//   if (!el) return;
-
-//   const pic = document.createElement('picture');
-//   const img = document.createElement('img');
-
-//   img.alt = el.dataset.caption;
-//   let srcObj = imgObjs[imgObjs.length - 1];
-//   srcObj = srcObj.images[srcObj.images.length - 1];
-//   img.src = srcObj.path;
-//   img.loading = lazy ? 'lazy' : 'eager';
-//   if (dim["original"]) {
-//     img.width = srcObj.width;
-//     img.height = srcObj.height;
-//   }
-//   else {
-//     img.width = dim["width"];
-//     img.height = dim["height"];
-//   }
-
-//   imgObjs.forEach((obj) => {
-//     const source = document.createElement("source");
-//     source.srcset = obj.srcSet;
-//     source.sizes = sizes;
-//     source.type = `image/${obj.src.split(".").pop()}`;
-//     pic.appendChild(source);
-//   });
-
-//   pic.appendChild(img);
-//   el.appendChild(pic);
-//   return img;
-// }
 
 export function importAll(r) {
   let images = {};
