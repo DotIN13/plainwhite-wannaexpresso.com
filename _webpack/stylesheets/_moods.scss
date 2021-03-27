@@ -29,6 +29,7 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    cursor: pointer;
 
     @media screen and (max-width: $midScreenW) {
 
@@ -74,7 +75,6 @@
 
   .mood-content {
     padding: 2em $moodPadding 1.5em $moodPadding;
-    cursor: pointer;
 
     @media (max-width: $midScreenW) {
       padding: 2em $smallMoodPadding 1.5em $smallMoodPadding;
