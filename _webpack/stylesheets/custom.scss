@@ -828,21 +828,3 @@ table tr td:last-child {
     }
   }
 }
-
-// React medium zoom images
-
-div[data-rmiz-modal-content] img {
-  height: auto;
-  width: 100%;
-}
-
-button[data-rmiz-btn-close],
-button[data-rmiz-btn-open] {
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 1px solid #ff94c2;
-  }
-}

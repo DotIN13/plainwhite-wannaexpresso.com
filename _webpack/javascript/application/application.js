@@ -32,4 +32,3 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* CSS */
 import '../../stylesheets/custom.scss';
-import 'react-medium-image-zoom/dist/styles.css';

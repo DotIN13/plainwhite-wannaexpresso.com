@@ -7,11 +7,13 @@ function toggleDarkMode() {
   if (body.classList.contains(DARK_CLASS)) {
     setCookie('theme', 'light');
     body.classList.remove(DARK_CLASS);
+    body.dataset.dark = false;
     document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = false);
   }
   else {
     setCookie('theme', 'dark');
     body.classList.add(DARK_CLASS);
+    body.dataset.dark = true;
     document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = true);
   }
 }

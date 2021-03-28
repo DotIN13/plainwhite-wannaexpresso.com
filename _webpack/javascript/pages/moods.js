@@ -1,4 +1,4 @@
-import { ZoomableImage, importAll } from '../responsive-img';
+import { Picture, importAll } from '../responsive-img';
 import { h, render } from 'preact';
 
 const imagesAvif = importAll(require.context('/assets/img/in-mood?sizes[]=540,sizes[]=960&format=avif', true, /\.(jpe?g|png|webp|webp)$/i));
@@ -89,7 +89,7 @@ function updateScrollIndex() {
 /** Mood images */
 function renderMoodImages() {
   document.querySelectorAll('.mood-header-image').forEach((el, index) => {
-    render(<ZoomableImage
+    render(<Picture
       avif={imagesAvif[el.dataset.path]}
       webp={imagesWebp[el.dataset.path]}
       lazy={index > 1}
