@@ -7,7 +7,6 @@ const imagesWebp = importAll(require.context('/assets/img/in-post?format=webp', 
 const imageSizes = "(max-width: 600px) 80vw, (max-width: 1024px) 60vw, (max-width: 1600px) 800px, 100vw";
 
 window.addEventListener('DOMContentLoaded', () => {
-  
   document.querySelectorAll('.post div[data-responsive="true"]').forEach((el, index) => {
     // console.log(el.dataset);
     render(<Picture
