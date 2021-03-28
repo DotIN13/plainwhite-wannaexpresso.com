@@ -6,7 +6,20 @@ const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-w
 import { Picture } from '../responsive-img';
 import { bindHeartActions, fetchLikes } from '../likes';
 import MicroModal from 'micromodal';
+import initWorkbox from './workbox-utilities';
 
+// Darkmode
+import {updateDark, bindDarkToggle} from "./darkmode";
+updateDark();
+
+// Stimulus
+import { Application } from "stimulus";
+import PortalController from "../controllers/portal_controller";
+const application = Application.start();
+
+application.register("portal", PortalController);
+
+// Window onLoad
 window.addEventListener('DOMContentLoaded', () => {
   // Render avatar image
   render(<Picture
@@ -19,6 +32,12 @@ window.addEventListener('DOMContentLoaded', () => {
   // Heart-shaped like button animations
   bindHeartActions();
   fetchLikes();
+
+  // Darkmode
+  bindDarkToggle();
+
+  // Workbox
+  initWorkbox();
 
   // Initialize micromodal
   try {

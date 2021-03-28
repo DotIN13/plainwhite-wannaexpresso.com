@@ -107,7 +107,7 @@ async function bindButtonHovering() {
   installButton.addEventListener('mouseleave', () => installButton.classList.remove('expand'));
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+export default function() {
   installButton = document.getElementById("pwa-install");
 
   // Register service worker
@@ -147,4 +147,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const Notifications = <Toaster toastOptions={{ className: "hot-notifications" }} />;
   render(Notifications, document.body);
-});
+};

@@ -58,6 +58,21 @@
       }
     }
 
+    .mood-header-image {
+      grid-area: header-image;
+    }
+
+    .mood-detail {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+  }
+
+  .mood-header-image {
+
     img {
       height: auto;
       width: 100%;
@@ -65,12 +80,6 @@
       // https://stackoverflow.com/questions/38361657/why-does-my-html5-picture-have-a-height-outside-of-its-img-and-why-does-it-n
       display: block;
     }
-  }
-
-  .mood-excerpt:first-child,
-  .mood-content:first-child,
-  .mood-header-image img {
-    overflow: hidden;
   }
 
   .mood-content {
@@ -95,46 +104,59 @@
         margin: 0.6em 0;
       }
     }
+
+    article.mood-full {
+      display: none;
+    }
   }
 
   .mood-meta {
-    display: flex;
-    align-items: center;
-    color: #555;
-    padding: 1em $moodPadding 2em $moodPadding;
+    padding: 1.5em $moodPadding 2em $moodPadding;
     margin: 0.5em 0;
+    color: #555;
 
     @media (max-width: $midScreenW) {
       padding: 1em $smallMoodPadding 2em $smallMoodPadding;
     }
-
-    .mood-time {
-      display: none;
-
-      @media screen and (min-width: $midScreenW + 1) {
-        display: inline;
-      }
-    }
-
-    .mood-like {
-      position: relative;
-
-      .heart {
-        position: absolute;
-        top: -24px;
-      }
-    }
-
-    .mood-like-count {
-      margin-left: 40px;
-    }
   }
 
-  .mood-header-image+.mood-content {
+  .mood-header-image+.mood-detail .mood-content {
     padding-top: 0;
     padding-bottom: 0;
+
+    h2 {
+      margin: 1.6em 0 0.9em 0;
+    }
   }
 }
+
+// Globalize mood-meta for reuse in mood portal
+.mood-meta {
+  display: flex;
+  align-items: center;
+
+  .mood-time {
+    display: none;
+
+    @media screen and (min-width: $midScreenW + 1) {
+      display: inline;
+    }
+  }
+
+  .mood-like {
+    position: relative;
+
+    .heart {
+      position: absolute;
+      top: -24px;
+    }
+  }
+
+  .mood-like-count {
+    margin-left: 40px;
+  }
+}
+
 
 /*
 *
@@ -245,5 +267,55 @@
     transform: rotate(45deg);
     right: calc(50% - 5px);
     transition: right .5s;
+  }
+}
+
+// Mood portal
+#portal {
+
+  .mood {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: [content-start] auto [meta-end];
+    grid-template-areas: "detail";
+    align-items: end;
+  }
+
+  .mood-header-image {
+    position: absolute;
+    z-index: -1;
+
+    img {
+      height: 100vh;
+      width: 100vw;
+      object-fit: cover;
+    }
+  }
+
+  .mood-detail {
+    color: white;
+    grid-area: detail;
+    background: linear-gradient(to top, #171717e0 0%, rgb(46 46 46 / 76%) 40%, rgb(56 56 56 / 54%) 70%, rgba(255, 255, 255, 0) 100%);
+    // background: linear-gradient(to top, rgb(0, 0, 0) 0%,
+    //     rgba(46, 46, 46, 0.856) 40%, rgba(56, 56, 56, 0.541) 60%, rgba(255, 255, 255, 0) 100%);
+    padding: 5em 2em 3em 2em;
+  }
+
+  .mood-content {
+    grid-area: content;
+
+    article.mood-excerpt {
+      display: none;
+    }
+
+    article.mood-full {
+      display: block;
+    }
+  }
+
+  .mood-meta {
+    grid-area: meta;
   }
 }

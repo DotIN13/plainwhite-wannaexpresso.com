@@ -42,17 +42,19 @@ function checkSwitch() {
   document.querySelectorAll('.dark-mode-toggle').forEach(ti => ti.checked = true);
 }
 
-const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const theme = getCookie('theme');
-if ((theme === null && userPrefersDark) || theme === 'dark') {
-  checkDarkDone = false;
+export function updateDark() {
+  const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = getCookie('theme');
+  if ((theme === null && userPrefersDark) || theme === 'dark') {
+    checkDarkDone = false;
 
-  // Attempt both requestAnimationFrame and DOMContentLoaded, whichever comes first.
-  if (window.requestAnimationFrame) window.requestAnimationFrame(checkDark);
-  window.addEventListener('DOMContentLoaded', checkDark);
-  window.addEventListener('DOMContentLoaded', checkSwitch);
+    // Attempt both requestAnimationFrame and DOMContentLoaded, whichever comes first.
+    if (window.requestAnimationFrame) window.requestAnimationFrame(checkDark);
+    window.addEventListener('DOMContentLoaded', checkDark);
+    window.addEventListener('DOMContentLoaded', checkSwitch);
+  }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+export function bindDarkToggle() {
   document.querySelectorAll('.dark-mode-toggle+a.button').forEach((el) => el.addEventListener('click', toggleDarkMode));
-});
+}

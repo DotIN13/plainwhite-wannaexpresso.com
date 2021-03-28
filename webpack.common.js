@@ -15,9 +15,7 @@ module.exports = {
     },
     pages: glob.sync('./_webpack/javascript/pages/*'),
     posts: glob.sync('./_webpack/javascript/posts/*'),
-    application: {
-      import: glob.sync('./_webpack/javascript/application/*'),
-    },
+    application: path.join(__dirname, '_webpack', 'javascript', 'application'),
   },
   output: {
     path: path.resolve(__dirname, 'assets/public'),

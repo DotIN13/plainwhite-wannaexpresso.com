@@ -1,16 +1,17 @@
 {
-    "presets": [
-        ["@babel/preset-env",
-            {
-                "useBuiltIns": "usage",
-                "corejs": 3
-            }
-        ]
-    ],
-    "plugins": [
-        ["@babel/plugin-transform-react-jsx", {
-            "pragma": "h",
-            "pragmaFrag": "Fragment"
-        }]
+  "presets": [
+    ["@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "shippedProposals": true
+      }
     ]
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-react-jsx", {
+      "pragma": "h",
+      "pragmaFrag": "Fragment"
+    }]
+  ]
 }
