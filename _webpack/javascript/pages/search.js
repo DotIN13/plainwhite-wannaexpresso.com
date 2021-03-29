@@ -1,6 +1,6 @@
 import SimpleJekyllSearch from 'simple-jekyll-search';
 
-window.addEventListener('DOMContentLoaded', () => {
+export default () => {
   if (document.getElementById("searchbar")) {
     /* Simple Jekyll Search */
     window.SimpleJekyllSearch({
@@ -37,8 +37,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const searchCollapse = function () {
       $searchResults.style.display = "none";
       $labelGroup.classList.remove("focus-within");
-      $postLabel.style.width = `${labelWidth  }px`;
+      $postLabel.style.width = `${labelWidth}px`;
       document.body.onclick = null;
     };
   }
-}, false);
+}

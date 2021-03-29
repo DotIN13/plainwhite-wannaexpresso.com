@@ -1,34 +1,18 @@
-{% include posts-label.html type='moods' search=false %}
-<ul class="mood-track" data-mood-focus="0">
-  {% assign sorted_moods = site.moods | sort: 'date' | reverse | limit: 8 %}
-  {% for mood in sorted_moods %}
-  <li class="mood" href="#" data-controller="portal" data-action="click->portal#port" data-portal-target="template">
-    {% include mood.html mood=mood %}
-  </li>
-  {% endfor %}
-  <li class="mood--placeholder">.</li>
-</ul>
-<button aria-label="previous mood item" class="mood-button--prev mood-button hide">
-  <div class="mood-arrow--prev mood-arrow"></div>
-</button>
-<button aria-label="next mood item" class="mood-button--next mood-button">
-  <div class="mood-arrow--next mood-arrow"></div>
-</button>
-
-<div class="mood-modals">
-  {% for mood in sorted_moods %}
-  {% assign timestamp_id = mood.date | date: '%s' %}
-  <div class="modal micromodal-slide mood-full" id="{{ mood.id | escape }}" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-{{ mood.id | escape }}-title">
-        <header class="modal__header">
-          <h2 class="modal__title" id="modal-{{ mood.id | escape }}-title">{{ mood.title }}</h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-        </header>
-        <div class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_full_format }}</div>
-        <article class="modal__content">{{ mood.content }}</article>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+<section class="mood-section" data-controller="moods" data-moods-index-value="0">
+  {% include posts-label.html type='moods' search=false %}
+  <ul class="mood-track" data-moods-target="track" data-action="scroll->moods#handleScroll">
+    {% assign sorted_moods = site.moods | sort: 'date' | reverse | limit: 8 %}
+    {% for mood in sorted_moods %}
+    <li class="mood" href="#" data-controller="portal" data-moods-target="item" data-portal-image-background-value data-action="click->portal#port" data-portal-target="template">
+      {% include mood.html mood=mood %}
+    </li>
+    {% endfor %}
+    <li class="mood--placeholder">.</li>
+  </ul>
+  <button aria-label="previous mood item" class="mood-button--prev mood-button hide" data-moods-target="buttonPrev" data-action="moods#prev">
+    <div class="mood-arrow--prev mood-arrow"></div>
+  </button>
+  <button aria-label="next mood item" class="mood-button--next mood-button" data-moods-target="buttonNext" data-action="moods#next">
+    <div class="mood-arrow--next mood-arrow"></div>
+  </button>
+</section>

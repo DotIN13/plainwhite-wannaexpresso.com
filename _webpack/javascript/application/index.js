@@ -5,7 +5,6 @@ import avatarWebp from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=
 const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-width: 1600px) 240px, 240px";
 import { Picture } from '../responsive-img';
 import { bindHeartActions, fetchLikes } from '../likes';
-import MicroModal from 'micromodal';
 import initWorkbox from './workbox-utilities';
 
 // Darkmode
@@ -38,15 +37,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Workbox
   initWorkbox();
-
-  // Initialize micromodal
-  try {
-    MicroModal.init({
-      awaitCloseAnimation: true
-    });
-  } catch (err) {
-    console.log(err);
-  }
 });
 
 /* CSS */

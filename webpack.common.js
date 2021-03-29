@@ -13,7 +13,7 @@ module.exports = {
     archive: {
       import: ['./_webpack/javascript/archive/archive', './_webpack/javascript/pages/search'],
     },
-    pages: glob.sync('./_webpack/javascript/pages/*'),
+    pages: path.join(__dirname, '_webpack', 'javascript', 'pages'),
     posts: glob.sync('./_webpack/javascript/posts/*'),
     application: path.join(__dirname, '_webpack', 'javascript', 'application'),
   },

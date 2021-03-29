@@ -17,9 +17,7 @@ layout: default
   {%- endif -%}
 
   {% if paginator.page == 1 and site.moods.size > 0 %}
-  <section class="mood-section">
     {% include moods.html %}
-  </section>
   {% endif %}
 
   {{ content }}

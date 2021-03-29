@@ -272,6 +272,15 @@
 
 // Mood portal
 #portal {
+  opacity: 0;
+
+  &[aria-hidden=false] {
+    animation: mmfadeIn 0.4s cubic-bezier(0.4, 0, 0, 1) 0s forwards;
+  }
+
+  &[aria-hidden=true] {
+    animation: mmfadeOut 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+  }
 
   .mood {
     width: 100vw;

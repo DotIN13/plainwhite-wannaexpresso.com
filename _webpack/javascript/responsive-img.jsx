@@ -8,19 +8,23 @@ const Source = (props) => <source
   type={`image/${props.images.src.split('.').pop()}`}
 />;
 
-const Img = (props) => <img
-  src={props.image.path}
-  loading={props.lazy ? 'lazy' : 'eager'}
-  width={props.image.width}
-  height={props.image.height}
-  class={props.class}
-/>;
+const Img = (props) => {
+  const image = props.webp.images.last();
+  return <img
+    src={image.path}
+    loading={props.lazy ? 'lazy' : 'eager'}
+    width={image.width}
+    height={image.height}
+    class={props.class}
+    data-portal-target={props.imagePortalTarget}
+  />;
+};
 
 export const Picture = (props) => {
-  return <picture>
+  return <picture data-portal-target={props.picturePortalTarget}>
     <Source images={props.avif} sizes={props.sizes} />
     <Source images={props.webp} sizes={props.sizes} />
-    <Img image={props.webp.images.last()} lazy={props.lazy} class={props.class} />
+    <Img {...props} />
   </picture>;
 };
 
