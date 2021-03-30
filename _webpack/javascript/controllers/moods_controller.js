@@ -66,14 +66,18 @@ export default class extends Controller {
 
   renderImages() {
     for (const [index, image] of this.imageTargets.entries()) {
-      render(<Picture
-        avif={imagesAvif[image.dataset.path]}
-        webp={imagesWebp[image.dataset.path]}
-        lazy={index > 1}
-        sizes={imageSizes}
-        imagePortalTarget="bgImage"
-        picturePortalTarget="bgPicture"
-      />, image);
+      try {
+        render(<Picture
+          avif={imagesAvif[image.dataset.path]}
+          webp={imagesWebp[image.dataset.path]}
+          lazy={index > 1}
+          sizes={imageSizes}
+          imagePortalTarget="bgImage"
+          picturePortalTarget="bgPicture"
+        />, image);
+      } catch (e) {
+        console.log("Image rendering error: ", e, "Please update page content.");
+      }
     }
   }
 }
