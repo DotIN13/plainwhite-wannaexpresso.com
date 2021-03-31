@@ -1,22 +1,23 @@
 import { registerRoute } from 'workbox-routing';
 import * as navigationPreload from 'workbox-navigation-preload';
-import { StaleWhileRevalidate, NetworkOnly } from 'workbox-strategies';
+import { StaleWhileRevalidate } from 'workbox-strategies';
 // Used for filtering matches based on status code, header, or both
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
-import { precache, matchPrecache } from 'workbox-precaching';
+import { precacheAndRoute } from 'workbox-precaching';
 import { googleFontsCache, offlineFallback, pageCache, imageCache } from 'workbox-recipes';
+
 import placeholderImage from "/assets/img/placeholder.jpeg?sizes[]=1020&format=webp&publicPath=assets/public/img";
 
 navigationPreload.enable();
 
-// Use with precache injection
-precache(self.__WB_MANIFEST);
-
 addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+  if (event?.data.type === 'SKIP_WAITING') {
     skipWaiting();
   }
 });
+
+// Use with precache injection
+precacheAndRoute(self.__WB_MANIFEST);
 
 // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
 googleFontsCache();
@@ -36,20 +37,6 @@ pageCache({
  ******************** Static Handling ********************
  *********************************************************
  */
-
-registerRoute(
-  ({ request }) => request.destination === 'style' || request.destination === 'script' || request.destination === 'worker',
-  async ({request, event, url}) => {
-    let response;
-    try {
-      response = await matchPrecache(url.href);
-      if (!response) throw new Error;
-    } catch (e) {
-      response = await new NetworkOnly().handle({request, event});
-    }
-    return response;
-  }
-);
 
 // Cache json with a Stale While Revalidate strategy
 registerRoute(

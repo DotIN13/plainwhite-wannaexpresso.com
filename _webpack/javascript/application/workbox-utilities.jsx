@@ -7,22 +7,26 @@ const wb = new Workbox("/service-worker.js");
 let registration, installButton;
 const prompt = {
   open() {
-    toast(() => (
+    toast.success(() => (
       <span>
-        Page content has changed.<a onClick={() => this.onAccept()}>UPDATE</a>
+        Page content updated.<a onClick={() => this.onAccept()}>RELOAD</a>
       </span>
-    ), { duration: 6000 });
+    ), {
+      duration: 6000,
+      iconTheme: {
+        primary: '#ff94c2',
+        secondary: '#fff',
+      },
+    });
   },
 
   onAccept: () => {
     // Assuming the user accepted the update, set up a listener
     // that will reload the page as soon as the previously waiting
     // service worker has taken control.
-    wb.addEventListener('controlling', (event) => {
-      window.location.reload();
-    });
+    wb.addEventListener('controlling', () => window.location.reload());
 
-    if (registration && registration.waiting) {
+    if (registration?.waiting) {
       // Send a message to the waiting service worker,
       // instructing it to activate.  
       // Note: for this to work, you have to add a message
@@ -41,17 +45,15 @@ const prompt = {
 };
 
 function registerWorker() {
-  const showSkipWaitingPrompt = (event) => {
-    // `event.wasWaitingBeforeRegister` will be false if this is
-    // the first time the updated service worker is waiting.
-    // When `event.wasWaitingBeforeRegister` is true, a previously
-    // updated service worker is still waiting.
-    // You may want to customize the UI prompt accordingly.
+  // `event.wasWaitingBeforeRegister` will be false if this is
+  // the first time the updated service worker is waiting.
+  // When `event.wasWaitingBeforeRegister` is true, a previously
+  // updated service worker is still waiting.
+  // You may want to customize the UI prompt accordingly.
 
-    // Assumes your app has some sort of prompt UI element
-    // that a user can either accept or reject.
-    prompt.open();
-  };
+  // Assumes your app has some sort of prompt UI element
+  // that a user can either accept or reject.
+  const showSkipWaitingPrompt = () => prompt.open();
 
   // Add an event listener to detect when the registered
   // service worker has installed but is waiting to activate.
@@ -107,7 +109,15 @@ async function bindButtonHovering() {
   installButton.addEventListener('mouseleave', () => installButton.classList.remove('expand'));
 }
 
+function renderToaster() {
+  const Notifications = () => {
+    return <Toaster toastOptions={{ className: "hot-notifications" }} />;
+  };
+  render(<Notifications />, document.body);
+}
+
 export default function() {
+  renderToaster();
   installButton = document.getElementById("pwa-install");
 
   // Register service worker
@@ -115,11 +125,6 @@ export default function() {
 
   // Hide the install button if already installed
   if (localStorage["installed"] == "true") installButton.classList.add("flex-hidden");
-
-  // Keep installation button hidden if user diliberately dismissed installation
-  // if (!localStorage.getItem("installationRejected") || Number(localStorage.getItem("pageview")) % 10 == 0) {
-  //     installButton.classList.remove("flex-hidden")
-  // }
 
   // PWA Install Handling
   window.addEventListener('beforeinstallprompt', (event) => {
@@ -144,7 +149,4 @@ export default function() {
   // Log pageviews
   let pgview = localStorage.getItem("pageview");
   localStorage.setItem("pageview", Number(pgview) >= 0 ? Number(pgview) + 1 : 0);
-
-  const Notifications = <Toaster toastOptions={{ className: "hot-notifications" }} />;
-  render(Notifications, document.body);
-};
+}

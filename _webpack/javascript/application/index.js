@@ -2,10 +2,11 @@
 import { h, render } from 'preact';
 import avatarAvif from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=avif';
 import avatarWebp from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=webp';
-const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-width: 1600px) 240px, 240px";
 import { Picture } from '../responsive-img';
 import { bindHeartActions, fetchLikes } from '../likes';
 import initWorkbox from './workbox-utilities';
+
+const avatarSizes = "(max-width: 600px) 105px, (max-width: 1024px) 150px, (max-width: 1600px) 240px, 240px";
 
 // Darkmode
 import {updateDark, bindDarkToggle} from "./darkmode";
@@ -20,6 +21,9 @@ application.register("portal", PortalController);
 
 // Window onLoad
 window.addEventListener('DOMContentLoaded', () => {
+  // Workbox
+  initWorkbox();
+
   // Render avatar image
   render(<Picture
     avif={avatarAvif}
@@ -28,15 +32,12 @@ window.addEventListener('DOMContentLoaded', () => {
     sizes={avatarSizes}
   />, document.getElementById("avatar"));
 
-  // Heart-shaped like button animations
-  bindHeartActions();
-  fetchLikes();
-
   // Darkmode
   bindDarkToggle();
 
-  // Workbox
-  initWorkbox();
+  // Heart-shaped like button animations
+  bindHeartActions();
+  fetchLikes();
 });
 
 /* CSS */
