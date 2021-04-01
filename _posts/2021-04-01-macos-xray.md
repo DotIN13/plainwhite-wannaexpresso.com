@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 优雅地理解并使用Xray+VLESS+XTLS
+title: 优雅地理解Xray+VLESS+XTLS
 subtitle: Understanding and Utilizing Xray, VLESS and XLTS
 author: DotIN13
 tags:
