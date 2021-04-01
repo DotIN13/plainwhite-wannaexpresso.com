@@ -13,7 +13,8 @@ figure.highlight {
   margin: 0;
 }
 
-pre.highlight {
+pre.highlight,
+.highlight pre {
   overflow: auto;
 }
 
