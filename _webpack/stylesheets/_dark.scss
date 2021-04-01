@@ -93,7 +93,8 @@ body.dark {
     @include darkLink($darkTextColor);
   }
 
-  a.post-link:hover {
+  a.post-link:hover,
+  .post-preview:hover {
 
     h2,
     h3 {
