@@ -77,14 +77,11 @@ main {
     }
 
     a {
-      padding: 6px 25px 6px 14px;
+      padding: 6px 10px;
       text-decoration: none;
       display: flex;
-
-      &:hover {
-        color: black;
-        background-color: #eee;
-      }
+      margin: 0 5px;
+      border-radius: 3px;
 
       &::before {
         content: '\e805';
@@ -101,6 +98,15 @@ main {
         margin-right: 14px;
         padding: 0 3px;
         color: #9aa0a6;
+      }
+
+      &:hover {
+        color: black;
+        background-color: $pinkLight;
+
+        &::before {
+          color: #586e75;
+        }
       }
     }
   }

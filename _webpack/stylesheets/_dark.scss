@@ -118,7 +118,15 @@ body.dark {
 
       a {
         color: white;
-        @include darkLink($darkSecondary, $darkBack);
+        transition: none;
+        
+        &:hover {
+          background-color: $champagne;
+
+          &::before {
+            color: white;
+          }
+        }
       }
     }
 
