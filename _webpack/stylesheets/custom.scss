@@ -776,6 +776,7 @@ blockquote.g_bq {
 table {
   padding: 0;
   word-break: initial;
+  border-collapse: collapse;
 }
 
 table tr {
