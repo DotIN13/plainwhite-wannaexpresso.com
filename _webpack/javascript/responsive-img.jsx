@@ -13,8 +13,8 @@ const Img = (props) => {
   return <img
     src={image.path}
     loading={props.lazy ? 'lazy' : 'eager'}
-    width={image.width}
-    height={image.height}
+    width={process.env.NODE_ENV === "production" ? image.width : 0}
+    height={process.env.NODE_ENV === "production" ? image.height : 0}
     class={props.class}
     data-portal-target={props.imagePortalTarget}
   />;

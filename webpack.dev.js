@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -19,6 +20,11 @@ module.exports = merge(common, {
       },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development'
+    }),
+  ],
   cache: {
     type: 'filesystem',
     cacheDirectory: path.resolve(__dirname, '.webpack-cache'),
