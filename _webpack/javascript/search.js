@@ -41,4 +41,4 @@ export default () => {
       document.body.onclick = null;
     };
   }
-}
+};

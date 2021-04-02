@@ -21,7 +21,6 @@
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: flex-start;
-  transition: height 0.5s;
 
   .tag-button {
     text-decoration: none;
@@ -40,12 +39,16 @@
       pointer-events: none;
     }
 
-    &:hover,
-    &:active,
     &.focus {
-      background-color: $linkColor !important;
-      color: #fff;
+      background: $linkColor;
+      color: white;
+      box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
     }
+  }
+
+  .tag-button--all {
+    font-weight: 700;
+    color: $linkColor;
   }
 
   a.tag-button[rel="1"] {
@@ -63,29 +66,10 @@
   }
 }
 
-#tag-cloud .tag-button.focus {
-  box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
-}
-
-#tag-cloud .tag-button.tag-button--all {
-  font-weight: 700;
-  color: $linkColor;
-}
-
-#tag-cloud a.tag-button--all:hover,
-#tag-cloud .tag.tag-button--all:hover,
-#tag-cloud a.tag-button--all:active,
-#tag-cloud .tag.tag-button--all:active,
-#tag-cloud a.tag-button--all.focus,
-#tag-cloud .tag.tag-button--all.focus {
-  // background-color: #e4e4e4 !important;
-  color: #fff;
-}
-
 // Show Tags Button
 #show-tags,
 .tag-button {
-  @include button;
+  @include button();
   font-size: 14px;
   height: 28px;
   line-height: 28px;

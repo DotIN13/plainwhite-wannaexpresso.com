@@ -1,10 +1,5 @@
 body.dark {
-  background-color: $darkBack;
-
-  // React zoom overlay
-  div[data-rmiz-overlay] {
-    background-color: #171717d4 !important;
-  }
+  background-color: $dark-800;
 }
 
 .dark main,
@@ -14,7 +9,7 @@ body.dark {
 }
 
 .dark main {
-  background-color: $darkBack;
+  background-color: $dark-800;
 }
 
 .dark main {
@@ -22,11 +17,11 @@ body.dark {
   .about .about-footer a,
   .about .about-footer p,
   .tagline {
-    @include darkLink(#666);
+    @include dark-link-hover(#666);
   }
 
   .about #pwa-install {
-    background-color: $darkSecondary;
+    background-color: $dark-700;
     color: #df93e8;
 
     &.disabled {
@@ -40,6 +35,13 @@ body.dark {
     }
   }
 
+  footer.about.condensed {
+  
+    @media screen and (max-width: $midScreenW) {
+      border-top: 1px solid $dark-200;
+    }
+  }
+
   .post p {
     color: #ddd;
   }
@@ -47,7 +49,7 @@ body.dark {
   .social {
 
     .icon-circle {
-      color: $darkSecondary;
+      color: $dark-700;
       transition: color 0.3s;
     }
 
@@ -79,18 +81,18 @@ body.dark {
   /* Tag pills */
   .post-categories {
     li {
-      background-color: $darkSecondary;
+      background-color: $dark-700;
       color: #fff;
     }
   }
 
   /* Links */
   a {
-    @include darkLink($darkLinkColor, $darkTextColor);
+    @include dark-link-hover($darkLinkColor, $darkTextColor);
   }
 
   .navigation a {
-    @include darkLink($darkTextColor);
+    @include dark-link-hover($darkTextColor);
   }
 
   a.post-link:hover,
@@ -103,7 +105,7 @@ body.dark {
   }
 
   #title a {
-    @include darkLink(#fff);
+    @include dark-link-hover(#fff);
   }
 
   /* LabelGroup */
@@ -115,7 +117,7 @@ body.dark {
     border-bottom: 1px solid #333;
 
     .search-results {
-      background-color: $darkSecondary;
+      background-color: $dark-700;
 
       a {
         color: white;
@@ -154,12 +156,12 @@ body.dark {
   .labelgroup.focus-within {
 
     .search-section {
-      background-color: $darkSecondary;
+      background-color: $dark-700;
     }
 
     input {
       color: $darkTextColor;
-      background-color: $darkSecondary;
+      background-color: $dark-700;
     }
 
     i {
@@ -168,11 +170,17 @@ body.dark {
   }
 
   /* Archive tagcloud */
-  .button,
   #tag-cloud .tag-button,
   #show-tags {
-    background-color: $darkSecondary;
-    @include darkLink($darkTextColor, $darkTextColor);
+    background-color: $dark-700;
+    @include dark-link-hover($darkTextColor, $darkTextColor);
+
+    &:hover,
+    &:active,
+    &.focus {
+      color: white;
+      background-color: $darkLinkColor;
+    }
   }
 
   /* Moods */
@@ -182,7 +190,7 @@ body.dark {
     @media screen and (min-width: $midScreenW + 1) {
 
       &:hover {
-        background-color: $darkBack;
+        background-color: $dark-800;
         box-shadow: 0px 4px 12px 5px #333232;
       }
     }
@@ -199,7 +207,7 @@ body.dark {
     }
 
     &::before {
-      background-color: $darkSecondary;
+      background-color: $dark-700;
     }
   }
 }
@@ -210,7 +218,7 @@ body.dark {
 
   th,
   td {
-    border: 1px solid $darkSecondary;
+    border: 1px solid $dark-700;
   }
 
   th {

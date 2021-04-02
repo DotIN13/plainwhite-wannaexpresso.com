@@ -6,6 +6,7 @@
 }
 
 @mixin button {
+  text-decoration: none;
   background: $buttonBackground;
   cursor: pointer;
   font-size: 15px;
@@ -16,6 +17,15 @@
   &:hover {
     background: $linkColor;
     color: white;
+  }
+
+  .dark main & {
+    background: $dark-700;
+    color: $darkTextColor;
+
+    &:hover {
+      background: $darkLinkColor;
+    }
   }
 }
 
@@ -46,10 +56,14 @@
   }
 }
 
-@mixin darkLink($before, $after: $darkLinkColor) {
+@mixin dark-link-hover($before, $after: $darkLinkColor) {
   color: $before;
 
   &:hover {
     color: $after;
   }
+}
+
+@mixin color-transition() {
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }

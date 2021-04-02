@@ -1,3 +1,5 @@
+import initSearch from "../search";
+
 String.prototype.empty = function() {
   if (this.trim() === "") return true;
   return false;
@@ -88,4 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onpopstate = () => loadQuery();
 
   handle.element.addEventListener("click", handle.toggle);
+
+  initSearch();
 });
