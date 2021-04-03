@@ -1,10 +1,10 @@
 const path = require('path');
 const glob = require("glob");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 // https://webpack.js.org/configuration/
 module.exports = {
@@ -16,8 +16,11 @@ module.exports = {
     application: path.join(__dirname, '_webpack', 'javascript', 'application'),
   },
   output: {
-    path: path.resolve(__dirname, 'assets/public'),
+    path: path.resolve(__dirname, 'dist/assets/public'),
     filename: '[name]-bundle.js',
+    clean: {
+      keep: /images/,
+    }
   },
   resolve: {
     extensions: ['.json', '.js', '.jsx'],
@@ -60,14 +63,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new WebpackAssetsManifest(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
     new WorkboxPlugin.InjectManifest({
       swSrc: './_webpack/javascript/service-worker.js',
-      swDest: path.resolve(__dirname, "service-worker.js"),
+      swDest: path.resolve(__dirname, "dist", "service-worker.js"),
       modifyURLPrefix: {
         '': '/assets/public/',
       },
@@ -79,6 +81,11 @@ module.exports = {
       as(entry) {
         if (/\.woff2?$/.test(entry)) return 'font';
       }
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "_webpack/images/favicon", to: "favicon" },
+      ],
     }),
   ]
 };

@@ -1,1 +1,2 @@
-<div class="post-img__container post-img{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}" data-caption="{{ include.alt }}" data-path="{{ include.link }}" data-responsive=true><em>{{ include.alt }}</em></div>
+<div class="post-img__container post-img{% if include.wrapper_class %} {{ include.wrapper_class }}{% endif %}">
+  {% picture "{{ include.link | prepend: "in-post/" }}" --img class="zoomable" lazy="true" alt=include.alt %}<em>{{ include.alt }}</em></div>

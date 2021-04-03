@@ -1,7 +1,7 @@
 /* Modules */
 import { h, render } from 'preact';
-import avatarAvif from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=avif';
-import avatarWebp from '/assets/img/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=webp';
+import avatarAvif from '/_webpack/images/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=avif';
+import avatarWebp from '/_webpack/images/orange.webp?sizes[]=105,sizes[]=150,sizes[]=240&format=webp';
 import { Picture } from '../responsive-img';
 import { bindHeartActions, fetchLikes } from '../likes';
 import initWorkbox from './workbox-utilities';

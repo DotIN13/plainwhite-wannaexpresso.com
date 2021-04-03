@@ -2,8 +2,8 @@ import { h, render } from 'preact';
 import { Controller } from "stimulus";
 import { Picture, importAll } from '../responsive-img';
 
-const imagesAvif = importAll(require.context('/assets/img/in-mood?format=avif', true, /\.(jpe?g|png|webp|webp)$/i));
-const imagesWebp = importAll(require.context('/assets/img/in-mood?format=webp', true, /\.(jpe?g|png|webp|webp)$/i));
+const imagesAvif = importAll(require.context('/_webpack/images/in-mood?format=avif', true, /\.(jpe?g|png|webp|webp)$/i));
+const imagesWebp = importAll(require.context('/_webpack/images/in-mood?format=webp', true, /\.(jpe?g|png|webp|webp)$/i));
 const imageSizes = "(max-width: 600px) 80vw, (max-width: 1024px) 60vw, (max-width: 1600px) 800px, 100vw";
 
 export default class extends Controller {

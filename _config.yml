@@ -7,10 +7,13 @@ author: DotIN13
 email: dotin13@126.com
 description: "Act local, think global with DotIN13!"
 url: "https://www.wannaexpresso.com"
-avatar: "/assets/img/orange.webp"
+avatar: "/_webpack/images/orange.webp"
 
 # Build configs
 destination: dist
+keep_files:
+  - "assets"
+  - "service-worker.js"
 show_excerpts: true # set to true to show excerpts on the homepage
 permalink: pretty
 timezone: Asia/Shanghai
@@ -124,7 +127,7 @@ plugins:
   - jekyll-paginate-v2
   - jekyll-feed
   - jekyll-minifier
-#   - jekyll_picture_tag
+  - jekyll_picture_tag
 #   - jekyll-webp
 #   - jekyll-seo-tag
 
@@ -223,7 +226,7 @@ jekyll-minifier:
 ############################################################
 # Site configuration for the Jekyll Picture Tag
 #
-# picture:
-#   source: assets/img
-#   output: generated
-#   suppress_warnings: true
+picture:
+  source: _webpack/images
+  output: assets/public/images
+  suppress_warnings: true

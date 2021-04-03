@@ -1,22 +1,29 @@
-media_presets:
-  wide_desktop: 'min-width: 1801px'
-  desktop: 'max-width: 1800px'
+media_queries:
+  wide_desktop: 'min-width: 1601px'
+  desktop: 'max-width: 1600px'
   wide_tablet: 'max-width: 1200px'
-  tablet: 'max-width: 900px'
+  tablet: 'max-width: 1024px'
   mobile: 'max-width: 600px'
 
-markup_presets:
+presets:
   default:
-    widths: [200, 400, 600, 1600]
-    formats: [webp, png]
+    widths: [320, 640, 960, 1600]
+    formats: [avif, webp]
+    format_quality:
+      avif:
+        320: 85
+        960: 60
+      webp:
+        320: 90
+        960: 70
     media_widths: # Because a cell phone doesn't want 1600 pixels.
-      mobile: [200, 400, 600] 
-      tablet: [400, 600, 800]
+      mobile: [320, 640] 
+      tablet: [640, 960]
     sizes:
-      mobile: 80vw
+      mobile: 95vw
       tablet: 60vw
-      desktop: 800px
-    size: 800px
+      desktop: 960px
+    size: 960px
     dimension_attributes: true # Page reflow begone!
-    fallback_width: 800
-    fallback_format: original
+    fallback_width: 1600
+    fallback_format: webp

@@ -6,7 +6,7 @@ import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { precacheAndRoute } from 'workbox-precaching';
 import { googleFontsCache, offlineFallback, pageCache, imageCache } from 'workbox-recipes';
 
-import placeholderImage from "/assets/img/placeholder.jpeg?sizes[]=1020&format=webp&publicPath=assets/public/img";
+import placeholderImage from "/_webpack/images/placeholder.jpeg?sizes[]=1020&format=webp&publicPath=assets/public/responsive";
 
 navigationPreload.enable();
 

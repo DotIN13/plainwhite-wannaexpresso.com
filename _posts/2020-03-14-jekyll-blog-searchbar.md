@@ -2,7 +2,7 @@
 layout: post
 title: "为博客添加简单的全局搜索"
 subtitle: "Adding Simple Global Search to Jekyll Blog"
-header-img: "assets/img/post-jekyll-troubleshooting/jekyll.png"
+header-img: "_webpack/images/post-jekyll-troubleshooting/jekyll.png"
 author: "DotIN13"
 header-mask: 0.6
 tags:
