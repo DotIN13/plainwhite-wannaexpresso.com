@@ -1,6 +1,6 @@
 {% if mood.header-image %}
 <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-moods-target="image">
-  {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" data-portal-target="bgImage" --picture data-portal-target="bgPicture" %}
+  {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" data-portal-target="bgImage" loading="{{ loading }}" --picture data-portal-target="bgPicture" %}
 </div>
 {% endif %}
 <div class="mood-detail">
