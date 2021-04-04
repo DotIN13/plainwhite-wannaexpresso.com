@@ -1,4 +1,4 @@
-// Portal Controller
+// PortalController
 
 [data-portal-target=portal] {
   position: fixed;
@@ -7,4 +7,52 @@
   right: 0;
   bottom: 0;
   z-index: 999;
+}
+
+// LikesController
+
+@keyframes heart-burst {
+  from {
+    background-position: left;
+  }
+
+  to {
+    background-position: right;
+  }
+}
+
+.heart {
+  display: block;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  background-image: url('../../_webpack/images/web_heart_animation.png?size=2900');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.8;
+
+  &.heart--animating {
+    opacity: 1;
+    animation: heart-burst .8s steps(28) 1;
+  }
+}
+
+[data-like-liked-value=false] {
+
+  [data-like-target=heart].hover {
+    opacity: 1;
+    background-position: right;
+  }
+}
+
+[data-like-liked-value=true] {
+
+  [data-like-target=heart] {
+    background-position: right;
+
+    &.hover {
+      filter: grayscale(1);
+    }
+  }
 }

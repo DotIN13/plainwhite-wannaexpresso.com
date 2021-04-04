@@ -13,13 +13,15 @@
       {{ mood.content }}
     </article>
   </div>
-  <div class="mood-meta meta-like">
+  <div class="mood-meta meta-like" data-controller="like" data-likes-target="item" data-like-id-value="{{ mood.id }}" data-like-liked-value="false" data-like-count-value>
     <div class="mood-created-at">
       <i class="icon-calendar"></i>
       <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
       <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
     </div>
-    <div class="mood-like like-button"><span class="heart" data-like="{{ mood.id }}" data-liked="false"></span></div>
-    <div class="mood-like-count like-count"></div>
+    <div class="mood-like like-button" data-like-target="button" data-action="mouseover->like#hover mouseleave->like#unhover">
+      <span class="heart" data-like-target="heart" data-action="click->like#like"></span>
+    </div>
+    <div class="mood-like-count like-count" data-like-target="count"></div>
   </div>
 </div>
