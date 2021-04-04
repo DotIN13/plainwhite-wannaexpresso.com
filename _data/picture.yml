@@ -6,8 +6,7 @@ media_queries:
   mobile: 'max-width: 600px'
 
 presets:
-  default:
-    widths: [320, 640, 960, 1600]
+  common: &common
     formats: [avif, webp]
     format_quality:
       avif:
@@ -16,14 +15,31 @@ presets:
       webp:
         320: 90
         960: 70
+    dimension_attributes: true # Page reflow begone!
+    fallback_width: 1600
+    fallback_format: webp
+
+  default:
+    <<: *common
+    widths: [320, 640, 960, 1600]
     media_widths: # Because a cell phone doesn't want 1600 pixels.
       mobile: [320, 640] 
       tablet: [640, 960]
     sizes:
-      mobile: 95vw
+      mobile: 100vw
       tablet: 60vw
       desktop: 960px
+    size: 1600px
+
+  mood:
+    <<: *common
+    widths: [280, 440, 960]
+    media_widths: # Because a cell phone doesn't want 1600 pixels.
+      mobile: [280, 440] 
+      tablet: [440, 960]
+    sizes:
+      mobile: 280px
+      desktop: 440px
     size: 960px
-    dimension_attributes: true # Page reflow begone!
-    fallback_width: 1600
-    fallback_format: webp
+
+    
