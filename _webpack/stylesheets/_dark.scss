@@ -36,7 +36,7 @@ body.dark {
   }
 
   footer.about.condensed {
-  
+
     @media screen and (max-width: $midScreenW) {
       border-top: 1px solid $dark-200;
     }
@@ -122,7 +122,7 @@ body.dark {
       a {
         color: white;
         transition: none;
-        
+
         &:hover {
           background-color: $champagne;
 
@@ -210,18 +210,43 @@ body.dark {
       background-color: $dark-700;
     }
   }
-}
 
-/* Table */
+  /* Table */
 
-.dark table {
+  table {
 
-  th,
-  td {
-    border: 1px solid $dark-700;
+    th,
+    td {
+      border: 1px solid $dark-700;
+    }
+
+    th {
+      background-color: #0d0d0d;
+    }
+
+
+    tr:nth-child(2n),
+    thead {
+      background-color: $dark-750;
+    }
   }
 
-  th {
-    background-color: #0d0d0d;
+  // Select
+  select {
+    background: $dark-800;
+  }
+
+  // Valine
+  #vcomments.v .vwrap {
+    border: 2px solid $dark-200;
+
+    .vheader .vinput {
+      border-bottom: 1px solid $dark-700;
+
+      &:hover,
+      &:focus {
+        border-bottom: 1px solid $pinky;
+      }
+    }
   }
 }

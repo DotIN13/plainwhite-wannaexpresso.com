@@ -547,8 +547,6 @@ i.icon-calendar {
   }
 
   img {
-    margin-left: auto;
-    margin-right: auto;
     display: block;
     max-height: 64vh;
     height: auto;
@@ -721,12 +719,12 @@ select.sel-lang {
 
 #vcomments.v .vwrap {
   border: 2px solid #f0f0f0;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 30px;
   overflow: hidden;
   position: relative;
-  padding: 10px;
+  padding: 0.8em 1.5em;
 }
 
 /* video iframe */
@@ -774,6 +772,10 @@ blockquote.g_bq {
 }
 
 /* GitHub table styling */
+
+.responsive-table {
+  overflow-x: auto;
+}
 
 table {
   padding: 0;
