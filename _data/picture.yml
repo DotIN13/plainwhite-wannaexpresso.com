@@ -42,4 +42,26 @@ presets:
       desktop: 440px
     size: 960px
 
+  avatar:
+    widths: [105, 150, 240]
+    formats: [avif, webp]
+    format_quality:
+      avif:
+        105: 95
+        240: 85
+      webp:
+        105: 100
+        240: 90
+    sizes:
+      mobile: 105px
+      tablet: 150px
+      desktop: 240px
+    size: 150px
+    fallback_width: 240
+    fallback_format: webp
+    dimension_attributes: true
+
+
+
+
     
