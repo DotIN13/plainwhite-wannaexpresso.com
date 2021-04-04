@@ -32,21 +32,20 @@ exclude:
     "yarn.lock",
     "vercel.json",
     "api",
-    "yarn-error.log"
+    "yarn-error.log",
+    "babel.config.json",
+    "plainwhite.gemspec"
   ]
 defaults:
   - scope:
       path: ""
       type: "pages"
     values:
-      fancybox: true
       javascript: pages
   - scope:
       path: ""
       type: "posts"
     values:
-      fancybox: true
-      fancy-gallery: true
       javascript: posts
 
 # Gitalk settings
