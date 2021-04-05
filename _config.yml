@@ -81,7 +81,8 @@ plainwhite:
       url_en: "/en-us/about/"
     - title: Archive
       url: "/archive"
-  analytics_id: "UA-159368053-1"
+  # analytics_id: "UA-159368053-1"
+  heap: true
 
   # generate social links in footer
   social_links:
