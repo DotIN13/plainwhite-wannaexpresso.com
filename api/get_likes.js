@@ -1,5 +1,10 @@
 import { WannaLikes, WannaLikeCounts, connectTo } from "../dist/app/javascript/dynamoose_schema.js";
-connectTo.prod();
+if (process.env.NODE_ENV === "production") {
+  connectTo.prod();
+}
+else {
+  connectTo.dev();
+}
 
 module.exports = async (req, res) => {
   try {
