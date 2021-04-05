@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import Identity from "../shared/identity";
 
 export default class extends Controller {
   static targets = [
@@ -9,13 +10,16 @@ export default class extends Controller {
     this.pull();
   }
 
-  pull() {
+  async pull() {
     // Get all like buttons
     const likables = this.itemTargets;
     // Get all article IDs with like counts to retrieve
     const likableIds = Array.from(likables).map(el => el.dataset.likeIdValue);
 
-    fetch("/api/get_likes", {
+    const identity = await new Identity().get();
+    const identityQuery = `?identity=${identity}`;
+
+    fetch(`/api/get_likes${identityQuery}`, {
       body: JSON.stringify(likableIds),
       method: "POST",
       contentType: "application/json"

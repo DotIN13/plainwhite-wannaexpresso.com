@@ -1,4 +1,4 @@
-import initSearch from "../search";
+import initSearch from "../shared/search";
 
 String.prototype.empty = function() {
   if (this.trim() === "") return true;

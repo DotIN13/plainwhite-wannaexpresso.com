@@ -59,7 +59,7 @@
     "lint:fix": "eslint --fix _webpack/"
   },
   "dependencies": {
-    "dynamoose": "^2.7.2",
+    "dynamoose": "^2.7.3",
     "hash-wasm": "^4.6.0",
     "npm-run-all": "^4.1.5"
   },

@@ -1577,9 +1577,9 @@ at-least-node@^1.0.0:
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
 aws-sdk@^2.792.0:
-  version "2.870.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.870.0.tgz#fc5c0ff65d4564a58cc183059727c77ebbce46a9"
-  integrity sha512-pbNO+RuEx45aaEZind0Tl9NADxncLJf0mRAwof0szyYMB+FZm165yz7FCxFLumU4R9qw8vOG5YFACBaNoQkJdg==
+  version "2.879.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.879.0.tgz#d9fb5a8babac1ed0b3d0fb38a88e561580256082"
+  integrity sha512-HRfjGwST1U9AvCJFAyqpAJwbjFR4LqUyEUk77qdJpdYHL9pGPHdnEfGRkBkPn36xcC7Em6gVvFveVoEihbQUyQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2437,7 +2437,7 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dynamoose@^2.7.2:
+dynamoose@^2.7.3:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/dynamoose/-/dynamoose-2.7.3.tgz#1242fddb683c17f83411578c3c0c7d10c2f0c60d"
   integrity sha512-Hnfp3Sh3p+YwpPFtxTGDAuliESSbaFcaPE4FYVGekWA+oOXjGj6F/0QCrZCsLnBsd1p7rCDDRnublfGHH7NDXA==

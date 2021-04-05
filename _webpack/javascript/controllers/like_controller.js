@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import Identity from "../shared/identity";
 
 export default class extends Controller {
   static targets = [
@@ -37,17 +38,21 @@ export default class extends Controller {
     this.countTarget.innerHTML = this.countValue > 0 ? this.countValue : "";
   }
 
-  post() {
+  async post() {
     const cancel = this.likedValue;
     this.likedValue = !cancel;
+    const identity = await new Identity().get();
+    const identityQuery = `&identity=${identity}`;
     const cancelQuery = cancel ? "&cancel=1": "";
-    fetch(`/api/like?article_id=${this.idValue + cancelQuery}`).then((res) => {
-      if (res.ok) {
-        this.countValue += this.likedValue ? 1 : -1;
-      } else {
-        // Revert color change if not successful
-        this.likedValue = !cancel;
-      }
-    });
+    fetch(`/api/like?article_id=${this.idValue + cancelQuery + identityQuery}`)
+      .then((res) => {
+        if (res.ok) {
+          this.countValue += this.likedValue ? 1 : -1;
+        } else {
+          throw new Error("Fetch failed.");
+        }
+      })
+      // Revert color change if not successful
+      .catch(() => this.likedValue = cancel);
   }
 }
