@@ -43,6 +43,11 @@ const connectTo = {
       secretAccessKey: process.env.DYNAMOID_KEY_SECRET,
       region: "us-west-1"
     });
+  },
+
+  smart() {
+    if (process.env.NODE_ENV !== "production") this.dev();
+    if (process.env.NODE_ENV === "production") this.prod();
   }
 };
 
