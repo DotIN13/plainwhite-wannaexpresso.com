@@ -28,8 +28,9 @@ export default class extends Controller {
       .then((json) => {
       // console.log(json);
         likables.forEach(el => {
-          el.dataset.likeCountValue = json[el.dataset.likeIdValue].count;
+          // Count changed after liked, but then overwritten by assignment
           el.dataset.likeLikedValue = json[el.dataset.likeIdValue].liked;
+          el.dataset.likeCountValue = json[el.dataset.likeIdValue].count;
         });
       });
   }
