@@ -1,5 +1,3 @@
-// const dynamoose = require("dynamoose");
-// const articles = require("../../../dist/app/assets/articles.json");
 import dynamoose from "dynamoose";
 import articles from "./articles.js";
 
@@ -31,9 +29,6 @@ const countSchema = new dynamoose.Schema({
 }, {
   timestamps: true
 });
-
-// exports.wannaLikes = dynamoose.model("wanna_likes", likeSchema, { create: true, throughput: 5, prefix: "dynamoose_" });
-// exports.wannaLikeCounts = dynamoose.model("wanna_like_counts", countSchema, { create: true, throughput: 5, prefix: "dynamoose_" });
 
 const WannaLikes = dynamoose.model("wanna_likes", likeSchema, { create: true, throughput: 5, prefix: "dynamoose_" });
 const WannaLikeCounts = dynamoose.model("wanna_like_counts", countSchema, { create: true, throughput: 5, prefix: "dynamoose_" });
