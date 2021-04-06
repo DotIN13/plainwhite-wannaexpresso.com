@@ -46,7 +46,7 @@ const sort = (encodedTag) => {
   const years = document.querySelectorAll(".mini-post-list section");
   for (const year of years) {
     // console.log("Querying year", year);
-    const posts = year.querySelectorAll(".post-preview.item");
+    const posts = year.querySelectorAll(".post-item");
     let yearDisplay = false;
     for (const post of posts) {
       // console.log("Querying post", post)

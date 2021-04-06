@@ -96,10 +96,11 @@ body.dark {
   }
 
   a.post-link:hover,
-  .post-preview:hover {
+  .post-preview:hover,
+  .post-item:hover {
 
-    h2,
-    h3 {
+    .post-title,
+    .post-subtitle {
       color: $darkLinkColor;
     }
   }

@@ -64,17 +64,8 @@ sitemap:
             {%- assign _date = _currentdate -%}
             {%- endif -%}
 
-            <div class="post-preview item" data-tags="{{ _tags }}">
-                <a href="{{ _article.url | prepend: site.baseurl }}">
-                    <h2 class="post-title">
-                        {{ _article.title }}
-                    </h2>
-                    {% if _article.subtitle %}
-                    <h3 class="post-subtitle">
-                        {{ _article.subtitle }}
-                    </h3>
-                    {% endif %}
-                </a>
+            <div class="post-item" data-tags="{{ _tags }}">
+                {% include post-title.html post=_article %}
                 <!--hr-->
             </div>
             {%- if forloop.last -%}</section>{%- endif -%}

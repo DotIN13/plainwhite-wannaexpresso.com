@@ -1,0 +1,6 @@
+<a class="post-link" href="{{ include.post.url | relative_url }}">
+  <h2 class="post-title">{{ include.post.title | escape }}</h2>
+  {% if include.post.subtitle %}
+  <h3 class="post-subtitle">{{ include.post.subtitle }}</h3>
+  {% endif %}
+</a>
