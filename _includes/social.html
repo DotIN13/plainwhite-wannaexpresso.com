@@ -1,0 +1,54 @@
+{%- if site.plainwhite.social_links != '' -%}
+<ul class="social {{ condensed_class }}">
+  {%- if site.plainwhite.social_links.github -%}
+  <li>
+    <a target="_blank" rel="noreferrer" href="https://github.com/{{ site.plainwhite.social_links.github }}" aria-label="GitHub Social Link">
+      <span class="fa-stack fa-2x">
+        <i class="fas icon-circle fa-stack-2x"></i>
+        <i class="fab icon-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.plainwhite.social_links.facebook -%}
+  <li>
+    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/{{ site.plainwhite.social_links.facebook }}" aria-label="Facebook Social Link">
+      <span class="fa-stack fa-2x">
+        <i class="fas icon-circle fa-stack-2x"></i>
+        <i class="fab icon-facebook fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.plainwhite.social_links.twitter -%}
+  <li>
+    <a target="_blank" rel="noreferrer" href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}" aria-label="Twitter Social Link">
+      <span class="fa-stack fa-2x">
+        <i class="fas icon-circle fa-stack-2x"></i>
+        <i class="fab icon-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.plainwhite.social_links.weibo -%}
+  <li>
+    <a target="_blank" rel="noreferrer" href="http://weibo.com/{{ site.plainwhite.social_links.weibo }}" aria-label="Weibo Social Link">
+      <span class="fa-stack fa-2x">
+        <i class="fas icon-circle fa-stack-2x"></i>
+        <i class="fab icon-weibo fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {%- endif -%}
+  {%- if site.plainwhite.social_links.bilibili -%}
+  <li>
+    <a target="_blank" rel="noreferrer" href="https://space.bilibili.com/{{ site.plainwhite.social_links.bilibili }}" aria-label="Bilibili Social Link">
+      <span class="fa-stack fa-2x">
+        <i class="fas icon-circle fa-stack-2x"></i>
+        <i class="icon-bilibili fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  {%- endif -%}
+</ul>
+{%- endif -%}
