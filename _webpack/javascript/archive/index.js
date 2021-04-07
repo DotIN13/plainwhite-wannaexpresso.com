@@ -76,7 +76,7 @@ const loadQuery = () => {
   if (queryVal) tagCloud.focus = queryVal;
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   for (const tag of tagCloud.tags) {
     tag.addEventListener("click", (e) => {
       e.preventDefault();
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // When going back, honour given query
   window.onpopstate = () => loadQuery();
 
-  handle.element.addEventListener("click", handle.toggle);
+  if (handle.element) handle.element.addEventListener("click", handle.toggle);
 
   initSearch();
 });

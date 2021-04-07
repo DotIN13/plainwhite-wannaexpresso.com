@@ -8,9 +8,9 @@
 {% assign condensed_class = "condensed" %}
 {% if page.locale == 'en_US' %}{% assign home = "/en-us/" %}{% else %}{% assign home = "/" %}{% endif %}
 
-<body>
+<body data-controller="darkmode">
   <main class="container">
-    <section class="about" data-controller="sidebar">
+    <section class="about" data-controller="sidebar" id="about-container" data-turbo-permanent>
 
       {% include sidebar.html home=home %}
 
@@ -33,14 +33,10 @@
         </div>
 
         <div class="about-buttons">
-          {%- if page.locale == 'en_US' -%}
-          <a href="/" class="language-selection button" aria-label="Change locale to Chinese."><span class="icon-translate-off"></span></a>
-          {%- else -%}
-          <a href="/en-us/" class="language-selection button" aria-label="Change locale to English."><span class="icon-translate"></span></a>
-          {%- endif -%}
+          <a href="/" class="language-selection button" aria-label="Change locale"><span class="icon-translate"></span></a>
           <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span class="icon-rss_feed"></span></a>
           {%- if site.plainwhite.dark_mode -%}
-          <input type="checkbox" class="dark-mode-toggle" aria-label="dark-mode-switch"><a href="#" aria-label="Click to toggle darkmode." class="button"><span class="icon-moon"></span><span class="icon-sun"></span></a>
+          <a href="#" aria-label="Click to toggle darkmode." class="button" data-action="darkmode#toggle"><span class="icon-moon" data-darkmode-target="indicator"></span></a>
           {%- endif -%}
           <a href="#" id="pwa-install" class="install button icon-install disabled" aria-label="Install as Web Application"><span>Install</span></a>
         </div>

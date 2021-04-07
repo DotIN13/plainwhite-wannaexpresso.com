@@ -7,4 +7,4 @@ const application = Application.start();
 application.register("moods", MoodsController);
 
 // Initialize Search
-window.addEventListener("DOMContentLoaded", initSearch);
+window.addEventListener("turbo:load", initSearch);

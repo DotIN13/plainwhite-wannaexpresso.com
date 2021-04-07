@@ -1,6 +1,6 @@
 import Zooming from 'zooming';
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('turbo:load', () => {
 
   const zoom = new Zooming({
     onBeforeOpen() {

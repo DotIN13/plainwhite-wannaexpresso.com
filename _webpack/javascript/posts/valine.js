@@ -1,7 +1,7 @@
 /** Modules */
 import Valine from 'valine';
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('turbo:load', () => {
   /* Valine */
   new Valine({
     el: '#vcomments',

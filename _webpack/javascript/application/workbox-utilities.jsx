@@ -63,14 +63,14 @@ function registerWorker() {
   return wb.register()
     .then((r) => {
       registration = r;
-      console.log('SW registered: ', r);
+      // console.log('SW registered: ', r);
     }).catch((err) => {
       console.log('SW registration failed: ', err);
     });
 }
 
 async function installPWA() {
-  console.log('👍', 'butInstall-clicked');
+  // console.log('👍', 'butInstall-clicked');
   const promptEvent = window.deferredPrompt;
   if (!promptEvent) {
     // The deferred prompt isn't available.
@@ -80,7 +80,7 @@ async function installPWA() {
   promptEvent.prompt();
   // Log the result
   const result = await promptEvent.userChoice;
-  console.log('👍', 'userChoice', result);
+  // console.log('👍', 'userChoice', result);
   // Reset the deferred prompt variable, since
   // prompt() can only be called once.
   window.deferredPrompt = null;
@@ -128,7 +128,7 @@ export default function() {
 
   // PWA Install Handling
   window.addEventListener('beforeinstallprompt', (event) => {
-    console.log('👍', 'beforeinstallprompt', event);
+    // console.log('👍', 'beforeinstallprompt', event);
     // Stash the event so it can be triggered later.
     window.deferredPrompt = event;
     installButton.addEventListener('click', installPWA, false);

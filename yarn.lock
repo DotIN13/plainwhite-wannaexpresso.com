@@ -914,6 +914,11 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@hotwired/turbo@^7.0.0-beta.4":
+  version "7.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.0.0-beta.4.tgz#be6d7014902d45121f56358d360e0810bad4c19e"
+  integrity sha512-koox7UeA2Na0tLBPesxNO3nk/gtezRxF33NHKbAx+zv5s2k1Xh/orB5xNr5dAckoUj3Pdpytnw41WH4QB1jYBg==
+
 "@leancloud/adapter-types@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@leancloud/adapter-types/-/adapter-types-3.0.0.tgz#71c5e8e37065bea4914650848b55a6262d658577"
