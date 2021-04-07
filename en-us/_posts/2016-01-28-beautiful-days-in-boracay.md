@@ -14,7 +14,7 @@ blogger_orig_url: https://dotin13laf.blogspot.com/2016/01/beautiful-days-in-bora
 locale: en_US
 ---
 
-![Beach in Boracay](post-boracay/beach.jpg)
+{% include post-image.html link="post-boracay/beach.jpg" alt="Beautiful boracay island" %}
 <p>Beautiful days in Boracay. Bukos, known as coconuts, here are as cool as the ones in
     Hainan. The sand on the beach here is white as milk. The sky is purely blue. Good news, no air-pollution! Maybe my
     nose would get better. LoL.</p>
