@@ -323,21 +323,21 @@ main {
         }
       }
     }
+  }
 
-    .about-footer a,
-    .navigation a,
-    .social a {
-      text-decoration: none;
-      @include color-transition();
-    }
+  .about-footer a,
+  .navigation a,
+  .social a {
+    text-decoration: none;
+    @include color-transition();
+  }
 
-    .about-footer {
-      margin: 1em 0;
+  .about-footer {
+    margin: 1em 0;
 
-      span {
-        text-align: center;
-        display: block;
-      }
+    span {
+      text-align: center;
+      display: block;
     }
   }
 
