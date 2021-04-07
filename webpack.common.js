@@ -1,5 +1,4 @@
 const path = require('path');
-const glob = require("glob");
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
@@ -12,7 +11,7 @@ module.exports = {
   entry: {
     archive: path.join(__dirname, '_webpack', 'javascript', 'archive'),
     pages: path.join(__dirname, '_webpack', 'javascript', 'pages'),
-    posts: glob.sync('./_webpack/javascript/posts/*'),
+    posts: path.join(__dirname, '_webpack', 'javascript', 'posts'),
     application: path.join(__dirname, '_webpack', 'javascript', 'application'),
   },
   output: {

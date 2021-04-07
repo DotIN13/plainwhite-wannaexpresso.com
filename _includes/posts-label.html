@@ -1,13 +1,12 @@
-
-<div class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup">
-  <h1 class="posts-label">{{ include.type }}</h1>
+<div class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup" {% if include.search %}data-controller="search" data-action="click->search#show"{% endif %}>
+  <h1 class="posts-label" {% if include.search %}data-search-target="label"{% endif %}>{{ include.type }}</h1>
   {% if include.search %}
   <div class="search-container">
     <div class="search-section">
       <i class="icon-search"></i>
-      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts" data-search-target="bar">
     </div>
-    <div class="search-results" id="search-results" data-placeholder="No results" style="display: none;"></div>
+    <div class="search-results" id="search-results" data-placeholder="No results" style="display: none;" data-search-target="results"></div>
   </div>
   {% endif %}
 </div>

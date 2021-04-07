@@ -1,4 +1,9 @@
-import initSearch from "../shared/search";
+import { Application } from "stimulus";
+import SearchController from "../controllers/search_controller";
+
+const application = Application.start();
+
+application.register("search", SearchController);
 
 String.prototype.empty = function() {
   if (this.trim() === "") return true;
@@ -90,6 +95,4 @@ document.addEventListener("turbo:load", () => {
   window.onpopstate = () => loadQuery();
 
   if (handle.element) handle.element.addEventListener("click", handle.toggle);
-
-  initSearch();
 });

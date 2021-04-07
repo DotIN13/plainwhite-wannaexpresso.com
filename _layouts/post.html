@@ -39,7 +39,7 @@ layout: default
       {% endif %}
     </div>
   </div>
-  <div class="post">
+  <div class="post" data-controller="zooming">
     {% include anchor-headings.html anchorAttrs="data-turbo=false" beforeHeading=true anchorBody="#" html=content %}
   </div>
 
@@ -63,7 +63,7 @@ layout: default
   </ul>
 
   {% if site.valine %}
-  <div id="vcomments"></div>
+  <div id="vcomments" data-controller="valine"></div>
   {% endif %}
 
   {%- if site.plainwhite.disqus_shortname -%}
