@@ -11,7 +11,8 @@ export default class extends Controller {
       placeholder: 'Your comment here...',
       avatar: 'identicon',
       visitor: true,
-      lang: 'en'
+      lang: 'en',
+      path: window.location.pathname
     });
     
     if (document.getElementById('vcomments')) {
