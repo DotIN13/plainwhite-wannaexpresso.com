@@ -4,7 +4,9 @@ import { Controller } from "stimulus";
 export default class extends Controller {
 
   connect() {
-    new Valine({
+    this.valine ||= new Valine();
+  
+    this.valine.init({
       el: this.element,
       appId: 'PSy1tmiW2mx0DpKo7psk67EN-9Nh9j0Va',
       appKey: 'MskLH2QYVC2Kqj8aG3XJ7x7o',
@@ -15,7 +17,7 @@ export default class extends Controller {
       path: window.location.pathname
     });
     
-    if (document.getElementById('vicon')) {
+    if (document.querySelector('.vicon')) {
       document.querySelector(".vicon.vemoji-btn").innerHTML = '';
       document.querySelector(".vicon.vpreview-btn").innerHTML = '';
       let markdownLink = document.querySelector(".vpanel .markdown").parentElement;
@@ -23,5 +25,9 @@ export default class extends Controller {
       markdownLink.rel = "nofollow noopener noreferrer";
       document.querySelector(".vpower.txt-right").remove();
     }
+  }
+
+  disconnect() {
+    this.valine.reset();
   }
 }
