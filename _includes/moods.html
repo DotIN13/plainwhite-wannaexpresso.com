@@ -5,7 +5,7 @@
     {% for mood in sorted_moods %}
     {% capture _ %}{% increment mood_index %}{% endcapture %}
     {% if mood_index > 3 %}{% assign loading="lazy" %}{% else %}{% assign loading="eager" %}{% endif %}
-    <li class="mood" href="#" data-controller="portal" data-moods-target="item" data-portal-image-background-value data-action="click->portal#port" data-portal-target="template">
+    <li class="mood" href="#" data-controller="portal" data-moods-target="item" data-portal-image-background-value data-portal-container-class-value="portal__container-mood" data-action="click->portal#addPlayer">
       {% include mood.html mood=mood loading=loading %}
     </li>
     {% endfor %}

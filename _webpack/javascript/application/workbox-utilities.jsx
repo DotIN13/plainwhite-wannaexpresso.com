@@ -1,46 +1,29 @@
 import { Workbox, messageSW } from "workbox-window";
-import { h, render } from 'preact';
-import toast, { Toaster } from 'react-hot-toast';
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const wb = new Workbox("/service-worker.js");
 let registration, installButton;
 const prompt = {
   open() {
-    toast.success(() => (
-      <span>
-        Page content updated.<a onClick={() => this.onAccept()}>RELOAD</a>
-      </span>
-    ), {
-      duration: 6000,
-      iconTheme: {
-        primary: '#ff94c2',
-        secondary: '#fff',
-      },
-    });
+    const evt = new Event("bake");
+    const toast = document.querySelector("#toast__page-update");
+    document.addEventListener("click", this.onAccept);
+    toast.dispatchEvent(evt);
   },
 
-  onAccept: () => {
+  onAccept: (e) => {
+    if (e.target.dataset.action === "update-sw") {
     // Assuming the user accepted the update, set up a listener
     // that will reload the page as soon as the previously waiting
     // service worker has taken control.
-    wb.addEventListener('controlling', () => window.location.reload());
+      wb.addEventListener('controlling', () => window.location.reload());
 
-    if (registration?.waiting) {
       // Send a message to the waiting service worker,
       // instructing it to activate.  
       // Note: for this to work, you have to add a message
       // listener in your service worker. See below.
-      messageSW(registration.waiting, { type: 'SKIP_WAITING' });
+      if (registration?.waiting) messageSW(registration.waiting, { type: 'SKIP_WAITING' });
     }
-  },
-
-  onReject() {
-    this.dismiss();
-  },
-
-  dismiss: () => {
-    toast.dismiss(this.open.id);
   }
 };
 
@@ -109,15 +92,7 @@ async function bindButtonHovering() {
   installButton.addEventListener('mouseleave', () => installButton.classList.remove('expand'));
 }
 
-function renderToaster() {
-  const Notifications = () => {
-    return <Toaster toastOptions={{ className: "hot-notifications" }} />;
-  };
-  render(<Notifications />, document.body);
-}
-
 export default function() {
-  renderToaster();
   installButton = document.getElementById("pwa-install");
 
   // Register service worker

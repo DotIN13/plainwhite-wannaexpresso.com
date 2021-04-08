@@ -83,6 +83,10 @@
 
   </main>
 
+  {% include toasts.html %}
+  
+  <div id="portal" data-controller="toasts"></div>
+
   {%- if site.plainwhite.analytics_id -%}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
   <script>

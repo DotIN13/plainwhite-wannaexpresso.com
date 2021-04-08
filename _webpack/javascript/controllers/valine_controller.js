@@ -15,7 +15,7 @@ export default class extends Controller {
       path: window.location.pathname
     });
     
-    if (document.getElementById('vcomments')) {
+    if (document.getElementById('vicon')) {
       document.querySelector(".vicon.vemoji-btn").innerHTML = '';
       document.querySelector(".vicon.vpreview-btn").innerHTML = '';
       let markdownLink = document.querySelector(".vpanel .markdown").parentElement;

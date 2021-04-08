@@ -959,18 +959,3 @@ table tr th:last-child,
 table tr td:last-child {
   margin-bottom: 0;
 }
-
-/* Snackbar */
-
-.hot-notifications {
-  a {
-    cursor: pointer;
-    margin-left: 5px;
-    font-weight: bold;
-    color: $linkColor;
-
-    &:hover {
-      color: $pinky;
-    }
-  }
-}

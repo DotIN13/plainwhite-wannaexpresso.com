@@ -4,73 +4,118 @@ import { prominent } from "color.js";
 
 export default class extends Controller {
   static targets = [
-    "template",
     "bgImage",
-    "bgPicture",
-    "portal"
+    "bgPicture"
   ]
 
   static values = {
-    imageBackground: String
+    imageBackground: String,
+    containerClass: String,
+    containerData: Object,
+    duration: Number,
+    // Location for queue storage
+    queue: String
   }
 
+  // Player: ported div, clone
+  // Container: flexbox, sets player position
+  // Portal: fixed element, #portal
   get portal() {
-    return document.querySelector("[data-portal-target=portal]") || this.createPortal();
+    this.portalBuffer ||= document.querySelector("#portal")
+    return this.portalBuffer;
   }
 
-  set portal(el) {
+  get players() {
+    const players = this.portal.dataset[this.queueValue] || "[]";
+    return JSON.parse(players);
+  }
+
+  set players(arr) {
+    this.portal.dataset[this.queueValue] = JSON.stringify(arr);
+  }
+
+  // Creating a portal that might contain multiple players
+  createContainer() {
+    const container = document.createElement("div");
+    container.className = `portal__container${this.containerClassValue ? ` ${this.containerClassValue}` : ""}`;
+    // Apply id to the player container
+    container.id = `${~~(Date.now() / 1000)}-${[...Array(8)].map(() => Math.random().toString(36)[2]).join("")}`;
+    Object.assign(container.dataset, this.containerDataValue);
+    this.portal.appendChild(container);
+    return container;
+  }
+
+  // CLone template into a div element
+  clone() {
     const clone = document.createElement("div");
-    clone.classList = el.classList;
-    clone.innerHTML = el.innerHTML;
-    this.portal.appendChild(clone);
+    (this.element?.content || this.element).children.forEach(child => clone.appendChild(child.cloneNode(true)));
+    clone.classList = this.element.classList;
+    return clone;
+  }
+
+  // All ported items are treated as players
+  addPlayer() {
+    // Create player and player container
+    const container = this.createContainer();
+    container.appendChild(this.clone());
+    this.portal.appendChild(container);
+
+    // Keep track of all players
+    this.players = [...this.players, container.id];
+
     if (this.hasBgPictureTarget) {
-      prominent(this.bgImageTarget.currentSrc, {amount: 1, format: "hex", sample: 50})
-        .then(color => {
-          this.portal.ariaHidden = false;
-          this.positionBg();
-          const zoom = new Zoom({
-            bgColor: color,
-            onBeforeClose: () => this.portal.ariaHidden=true,
-            onClose: () => this.hardDeport()
-          });
-          zoom.open(this.portedBgImage);
-        });
+      this.zoomHandler(container);
     } else {
-      this.portal.ariaHidden = false;
+      container.ariaHidden = false;
       // Control deport
-      this.portal.dataset.controller = "portal";
-      this.portal.dataset.action = "click->portal#deport";
+      this.commonHandler(container);
     }
   }
 
-  createPortal() {
-    const portal = document.createElement("div");
-    portal.dataset.portalTarget = "portal";
-    portal.id = "portal";
-    document.body.appendChild(portal);
-    return portal;
+  // Supported styles are remove and dismiss
+  removePlayer(container, style) {
+    this.players = this.players.filter(el => el != container.id);
+    if (style === "dismiss") this.dismiss(container);
+    if (style === "remove") this.remove(container);
   }
 
-  port() {
-    this.portal = this.templateTarget;
+  commonHandler(container) {
+    if (this.durationValue) {
+      setTimeout(() => this.removePlayer(container, "dismiss"), this.durationValue);
+    } else {
+      container.addEventListener("click", () => this.removePlayer(container, "dismiss"));
+    }
   }
 
-  hardDeport() {
-    this.portal.remove();
+  zoomHandler(container) {
+    prominent(this.bgImageTarget.currentSrc, {amount: 1, format: "hex", sample: 50})
+      .then(color => {
+        container.ariaHidden = false;
+        this.placeBg(container);
+        const zoom = new Zoom({
+          bgColor: color,
+          onBeforeClose: () => container.ariaHidden=true,
+          onClose: () => this.removePlayer(container, "remove")
+        });
+        zoom.open(this.portedBgImage(container));
+      });
   }
 
-  deport() {
-    this.portal.addEventListener("animationend", () => {
-      this.portal.remove();
-    });
-    this.portal.ariaHidden=true;
+  remove(container) {
+    container.remove();
   }
 
-  get portedBgImage() {
-    return this.portal.querySelector("[data-portal-target=bgImage]");
+  dismiss(container) {
+    container.addEventListener("animationend", () => this.remove(container));
+    // Portal animations
+    container.ariaHidden=true;
   }
 
-  positionBg() {
+  portedBgImage(container) {
+    return container.querySelector("[data-portal-target=bgImage]");
+  }
+
+  placeBg(container) {
     let rect = this.bgImageTarget.getBoundingClientRect().toJSON();
     rect = Object.entries(rect);
     // Add px to all values
@@ -78,6 +123,6 @@ export default class extends Controller {
     // Add position: absolute
     rect = Object.fromEntries(rect);
     rect["position"] = "relative";
-    Object.assign(this.portedBgImage.style, rect);
+    Object.assign(this.portedBgImage(container).style, rect);
   }
 }
