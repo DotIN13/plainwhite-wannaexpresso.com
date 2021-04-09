@@ -74,7 +74,7 @@ module.exports = {
         '': '/assets/public/',
       },
       maximumFileSizeToCacheInBytes: 296000,
-      exclude: [/\.(jpe?g|png|webp|avif)$/i],
+      exclude: [/\.(jpe?g|png|webp|avif|html)$/i],
     }),
     new PreloadWebpackPlugin({
       rel: 'preload',
