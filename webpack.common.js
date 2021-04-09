@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // https://webpack.js.org/configuration/
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/assets/public'),
-    filename: '[name]-bundle.js',
+    filename: '[name]-[contenthash].js',
     clean: {
       keep: /images/,
     }
@@ -64,7 +65,7 @@ module.exports = {
   plugins: [
     new WebpackAssetsManifest(),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name]-[contenthash].css',
     }),
     new WorkboxPlugin.InjectManifest({
       swSrc: './_webpack/javascript/service-worker.js',
@@ -85,6 +86,12 @@ module.exports = {
       patterns: [
         { from: "_webpack/images/favicon", to: "favicon" },
       ],
+    }),
+    new HtmlWebpackPlugin({
+      publicPath: "/assets/public",
+      template: path.join(__dirname, '_webpack', 'templates', 'javascript.html'),
+      filename: path.resolve(__dirname, '_includes', 'head-assets.html'),
+      inject: false,
     }),
   ]
 };

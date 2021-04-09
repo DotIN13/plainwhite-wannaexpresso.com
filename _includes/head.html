@@ -45,11 +45,7 @@
 {% endif %}
 
 <!-- Webpack -->
-<script src="{{ "/assets/public/application-bundle.js" | relative_url }}"></script>
-<link rel="stylesheet" href="{{ "/assets/public/application.css" | relative_url }}">
-{% if page.javascript %}
-<script src="/assets/public/{{ page.javascript }}-bundle.js"></script>
-{% endif %}
+{% include head-assets.html %}
 
 {% if site.plainwhite.heap %}
 <script type="text/javascript">
