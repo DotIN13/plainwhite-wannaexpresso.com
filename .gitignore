@@ -34,3 +34,5 @@ dist/assets/*
 dist/assets/public/*
 !dist/assets/public
 !dist/assets/public/images/
+
+_includes/head-assets.html
