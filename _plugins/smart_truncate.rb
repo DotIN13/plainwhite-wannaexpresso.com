@@ -19,20 +19,6 @@
 require 'nokogiri'
 
 class String
-  def contains_cjk?
-    !!(self =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/)
-  end
-
-  def count_cjk
-    split.inject(0) do |sum, word|
-      sum += if word.contains_cjk?
-               word.length
-             else
-               1
-             end
-    end
-  end
-
   def truncate_cjk(num)
     temp = []
     split.each do |word|

@@ -1,4 +1,5 @@
 /* Modules */
+
 import initWorkbox from './workbox-utilities';
 // eslint-disable-next-line no-unused-vars
 import * as Turbo from "@hotwired/turbo";
@@ -23,4 +24,5 @@ application.register("toasts", ToastsController);
 window.addEventListener('DOMContentLoaded', initWorkbox);
 
 /* CSS */
+
 import '../../stylesheets/custom.scss';
