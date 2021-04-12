@@ -105,8 +105,22 @@
       }
     }
 
-    article.mood-full {
+    article.mood-full, article.mood-content__mobile  {
       display: none;
+    }
+
+    article.mood-content__mid-screen {
+      display: block;
+    }
+
+    @media screen and (max-width: $midScreenW) {
+      article.mood-content__mid-screen {
+        display: none;
+      }
+
+      article.mood-content__mobile {
+        display: block;
+      }
     }
   }
 

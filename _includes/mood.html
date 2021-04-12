@@ -6,8 +6,11 @@
 <div class="mood-detail">
   <div class="mood-content">
     <h2>{{ mood.title }}</h2>
-    <article class="mood-excerpt">
-      {% if mood.header-image %}{{ mood.content | smart_truncate: 88 }}{% else %}{{ mood.content | smart_truncate: 168 }}{% endif %}
+    <article class="mood-content__mid-screen">
+      {% if mood.header-image %}{{ mood.content | chop: 4 }}{% else %}{{ mood.content | chop: 10 }}{% endif %}
+    </article>
+    <article class="mood-content__mobile">
+      {% if mood.header-image %}{{ mood.content | chop: 5, 25 }}{% else %}{{ mood.content | chop: 8, 25 }}{% endif %}
     </article>
     <article class="mood-full">
       {{ mood.content }}
