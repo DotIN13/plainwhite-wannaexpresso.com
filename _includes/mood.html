@@ -27,9 +27,7 @@
   <div class="mood-meta meta-like" data-controller="like" data-likes-target="item" data-like-id-value="{{ mood.id }}" data-like-liked-value="false" data-like-count-value>
     <div class="mood-created-at">
       <i class="icon-calendar"></i>
-      <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }}
-        ·
-      </span>
+      <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format | append: " · "}}</span>
       <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
     </div>
     <div class="mood-like like-button" data-action="mouseover->like#hover mouseleave->like#unhover" data-like-target="button">
