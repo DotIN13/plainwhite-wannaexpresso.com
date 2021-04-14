@@ -1,6 +1,6 @@
 <% for (const js of htmlWebpackPlugin.files.js) { %>
   <% if (js.indexOf("application") != -1) { %>
-    <script src="<%= js %>" data-turbo-track="reload"></script>
+    <script src="<%= js %>"></script>
   <% } %>
 <% } %>
 
@@ -10,7 +10,7 @@
   <% for (const js of htmlWebpackPlugin.files.js) { %>
     <% if (js.indexOf(entry) != -1) { %>
       {% when "<%= entry %>" %}
-      <script src="<%= js %>" data-turbo-track="reload"></script>
+      <script src="<%= js %>"></script>
     <% } %>
   <% } %>
 <% } %>
