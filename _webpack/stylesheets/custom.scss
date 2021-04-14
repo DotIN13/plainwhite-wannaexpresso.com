@@ -555,7 +555,7 @@ footer.about.condensed {
 }
 
 .post-categories {
-  margin: 0;
+  margin: 0 -4px;
   padding: 0;
 
   a {
@@ -567,10 +567,6 @@ footer.about.condensed {
     margin-bottom: 10px;
     text-decoration: none;
     padding: 5px 20px;
-
-    &:first-child {
-      margin-left: 0;
-    }
   }
 }
 
