@@ -21,7 +21,7 @@ export default class extends Controller {
   // Container: flexbox, sets player position
   // Portal: fixed element, #portal
   get portal() {
-    this.portalBuffer ||= document.querySelector("#portal")
+    this.portalBuffer ||= document.querySelector("#portal");
     return this.portalBuffer;
   }
 

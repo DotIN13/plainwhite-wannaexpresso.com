@@ -114,10 +114,143 @@ main {
   top: 0;
   // Hide sidebar
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
   @media screen and (max-width: $midScreenW) {
     height: auto;
     position: relative;
+  }
+
+  .about__avatar {
+    margin-top: 3vh;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: $midScreenW) {
+      margin-top: 15vh;
+    }
+
+    @media screen and (max-width: $mobileW) {
+      margin-top: 5vh;
+    }
+
+    // Sidebar button start
+    .sidebar__button-overlay {
+      @include left-bottom-absolute();
+      width: 100%;
+      height: 100%;
+      background-color: #ff94c200;
+      transform: translate(-60%, 60%);
+      border-radius: 50%;
+      transition-property: transform, border-radius, background-color;
+      transition-duration: 300ms;
+      cursor: pointer;
+    }
+
+    .sidebar__button {
+      transform: translate(11px, -24px);
+      pointer-events: none;
+
+      &,
+      &::before,
+      &::after {
+        @include left-bottom-absolute();
+        height: 3px;
+        width: 20px;
+        background-color: #ba68c8;
+        transition-property: transform, background-color, opacity;
+        transition-duration: 300ms;
+        display: block;
+        border-radius: 2px;
+      }
+
+      &::before {
+        content: "";
+        top: 6px;
+      }
+
+      &::after {
+        content: "";
+        top: 12px;
+      }
+    }
+
+    @media screen and (max-width: $midScreenW) {
+      .sidebar__button-overlay {
+        transform: none;
+        background-color: transparent;
+      }
+
+      .sidebar__button {
+        display: none;
+      }
+    }
+
+    // Sidebar button end
+
+    img {
+      cursor: pointer;
+      height: 136px;
+      width: auto;
+      // Avoid picture tag overflow
+      display: block;
+
+      @media screen and (max-width: $midScreenW) {
+        height: 105px;
+      }
+
+      @media screen and (max-width: $mobileW) {
+        height: 90px;
+      }
+    }
+  }
+
+  &.shift .sidebar__button-overlay,
+  .sidebar__button-overlay:hover {
+    transform: none;
+    border-radius: 0;
+    background-color: #fde3f7b5;
+
+    &+.sidebar__button {
+      transform: translate(57px, -70px);
+
+      &, &::before, &::after {
+        background-color: $linkColor;
+      }
+    }
+  }
+
+  &.shift {
+
+    .about__avatar .sidebar__button-overlay+.sidebar__button {
+      transform: translate(57px, -64px) rotate(45deg);
+
+      &::before {
+        opacity: 0;
+        transform: translate(-5px, 0) rotate(-45deg);
+      }
+
+      &::after {
+        transform: translate(0, -12px) rotate(-90deg);
+      }
+    }
+
+    .about__content {
+      transform: translate(100%);
+    }
+
+    .sidebar {
+      transform: none;
+    }
+  }
+
+  .about__sidebar-container {
+    position: relative;
+    width: 100%;
   }
 
   .about__content,
@@ -125,20 +258,64 @@ main {
     @include transform-transition();
   }
 
-  .about__content {
-    padding-top: 3vh;
+  // Sidebar start
+  .sidebar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
     display: flex;
-    height: 100%;
+    flex-direction: column;
+    justify-content: center;
 
+    .sidebar__home-button {
+      background-color: #ff94c266;
+    }
+
+    .sidebar__item .sidebar__item-link {
+      text-decoration: none;
+      padding: 10px 30px;
+      margin: 10px 0;
+      border-radius: 3px;
+      display: block;
+
+      &:hover {
+        background-color: #9e3fc46c;
+      }
+    }
+
+    // Sidebar mobile
     @media screen and (max-width: $midScreenW) {
-      align-items: start;
-      padding-top: 15vh;
-    }
+      flex-direction: row;
+      flex-wrap: wrap;
+      height: auto;
+      justify-content: flex-start;
+      margin: 0 -5px;
 
-    @media screen and (max-width: $mobileW) {
-      padding-top: 5vh;
-    }
+      .sidebar__hide-button {
 
+        &::before {
+          left: 13px;
+        }
+      }
+
+      .sidebar__item {
+        flex: 1 0 50%;
+
+        .sidebar__item-link {
+          margin: 10px 5px;
+        }
+      }
+    }
+  }
+  // Sidebar end
+
+  .about__content {
+    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -168,81 +345,10 @@ main {
     .about-header {
       display: flex;
       flex-direction: column;
-
-      .about-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 17px;
-      }
-    }
-
-    .about__avatar {
-      border-radius: 3px;
-      position: relative;
-      overflow: hidden;
-
-      // Sidebar button start
-      .sidebar__button-overlay {
-        @include veil();
-        background-color: #ff94c23b;
-        transform: translate(-60%, 60%);
-        border-radius: 50%;
-        transition-property: transform, border-radius, background-color;
-        transition-duration: 300ms;
-        cursor: pointer;
-      }
-
-      .sidebar__button::before {
-        @include veil();
-        content: "≡";
-        color: #9d876d;
-        font-size: 28px;
-        transform: translate(-18%, 18%);
-        transition-property: transform, font-size, color;
-        transition-duration: 300ms;
-        text-align: right;
-      }
-
-      .sidebar__button-overlay:hover {
-        transform: none;
-        border-radius: 0;
-        background-color: #fde3f7b5;
-
-        .sidebar__button::before {
-          font-size: 48px;
-          transform: translate(-40%, 41%);
-          color: #555;
-        }
-      }
-
-      @media screen and (max-width: $midScreenW) {
-        .sidebar__button-overlay {
-          transform: none;
-          background-color: transparent;
-        }
-
-        .sidebar__button {
-          display: none;
-        }
-      }
-
-      // Sidebar button end
-
-      img {
-        cursor: pointer;
-        height: 136px;
-        width: auto;
-        // Avoid picture tag overflow
-        display: block;
-
-        @media screen and (max-width: $midScreenW) {
-          height: 105px;
-        }
-
-        @media screen and (max-width: $mobileW) {
-          height: 90px;
-        }
+      align-items: center;
+      
+      #title {
+        margin: 25px 0 15px 0;
       }
     }
 
@@ -325,6 +431,14 @@ main {
     }
   }
 
+  @media screen and (max-width: $midScreenW) {
+
+    &,
+    .about__content {
+      align-items: start;
+    }
+  }
+
   .about-footer a,
   .navigation a,
   .social a {
@@ -338,78 +452,6 @@ main {
     span {
       text-align: center;
       display: block;
-    }
-  }
-
-  // Sidebar
-  .sidebar {
-    position: absolute;
-    left: 0;
-    transform: translateX(-100%);
-    height: 100%;
-    width: 100%;
-    padding: 0 0 5vh 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .sidebar__hide-button {
-      background-color: #ff94c266;
-
-      &::before {
-        content: "←";
-        position: absolute;
-        left: 8px;
-      }
-    }
-
-    .sidebar__item .sidebar__item-link {
-      text-decoration: none;
-      padding: 10px 30px;
-      margin: 10px 0;
-      border-radius: 3px;
-      display: block;
-
-      &:hover {
-        background-color: #9e3fc46c;
-      }
-    }
-
-    // Sidebar mobile
-    @media screen and (max-width: $midScreenW) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      height: auto;
-      // Needs improvement
-      padding-top: 20%;
-
-      .sidebar__hide-button {
-
-        &::before {
-          left: 13px;
-        }
-      }
-
-      .sidebar__item {
-        flex: 0 0 50%;
-
-        .sidebar__item-link {
-          margin: 10px 5px;
-        }
-      }
-    }
-  }
-
-  &.shift {
-
-    .about__content {
-      transform: translate(100%);
-    }
-
-    .sidebar {
-      transform: none;
     }
   }
 }
@@ -430,20 +472,14 @@ section.about {
         align-items: start;
         align-self: start;
 
-        .about-title {
-          flex-direction: row;
-          align-items: flex-end;
-          margin-bottom: 10px;
-
-          h2 {
-            margin: 10px;
-          }
-        }
-
         .tagline {
           font-size: 1.6em;
           margin-bottom: 0px;
           text-align: left;
+        }
+
+        h2 {
+          margin: 15px 0;
         }
       }
     }
