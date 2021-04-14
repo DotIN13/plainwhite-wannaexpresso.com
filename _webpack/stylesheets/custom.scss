@@ -251,6 +251,7 @@ main {
   .about__sidebar-container {
     position: relative;
     width: 100%;
+    transition: height 0.8s cubic-bezier(.19, 1, .22, 1);
   }
 
   .about__content,
