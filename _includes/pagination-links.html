@@ -1,14 +1,14 @@
 {% if paginator.total_pages > 1 %}
-<ul class="pagination-links">
-  {% if paginator.previous_page %}
-  <li class="pager--next">
-    <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&lsaquo; NEWER</a>
-  </li>
-  {% endif %}
-  {% if paginator.next_page %}
-  <li class="pager--prev">
-    <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER &rsaquo;</a>
-  </li>
-  {% endif %}
-</ul>
+  <ul class="pagination-links">
+    {% if paginator.previous_page %}
+      <li class="pager--next">
+        <a class="button" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&lsaquo; NEWER</a>
+      </li>
+    {% endif %}
+    {% if paginator.next_page %}
+      <li class="pager--prev">
+        <a class="button" href="{{ paginator.next_page_path | prepend: site.baseurl }}">OLDER &rsaquo;</a>
+      </li>
+    {% endif %}
+  </ul>
 {% endif %}

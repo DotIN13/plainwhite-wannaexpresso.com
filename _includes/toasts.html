@@ -1,9 +1,9 @@
 <div id="toaster">
 
   {% capture page_update %}
-  <span class="status">
-    Page content updated.<span aria-label="Click to load page update." data-action="update-sw">RELOAD</span>
-  </span>
+    <span class="status">
+      Page content updated.<span aria-label="Click to load page update." data-action="update-sw">RELOAD</span>
+    </span>
   {% endcapture %}
 
   {% include toast.html id="toast__page-update" content=page_update %}

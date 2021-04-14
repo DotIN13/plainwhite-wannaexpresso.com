@@ -1,29 +1,39 @@
 {% if mood.header-image %}
-<div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-moods-target="image">
-  {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" data-portal-target="bgImage" loading="{{ loading }}" --picture data-portal-target="bgPicture" %}
-</div>
+  <div class="mood-header-image" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-moods-target="image">
+    {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" data-portal-target="bgImage" loading="{{ loading }}" --picture data-portal-target="bgPicture" %}
+  </div>
 {% endif %}
 <div class="mood-detail">
   <div class="mood-content">
     <h2>{{ mood.title }}</h2>
     <article class="mood-content__mid-screen">
-      {% if mood.header-image %}{{ mood.content | chop: 4 }}{% else %}{{ mood.content | chop: 10 }}{% endif %}
+      {% if mood.header-image %}
+        {{ mood.content | chop: 4 }}
+      {% else %}
+        {{ mood.content | chop: 10 }}
+      {% endif %}
     </article>
     <article class="mood-content__mobile">
-      {% if mood.header-image %}{{ mood.content | chop: 5, 25 }}{% else %}{{ mood.content | chop: 8, 25 }}{% endif %}
+      {% if mood.header-image %}
+        {{ mood.content | chop: 5, 25 }}
+      {% else %}
+        {{ mood.content | chop: 8, 25 }}
+      {% endif %}
     </article>
-    <article class="mood-full">
+    <article class="mood-content__full">
       {{ mood.content }}
     </article>
   </div>
   <div class="mood-meta meta-like" data-controller="like" data-likes-target="item" data-like-id-value="{{ mood.id }}" data-like-liked-value="false" data-like-count-value>
     <div class="mood-created-at">
       <i class="icon-calendar"></i>
-      <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }} · </span>
+      <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format }}
+        ·
+      </span>
       <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
     </div>
-    <div class="mood-like like-button" data-like-target="button" data-action="mouseover->like#hover mouseleave->like#unhover">
-      <span class="heart" data-like-target="heart" data-action="click->like#like"></span>
+    <div class="mood-like like-button" data-action="mouseover->like#hover mouseleave->like#unhover" data-like-target="button">
+      <span class="heart" data-action="click->like#like" data-like-target="heart"></span>
     </div>
     <div class="mood-like-count like-count" data-like-target="count"></div>
   </div>

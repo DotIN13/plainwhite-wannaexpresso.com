@@ -1,10 +1,12 @@
 <li class="post-item">
   {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
+
   {% include post-title.html post=include.post %}
+
   <div class="post-meta">
     <div class="post-categories">
       {%- for tag in include.post.tags -%}
-      <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+        <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
       {%- endfor -%}
     </div>
     <div class="post-date">
@@ -14,9 +16,9 @@
   <a class="post-link" href="{{ include.post.url | relative_url }}">
     <div class="post">
       {% if include.post.locale == 'en_US' %}
-      {{ include.post.content | excerpt | strip_html | strip | truncate:300 }}
+        {{ include.post.content | excerpt | strip_html | strip | truncate:300 }}
       {% else %}
-      {{ include.post.content | excerpt | strip_html | strip | truncate:200 }}
+        {{ include.post.content | excerpt | strip_html | strip | truncate:200 }}
       {% endif %}
       <span class="button__arrows">
         <span class="button__arrow" aria-hidden="true">→</span>

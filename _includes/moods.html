@@ -1,20 +1,26 @@
 <section class="mood-section" data-controller="moods likes" data-moods-index-value="0">
   {% include posts-label.html type='moods' search=false %}
-  <ul class="mood-track" data-moods-target="track" data-action="scroll->moods#handleScroll">
+  <ul class="mood-track" data-action="scroll->moods#handleScroll" data-moods-target="track">
     {% assign sorted_moods = site.moods | sort: 'date' | reverse | limit: 8 %}
     {% for mood in sorted_moods %}
-    {% capture _ %}{% increment mood_index %}{% endcapture %}
-    {% if mood_index > 3 %}{% assign loading="lazy" %}{% else %}{% assign loading="eager" %}{% endif %}
-    <li class="mood" href="#" data-controller="portal" data-moods-target="item" data-portal-image-background-value data-portal-container-class-value="portal__container-mood" data-action="click->portal#addPlayer">
-      {% include mood.html mood=mood loading=loading %}
-    </li>
+      {% capture _ %}
+        {% increment mood_index %}
+      {% endcapture %}
+      {% if mood_index > 3 %}
+        {% assign loading="lazy" %}
+      {% else %}
+        {% assign loading="eager" %}
+      {% endif %}
+      <li class="mood" data-action="click->portal#addPlayer" data-controller="portal" data-moods-target="item" data-portal-container-class-value="portal__container-mood" data-portal-image-background-value href="#">
+        {% include mood.html mood=mood loading=loading %}
+      </li>
     {% endfor %}
     <li class="mood--placeholder">.</li>
   </ul>
-  <button aria-label="previous mood item" class="mood-button--prev mood-button hide" data-moods-target="buttonPrev" data-action="moods#prev">
+  <button aria-label="previous mood item" class="mood-button--prev mood-button hide" data-action="moods#prev" data-moods-target="buttonPrev">
     <div class="mood-arrow--prev mood-arrow"></div>
   </button>
-  <button aria-label="next mood item" class="mood-button--next mood-button" data-moods-target="buttonNext" data-action="moods#next">
+  <button aria-label="next mood item" class="mood-button--next mood-button" data-action="moods#next" data-moods-target="buttonNext">
     <div class="mood-arrow--next mood-arrow"></div>
   </button>
 </section>
