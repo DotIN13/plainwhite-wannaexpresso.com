@@ -138,60 +138,6 @@ main {
       margin-top: 5vh;
     }
 
-    // Sidebar button start
-    .sidebar__button-overlay {
-      @include left-bottom-absolute();
-      width: 100%;
-      height: 100%;
-      background-color: #ff94c200;
-      transform: translate(-60%, 60%);
-      border-radius: 50%;
-      transition-property: transform, border-radius, background-color;
-      transition-duration: 300ms;
-      cursor: pointer;
-    }
-
-    .sidebar__button {
-      transform: translate(11px, -24px);
-      pointer-events: none;
-
-      &,
-      &::before,
-      &::after {
-        @include left-bottom-absolute();
-        height: 3px;
-        width: 20px;
-        background-color: #ba68c8;
-        transition-property: transform, background-color, opacity;
-        transition-duration: 300ms;
-        display: block;
-        border-radius: 2px;
-      }
-
-      &::before {
-        content: "";
-        top: 6px;
-      }
-
-      &::after {
-        content: "";
-        top: 12px;
-      }
-    }
-
-    @media screen and (max-width: $midScreenW) {
-      .sidebar__button-overlay {
-        transform: none;
-        background-color: transparent;
-      }
-
-      .sidebar__button {
-        display: none;
-      }
-    }
-
-    // Sidebar button end
-
     img {
       cursor: pointer;
       height: 136px;
@@ -207,27 +153,79 @@ main {
         height: 90px;
       }
     }
-  }
 
-  &.shift .sidebar__button-overlay,
-  .sidebar__button-overlay:hover {
-    transform: none;
-    border-radius: 0;
-    background-color: #fde3f7b5;
+    // Sidebar button start
 
-    &+.sidebar__button {
-      transform: translate(57px, -70px);
+    .ripple,
+    .unripple {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+    }
 
-      &, &::before, &::after {
-        background-color: $linkColor;
+    .ripple {
+      animation: 325ms cubic-bezier(0.4, 0, 0.2, 1) ripple forwards, 100ms linear mmfadeIn forwards;
+    }
+
+    .unripple {
+      animation: 325ms cubic-bezier(0.4, 0, 0.2, 1) rippleIn forwards, 150ms linear mmfadeOut forwards;
+    }
+
+    .sidebar-toggle {
+      z-index: 1;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+
+      &,
+      &::before,
+      &::after {
+        position: absolute;
+        height: 3px;
+        width: 20px;
+        background-color: #ba68c8;
+        transition: transform 300ms, opacity 200ms;
+        display: block;
+        border-radius: 2px;
+      }
+
+      &::before {
+        content: "";
+        top: 6px;
+      }
+
+      &::after {
+        content: "";
+        top: 12px;
       }
     }
+
+    // Sidebar button end
   }
 
+  .about__sidebar-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .about__content,
+  .sidebar {
+    flex: 0 0 100%;
+    @include transform-transition();
+    transform: translateX(-100%);
+  }
+
+  // On shift
   &.shift {
 
-    .about__avatar .sidebar__button-overlay+.sidebar__button {
-      transform: translate(57px, -64px) rotate(45deg);
+    .about__avatar .sidebar-toggle {
+      transform: translate(-50%, -50%) rotate(45deg);
+      opacity: 1;
+      transition: transform 300ms, opacity 100ms;
 
       &::before {
         opacity: 0;
@@ -239,39 +237,23 @@ main {
       }
     }
 
-    .about__content {
-      transform: translate(100%);
+    .about__sidebar-container {
+
+      .about__content,
+      .sidebar {
+        transform: translateX(0);
+      }
     }
-
-    .sidebar {
-      transform: none;
-    }
-  }
-
-  .about__sidebar-container {
-    position: relative;
-    width: 100%;
-    transition: height 0.8s cubic-bezier(.19, 1, .22, 1);
-  }
-
-  .about__content,
-  .sidebar {
-    @include transform-transition();
   }
 
   // Sidebar start
   .sidebar {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    transform: translateX(-100%);
-    width: 100%;
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 3vh;
 
     .sidebar__home-button {
       background-color: #ff94c266;
@@ -295,7 +277,7 @@ main {
       flex-wrap: wrap;
       height: auto;
       justify-content: flex-start;
-      margin: 0 -5px;
+      margin: 0 5px 0 -5px;
 
       .sidebar__hide-button {
 
@@ -313,6 +295,7 @@ main {
       }
     }
   }
+
   // Sidebar end
 
   .about__content {
@@ -347,7 +330,7 @@ main {
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+
       #title {
         margin: 25px 0 15px 0;
       }

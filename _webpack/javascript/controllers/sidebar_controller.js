@@ -3,31 +3,43 @@ import { Controller } from "stimulus";
 export default class extends Controller {
 
   static targets = [
-    "sidebar",
-    "container"
+    "avatar"
   ]
 
   static values = {
     shift: Boolean
   }
 
-  setHeight() {
-    const heights = [this.containerTarget.scrollHeight, this.sidebarTarget.scrollHeight];
-    this.containerTarget.style.height = `${heights[Number(this.shiftValue)]}px`;
-  }
-
   set shift(val) {
-    this.setHeight();
     this.shiftValue = val;
     this.element.classList.toggle("shift", val);
-    this.setHeight();
+    this.element.classList.toggle("unshift", !val);
   }
 
   get shift() {
     return this.shiftValue || false;
   }
 
-  toggle() {
+  toggle(e) {
     this.shift = !this.shift;
+    if (this.shift) this.ripple(e, "ripple");
+    if (!this.shift) this.ripple(e, "unripple");
+  }
+
+  // Button effects
+  ripple(event, className) {
+    this.clearRipple();
+    const diameter = this.avatarTarget.clientWidth;
+    const circle = this.currentRipple = document.createElement("span");
+    const radius = diameter / 2;
+    circle.className = className;
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.offsetX - radius}px`;
+    circle.style.top = `${event.offsetY - radius}px`;
+    this.avatarTarget.appendChild(circle);
+  }
+
+  clearRipple() {
+    this.currentRipple?.remove();
   }
 }
