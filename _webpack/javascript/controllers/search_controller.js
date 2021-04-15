@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import SimpleJekyllSearch from 'simple-jekyll-search';
 import { Controller } from "stimulus";
 
