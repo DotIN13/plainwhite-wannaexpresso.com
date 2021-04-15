@@ -26,8 +26,4 @@ export default class extends Controller {
       document.querySelector(".vpower.txt-right").remove();
     }
   }
-
-  disconnect() {
-    this.valine.reset();
-  }
 }
