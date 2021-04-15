@@ -2,14 +2,12 @@ body.dark {
   background-color: $dark-800;
 }
 
-.dark main,
-.dark main * {
-  color: $darkTextColor;
-  border-color: #e6e6e6;
-}
-
 .dark main {
   background-color: $dark-800;
+
+  p, h1, h2, h3, h4, h5, h6 {
+    color: $darkTextColor;
+  }
 }
 
 .dark main {
@@ -17,7 +15,7 @@ body.dark {
   .about .about-footer a,
   .about .about-footer p,
   .tagline {
-    @include dark-link-hover(#666);
+    @include link-hover(#666);
   }
 
   .about #pwa-install {
@@ -42,7 +40,7 @@ body.dark {
     }
   }
 
-  .post p {
+  .post, .post p, .post-date {
     color: #ddd;
   }
 
@@ -55,6 +53,13 @@ body.dark {
 
     a:hover .icon-circle {
       color: $darkLinkColor;
+    }
+  }
+
+  /* Sidebar */
+  .sidebar {
+    .sidebar__item .sidebar__item-link {
+      @include link-hover($darkTextColor, $darkLinkColor);
     }
   }
 
@@ -88,11 +93,11 @@ body.dark {
 
   /* Links */
   a {
-    @include dark-link-hover($darkLinkColor, $darkTextColor);
+    @include link-hover($darkLinkColor, $darkTextColor);
   }
 
   .navigation a {
-    @include dark-link-hover($darkTextColor);
+    @include link-hover($darkTextColor);
   }
 
   a.post-link:hover,
@@ -106,7 +111,17 @@ body.dark {
   }
 
   #title a {
-    @include dark-link-hover(#fff);
+    @include link-hover(#fff);
+  }
+
+  .post-pager li a {
+    span {
+      color: #929298;
+    }
+
+    &:hover span {
+      color: $darkTextColor;
+    }
   }
 
   /* LabelGroup */
@@ -174,7 +189,7 @@ body.dark {
   #tag-cloud .tag-button,
   #show-tags {
     background-color: $dark-700;
-    @include dark-link-hover($darkTextColor, $darkTextColor);
+    @include link-hover($darkTextColor, $darkTextColor);
 
     &:hover,
     &:active,
@@ -182,6 +197,10 @@ body.dark {
       color: white;
       background-color: $darkLinkColor;
     }
+  }
+
+  .tag-text {
+    color: #ddd;
   }
 
   /* Moods */
@@ -237,10 +256,14 @@ body.dark {
     background: $dark-800;
   }
 
+  #vcomments.v {
+    color: $darkTextColor;
+  }
+
   // Valine
   #vcomments.v .vwrap {
     border: 2px solid $dark-200;
-
+    
     .vheader .vinput {
       border-bottom: 1px solid $dark-700;
 

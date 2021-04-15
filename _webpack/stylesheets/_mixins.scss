@@ -56,7 +56,7 @@
   }
 }
 
-@mixin dark-link-hover($before, $after: $darkLinkColor) {
+@mixin link-hover($before, $after: $darkLinkColor) {
   color: $before;
 
   &:hover {

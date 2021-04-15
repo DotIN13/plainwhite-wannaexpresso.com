@@ -219,6 +219,24 @@
       "src": "entypo"
     },
     {
+      "uid": "d6944e1d9af302093d43b299bbecbbbe02",
+      "css": "home",
+      "code": 59403,
+      "src": "iconic"
+    },
+    {
+      "uid": "ccd52a22af21fbaa98a9c85fb50fca6b",
+      "css": "info",
+      "code": 59407,
+      "src": "iconic"
+    },
+    {
+      "uid": "96ea1be71f597a5bdfc8f791ada4f651",
+      "css": "archive",
+      "code": 59408,
+      "src": "entypo"
+    },
+    {
       "uid": "f2a3b01d6174eab9b80fc7d61d8327a3",
       "css": "pageview",
       "code": 59398,
@@ -5918,8 +5936,8 @@
     },
     {
       "uid": "59104ae6fe2ac2d06dcb3fb8f7004a4e",
-      "css": "home",
-      "code": 104,
+      "css": "home-1",
+      "code": 59405,
       "src": "custom_icons",
       "selected": false,
       "svg": {
@@ -6115,7 +6133,7 @@
     {
       "uid": "eceee71891b3ca311e7bf39c9c2832d1",
       "css": "info",
-      "code": 105,
+      "code": 59406,
       "src": "custom_icons",
       "selected": false,
       "svg": {

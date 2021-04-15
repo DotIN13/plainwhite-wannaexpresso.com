@@ -155,7 +155,7 @@ main {
     }
 
     // Sidebar button start
-
+    // Ripple effect
     .ripple,
     .unripple {
       position: absolute;
@@ -176,6 +176,7 @@ main {
       transform: scale(4);
     }
 
+    // Sidebar toggle
     .sidebar-toggle {
       z-index: 1;
       left: 50%;
@@ -269,10 +270,15 @@ main {
       margin: 10px 0;
       border-radius: 3px;
       display: block;
+      @include link-hover(#4a4a4a, $linkColor);
 
       &:hover {
         background-color: #9e3fc46c;
       }
+    }
+
+    .sidebar__item-icon {
+      margin-right: .4em;
     }
 
     // Sidebar mobile
