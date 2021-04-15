@@ -133,17 +133,18 @@ body.dark {
     border-bottom: 1px solid #333;
 
     .search-results {
+      color: $darkTextColor;
       background-color: $dark-700;
 
       a {
-        color: white;
+        color: $darkTextColor;
         transition: none;
 
         &:hover {
           background-color: $champagne;
 
           &::before {
-            color: white;
+            color: $darkTextColor;
           }
         }
       }
