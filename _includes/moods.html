@@ -1,8 +1,8 @@
 <section class="mood-section" data-controller="moods likes" data-moods-index-value="0">
   {% include posts-label.html type='moods' search=false %}
   <ul class="mood-track" data-action="scroll->moods#handleScroll" data-moods-target="track">
-    {% assign sorted_moods = site.moods | sort: 'date' | reverse | limit: 8 %}
-    {% for mood in sorted_moods %}
+    {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
+    {% for mood in sorted_moods limit: 8 %}
       {% capture _ %}
         {% increment mood_index %}
       {% endcapture %}
