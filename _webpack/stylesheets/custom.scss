@@ -511,6 +511,11 @@ footer.about.condensed {
   li {
     display: inline-block;
   }
+
+  // Fix incorrect width for bilibili icon
+  .icon-bilibili:before {
+    width: auto;
+  }
 }
 
 .navigation {
