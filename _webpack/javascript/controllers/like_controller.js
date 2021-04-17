@@ -38,10 +38,9 @@ export default class extends Controller {
   }
 
   // Silence first changed event fired upon initialization
-  likedValueChanged() {
-    if (!this.likable) {this.likable = true; return; }
-    this.countValue ||= 0;
-    this.countValue += this.likedValue ? 1 : -1;
+  updateLike(el, status) {
+    el.dataset.likeLikedValue = status;
+    el.dataset.likeCountValue = (Number(el.dataset.likeCountValue) || 0) + (status ? 1 : -1);
   }
 
   countValueChanged() {
@@ -55,7 +54,7 @@ export default class extends Controller {
   async post() {
     const cancel = this.likedValue;
     // Toggle liked of all instance, including non-portal likes
-    this.instances.forEach(el => el.dataset.likeLikedValue = !cancel);
+    this.instances.forEach(el => this.updateLike(el, !cancel));
     const identity = await new Identity().get();
     const identityQuery = `&identity=${identity}`;
     const cancelQuery = cancel ? "&cancel=1": "";
@@ -64,6 +63,6 @@ export default class extends Controller {
         if (!res.ok) throw new Error("Fetch failed.");
       })
       // Revert color change if not successful
-      .catch(() => this.instances.forEach(el => el.dataset.likeLikedValue = cancel));
+      .catch(() => this.instances.forEach(el => this.updateLike(el, cancel)));
   }
 }
