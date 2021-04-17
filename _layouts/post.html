@@ -39,8 +39,17 @@ layout: default
       {% endif %}
     </div>
   </div>
+
   <div class="post" data-controller="zooming">
-    {% include anchor-headings.html anchorAttrs="data-turbo=false" beforeHeading=true anchorBody="#" html=content %}
+
+    {% include anchor-headings.html beforeHeading=true anchorBody="#" html=content %}
+
+  </div>
+
+  <div class="post-likes" data-controller="likes">
+
+    {% include like-button.html id=page.id placeholder="SMACK ME!" %}
+
   </div>
 
   <ul class="post-pager">

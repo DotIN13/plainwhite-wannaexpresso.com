@@ -12,6 +12,7 @@ export default class extends Controller {
     id: String,
     liked: Boolean,
     count: Number,
+    placeholder: String
   }
 
   connect() {
@@ -44,7 +45,7 @@ export default class extends Controller {
   }
 
   countValueChanged() {
-    this.countTarget.innerHTML = this.countValue > 0 ? this.countValue : "";
+    this.countTarget.innerHTML = this.countValue > 0 ? this.countValue : this.placeholderValue || "LIKE";
   }
 
   get instances() {

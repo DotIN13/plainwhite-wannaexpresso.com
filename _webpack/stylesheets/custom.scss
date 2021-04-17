@@ -547,12 +547,6 @@ footer.about.condensed {
   }
 }
 
-.post-wrapper {
-  border-bottom: 1px solid #ececec;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-}
-
 .post-categories {
   margin: 0 -4px;
   padding: 0;
@@ -770,6 +764,15 @@ i.icon-calendar {
       width: 100%;
     }
   }
+}
+
+/* like button */
+
+.post-likes .like-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 0.5em;
 }
 
 /* pagination */

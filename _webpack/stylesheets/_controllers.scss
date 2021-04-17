@@ -158,9 +158,9 @@
 }
 
 .heart {
-  display: block;
+  display: inline-block;
   cursor: pointer;
-  height: 50px;
+  height: 51px;
   width: 50px;
   background-image: url('../../_webpack/images/web_heart_animation.png?size=2900');
   background-position: left;

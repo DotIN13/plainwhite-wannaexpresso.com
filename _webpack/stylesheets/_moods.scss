@@ -147,7 +147,7 @@
 // Globalize mood-meta for reuse in mood portal
 .mood-meta {
   display: flex;
-  align-items: center;
+  align-items: normal;
 
   .mood-time {
     display: none;
@@ -157,16 +157,17 @@
     }
   }
 
-  .mood-like {
+  .like-button {
     position: relative;
 
     .heart {
       position: absolute;
-      top: -24px;
+      top: -50%;
+      transform: translateY(-12%);
     }
   }
 
-  .mood-like-count {
+  .like-count {
     margin-left: 40px;
   }
 }
