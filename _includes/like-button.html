@@ -1,4 +1,5 @@
 <div class="like-button" data-controller="like" data-like-target="button" data-like-id-value="{{ include.id }}" data-like-liked-value="false" data-like-placeholder-value="{{ include.placeholder }}" data-likes-target="item">
+  {% if include.description %}<span class="like-desc">{{ include.description }}</span>{% endif %}
   <span class="heart" data-action="click->like#like mouseover->like#hover mouseleave->like#unhover" data-like-target="heart"></span>
   <span class="like-count" data-like-target="count"></span>
 </div>

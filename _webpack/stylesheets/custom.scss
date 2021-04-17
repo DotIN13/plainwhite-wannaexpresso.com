@@ -768,11 +768,22 @@ i.icon-calendar {
 
 /* like button */
 
-.post-likes .like-button {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 0.5em;
+.post-likes {
+
+  .like-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5em;
+    flex-direction: row-reverse;
+  }
+
+  .placeholder-md {
+
+    @media screen and (max-width: $mobileW) {
+      display: none;
+    }
+  }
 }
 
 /* pagination */
