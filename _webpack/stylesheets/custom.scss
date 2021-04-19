@@ -270,6 +270,7 @@ main {
       margin: 10px 0;
       border-radius: 3px;
       display: block;
+      white-space: nowrap;
       @include link-hover(#4a4a4a, $linkColor);
 
       &:hover {
