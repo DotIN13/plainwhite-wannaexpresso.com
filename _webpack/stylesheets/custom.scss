@@ -768,14 +768,18 @@ i.icon-calendar {
 
 /* like button */
 
-.post-likes {
+.post-like {
+  margin-top: 1em;
+  margin-bottom: 4em;
 
-  .like-button {
+  .like__button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 0.5em;
-    flex-direction: row-reverse;
+  }
+
+  .like__count {
+    padding-right: 1.2em;
   }
 
   .placeholder-md {
@@ -784,7 +788,23 @@ i.icon-calendar {
       display: none;
     }
   }
+
+  .post-like__separator {
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    &::before {
+      content: ". . .";
+      font-weight: 700;
+    }
+  }
+
+  .like__button,
+  .like__desc {
+    line-height: 1em;
+  }
 }
+
 
 /* pagination */
 

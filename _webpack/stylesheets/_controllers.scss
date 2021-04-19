@@ -160,16 +160,14 @@
 .heart {
   display: inline-block;
   cursor: pointer;
-  height: 51px;
+  height: 50px;
   width: 50px;
   background-image: url('../../_webpack/images/web_heart_animation.png?size=2900');
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0.8;
 
   &.heart--animating {
-    opacity: 1;
     animation: heart-burst .8s steps(28) 1;
   }
 }
@@ -177,7 +175,6 @@
 [data-like-liked-value=false] {
 
   [data-like-target=heart].hover {
-    opacity: 1;
     background-position: right;
   }
 }
