@@ -648,6 +648,7 @@ i.icon-calendar {
       overflow: hidden;
       position: relative;
       display: inline-flex;
+      opacity: 0.5;
 
       .button__arrow {
         @include transform-transition();
@@ -673,6 +674,8 @@ i.icon-calendar {
     }
 
     .button__arrows {
+      opacity: 1;
+
       .button__arrow:last-child {
         transform: translateX(100%);
       }
