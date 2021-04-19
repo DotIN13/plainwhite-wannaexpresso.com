@@ -73,7 +73,6 @@ main {
     position: absolute;
     width: 100%;
     z-index: 3;
-    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0px 4px 6px 0 #33333359, 0px -1px 2px 0px #33333317;
   }
@@ -144,6 +143,8 @@ main {
 
     .search__container {
       display: block;
+      animation: 300ms ease 1 expand forwards;
+      transform-origin: left top;
     }
 
     input {
