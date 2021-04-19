@@ -6,11 +6,14 @@
 </head>
 
 {% assign condensed_class = "condensed" %}
-{% if page.locale == 'en_US' %}{% assign home = "/en-us/" %}{% else %}{% assign home = "/" %}{% endif %}
+
+<!-- Generate sidebar list for matching -->
+{% if page.locale == 'en_US' %}{% assign url_locale = "url_en" %}{% else %}{% assign url_locale = "url" %}{% endif %}
+{% assign sidebar_list = site.plainwhite.sidebar | map: url_locale %}
 
 <body data-controller="darkmode">
   <main class="container">
-    <section class="about" data-controller="sidebar" id="about-container" data-turbo-permanent>
+    <section class="about" data-controller="sidebar" id="about-container" data-turbo-permanent data-sidebar-list-value="{{ sidebar_list | join: "," }}">
       <div class="about__avatar" id="avatar" data-action="click->sidebar#ripple click->sidebar#toggle" data-sidebar-target="avatar">
         <span class="sidebar-toggle"></span>
           {% picture avatar orange.webp --img alt="site avatar" %}
@@ -18,7 +21,7 @@
 
       <div class="about__sidebar-container">
 
-        {% include sidebar.html home=home %}
+        {% include sidebar.html %}
 
         <div class="about__content">
           <div class="about-header">

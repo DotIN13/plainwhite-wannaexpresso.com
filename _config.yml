@@ -81,6 +81,18 @@ plainwhite:
       url_en: "/en-us/about/"
     - title: Archive
       url: "/archive"
+  sidebar:
+    - title: Home
+      url: "/"
+      url_en: "/en-us/"
+      icon: "icon-home"
+    - title: About
+      url: "/about"
+      url_en: "/en-us/about/"
+      icon: "icon-info"
+    - title: Archive
+      url: "/archive"
+      icon: "icon-archive"
   # analytics_id: "UA-159368053-1"
   heap: true
   heap_dev: "180019940"

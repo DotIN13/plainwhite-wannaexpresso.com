@@ -3,11 +3,28 @@ import { Controller } from "stimulus";
 export default class extends Controller {
 
   static targets = [
-    "avatar"
+    "avatar",
+    "item"
   ]
 
   static values = {
-    shift: Boolean
+    shift: Boolean,
+    list: String
+  }
+
+  // Connect lifecycle is excecuted each time page loads
+  connect() {
+    this.updateNav();
+  }
+
+  // Highlight navigation item when activated
+  updateNav() {
+    // Match sidebar item list
+    let location = window.location.pathname;
+    const itemList = this.listValue.split(",");
+    // Set fallback location if no match
+    if (!itemList.includes(window.location.pathname)) location = itemList[0];
+    this.itemTargets.forEach(target => target.classList.toggle("sidebar__item--active", target.pathname === location));
   }
 
   set shift(val) {

@@ -23,7 +23,7 @@ export default class extends Controller {
       let markdownLink = document.querySelector(".vpanel .markdown").parentElement;
       markdownLink.ariaLabel = "Markdown Guidelines";
       markdownLink.rel = "nofollow noopener noreferrer";
-      document.querySelector(".vpower.txt-right").remove();
+      document.querySelector(".vpower.txt-right")?.remove();
     }
   }
 }
