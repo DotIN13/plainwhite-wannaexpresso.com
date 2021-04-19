@@ -14,7 +14,7 @@
 <body data-controller="darkmode">
   <main class="container">
     <section class="about" data-controller="sidebar" id="about-container" data-turbo-permanent data-sidebar-list-value="{{ sidebar_list | join: "," }}">
-      <div class="about__avatar" id="avatar" data-action="click->sidebar#ripple click->sidebar#toggle" data-sidebar-target="avatar">
+      <div class="about__avatar" id="avatar" data-controller="ripple" data-action="click->sidebar#toggle disturb->ripple#create" data-sidebar-target="avatar">
         <span class="sidebar-toggle"></span>
           {% picture avatar orange.webp --img alt="site avatar" %}
       </div>

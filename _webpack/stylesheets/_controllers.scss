@@ -189,3 +189,41 @@
     }
   }
 }
+
+/* Ripple Controller */
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.ripple-in {
+  animation: 325ms cubic-bezier(0.4, 0, 0.2, 1) 1 ripple forwards, 100ms linear mmfadeIn forwards;
+}
+
+.ripple-out {
+  animation: 325ms cubic-bezier(0.4, 0, 0.2, 1) 1 rippleIn forwards, 150ms linear mmfadeOut forwards;
+}
+
+.ripple-in-end {
+  transform: scale(3);
+}
+
+.search__container {
+
+  .ripple {
+    background-color: white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 34);
+    z-index: -1;
+  }
+
+  .ripple-in {
+    animation: 625ms cubic-bezier(0.4, 0, 0.2, 1) 1 ripple forwards, 200ms linear mmfadeIn forwards;
+  }
+
+  .ripple-out {
+    animation: 625ms cubic-bezier(0.4, 0, 0.2, 1) 1 rippleIn forwards, 250ms linear mmfadeOut forwards;
+  }
+}

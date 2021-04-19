@@ -5,10 +5,17 @@ import { Controller } from "stimulus";
 export default class extends Controller {
 
   static targets = [
-    "label",
     "bar",
-    "results"
+    "container"
   ]
+
+  /**
+   * @param {boolean} val
+   */
+  set focus(val) {
+    this.focusWithin = val;
+    this.element.classList.toggle("focus-within", val);
+  }
 
   connect() {
     window.SimpleJekyllSearch({
@@ -28,15 +35,12 @@ export default class extends Controller {
 
   show(e) {
     e.stopPropagation();
-    this.resultsTarget.style.display = null;
-    this.labelTarget.style.width = "0";
-    this.element.classList.add("focus-within");
+    this.focus = true;
     this.barTarget.focus();
   }
 
-  hide() {
-    this.resultsTarget.style.display = "none";
-    this.element.classList.remove("focus-within");
-    this.labelTarget.style.width = "auto";
+  hide(e) {
+    if (!e.target.closest(".search__container"))
+      this.focus = false;
   }
 }

@@ -5,7 +5,13 @@ body.dark {
 .dark main {
   background-color: $dark-800;
 
-  p, h1, h2, h3, h4, h5, h6 {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $darkTextColor;
   }
 }
@@ -40,7 +46,10 @@ body.dark {
     }
   }
 
-  .post, .post p, .post-date, .post-like {
+  .post,
+  .post p,
+  .post-date,
+  .post-like {
     color: #ddd;
   }
 
@@ -125,7 +134,7 @@ body.dark {
   }
 
   /* Labelgroup */
-  .posts-label {
+  .posts-label__title {
     color: $darkTextColor;
 
     &::before {
@@ -135,7 +144,7 @@ body.dark {
 
   .labelgroup {
 
-    .search-results {
+    .search__results {
       color: $darkTextColor;
       background-color: $dark-700;
 
@@ -153,17 +162,15 @@ body.dark {
       }
     }
 
-    .search-section {
 
-      input {
-        background-color: transparent;
-      }
+    input {
+      background-color: transparent;
     }
   }
 
   .labelgroup:hover {
 
-    i {
+    .posts-label__search-icon {
       color: white;
     }
 
@@ -175,17 +182,9 @@ body.dark {
 
   .labelgroup.focus-within {
 
-    .search-section {
-      background-color: $dark-700;
-    }
-
     input {
       color: $darkTextColor;
       background-color: $dark-700;
-    }
-
-    i {
-      color: white;
     }
   }
 
@@ -267,7 +266,7 @@ body.dark {
   // Valine
   #vcomments.v .vwrap {
     border: 2px solid $dark-200;
-    
+
     .vheader .vinput {
       border-bottom: 1px solid $dark-700;
 

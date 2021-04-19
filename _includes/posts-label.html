@@ -1,14 +1,23 @@
-<div class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup" {% if include.search %}data-controller="search"{% endif %}>
-  <a class="posts-label__link" href="{{ include.href | default: "#" }}" {% if include.search %}data-search-target="label"{% endif %}>
-    <h1 class="posts-label">{{ include.type }}</h1>
-  </a>
+<div class="labelgroup{% if include.search %} search{% endif %}"
+  id="{{ include.type }}-labelgroup" {% if include.search %}data-controller="search" {% endif %}>
   {% if include.search %}
-    <div class="search-container" data-action="click->search#show">
-      <div class="search-section">
-        <i class="icon-search"></i>
-        <input aria-label="search in posts" autocomplete="off" data-search-target="bar" id="searchbar" name="search" type="text">
-      </div>
-      <div class="search-results" data-placeholder="No results" data-search-target="results" id="search-results" style="display: none;"></div>
+  <div class="search__container" data-search-target="container">
+    <div class="search__input">
+      <input class="search__input-bar" aria-label="search in posts" autocomplete="off" data-search-target="bar"
+        id="searchbar" name="search" type="text">
     </div>
+    <div class="search__results" data-placeholder="No results" data-search-target="results"
+      id="search-results"></div>
+  </div>
   {% endif %}
+
+  <div class="posts-label">
+    <a class="posts-label__link" href="{{ include.href | default: "#" }}"
+      {% if include.search %}data-search-target="label" {% endif %}>
+      <h1 class="posts-label__title">{{ include.type }}</h1>
+    </a>
+    {% if include.search %}
+    <span class="icon-search posts-label__search-icon" data-action="click->search#show"></span>
+    {% endif %}
+  </div>
 </div>
