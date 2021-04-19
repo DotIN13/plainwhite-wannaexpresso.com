@@ -124,13 +124,16 @@ body.dark {
     }
   }
 
-  /* LabelGroup */
+  /* Labelgroup */
   .posts-label {
     color: $darkTextColor;
+
+    &::before {
+      background: #ba68c8bb;
+    }
   }
 
   .labelgroup {
-    border-bottom: 1px solid #333;
 
     .search-results {
       color: $darkTextColor;

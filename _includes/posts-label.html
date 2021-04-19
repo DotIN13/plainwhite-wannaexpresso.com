@@ -1,7 +1,9 @@
-<div class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup" {% if include.search %} data-controller="search" data-action="click->search#show" {% endif %}>
-  <h1 class="posts-label" {% if include.search %} data-search-target="label" {% endif %}>{{ include.type }}</h1>
+<div class="labelgroup{% if include.search %} search{% endif %}" id="{{ include.type }}-labelgroup" {% if include.search %}data-controller="search"{% endif %}>
+  <a class="posts-label__link" href="{{ include.href | default: "#" }}" {% if include.search %}data-search-target="label"{% endif %}>
+    <h1 class="posts-label">{{ include.type }}</h1>
+  </a>
   {% if include.search %}
-    <div class="search-container">
+    <div class="search-container" data-action="click->search#show">
       <div class="search-section">
         <i class="icon-search"></i>
         <input aria-label="search in posts" autocomplete="off" data-search-target="bar" id="searchbar" name="search" type="text">
