@@ -112,13 +112,3 @@
     transform: scale(0);
   }
 }
-
-@keyframes expand {
-  0% {
-    transform: translate(10%, -10%) scale(0, 0);
-  }
-
-  100% {
-    transform: none;
-  }
-}

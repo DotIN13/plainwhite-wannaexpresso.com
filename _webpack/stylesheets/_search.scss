@@ -62,17 +62,18 @@ main {
     color: #777;
     flex-grow: 1;
     padding: 10px 12px;
-    transition: color 0.5s;
+    transition: color 500ms, transform 230ms cubic-bezier(0.24, 0.04, 0.2, 1);
     font-size: 15px;
+    z-index: 3;
   }
 
-  // Search components
+  /* Search components */
 
   .search__container {
     display: none;
     position: absolute;
     width: 100%;
-    z-index: 3;
+    z-index: 2;
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 0px 4px 6px 0 #33333359, 0px -1px 2px 0px #33333317;
@@ -85,9 +86,9 @@ main {
       background: $searchBackground;
       color: #555;
       font-size: 15px;
-      height: 40px;
+      height: 39px;
       border: none;
-      padding: 10px 15px;
+      padding: 10px 15px 10px 45px;
       outline: none;
       width: 100%;
     }
@@ -144,12 +145,16 @@ main {
 
     .search__container {
       display: block;
-      animation: 300ms ease 1 expand forwards;
-      transform-origin: left top;
+      animation: 200ms ease 1 mmfadeIn forwards;
     }
 
     input {
       color: black;
+    }
+
+    .posts-label__search-icon {
+      pointer-events: none;
+      transform: translateX(-45px);
     }
   }
 }
