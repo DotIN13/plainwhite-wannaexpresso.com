@@ -39,9 +39,10 @@ export default class extends Controller {
   }
 
   toggle(e) {
+    console.log(e);
     this.shift = !this.shift;
     const disturb = new Event("disturb");
-    disturb.offset = [e.offsetX, e.offsetY];
+    disturb.offset = [e.clientX, e.clientY];
     // True => ripple in
     disturb.direction = this.shift;
     this.avatarTarget.dispatchEvent(disturb);

@@ -12,8 +12,9 @@ export default class extends Controller {
     circle.className = event.direction ? "ripple ripple-in" : "ripple ripple-out";
     circle.addEventListener("animationend", () => this.handleRipple(circle, event.direction));
     circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.offset[0] - radius}px`;
-    circle.style.top = `${event.offset[1] - radius}px`;
+    const rect = this.element.getBoundingClientRect();
+    circle.style.left = `${event.offset[0] - rect.left - radius}px`;
+    circle.style.top = `${event.offset[1] - rect.top - radius}px`;
     this.element.appendChild(circle);
   }
 
