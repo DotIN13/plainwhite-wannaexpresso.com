@@ -1,6 +1,5 @@
 import { h } from 'preact';
-
-Array.prototype.last = function () { return this[this.length - 1]; };
+import "../core-ext/array.js";
 
 const Source = (props) => <source
   srcset={props.images.srcSet}

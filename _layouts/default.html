@@ -19,7 +19,7 @@
           {% picture avatar orange.webp --img alt="site avatar" %}
       </div>
 
-      <div class="about__sidebar-container">
+      <div class="about__sidebar-container" data-action="touchstart->sidebar#initSwipe touchend->sidebar#clearSwipe touchmove->sidebar#swipe" data-sidebar-target="container">
 
         {% include sidebar.html %}
 
