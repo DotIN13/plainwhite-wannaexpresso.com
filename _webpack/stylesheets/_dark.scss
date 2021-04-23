@@ -20,7 +20,7 @@ body.dark {
 
   .about .about-footer a,
   .about .about-footer p,
-  .tagline {
+  .about .tagline {
     @include link-hover(#666);
   }
 

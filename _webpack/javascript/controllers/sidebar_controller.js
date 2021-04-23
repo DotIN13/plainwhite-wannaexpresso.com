@@ -24,6 +24,7 @@ export default class extends Controller {
 
   set shift(val) {
     this.shiftValue = val;
+    this.rippleEvent();
     this.element.classList.toggle("shift", val);
   }
 
@@ -42,13 +43,19 @@ export default class extends Controller {
   }
 
   toggle(e) {
-    console.log(e);
+    // console.log(e);
+    this.ripplePos = [e.clientX, e.clientY];
     this.shift = !this.shift;
+  }
+
+  // Create ripple event
+  rippleEvent() {
     const disturb = new Event("disturb");
-    disturb.offset = [e.clientX, e.clientY];
+    disturb.offset = this.ripplePos;
     // True => ripple in
     disturb.direction = this.shift;
     this.avatarTarget.dispatchEvent(disturb);
+    this.ripplePos = undefined;
   }
 
   // Enable swipe for mobile devices
