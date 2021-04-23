@@ -11,13 +11,10 @@
   </div>
   {% endif %}
 
-  <div class="posts-label">
-    <a class="posts-label__link" href="{{ include.href | default: "#" }}"
+  <div class="posts-label" data-action="click->search#show">
+    <a class="posts-label__link{% if include.search %} posts-label__search-icon icon-search{% endif %}" href="{{ include.href | default: "#" }}"
       {% if include.search %}data-search-target="label" {% endif %}>
       <h1 class="posts-label__title">{{ include.type }}</h1>
     </a>
-    {% if include.search %}
-    <span class="icon-search posts-label__search-icon" data-action="click->search#show"></span>
-    {% endif %}
   </div>
 </div>

@@ -49,6 +49,10 @@
   .tag-button--all {
     font-weight: 700;
     color: $linkColor;
+
+    &:hover {
+      color: white;
+    }
   }
 
   a.tag-button[rel="1"] {
@@ -74,7 +78,7 @@
   height: 28px;
   line-height: 28px;
   margin-bottom: 8px;
-  border-radius: 2px;
+  border-radius: 5px;
   flex: 1 1 auto;
   padding: 0 8px;
   text-align: center;

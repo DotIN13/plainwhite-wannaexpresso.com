@@ -9,42 +9,39 @@ main {
   position: relative;
 
   .posts-label {
-    display: flex;
-    align-items: center;
-
-    /* Firefox flex hack */
-    @-moz-document url-prefix() {
-      align-items: center;
-    }
+    cursor: pointer;
   }
 
   .posts-label__link {
     text-decoration: none;
+    display: inline-block;
+    position: relative;
   }
 
   .posts-label__title {
     font-size: 15px;
     color: #555;
+    display: inline-block;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 10px 0;
     font-weight: normal;
     margin: 0;
-    overflow: hidden;
-    position: relative;
     text-decoration: none;
-    z-index: 1;
     transition: color 130ms ease;
+    // Make sure underline ::after is visible
+    z-index: 1;
+    position: relative;
 
     &:hover {
       color: $darkTextColor;
 
-      &::before {
+      &::after {
         height: 22px;
       }
     }
 
-    &::before {
+    &::after {
       content: "";
       background: #ba68c8bb;
       width: 100%;
@@ -57,12 +54,15 @@ main {
     }
   }
 
-  .posts-label__search-icon {
-    cursor: pointer;
+  .posts-label__search-icon::before {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 100%;
     color: #777;
-    flex-grow: 1;
     padding: 10px 12px;
-    transition: color 500ms, transform 230ms cubic-bezier(0.24, 0.04, 0.2, 1);
+    transition: color 500ms, left 230ms cubic-bezier(0.24, 0.04, 0.2, 1);
     font-size: 15px;
     z-index: 3;
   }
@@ -75,7 +75,7 @@ main {
     width: 100%;
     z-index: 2;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0px 4px 6px 0 #33333359, 0px -1px 2px 0px #33333317;
   }
 
@@ -109,15 +109,13 @@ main {
 
     // Search result items
     a {
-      padding: 6px 10px;
+      padding: 6px 5px;
       text-decoration: none;
       display: flex;
-      margin: 0 5px;
+      margin: 0 10px;
       border-radius: 3px;
 
       &::before {
-        content: '\e805';
-        @include fontello();
         margin-right: 14px;
         padding: 0 3px;
         color: #9aa0a6;
@@ -134,13 +132,6 @@ main {
     }
   }
 
-  &:hover {
-
-    .posts-label__search-icon {
-      color: $linkColor;
-    }
-  }
-
   &.focus-within {
 
     .search__container {
@@ -152,9 +143,9 @@ main {
       color: black;
     }
 
-    .posts-label__search-icon {
-      pointer-events: none;
-      transform: translateX(-45px);
+    .posts-label__search-icon::before {
+      color: $linkColor;
+      left: 5px;
     }
   }
 }

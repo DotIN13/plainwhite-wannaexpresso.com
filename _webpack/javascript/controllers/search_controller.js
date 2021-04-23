@@ -22,7 +22,7 @@ export default class extends Controller {
       searchInput: this.barTarget,
       resultsContainer: document.getElementById('search-results'),
       json: '/search.json',
-      searchResultTemplate: '<a href="{url}">{title}</a>',
+      searchResultTemplate: '<a href="{url}" class="icon-search">{title}</a>',
       noResultsText: ''
     });
 
@@ -35,6 +35,8 @@ export default class extends Controller {
 
   show(e) {
     e.stopPropagation();
+    if (e.target.dataset.action != "click->search#show") return;
+
     this.focus = true;
     this.barTarget.focus();
   }

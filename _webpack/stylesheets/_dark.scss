@@ -136,13 +136,13 @@ body.dark {
   /* Labelgroup */
   .posts-label__title {
     color: $darkTextColor;
-
-    &::before {
-      background: #ba68c8bb;
-    }
   }
 
   .labelgroup {
+
+    .posts-label__search-icon::before {
+      color: white;
+    }
 
     .search__results {
       color: $darkTextColor;
@@ -162,17 +162,12 @@ body.dark {
       }
     }
 
-
     input {
       background-color: transparent;
     }
   }
 
   .labelgroup:hover {
-
-    .posts-label__search-icon {
-      color: white;
-    }
 
     input {
       color: white;
