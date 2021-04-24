@@ -12,7 +12,8 @@ export default class extends Controller {
 
   async pull() {
     // Get all like buttons
-    const likables = this.itemTargets;
+    // Ignore any likables without ID
+    const likables = this.itemTargets.filter(el => el.dataset.likeIdValue);
     // Get all article IDs with like counts to retrieve
     const likableIds = Array.from(likables).map(el => el.dataset.likeIdValue);
 

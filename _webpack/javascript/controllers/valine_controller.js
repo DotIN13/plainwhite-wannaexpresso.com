@@ -16,7 +16,7 @@ export default class extends Controller {
       lang: 'en',
       path: window.location.pathname
     });
-    
+
     if (document.querySelector('.vicon')) {
       document.querySelector(".vicon.vemoji-btn").innerHTML = '';
       document.querySelector(".vicon.vpreview-btn").innerHTML = '';
