@@ -6,6 +6,7 @@ description: "'Tis Me."
 header-img: "_webpack/images/about-bg.jpg"
 locale: en_US
 multilingual: true
+id: /about
 ---
 
 ## A Poor Student

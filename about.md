@@ -7,6 +7,7 @@ header-img: "_webpack/images/about-bg.jpg"
 multilingual: true
 locale: zh_CN
 javascript: posts
+id: /about
 ---
 
 
