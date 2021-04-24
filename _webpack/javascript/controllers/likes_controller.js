@@ -15,24 +15,13 @@ export default class extends Controller {
     // Ignore any likables without ID
     const likables = this.itemTargets.filter(el => el.dataset.likeIdValue);
     // Get all article IDs with like counts to retrieve
-    const likableIds = Array.from(likables).map(el => el.dataset.likeIdValue);
+    const likableIds = Array.from(likables).map(el => `likable=${el.dataset.likeIdValue}`);
 
     const identity = await new Identity().get();
     const identityQuery = `?identity=${identity}`;
 
-    fetch(`/api/get_likes${identityQuery}`, {
-      body: JSON.stringify(likableIds),
-      method: "POST",
-      contentType: "application/json"
-    })
+    fetch(`/api/get_likes${identityQuery}&${likableIds.join("&")}`)
       .then((res) => res.json())
-      .then((json) => {
-      // console.log(json);
-        likables.forEach(el => {
-          // Count changed after liked, but then overwritten by assignment
-          el.dataset.likeLikedValue = json[el.dataset.likeIdValue].liked;
-          el.dataset.likeCountValue = json[el.dataset.likeIdValue].count;
-        });
-      });
+      .then((json) => likables.forEach(el => Object.assign(el.dataset, json[el.dataset.likeIdValue])));
   }
 }
