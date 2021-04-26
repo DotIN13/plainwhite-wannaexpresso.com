@@ -115,12 +115,16 @@
 }
 
 .love-incubator__message {
-  transform-origin: 50% -500px;
   opacity: 0;
   transform: rotate(-45deg) translate(200%, -100%) scale(2);
-  animation: 1s cubic-bezier(0.42, 0.02, 0.25, 1.01) 1 flyIn forwards;
+  animation: 1s 1 xMessageFlyIn forwards;
   padding: 20px 40px;
   text-shadow: 1px 2px 9px #333;
+
+  &::before {
+    content: "";
+    animation: 1s 1 yMessageFlyIn forwards;
+  }
 
   @media screen and (max-width: $mobileW) {
     padding: 0;
