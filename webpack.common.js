@@ -14,6 +14,7 @@ module.exports = {
     pages: path.join(__dirname, '_webpack', 'javascript', 'pages'),
     posts: path.join(__dirname, '_webpack', 'javascript', 'posts'),
     application: path.join(__dirname, '_webpack', 'javascript', 'application'),
+    love: path.join(__dirname, '_webpack', 'javascript', 'love'),
   },
   output: {
     path: path.resolve(__dirname, 'dist/assets/public'),

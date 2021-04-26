@@ -12,7 +12,6 @@
     right: 0;
     bottom: 0;
     display: flex;
-    pointer-events: auto;
   }
 }
 
@@ -59,6 +58,7 @@
       margin: 16px;
       padding: 8px 10px;
       border-radius: 8px;
+      pointer-events: auto;
 
       .status {
         display: flex;
@@ -87,6 +87,7 @@
 #portal {
 
   .portal__container.portal__container-mood {
+    pointer-events: auto;
     opacity: 0;
 
     &[aria-hidden=false] {

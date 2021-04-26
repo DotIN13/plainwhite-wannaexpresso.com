@@ -1,7 +1,7 @@
-import { WannaLikes, WannaLikeCounts, connectTo } from "../dist/app/javascript/dynamoose_schema.js";
+import { WannaLikes, WannaLikeCounts, connectTo } from "../../dist/app/javascript/dynamoose_schema.js";
 connectTo.smart();
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   try {
     let likes = {};
     const identity = req.query.identity;

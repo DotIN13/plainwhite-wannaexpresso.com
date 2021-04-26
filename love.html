@@ -1,0 +1,18 @@
+---
+layout: default
+title: Love Incubator
+javascript: love
+---
+
+<div class="love-incubator-container" data-controller="incubator">
+  <div class="love-incubator__title">
+    <h2>Love Incubator</h2>
+    <h3>温情播种机</h3>
+  </div>
+
+  <turbo-frame id="love-incubator" class="love-incubator__turbo-frame">
+    {% include love-incubator-form.html %}
+  </turbo-frame>
+
+  <div id="love-incubator__messages"></div>
+</div>

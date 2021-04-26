@@ -20,7 +20,7 @@ export default class extends Controller {
     const identity = await new Identity().get();
     const identityQuery = `?identity=${identity}`;
 
-    fetch(`/api/get_likes${identityQuery}&${likableIds.join("&")}`)
+    fetch(`/api/likes/get${identityQuery}&${likableIds.join("&")}`)
       .then((res) => res.json())
       .then((json) => likables.forEach(el => Object.assign(el.dataset, json[el.dataset.likeIdValue])));
   }

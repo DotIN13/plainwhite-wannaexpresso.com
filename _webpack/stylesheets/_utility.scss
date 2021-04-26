@@ -112,3 +112,11 @@
     transform: scale(0);
   }
 }
+
+@keyframes flyIn {
+  to {
+    transform: none;
+    opacity: 1;
+    text-shadow: none;
+  }
+}

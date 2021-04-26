@@ -10,6 +10,7 @@
 @import "search";
 @import "tagcloud";
 @import "moods";
+@import "love_incubator";
 @import "controllers";
 @import "dark";
 
@@ -594,6 +595,7 @@ i.icon-calendar {
   margin-top: 0;
 }
 
+.love-incubator-container,
 .post-container,
 .posts-container,
 .archive-container {

@@ -1,0 +1,14 @@
+<form method="POST" action="/api/love/post" class="love-incubator__form">
+
+  <div class="form-group">
+    <input class="text-field" type="text" name="username" id="love-incubator__username" required>
+    <label for="love-incubator__username">Your Name</label>
+  </div>
+
+  <div class="form-group">
+    <input class="text-field" type="text" name="message" id="love-incubator__message" required>
+    <label for="love-incubator__message">Loving Words to Share</label>
+  </div>
+
+  <button class="form-submit love-incubator__submit" aria-label="Submit" onclick="this.closest('form').requestSubmit();"></button>
+</form>

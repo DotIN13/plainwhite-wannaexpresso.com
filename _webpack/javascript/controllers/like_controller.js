@@ -58,7 +58,7 @@ export default class extends Controller {
     const identity = await new Identity().get();
     const identityQuery = `&identity=${identity}`;
     const cancelQuery = cancel ? "&cancel=1": "";
-    fetch(`/api/like?article_id=${this.idValue + cancelQuery + identityQuery}`)
+    fetch(`/api/likes/post?article_id=${this.idValue + cancelQuery + identityQuery}`)
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed.");
       })

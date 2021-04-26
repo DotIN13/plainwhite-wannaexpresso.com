@@ -14,6 +14,7 @@ destination: dist
 keep_files:
   - "assets"
   - "service-worker.js"
+  - "app"
 show_excerpts: true # set to true to show excerpts on the homepage
 permalink: pretty
 timezone: Asia/Shanghai
@@ -93,6 +94,9 @@ plainwhite:
     - title: Archive
       url: "/archive"
       icon: "icon-archive"
+    - title: Love Incubator
+      url: "/love"
+      icon: "icon-heart-circled"
   # analytics_id: "UA-159368053-1"
   heap: true
   heap_dev: "180019940"
