@@ -60,6 +60,7 @@ main {
   grid-template-columns: [about-start] 220px [about-end content-start] calc(100% - 220px) [content-end];
   grid-row: auto;
   grid-template-areas: "about content";
+  overflow: hidden;
 
   @media screen and (min-width: $bigScreenW + 1) {
     grid-template-columns: [about-start] 280px [about-end content-start] calc(100% - 280px) [content-end];

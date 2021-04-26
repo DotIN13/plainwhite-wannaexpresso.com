@@ -18,7 +18,7 @@ export const prependStream = (msgs) => {
 
 const renderMsg = (msgs) => {
   return msgs.map((msg, index) => `<div class="love-incubator__message" style="animation-delay: ${index * .1}s;">
-    <blockquote class="g_bq"">${msg.message}</blockquote>
+    <blockquote class="g_bq">${msg.message}</blockquote>
     <em>Sent by ${msg.username}</em>
   </div>`).join('');
 };
