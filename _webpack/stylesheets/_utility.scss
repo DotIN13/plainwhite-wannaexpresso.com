@@ -128,3 +128,20 @@
     transform: translateY(0);
   }
 }
+
+@keyframes envelopeOut {
+  0% {
+    top: 0;
+    transform: translateX(0) scale(0);
+  }
+
+  40% {
+    top: -55%;
+    transform: translateX(0) scale(2);
+  }
+
+  100% {
+    top: -100%;
+    transform: translateX(500px) scale(0);
+  }
+}

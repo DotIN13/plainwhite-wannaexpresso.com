@@ -86,6 +86,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "_webpack/images/favicon", to: "favicon" },
+        { from: "_webpack/images/static", to: "static" }
       ],
     }),
     new HtmlWebpackPlugin({
