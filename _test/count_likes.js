@@ -1,5 +1,5 @@
 import { WannaLikes, WannaLikeCounts, connectTo, articles } from "../dist/app/javascript/dynamoose_schema.js";
-connectTo.prod();
+connectTo.dev();
 
 (async () => {
   try {

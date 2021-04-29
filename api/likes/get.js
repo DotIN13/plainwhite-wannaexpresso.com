@@ -5,9 +5,10 @@ export default async (req, res) => {
   try {
     let likes = {};
     const identity = req.query.identity;
-    for (const id of req.query.likable) {
+    for (const id of [].concat(req.query.likable)) {
       console.log("Processing item:", id);
       const count = await WannaLikeCounts.get({ article_id: id });
+      console.log(count);
       console.log(id, "has", count?.likes, "likes");
       const liked = await WannaLikes.get({article_id: id, identity});
       if (liked) console.log("The user liked this article before");

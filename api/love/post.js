@@ -13,7 +13,7 @@ export default async (req, res) => {
     });
     console.log("Saved love:", love);
     res.setHeader("Content-Type", "text/vnd.turbo-stream.html");
-    res.status(200).send(prependStream([love]));
+    res.status(200).send(prependStream(love));
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
