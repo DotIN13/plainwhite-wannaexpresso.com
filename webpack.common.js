@@ -10,11 +10,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   watch: false,
   entry: {
-    archive: path.join(__dirname, '_webpack', 'javascript', 'archive'),
-    pages: path.join(__dirname, '_webpack', 'javascript', 'pages'),
-    posts: path.join(__dirname, '_webpack', 'javascript', 'posts'),
-    application: path.join(__dirname, '_webpack', 'javascript', 'application'),
-    love: path.join(__dirname, '_webpack', 'javascript', 'love'),
+    archive: {
+      import: path.join(__dirname, '_webpack', 'javascript', 'archive'),
+      dependOn: "hotwired",
+    },
+    pages: {
+      import: path.join(__dirname, '_webpack', 'javascript', 'pages'),
+      dependOn: "hotwired",
+    },
+    posts: {
+      import: path.join(__dirname, '_webpack', 'javascript', 'posts'),
+      dependOn: "hotwired",
+    },
+    application: {
+      import: path.join(__dirname, '_webpack', 'javascript', 'application'),
+      dependOn: "hotwired",
+    },
+    love: {
+      import: path.join(__dirname, '_webpack', 'javascript', 'love'),
+      dependOn: "hotwired",
+    },
+    hotwired: ["@hotwired/turbo", "stimulus"],
   },
   output: {
     path: path.resolve(__dirname, 'dist/assets/public'),

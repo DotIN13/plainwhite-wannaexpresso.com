@@ -1,10 +1,10 @@
 <% for (const js of htmlWebpackPlugin.files.js) { %>
-  <% if (js.indexOf("application") != -1) { %>
+  <% if (js.indexOf("application") * js.indexOf("hotwired") < 0) { %>
     <script src="<%= js %>"></script>
   <% } %>
 <% } %>
 
-<% const entries = Object.keys(webpackConfig.entry).filter(ent => ent != "application") %>
+<% const entries = Object.keys(webpackConfig.entry).filter(ent => ent != "application" && ent != "hotwired") %>
 {% case page.javascript %}
 <% for (const entry of entries) { %>
   <% for (const js of htmlWebpackPlugin.files.js) { %>
