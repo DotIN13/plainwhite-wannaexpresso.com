@@ -1,6 +1,15 @@
-<ul class="sidebar">
-  {% for item in site.plainwhite.sidebar %}
+<div class="sidebar__container">
+  <ul class="sidebar">
+    {% for item in site.plainwhite.sidebar %}
     {% if page.locale == 'en_US' %}{% assign dest = item.url_en %}{% else %}{% assign dest = item.url %}{% endif %}
     {% include sidebar-item.html href=dest icon=item.icon title=item.title %}
-  {% endfor %}
-</ul>
+    {% endfor %}
+  </ul>
+
+  <footer class="sidebar__footer {{ condensed_class }}">
+    <span><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">Moe ICP
+        20201620</a></span>
+    <span><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+        rel="noreferrer">CC-BY-SA 4.0</a></span>
+  </footer>
+</div>

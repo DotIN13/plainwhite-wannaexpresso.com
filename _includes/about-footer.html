@@ -1,0 +1,19 @@
+<footer class="about__footer {{ include.position | prepend: "about__footer-" }}">
+  <div class="about-buttons">
+    <a href="/" class="language-selection button" aria-label="Change locale"><span
+        class="icon-translate"></span></a>
+    <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span
+        class="icon-rss_feed"></span></a>
+    {%- if site.plainwhite.dark_mode -%}
+    <a href="#" aria-label="Click to toggle darkmode." class="button"
+      data-action="darkmode#toggle"><span class="icon-moon"
+        data-darkmode-target="indicator"></span></a>
+    {%- endif -%}
+    <a href="#" id="pwa-install" class="install button icon-install disabled"
+      aria-label="Install as Web Application"><span>Install</span></a>
+  </div>
+
+  {% include social.html %}
+
+  <p class="about__timestamp">©{{ site.time | date: "%Y" }}</p>
+</footer>

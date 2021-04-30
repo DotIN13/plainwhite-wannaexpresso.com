@@ -5,84 +5,24 @@
   {%- include head.html -%}
 </head>
 
-{% assign condensed_class = "condensed" %}
-
 <!-- Generate sidebar list for matching -->
 {% if page.locale == 'en_US' %}{% assign url_locale = "url_en" %}{% else %}{% assign url_locale = "url" %}{% endif %}
 {% assign sidebar_list = site.plainwhite.sidebar | map: url_locale %}
 
 <body data-controller="darkmode">
   <main class="container">
-    <section class="about" data-controller="sidebar" id="about-container" data-turbo-permanent data-sidebar-list-value="{{ sidebar_list | join: "," }}">
-      <div class="about__avatar" id="avatar" data-controller="ripple" data-action="click->sidebar#toggle disturb->ripple#create" data-sidebar-target="avatar">
-        <span class="sidebar-toggle"></span>
-          {% picture avatar orange.webp --img alt="site avatar" %}
-      </div>
-
-      <div class="about__sidebar-container" data-action="touchstart->sidebar#initSwipe touchend->sidebar#clearSwipe touchmove->sidebar#swipe" data-sidebar-target="container">
-
-        {% include sidebar.html %}
-
-        <div class="about__content">
-          <div class="about-header">
-            <h2 id="title">
-              <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
-            </h2>
-            {%- if site.plainwhite.tagline -%}
-            <p class="tagline">{{ site.plainwhite.tagline }}</p>
-            {%- endif -%}
-          </div>
-
-          <div class="about-buttons">
-            <a href="/" class="language-selection button" aria-label="Change locale"><span class="icon-translate"></span></a>
-            <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span class="icon-rss_feed"></span></a>
-            {%- if site.plainwhite.dark_mode -%}
-            <a href="#" aria-label="Click to toggle darkmode." class="button" data-action="darkmode#toggle"><span class="icon-moon" data-darkmode-target="indicator"></span></a>
-            {%- endif -%}
-            <a href="#" id="pwa-install" class="install button icon-install disabled" aria-label="Install as Web Application"><span>Install</span></a>
-          </div>
-
-          {% capture footer %}
-
-          {% include social.html condensed_class=condensed_class %}
-
-          {%- if site.plainwhite.navigation -%}
-          <nav class="navigation {{ condensed_class }}">
-            <ul>
-              {% for link in site.plainwhite.navigation %}
-              <li>
-                <a href="{% if page.locale == 'en_US' and link.url_en %}{{ link.url_en }}{% else %}{{ link.url }}{% endif %}">{{ link.title }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </nav>
-          {%- endif -%}
-
-          <section class="about-footer {{ condensed_class }}">
-            <span><a href="https://icp.gov.moe/?keyword=20201620" target="_blank" rel="noreferrer">Moe ICP 20201620</a></span>
-            <span><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC-BY-SA 4.0</a></span>
-          </section>
-
-          {% endcapture %}
-
-          {{ footer }}
-
-        </div>
-      </div>
-    </section>
-
     <section class="content">
+
+      {% include about-aside.html position="top" %}
 
       {{ content }}
 
     </section>
+    <div class="about about--bottom">
 
-    <footer class="about {{ condensed_class }}">
+      {% include about-footer.html position="bottom" %}
 
-      {{ footer }}
-
-    </footer>
-
+    </div>
   </main>
 
   {% include toasts.html %}
@@ -90,7 +30,8 @@
   <div id="portal" data-controller="toasts"></div>
 
   {%- if site.plainwhite.analytics_id -%}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 

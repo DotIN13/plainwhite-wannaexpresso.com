@@ -54,29 +54,28 @@ h2 {
   }
 }
 
-main {
-  margin: 0 90px;
-  display: grid;
-  grid-template-columns: [about-start] 220px [about-end content-start] calc(100% - 220px) [content-end];
-  grid-row: auto;
-  grid-template-areas: "about content";
-  overflow: hidden;
+.button {
+  @include button();
+}
 
-  @media screen and (min-width: $bigScreenW + 1) {
-    grid-template-columns: [about-start] 280px [about-end content-start] calc(100% - 280px) [content-end];
-    margin: 0 auto;
-    max-width: 1360px;
+/* Main */
+
+main {
+  margin: 0 auto;
+  position: relative;
+  --about-width: 320px;
+
+  @media screen and (max-width: $bigScreenW) {
+    --about-width: 280px;
+    margin: 0 90px;
   }
 
   @media screen and (max-width: 1280px) {
+    --about-width: 240px;
     margin: 0 75px;
   }
 
   @media screen and (max-width: $midScreenW) {
-    grid-template-columns: 100%;
-    grid-template-rows: [about-start] auto [about-end content-start] auto [content-end footer-start] auto [footer-end];
-    grid-template-areas: "about""content""footer";
-    row-gap: 30px;
     padding: 0 30px;
     margin: 0 35px;
   }
@@ -90,40 +89,39 @@ main {
     margin: 0;
   }
 
-  section.about {
-    grid-area: about;
-  }
-
   .content {
-    grid-area: content;
     overflow: visible;
   }
-
-  footer.about.condensed {
-    grid-area: footer;
-  }
-}
-
-.button {
-  @include button();
 }
 
 /* About */
 
-.about {
-  height: 100vh;
+.about__sticky-container {
   position: sticky;
-  top: 0;
-  // Hide sidebar
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  top: 5vh;
 
   @media screen and (max-width: $midScreenW) {
-    height: auto;
-    position: relative;
+    top: 0;
+  }
+}
+
+.about {
+
+  .about__absolute-container {
+    width: var(--about-width);
+    position: absolute;
+    top: 0;
+    left: 0;
+    // Hide sidebar
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media screen and (max-width: $midScreenW) {
+      position: relative;
+      align-items: flex-start;
+      --about-width: auto;
+    }
   }
 
   .about__avatar {
@@ -192,55 +190,159 @@ main {
     // Sidebar button end
   }
 
-  .about__sidebar-container {
-    position: relative;
+  /* About header */
+
+  .about__title {
+    font-size: 22px;
+    color: #222222;
+    font-weight: normal;
+    margin: 25px 0 15px 0;
+  }
+
+  .about__tagline {
+    font-size: 22px;
+    margin-top: 0;
+    color: #666;
+    white-space: pre-wrap;
+    line-height: normal;
+    text-align: center;
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    margin-bottom: 1em;
+
+    &:hover {
+      color: $linkColor;
+    }
+  }
+
+  .about__title,
+  .about__tagline {
+    text-align: center;
+
+    @media screen and (max-width: $midScreenW) {
+      text-align: left;
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .about-buttons {
     display: flex;
-    width: 100%;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.3em;
+
+    .button {
+      border-radius: 24px;
+      padding: 5px 10px;
+    }
+
+    @media screen and (max-width: $midScreenW) {
+      margin-top: 1em;
+
+      .button {
+        margin-left: 0;
+        margin-right: 8px;
+      }
+    }
   }
 
-  .about__content,
-  .sidebar {
-    flex: 0 0 100%;
-    @include transform-transition();
-    transform: translateX(-100%);
-  }
+  #pwa-install {
+    color: #a160a9;
+    flex: 1 1 35px;
+    transform-origin: left;
+    transition-property: flex, padding, margin;
+    transition: 0.3s ease, color 0.2s ease;
 
-  // On shift
-  &.shift {
+    // Disable default hovering effects
+    &:hover {
+      background-color: $buttonBackground;
+    }
 
-    .about__avatar .sidebar-toggle {
-      transform: translate(-50%, -50%) rotate(45deg);
+    // Stay disabled if beforeinstallprompt was not fired
+    &.disabled {
+      color: #9e9e9e;
+    }
+
+    &.flex-hidden {
+      display: none;
+    }
+
+    &::before {
+      transform-origin: left;
       opacity: 1;
-      transition: transform 300ms, opacity 100ms;
-
-      &::before {
-        opacity: 0;
-        transform: translate(-5px, 0) rotate(-45deg);
-      }
-
-      &::after {
-        transform: translate(0, -12px) rotate(-90deg);
-      }
+      transform: scaleX(1);
+      transition-property: transform, opacity;
+      transition: 0.3s ease, color 0.2s ease;
     }
 
-    .about__sidebar-container {
+    span {
+      display: inline-block;
+      transform-origin: left;
+      width: 0;
+      opacity: 0;
+      margin-left: 0;
+      overflow: hidden;
+      vertical-align: bottom;
+      transition-property: opacity, width, margin-left;
+      transition: 0.3s ease, color 0.2s ease;
+    }
 
-      .about__content,
-      .sidebar {
-        transform: translateX(0);
+    &.expand {
+      background-color: $linkColor;
+      color: white;
+
+      span {
+        margin-left: 3px;
+        opacity: 1;
+        width: 41px;
       }
     }
+  }
+
+  .sidebar__footer a,
+  .navigation a,
+  .social a {
+    text-decoration: none;
+    @include color-transition();
+  }
+
+  .about__timestamp {
+    margin-top: 2em;
+  }
+
+  .sidebar__footer {
+    margin: 1em 0;
+
+    span {
+      text-align: center;
+      display: block;
+    }
+  }
+
+  .about__footer {
+    text-align: center;
   }
 
   // Sidebar start
+  .sidebar__container {
+    left: 0;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   .sidebar {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     list-style: none;
     display: flex;
     flex-direction: column;
-    padding-top: 3vh;
+    z-index: 1;
 
     .sidebar__item--active {
       background-color: #ff94c266;
@@ -291,179 +393,52 @@ main {
 
   // Sidebar end
 
-  .about__content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  // On shift
+  &.shift {
 
-    h2 {
-      font-size: 22px;
-      margin-top: 25px;
-      margin-bottom: 0;
-      color: #222222;
-      font-weight: normal;
-    }
-
-    .tagline {
-      font-size: 22px;
-      margin-top: 0;
-      color: #666;
-      white-space: pre-wrap;
-      line-height: normal;
-      text-align: center;
-      transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-      &:hover {
-        color: $linkColor;
-      }
-    }
-
-    .about-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      #title {
-        margin: 25px 0 15px 0;
-      }
-    }
-
-    p {
-      text-align: center;
-    }
-
-    .about-buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 0.3em;
-
-      .button {
-        border-radius: 24px;
-        padding: 5px 10px;
-      }
-
-      @media screen and (max-width: $midScreenW) {
-        margin-top: 1em;
-
-        .button {
-          margin-left: 0;
-          margin-right: 8px;
-        }
-      }
-    }
-
-    #pwa-install {
-      color: #a160a9;
-      flex: 1 1 35px;
-      transform-origin: left;
-      transition-property: flex, padding, margin;
-      transition: 0.3s ease, color 0.2s ease;
-
-      // Disable default hovering effects
-      &:hover {
-        background-color: $buttonBackground;
-      }
-
-      // Stay disabled if beforeinstallprompt was not fired
-      &.disabled {
-        color: #9e9e9e;
-      }
-
-      &.flex-hidden {
-        display: none;
-      }
+    .about__avatar .sidebar-toggle {
+      transform: translate(-50%, -50%) rotate(45deg);
+      opacity: 1;
+      transition: transform 300ms, opacity 100ms;
 
       &::before {
-        transform-origin: left;
-        opacity: 1;
-        transform: scaleX(1);
-        transition-property: transform, opacity;
-        transition: 0.3s ease, color 0.2s ease;
-      }
-
-      span {
-        display: inline-block;
-        transform-origin: left;
-        width: 0;
         opacity: 0;
-        margin-left: 0;
-        overflow: hidden;
-        vertical-align: bottom;
-        transition-property: opacity, width, margin-left;
-        transition: 0.3s ease, color 0.2s ease;
+        transform: translate(-5px, 0) rotate(-45deg);
       }
 
-      &.expand {
-        background-color: $linkColor;
-        color: white;
-
-        span {
-          margin-left: 3px;
-          opacity: 1;
-          width: 41px;
-        }
+      &::after {
+        transform: translate(0, -12px) rotate(-90deg);
       }
     }
-  }
 
-  @media screen and (max-width: $midScreenW) {
-
-    &,
-    .about__content {
-      align-items: start;
+    .about__footer,
+    .about__tagline {
+      opacity: 0;
     }
-  }
 
-  .about-footer a,
-  .navigation a,
-  .social a {
-    text-decoration: none;
-    @include color-transition();
-  }
-
-  .about-footer {
-    margin: 1em 0;
-
-    span {
-      text-align: center;
-      display: block;
+    .sidebar__container {
+      transition: all .2s;
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 }
 
-section.about {
-
-  /* Responsive about */
+.about--top .about__footer {
 
   @media screen and (max-width: $midScreenW) {
-
-    .condensed {
-      display: none;
-    }
-
-    .about__content {
-
-      .about-header {
-        align-items: start;
-        align-self: start;
-
-        .tagline {
-          font-size: 1.6em;
-          margin-bottom: 0px;
-          text-align: left;
-        }
-
-        h2 {
-          margin: 15px 0;
-        }
-      }
-    }
+    display: none;
   }
 }
 
-footer.about.condensed {
+.about--bottom .about__footer {
+
+  @media screen and (min-width: $midScreenW + 1) {
+    display: none;
+  }
+}
+
+.about__footer-bottom {
   display: none;
   padding-top: 40px;
 
@@ -596,27 +571,39 @@ i.icon-calendar {
   margin-top: 0;
 }
 
-.love-incubator-container,
-.post-container,
-.posts-container,
-.archive-container {
+.content {
   list-style-type: none;
   margin: 45px auto;
-  width: 80%;
+  max-width: 1113px;
+  position: relative;
+  min-height: 100vh;
 
   @media screen and (max-width: $midScreenW) {
     width: auto;
     margin: 0;
     padding: 0;
   }
+}
+
+.main-container {
+  --main-container-padding-right: 5vw;
+  padding: 0 var(--main-container-padding-right) 0 var(--about-width);
+
+  @media screen and (max-width: $bigScreenW) {
+    --main-container-padding-right: 10vw;
+  }
+
+  @media screen and (max-width: $midScreenW) {
+    padding: 0;
+  }
+}
+
+.posts-container {
 
   ul {
     list-style-type: none;
     padding-left: 0;
   }
-}
-
-.posts-container {
 
   .post-title {
     margin-top: 40px;
@@ -816,6 +803,7 @@ i.icon-calendar {
 
 .post-pager {
   @include pager();
+  padding: 0;
 
   li {
     display: flex;
