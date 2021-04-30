@@ -1,4 +1,4 @@
-<div class="sidebar__container">
+<div class="sidebar__container" data-action="animationend->sidebar#endAnimation">
   <ul class="sidebar">
     {% for item in site.plainwhite.sidebar %}
     {% if page.locale == 'en_US' %}{% assign dest = item.url_en %}{% else %}{% assign dest = item.url %}{% endif %}

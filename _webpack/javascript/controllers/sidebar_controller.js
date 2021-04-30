@@ -20,9 +20,11 @@ export default class extends Controller {
   // Connect lifecycle is excecuted each time page loads
   connect() {
     this.updateNav();
+    document.body.addEventListener("click", e => this.hide(e));
   }
 
   set shift(val) {
+    this.element.classList.remove("shift-end");
     this.shiftValue = val;
     this.rippleEvent();
     this.element.classList.toggle("shift", val);
@@ -43,9 +45,20 @@ export default class extends Controller {
   }
 
   toggle(e) {
+    e.stopPropagation();
     // console.log(e);
     this.ripplePos = [e.clientX, e.clientY];
     this.shift = !this.shift;
+  }
+
+  hide(e) {
+    if (!this.shift) return;
+
+    if (!e.target.closest(".sidebar")) this.shift = false;
+  }
+
+  endAnimation() {
+    this.element.classList.add("shift-end");
   }
 
   // Create ripple event
@@ -102,5 +115,16 @@ export default class extends Controller {
     if (Math.abs(this.swipes[0][1] - this.swipes.last()[1]) < 15) return true;
 
     return false;
+  }
+
+  // Update --scroll on a throttled basis
+  updateScroll() {
+    if (!this.updating) requestAnimationFrame(() => this.updateProperty());
+    this.updating = true;
+  }
+
+  updateProperty() {
+    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+    this.updating = false;
   }
 }

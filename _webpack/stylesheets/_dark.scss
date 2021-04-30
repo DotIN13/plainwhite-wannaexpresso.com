@@ -1,5 +1,6 @@
 body.dark {
   background-color: $dark-800;
+  --background: #{$dark-800};
 }
 
 .dark main {
@@ -18,8 +19,7 @@ body.dark {
 
 .dark main {
 
-  .about .about-footer a,
-  .about .about-footer p,
+  .about .sidebar__footer a,
   .about .tagline {
     @include link-hover(#666);
   }
@@ -36,13 +36,6 @@ body.dark {
     &.expand {
       background-color: $linkColor;
       color: white;
-    }
-  }
-
-  footer.about.condensed {
-
-    @media screen and (max-width: $midScreenW) {
-      border-top: 1px solid $dark-200;
     }
   }
 
@@ -66,6 +59,10 @@ body.dark {
   }
 
   /* Sidebar */
+  .sidebar__container {
+    --background: #{$dark-750};
+  }
+
   .sidebar {
     .sidebar__item .sidebar__item-link {
       @include link-hover($darkTextColor, $darkLinkColor);
@@ -199,6 +196,10 @@ body.dark {
 
   .tag-text {
     color: #ddd;
+  }
+
+  .mini-post-list .post-item {
+    border-bottom: 1px solid $dark-200;
   }
 
   /* Moods */
