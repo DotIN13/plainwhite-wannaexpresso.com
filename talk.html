@@ -1,0 +1,32 @@
+---
+layout: default
+javascript: talk
+---
+
+<div class="main-container" data-controller="talk">
+  <h2>你来我往</h2>
+
+  <h3>服务器</h3>
+  <form class="talk__server-form">
+    <input type="text" name="server" id="talk__server" data-talk-target="server">
+    <button class="talk__server-submit" type="submit" data-action="talk#establish">连接</button>
+  </form>
+
+  <h3>找房间</h3>
+  <form class="talk__room-form">
+    <input type="text" name="room" id="talk__room" data-talk-target="room">
+    <button class="talk__room-submit" type="submit" data-action="talk#join"
+      data-talk-target="connectedAction" disabled>加入</button>
+  </form>
+
+  <h3>你的话</h3>
+  <form class="talk__form">
+    <textarea id="talk__message" data-talk-target="message"></textarea>
+    <button class="talk__submit" type="submit" data-action="talk#signal"
+      data-talk-target="connectedAction" disabled>发送</button>
+    <button class="talk__clipboard" type="submit" data-action="talk#syncClipboard focus@window->talk#applyClipboard">同步剪贴板</button>
+  </form>
+
+  <h3>日志</h3>
+  <div class="talk__message_area" data-talk-target="messageArea" data-placeholder="..."></div>
+</div>

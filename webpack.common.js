@@ -30,6 +30,10 @@ module.exports = {
       import: path.join(__dirname, '_webpack', 'javascript', 'love'),
       dependOn: "hotwired",
     },
+    talk: {
+      import: path.join(__dirname, '_webpack', 'javascript', 'talk'),
+      dependOn: "hotwired",
+    },
     hotwired: ["@hotwired/turbo", "stimulus"],
   },
   output: {

@@ -97,6 +97,9 @@ plainwhite:
     - title: Love Incubator
       url: "/love"
       icon: "icon-heart-circled"
+    - title: Everybody Talks
+      url: "/talk"
+      icon: "icon-chat"
   # analytics_id: "UA-159368053-1"
   heap: true
   heap_dev: "180019940"
