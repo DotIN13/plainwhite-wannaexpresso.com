@@ -10,9 +10,20 @@ export default class extends Controller {
     "connectedAction"
   ]
 
+  connect() {
+    if (this.query) {
+      this.websocket = this.query.server;
+      this.websocket.addEventListener("open", () => this.websocket.send(`PUT ${this.query.room}`));
+    }
+  }
+
   set websocket(val) {
-    const newurl = new URL(val);
-    if (this.url?.origin != newurl.origin) {
+    if (!val) {
+      this.wss?.close();
+      this.wss = undefined;
+      return;
+    }
+    if (new URL(this.wss?.url || "ws://localhost").href != new URL(val).href) {
       this.wss?.close();
       this.wss = new WebSocket(val);
       this.wss.onmessage = e => this.onmessage(e);
@@ -60,7 +71,7 @@ export default class extends Controller {
 
   signal(e) {
     e.preventDefault();
-    console.log(this.messageTarget.value);
+    // console.log(this.messageTarget.value);
     this.websocket.send(this.messageTarget.value);
   }
 
@@ -73,5 +84,21 @@ export default class extends Controller {
   applyClipboard() {
     if (this.pendingClip) navigator.clipboard.writeText(this.pendingClip);
     this.pendingClip = undefined;
+  }
+
+  get query() {
+    const params = new URL(window.location).searchParams;
+    const server = params.get("server");
+    const room = params.get("room");
+    if (server && room) return {
+      server: params.get("server"),
+      room: params.get("room")
+    };
+    
+    return null;
+  }
+
+  disconnect() {
+    this.websocket = null;
   }
 }
