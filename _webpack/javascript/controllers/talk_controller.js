@@ -86,6 +86,9 @@ export default class extends Controller {
       .then(clipText => this.websocket.send(`CLIP ${clipText}`));
   }
 
+  // Apply pending clipboard both after receiving message in #onmessage
+  // and after getting focus in inline data-action.
+  // Set 300ms timeout to wait for focus on window after maximizing window.
   applyClipboard() {
     setTimeout(() => {
       if (document.hasFocus() && this.pendingClip) navigator.clipboard.writeText(this.pendingClip);
