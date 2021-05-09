@@ -53,6 +53,7 @@ export default class extends Controller {
       this.buildQR();
     } else if (e.data.startsWith("CLIP")) {
       this.pendingClip = e.data.slice(5);
+      this.applyClipboard();
     }
     const msg = document.createElement('div');
     msg.innerHTML = e.data;
@@ -86,8 +87,7 @@ export default class extends Controller {
   }
 
   applyClipboard() {
-    if (this.pendingClip) navigator.clipboard.writeText(this.pendingClip);
-    this.pendingClip = undefined;
+    if (!document.hasFocus() && this.pendingClip) navigator.clipboard.writeText(this.pendingClip);
   }
 
   get query() {

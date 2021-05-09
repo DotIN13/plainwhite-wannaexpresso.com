@@ -26,7 +26,7 @@ javascript: talk
     <textarea id="talk__message" data-talk-target="message"></textarea>
     <button class="talk__submit" type="submit" data-action="talk#signal"
       data-talk-target="connectedAction" disabled>发送</button>
-    <button class="talk__clipboard" type="submit" data-action="talk#syncClipboard focus@window->talk#applyClipboard">同步剪贴板</button>
+    <button class="talk__clipboard" type="submit" data-action="talk#syncClipboard visibilitychange@document->talk#applyClipboard">同步剪贴板</button>
   </form>
 
   <h3>日志</h3>
