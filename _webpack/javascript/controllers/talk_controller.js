@@ -87,7 +87,7 @@ export default class extends Controller {
   }
 
   applyClipboard() {
-    if (!document.hasFocus() && this.pendingClip) navigator.clipboard.writeText(this.pendingClip);
+    if (document.hasFocus() && this.pendingClip) navigator.clipboard.writeText(this.pendingClip);
   }
 
   get query() {
