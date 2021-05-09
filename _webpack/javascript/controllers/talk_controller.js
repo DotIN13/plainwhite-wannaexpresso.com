@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import QRCode from 'qrcode';
 
 export default class extends Controller {
 
@@ -7,7 +8,8 @@ export default class extends Controller {
     "server",
     "room",
     "messageArea",
-    "connectedAction"
+    "connectedAction",
+    "qrcode"
   ]
 
   connect() {
@@ -48,6 +50,7 @@ export default class extends Controller {
     // console.log(e);
     if (e.data.startsWith("PUT")) {
       this.roomTarget.value = e.data.split(" ")[1];
+      this.buildQR();
     } else if (e.data.startsWith("CLIP")) {
       this.pendingClip = e.data.slice(5);
     }
@@ -62,6 +65,7 @@ export default class extends Controller {
 
   onclose() {
     this.connectedActionTargets.forEach(el => el.disabled = true);
+    this.websocket = null;
   }
 
   join(e) {
@@ -96,6 +100,13 @@ export default class extends Controller {
     };
     
     return null;
+  }
+
+  buildQR() {
+    const url = new URL(window.location);
+    url.searchParams.set("server", this.wss.url);
+    url.searchParams.set("room", this.roomTarget.value);
+    QRCode.toCanvas(this.qrcodeTarget, url.href);
   }
 
   disconnect() {
