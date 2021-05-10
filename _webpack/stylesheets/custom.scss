@@ -11,6 +11,7 @@
 @import "tagcloud";
 @import "moods";
 @import "love_incubator";
+@import "talk";
 @import "controllers";
 @import "dark";
 
@@ -1034,10 +1035,4 @@ table tr td:first-child {
 table tr th:last-child,
 table tr td:last-child {
   margin-bottom: 0;
-}
-
-/* Everybody talks */
-
-.talk__message_area:empty::before {
-  content: attr(data-placeholder);
 }

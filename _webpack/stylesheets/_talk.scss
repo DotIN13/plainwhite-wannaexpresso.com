@@ -1,0 +1,49 @@
+/* Everybody talks */
+
+.talk__message_area:empty::before {
+  content: attr(data-placeholder);
+}
+
+.talk-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "control message";
+  gap: 10px;
+
+  @media screen and (max-width: $midScreenW) {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "control" "message";
+  }
+}
+
+.talk__control-panel {
+  grid-area: control;
+}
+
+.talk__message-panel {
+  grid-area: message;
+}
+
+.talk__qrcode {
+  width: 184px;
+  height: 184px;
+  border: 2px solid #e6e6e6;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin: 1em 0;
+}
+
+.talk-container[data-talk-qr-value=false] {
+
+  .talk__qrcode::before {
+    content: "\e811\20QRCode";
+    font-family: "fontello", "Raleway", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -12,25 +12,27 @@ export default class extends Controller {
     "qrcode"
   ]
 
+  static values = {
+    connected: Boolean,
+    qr: Boolean
+  }
+
   connect() {
-    if (this.query) {
-      this.websocket = this.query.server;
-      this.websocket.addEventListener("open", () => this.websocket.send(`PUT ${this.query.room}`));
+    if (this.currentQuery) {
+      this.websocket = this.currentQuery.server;
+      this.websocket.addEventListener("open", () => this.websocket.send(`PUT ${this.currentQuery.room}`));
     }
   }
 
+  // Websocket getter and setter
   set websocket(val) {
-    if (!val) {
-      this.wss?.close();
-      this.wss = undefined;
-      return;
-    }
     if (new URL(this.wss?.url || "ws://localhost").href != new URL(val).href) {
-      this.wss?.close();
+      this.clearWebsocket();
       this.wss = new WebSocket(val);
       this.wss.onmessage = e => this.onmessage(e);
       this.wss.onopen = () => this.onopen();
       this.wss.onclose = () => this.onclose();
+      this.wss.onerror = () => this.clearWebsocket();
     }
   }
 
@@ -38,18 +40,18 @@ export default class extends Controller {
     return this.wss || undefined;
   }
 
-  establish(e) {
-    e.preventDefault();
-    this.websocket = this.serverTarget.value;
-    // Debug
-    // console.log(this.websocket);
+  clearWebsocket() {
+    this.websocket?.close();
+    this.wss = undefined;
   }
 
+  // Websocket callbacks
   onmessage(e) {
-    // For debug purpose
+    // Debug
     // console.log(e);
     if (e.data.startsWith("PUT")) {
       this.roomTarget.value = e.data.split(" ")[1];
+      this.qrValue = true;
       this.buildQR();
     } else if (e.data.startsWith("CLIP")) {
       this.pendingClip = e.data.slice(5);
@@ -59,29 +61,35 @@ export default class extends Controller {
     msg.innerHTML = e.data;
     this.messageAreaTarget.appendChild(msg);
   }
-
+  
   onopen() {
     this.connectedActionTargets.forEach(el => el.disabled = false);
+    this.connectedValue = !!this.websocket;
   }
-
+  
   onclose() {
     this.connectedActionTargets.forEach(el => el.disabled = true);
-    this.websocket = null;
+    this.clearWebsocket();
+    this.connectedValue = !!this.websocket;
+  }  
+  
+  // Button functions
+  establish() {
+    this.websocket = this.serverTarget.value;
+    // Debug
+    // console.log(this.websocket);
   }
 
-  join(e) {
-    e.preventDefault();
+  join() {
     this.websocket.send(`PUT ${this.roomTarget.value}`);
   }
 
-  signal(e) {
-    e.preventDefault();
+  signal() {
     // console.log(this.messageTarget.value);
     this.websocket.send(this.messageTarget.value);
   }
 
-  syncClipboard(e) {
-    e.preventDefault();
+  syncClipboard() {
     navigator.clipboard.readText()
       .then(clipText => this.websocket.send(`CLIP ${clipText}`));
   }
@@ -95,7 +103,11 @@ export default class extends Controller {
     }, 300);
   }
 
-  get query() {
+  shareRoomLink() {
+    navigator.clipboard.writeText(this.location.href);
+  }
+
+  get currentQuery() {
     const params = new URL(window.location).searchParams;
     const server = params.get("server");
     const room = params.get("room");
@@ -107,14 +119,18 @@ export default class extends Controller {
     return null;
   }
 
-  buildQR() {
+  get location() {
     const url = new URL(window.location);
-    url.searchParams.set("server", this.wss.url);
-    url.searchParams.set("room", this.roomTarget.value);
-    QRCode.toCanvas(this.qrcodeTarget, url.href);
+    if (this.websocket) url.searchParams.set("server", this.websocket?.url);
+    if (this.roomTarget.value != "") url.searchParams.set("room", this.roomTarget.value);
+    return url;
+  }
+
+  buildQR() {
+    QRCode.toCanvas(this.qrcodeTarget, this.location.href, { width: 180 });
   }
 
   disconnect() {
-    this.websocket = null;
+    this.clearWebsocket();
   }
 }

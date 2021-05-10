@@ -3,32 +3,50 @@ layout: default
 javascript: talk
 ---
 
-<div class="main-container" data-controller="talk">
-  <h2>你来我往</h2>
+<div class="talk-container main-container" data-controller="talk"
+  data-talk-qr-value="false">
+  <div class="talk__control-panel">
+    <div class="talk__title">
+      <h2 class="post-title">你来我往</h2>
+      <h3 class="post-subtitle">Connecting People</h3>
+    </div>
 
-  <h3>服务器</h3>
-  <form class="talk__server-form">
-    <input type="text" name="server" id="talk__server" data-talk-target="server">
-    <button class="talk__server-submit" type="submit" data-action="talk#establish">连接</button>
-  </form>
+    <div class="talk__info">
+      <div class="talk__qrcode">
+        <canvas data-talk-target="qrcode"></canvas>
+      </div>
+      <div class="talk__description muted-text">
+        你来我往，为你解决没有数据线的烦恼。不论是你的手机与电脑，你和你的伙伴，还是你和你的家人，只要连接到同一个伺服器，进入同一个房间，就能畅快联络。互通有无，就这么简单。
+      </div>
+    </div>
 
-  <h3>找房间</h3>
-  <form class="talk__room-form">
-    <input type="text" name="room" id="talk__room" data-talk-target="room">
-    <button class="talk__room-submit" type="submit" data-action="talk#join"
-      data-talk-target="connectedAction" disabled>加入</button>
-  </form>
+    <div class="talk__form">
+      <button class="talk__share-link" data-action="talk#shareRoomLink">复制房间链接</button>
+      <button class="talk__clipboard"
+      data-action="talk#syncClipboard visibilitychange@document->talk#applyClipboard">同步剪贴板</button>
 
-  <canvas data-talk-target="qrcode"></canvas>
+      <h3>服务器</h3>
+      <select name="server" id="talk__server" data-talk-target="server">
+        <option value="wss://orange.wannaexpresso.com:5614">Orange服务器</option>
+        {% if jekyll.environment == "development" %}<option value="ws://127.0.0.1:5613">调试服务器</option>{% endif %}
+      </select>
+      <button class="talk__server-submit" type="submit" data-action="talk#establish">连接</button>
 
-  <h3>你的话</h3>
-  <form class="talk__form">
-    <textarea id="talk__message" data-talk-target="message"></textarea>
-    <button class="talk__submit" type="submit" data-action="talk#signal"
-      data-talk-target="connectedAction" disabled>发送</button>
-    <button class="talk__clipboard" type="submit" data-action="talk#syncClipboard visibilitychange@document->talk#applyClipboard">同步剪贴板</button>
-  </form>
+      <h3>找房间</h3>
+      <input type="text" name="room" id="talk__room" data-talk-target="room">
+      <button class="talk__room-submit" type="submit" data-action="talk#join"
+        data-talk-target="connectedAction" disabled>加入</button>
 
-  <h3>日志</h3>
-  <div class="talk__message_area" data-talk-target="messageArea" data-placeholder="..."></div>
+
+      <h3>你的话</h3>
+      <textarea id="talk__message" data-talk-target="message"></textarea>
+      <button class="talk__submit" data-action="talk#signal" data-talk-target="connectedAction"
+        disabled>发送</button>
+    </div>
+  </div>
+
+  <div class="talk__message-panel">
+    <h3>日志</h3>
+    <div class="talk__message_area" data-talk-target="messageArea" data-placeholder="..."></div>
+  </div>
 </div>

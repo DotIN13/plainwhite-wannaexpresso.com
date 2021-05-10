@@ -235,6 +235,46 @@
       "src": "entypo"
     },
     {
+      "uid": "fd45bb961d08f9f2092f0df3fba29fe9",
+      "css": "qrcode",
+      "code": 59409,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "926d7a32ba972f071a46073a4f35d500",
+      "css": "swap_vert",
+      "code": 59410,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M375 125L541 291H416V584H334V291H209ZM666 709H791L625 875 459 709H584V416H666V709Z",
+        "width": 1000
+      },
+      "search": [
+        "swap_vert"
+      ]
+    },
+    {
+      "uid": "a42b598e4298f3319b25a2702a02e7ff",
+      "css": "location",
+      "code": 59412,
+      "src": "entypo"
+    },
+    {
+      "uid": "e3f849e8169a2743611bc7c9aecf811c",
+      "css": "send",
+      "code": 59411,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M84 875V584L709 500 84 416V125L959 500Z",
+        "width": 1000
+      },
+      "search": [
+        "send"
+      ]
+    },
+    {
       "uid": "f2a3b01d6174eab9b80fc7d61d8327a3",
       "css": "pageview",
       "code": 59398,
@@ -10051,7 +10091,7 @@
     {
       "uid": "74bd1688946dc01fccddc0bb294c532a",
       "css": "room",
-      "code": 114,
+      "code": 59411,
       "src": "custom_icons",
       "selected": false,
       "svg": {
@@ -10382,20 +10422,6 @@
       },
       "search": [
         "select_all"
-      ]
-    },
-    {
-      "uid": "e3f849e8169a2743611bc7c9aecf811c",
-      "css": "send",
-      "code": 115,
-      "src": "custom_icons",
-      "selected": false,
-      "svg": {
-        "path": "M84 875V584L709 500 84 416V125L959 500Z",
-        "width": 1000
-      },
-      "search": [
-        "send"
       ]
     },
     {
@@ -11631,23 +11657,9 @@
       ]
     },
     {
-      "uid": "926d7a32ba972f071a46073a4f35d500",
-      "css": "swap_vert",
-      "code": 115,
-      "src": "custom_icons",
-      "selected": false,
-      "svg": {
-        "path": "M375 125L541 291H416V584H334V291H209ZM666 709H791L625 875 459 709H584V416H666V709Z",
-        "width": 1000
-      },
-      "search": [
-        "swap_vert"
-      ]
-    },
-    {
       "uid": "46ed13cba163be1e30edfa6ea90312a6",
       "css": "swap_vertical_circle",
-      "code": 115,
+      "code": 59410,
       "src": "custom_icons",
       "selected": false,
       "svg": {
