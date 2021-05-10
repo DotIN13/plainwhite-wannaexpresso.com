@@ -10,6 +10,7 @@ main {
 
   .posts-label {
     cursor: pointer;
+    padding: 10px 0;
   }
 
   .posts-label__link {
@@ -24,7 +25,6 @@ main {
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 10px 0;
     font-weight: normal;
     margin: 0;
     text-decoration: none;
@@ -34,23 +34,7 @@ main {
     position: relative;
 
     &:hover {
-      color: $darkTextColor;
-
-      &::after {
-        height: 22px;
-      }
-    }
-
-    &::after {
-      content: "";
-      background: #ba68c8bb;
-      width: 100%;
-      height: 5px;
-      display: block;
-      position: absolute;
-      bottom: 20%;
-      z-index: -1;
-      transition: height 130ms ease;
+      color: $dark-700;
     }
   }
 

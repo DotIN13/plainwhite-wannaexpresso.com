@@ -133,6 +133,10 @@ body.dark {
   /* Labelgroup */
   .posts-label__title {
     color: $darkTextColor;
+
+    &:hover {
+      color: #a7a7a7;
+    }
   }
 
   .labelgroup {
