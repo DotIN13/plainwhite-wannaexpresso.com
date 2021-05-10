@@ -336,7 +336,8 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 2;
+    // Pos above searchbar
+    z-index: 4;
 
     @media screen and (max-width: $midScreenW) {
       position: fixed;
