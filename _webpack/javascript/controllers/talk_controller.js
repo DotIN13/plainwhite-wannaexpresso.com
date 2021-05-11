@@ -50,7 +50,7 @@ export default class extends Controller {
   // Websocket callbacks
   onmessage(e) {
     // Debug
-    console.log(e);
+    // console.log(e);
     if (typeof(e.data) == "string") {
       if (e.data.startsWith("PUT")) {
         this.roomTarget.value = e.data.split(" ")[1];
@@ -100,6 +100,9 @@ export default class extends Controller {
 
   sendFile() {
     const file = this.fileTarget.files[0];
+    // Disable file transfer for large files until server supports it
+    // console.log(file.size);
+    if (file.size > 5000000) return console.log("File too large.");
     // Debug
     // console.log(file);
     this.websocket.send(`FILE ${file.name}`);
