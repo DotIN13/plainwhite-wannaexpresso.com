@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import { saveAs } from "file-saver";
 import QRCode from 'qrcode';
 
 export default class extends Controller {
@@ -9,7 +10,8 @@ export default class extends Controller {
     "room",
     "messageArea",
     "connectedAction",
-    "qrcode"
+    "qrcode",
+    "file"
   ]
 
   static values = {
@@ -48,18 +50,25 @@ export default class extends Controller {
   // Websocket callbacks
   onmessage(e) {
     // Debug
-    // console.log(e);
-    if (e.data.startsWith("PUT")) {
-      this.roomTarget.value = e.data.split(" ")[1];
-      this.qrValue = true;
-      this.buildQR();
-    } else if (e.data.startsWith("CLIP")) {
-      this.pendingClip = e.data.slice(5);
-      this.applyClipboard();
+    console.log(e);
+    if (typeof(e.data) == "string") {
+      if (e.data.startsWith("PUT")) {
+        this.roomTarget.value = e.data.split(" ")[1];
+        this.qrValue = true;
+        this.buildQR();
+      } else if (e.data.startsWith("CLIP")) {
+        this.pendingClip = e.data.slice(5);
+        this.applyClipboard();
+      } else if (e.data.startsWith("FILE")) {
+        this.pendingFile = e.data.slice(5);
+      }
+      const msg = document.createElement('div');
+      msg.innerHTML = e.data;
+      this.messageAreaTarget.appendChild(msg);
+    } else {
+      saveAs(e.data, this.pendingFile || "transferred_file");
+      this.pendingFile = undefined;
     }
-    const msg = document.createElement('div');
-    msg.innerHTML = e.data;
-    this.messageAreaTarget.appendChild(msg);
   }
   
   onopen() {
@@ -87,6 +96,14 @@ export default class extends Controller {
   signal() {
     // console.log(this.messageTarget.value);
     this.websocket.send(this.messageTarget.value);
+  }
+
+  sendFile() {
+    const file = this.fileTarget.files[0];
+    // Debug
+    // console.log(file);
+    this.websocket.send(`FILE ${file.name}`);
+    this.websocket.send(file);
   }
 
   syncClipboard() {

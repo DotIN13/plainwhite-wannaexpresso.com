@@ -39,9 +39,12 @@ javascript: talk
 
 
       <h3>你的话</h3>
-      <textarea id="talk__message" data-talk-target="message"></textarea>
-      <button class="talk__submit" data-action="talk#signal" data-talk-target="connectedAction"
-        disabled>发送</button>
+      <textarea class="talk__message" data-talk-target="message"></textarea>
+      <button class="talk__submit talk__submit-message" data-action="talk#signal" data-talk-target="connectedAction"
+        disabled>发送对话</button>
+      <input type="file" class="talk__file" data-talk-target="file">
+      <button class="talk__submit talk__submit-message" data-action="talk#sendFile" data-talk-target="connectedAction"
+        disabled>发送文件</button>
     </div>
   </div>
 
