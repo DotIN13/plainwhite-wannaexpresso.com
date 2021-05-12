@@ -59,15 +59,14 @@ export default class extends Controller {
       } else if (e.data.startsWith("CLIP")) {
         this.pendingClip = e.data.slice(5);
         this.applyClipboard();
-      } else if (e.data.startsWith("FILE")) {
-        this.pendingFile = e.data.slice(5);
+      // } else if (e.data.startsWith("FILE")) {
+      //   this.pendingFile = e.data.slice(5);
       }
       const msg = document.createElement('div');
       msg.innerHTML = e.data;
       this.messageAreaTarget.appendChild(msg);
     } else {
-      saveAs(e.data, this.pendingFile || "transferred_file");
-      this.pendingFile = undefined;
+      this.receiveFile(e.data);
     }
   }
   
@@ -102,11 +101,23 @@ export default class extends Controller {
     const file = this.fileTarget.files[0];
     // Disable file transfer for large files until server supports it
     // console.log(file.size);
-    if (file.size > 5000000) return console.log("File too large.");
+    if (file.size > 50 * 1000 * 1000) return console.log("File too large.");
+    const encodedName = new TextEncoder().encode(file.name);
     // Debug
     // console.log(file);
-    this.websocket.send(`FILE ${file.name}`);
-    this.websocket.send(file);
+    // console.log(file.name, "encoded into", encodedName);
+    const fileBlob = new Blob([new Uint8Array([encodedName.length]), encodedName, file]);
+    this.websocket.send(fileBlob);
+  }
+
+  async receiveFile(data) {
+    const nameLengthBuffer = await data.slice(0, 1).arrayBuffer();
+    const fileNameLength = new Uint8Array(nameLengthBuffer)[0];
+    // Debug
+    // console.log("filename length: ", nameLengthBuffer);
+    const nameBuffer = await data.slice(1, fileNameLength + 1).arrayBuffer();
+    const fileName = new TextDecoder("utf-8").decode(new Uint8Array(nameBuffer));
+    saveAs(data.slice(fileNameLength + 1), fileName);
   }
 
   syncClipboard() {
