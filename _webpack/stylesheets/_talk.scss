@@ -5,35 +5,191 @@
 }
 
 .talk-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: "control message";
-  gap: 10px;
 
-  @media screen and (max-width: $midScreenW) {
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
-    grid-template-areas: "control" "message";
+  // Talk configuration panel
+  .talk__config {
+    width: 450px;
+    background: var(--background);
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 0 rgba(0 0 0 /.25), 0 4px 8px 0 rgba(0 0 0 /.25);
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    padding: 1.5em 2em;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+
+    @media screen and (max-width: $mobileW) {
+      width: 100%;
+      padding: 10px 30px;
+    }
   }
-}
 
-.talk__control-panel {
-  grid-area: control;
-}
+  .talk__config-icon {
+    margin-left: 10px;
+    opacity: 0.8;
+  }
 
-.talk__message-panel {
-  grid-area: message;
-}
+  .form-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 1em 0;
+    width: 100%;
 
-.talk__qrcode {
-  width: 184px;
-  height: 184px;
-  border: 2px solid #e6e6e6;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  margin: 1em 0;
+    label {
+      flex: 0 1 auto;
+      border-radius: 20px;
+      background: $lightPurple;
+      padding: 5px 12px 5px 10px;
+      color: white;
+      margin-right: 15px;
+    }
+
+    .form-field {
+      flex: 1 1 auto;
+      position: relative;
+
+      .muted-text {
+        position: absolute;
+        top: 110%;
+        left: 0;
+      }
+    }
+
+    .text-field,
+    .select {
+      border: none;
+      border-bottom: solid 2px #bbb;
+      padding: 5px 5px;
+      width: 100%;
+    }
+  }
+
+  // Config bottom actions
+  .talk__config-actions {
+    align-self: flex-end;
+    margin: 1.5em 0 1em 0;
+
+    .button {
+      padding: 6px 20px;
+      border: none;
+      border-radius: 4px;
+      margin-left: 15px;
+      margin-right: 0;
+    }
+
+    .talk__config-close-btn {
+      --button-background: transparent;
+    }
+  }
+
+  // On config open
+  &.config-open {
+    .talk__config {
+      display: flex;
+      animation: 240ms ease 1 mmfadeIn forwards;
+    }
+
+    .talk__config-icon::before {
+      animation: 300ms ease 1 cogSpin forwards;
+    }
+  }
+
+  .talk__info {
+    margin: 1em 0;
+  }
+
+  // Messagebox
+  .talk__message-box {
+    margin: 1em 0;
+
+    .talk__message {
+      padding: 1em;
+      width: 100%;
+      border-radius: 15px;
+      border: none;
+      background: $lightGrey;
+      resize: vertical;
+    }
+  }
+
+  // Qrcode
+  // Qrcode wrapper
+  .talk__qrcode {
+    width: 184px;
+    height: 184px;
+    border: 2px solid #e6e6e6;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 1em 0;
+    cursor: pointer;
+    
+    &:hover {
+      background: #eee;
+    }
+  }
+
+  .talk__qrcode-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Talk actions
+  .talk__message-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+  }
+
+  .talk__action {
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background-color: $pinky;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: $linkColor;
+    }
+
+    &::before {
+      content: attr(data-label);
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      color: $dark-200;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .talk__action[disabled] {
+    background-color: $dark-200;
+    cursor: auto;
+  }
+
+  // Hide file input and style label instead
+  #talk__file {
+    display: absolute;
+    height: 0.1px;
+    width: 0.1px;
+    opacity: 0;
+  }
+
+  .talk__file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .talk-container[data-talk-qr-value=false] {

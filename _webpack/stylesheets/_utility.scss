@@ -49,6 +49,11 @@
   text-align: center;
 }
 
+.muted-text {
+  font-size: 12px;
+  color: $dark-200;
+}
+
 @keyframes mmfadeIn {
   from {
     opacity: 0;
@@ -170,5 +175,16 @@
 
   to {
     transform: none;
+  }
+}
+
+@keyframes cogSpin {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: rotate(360deg);
+    color: $linkColor;
   }
 }

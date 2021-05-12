@@ -3,49 +3,76 @@ layout: default
 javascript: talk
 ---
 
-<div class="talk-container main-container" data-controller="talk"
-  data-talk-qr-value="false">
-  <div class="talk__control-panel">
-    <div class="talk__title">
-      <h2 class="post-title">你来我往</h2>
-      <h3 class="post-subtitle">Connecting People</h3>
-    </div>
+<div class="talk-container main-container" data-controller="talk" data-talk-qr-value="false">
 
-    <div class="talk__info">
-      <div class="talk__qrcode">
-        <canvas data-talk-target="qrcode"></canvas>
+  <div class="labelgroup" id="talk-labelgroup"
+    data-action="click->talk#config click@document->talk#closeConfig">
+    <div class="posts-label">
+      <h1 class="posts-label__title">talk<span class="talk__config-icon icon-cog"></span></h1>
+    </div>
+    <div class="talk__config">
+      <div class="form-group talk__qrcode-group" data-action="click->talk#shareRoomLink">
+        <div class="talk__qrcode">
+          <canvas data-talk-target="qrcode" width="180" height="180"></canvas>
+        </div>
+        <span class="talk__qrcode-desc muted-text">点击二维码分享连接。</span>
       </div>
-      <div class="talk__description muted-text">
-        你来我往，为你解决没有数据线的烦恼。不论是你的手机与电脑，你和你的伙伴，还是你和你的家人，只要连接到同一个伺服器，进入同一个房间，就能畅快联络。互通有无，就这么简单。
+      <div class="form-group">
+        <label for="talk__server" class="icon-swap_vert">频道</label>
+        <div class="form-field">
+          <select name="server" id="talk__server" class="talk__select select"
+            data-talk-target="server">
+            <option value="wss://orange.wannaexpresso.com:5614">Orange服务器</option>
+            {% if jekyll.environment == "development" %}<option value="ws://127.0.0.1:5613">调试服务器
+            </option>{% endif %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="talk__room" class="icon-location">房间</label>
+        <div class="form-field">
+          <input type="text" name="room" id="talk__room" class="talk__text-field text-field"
+            data-talk-target="room">
+          <span class="muted-text">如果留空，服务器将自动分配房间。</span>
+        </div>
+      </div>
+      <div class="talk__config-actions">
+        <button class="talk__config-submit button" type="submit"
+          data-action="talk#join">连接</button>
+        <span class="talk__config-close-btn button"
+          data-action="click->talk#closeConfig">关闭</span>
       </div>
     </div>
+  </div>
 
-    <div class="talk__form">
-      <button class="talk__share-link" data-action="talk#shareRoomLink">复制房间链接</button>
-      <button class="talk__clipboard"
-      data-action="talk#syncClipboard visibilitychange@document->talk#applyClipboard">同步剪贴板</button>
-
-      <h3>服务器</h3>
-      <select name="server" id="talk__server" data-talk-target="server">
-        <option value="wss://orange.wannaexpresso.com:5614">Orange服务器</option>
-        {% if jekyll.environment == "development" %}<option value="ws://127.0.0.1:5613">调试服务器</option>{% endif %}
-      </select>
-      <button class="talk__server-submit" type="submit" data-action="talk#establish">连接</button>
-
-      <h3>找房间</h3>
-      <input type="text" name="room" id="talk__room" data-talk-target="room">
-      <button class="talk__room-submit" type="submit" data-action="talk#join"
-        data-talk-target="connectedAction" disabled>加入</button>
-
-
-      <h3>你的话</h3>
-      <textarea class="talk__message" data-talk-target="message"></textarea>
-      <button class="talk__submit talk__submit-message" data-action="talk#signal" data-talk-target="connectedAction"
-        disabled>发送对话</button>
-      <input type="file" class="talk__file" data-talk-target="file">
-      <button class="talk__submit talk__submit-message" data-action="talk#sendFile" data-talk-target="connectedAction"
-        disabled>发送文件</button>
+  <div class="talk__info">
+    <div class="talk__description muted-text">
+      你来我往，为你解决没有数据线的烦恼。不论是你的手机与电脑，你和你的伙伴，还是你和你的家人，只要连接到同一个伺服器，进入同一个房间，就能畅快联络。互通有无，就这么简单。
     </div>
+  </div>
+
+  <div class="talk__message-box">
+    <textarea class="talk__message" rows="4" data-talk-target="message"
+      placeholder="输入你的信息..."></textarea>
+  </div>
+
+  <div class="talk__message-actions">
+    <div class="talk__file-name" data-talk-target="filename"></div>
+    <button for="talk__file" class="talk__file-label talk__action"
+      data-talk-target="connectedAction" data-action="talk#chooseFile" data-label="附件" disabled>
+      <span class="icon-attach-outline"></span>
+      <input type="file" id="talk__file" class="talk__file"
+        data-talk-target="file connectedAction" data-action="change->talk#updateFileName" aria-label="choose file" disabled>
+    </button>
+    <button class="talk__clipboard talk__action"
+      data-action="talk#syncClipboard visibilitychange@document->talk#applyClipboard"
+      data-label="剪贴板" aria-label="sync clipboard" data-talk-target="connectedAction" disabled>
+      <span class="icon-clipboard"></span>
+    </button>
+    <button class="talk__submit-message talk__action" data-action="talk#send" data-label="发送"
+      aria-label="send message" data-talk-target="connectedAction" disabled>
+      <span class="icon-forward-outline"></span>
+    </button>
   </div>
 
   <div class="talk__message-panel">

@@ -32,6 +32,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   --link-text-color: black;
   --background: white;
+  --button-background: #{$buttonBackground};
+  --button-text-color: #616161;
+  --button-hover-text-color: white;
+  --button-hover-background: #{$linkColor};
 }
 
 img,

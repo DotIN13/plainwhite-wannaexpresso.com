@@ -11,7 +11,8 @@ export default class extends Controller {
     "messageArea",
     "connectedAction",
     "qrcode",
-    "file"
+    "file",
+    "filename"
   ]
 
   static values = {
@@ -23,6 +24,8 @@ export default class extends Controller {
     if (this.currentQuery) {
       this.websocket = this.currentQuery.server;
       this.websocket.addEventListener("open", () => this.websocket.send(`PUT ${this.currentQuery.room}`));
+    } else {
+      this.openConfig();
     }
   }
 
@@ -71,30 +74,51 @@ export default class extends Controller {
   }
   
   onopen() {
-    this.connectedActionTargets.forEach(el => el.disabled = false);
+    this.connectedActionTargets.forEach(el => el.removeAttribute("disabled"));
     this.connectedValue = !!this.websocket;
   }
   
   onclose() {
-    this.connectedActionTargets.forEach(el => el.disabled = true);
+    this.connectedActionTargets.forEach(el => el.setAttribute("disabled", ""));
     this.clearWebsocket();
     this.connectedValue = !!this.websocket;
   }  
   
   // Button functions
-  establish() {
-    this.websocket = this.serverTarget.value;
-    // Debug
-    // console.log(this.websocket);
+
+  config(e) {
+    e.stopPropagation();
+    this.openConfig();
+  }
+
+  openConfig() {
+    this.element.classList.add('config-open');
+  }
+
+  closeConfig(e) {
+    e.stopPropagation();
+    this.element.classList.remove('config-open');
   }
 
   join() {
-    this.websocket.send(`PUT ${this.roomTarget.value}`);
+    this.websocket = this.serverTarget.value;
+    // Debug
+    // console.log(this.websocket);
+    if (this.roomTarget.value) this.websocket.send(`PUT ${this.roomTarget.value}`);
   }
 
-  signal() {
+  send() {
     // console.log(this.messageTarget.value);
-    this.websocket.send(this.messageTarget.value);
+    if (this.messageTarget.value != "") this.websocket.send(this.messageTarget.value);
+    if (this.fileTarget.files.length == 1) this.sendFile();
+  }
+
+  chooseFile() {
+    this.fileTarget.click();
+  }
+
+  updateFileName() {
+    if (this.fileTarget.files.length == 1) this.filenameTarget.innerHTML = this.fileTarget.files[0].name;
   }
 
   sendFile() {
@@ -158,7 +182,12 @@ export default class extends Controller {
   }
 
   buildQR() {
-    QRCode.toCanvas(this.qrcodeTarget, this.location.href, { width: 180 });
+    QRCode.toCanvas(this.qrcodeTarget, this.location.href, {
+      width: 180,
+      color: {
+        light: "#ffffff00",
+      },
+    });
   }
 
   disconnect() {

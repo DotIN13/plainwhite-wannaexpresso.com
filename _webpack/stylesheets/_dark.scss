@@ -1,6 +1,10 @@
 body.dark {
   background-color: $dark-800;
   --background: #{$dark-800};
+  --button-background: #{$dark-700};
+  --button-text-color: #{$darkTextColor};
+  --button-hover-text-color: #{$darkTextColor};
+  --button-hover-background: #{$darkLinkColor};
 }
 
 .dark main {

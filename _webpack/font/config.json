@@ -261,18 +261,28 @@
       "src": "entypo"
     },
     {
-      "uid": "e3f849e8169a2743611bc7c9aecf811c",
-      "css": "send",
-      "code": 59411,
-      "src": "custom_icons",
-      "selected": true,
-      "svg": {
-        "path": "M84 875V584L709 500 84 416V125L959 500Z",
-        "width": 1000
-      },
-      "search": [
-        "send"
-      ]
+      "uid": "7336247ba3db350dec8d6c0a47cef966",
+      "css": "cog",
+      "code": 59413,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "6310fc4804f3ffaebc4436ee30f3856e",
+      "css": "attach-outline",
+      "code": 59414,
+      "src": "typicons"
+    },
+    {
+      "uid": "1a27e6346cdf0480c9c22351378bebbb",
+      "css": "clipboard",
+      "code": 59415,
+      "src": "typicons"
+    },
+    {
+      "uid": "ca92083691d138f832d6a9874d7636dc",
+      "css": "forward-outline",
+      "code": 59416,
+      "src": "typicons"
     },
     {
       "uid": "f2a3b01d6174eab9b80fc7d61d8327a3",
@@ -10422,6 +10432,20 @@
       },
       "search": [
         "select_all"
+      ]
+    },
+    {
+      "uid": "e3f849e8169a2743611bc7c9aecf811c",
+      "css": "send",
+      "code": 59411,
+      "src": "custom_icons",
+      "selected": false,
+      "svg": {
+        "path": "M84 875V584L709 500 84 416V125L959 500Z",
+        "width": 1000
+      },
+      "search": [
+        "send"
       ]
     },
     {
