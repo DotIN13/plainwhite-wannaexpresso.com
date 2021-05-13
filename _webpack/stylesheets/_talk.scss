@@ -284,6 +284,9 @@
   }
 
   .talk__log--incoming {
+    animation: 0.5s 1 xMessageFlyIn forwards;
+    opacity: 0;
+    transform: translateX(-80%);
 
     .talk__log-text {
       background: $lightGrey;
