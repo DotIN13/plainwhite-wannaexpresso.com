@@ -1,14 +1,17 @@
 body.dark {
   background-color: $dark-800;
+  --text-color: #{$darkTextColor};
   --background: #{$dark-800};
   --button-background: #{$dark-700};
   --button-text-color: #{$darkTextColor};
   --button-hover-text-color: #{$darkTextColor};
   --button-hover-background: #{$darkLinkColor};
+  --link-text-color: #{$darkLinkColor};
+  --link-hover-color: #{$pinky};
 }
 
 .dark main {
-  background-color: $dark-800;
+  background-color: var(--background);
 
   p,
   h1,
@@ -17,7 +20,7 @@ body.dark {
   h4,
   h5,
   h6 {
-    color: $darkTextColor;
+    color: var(--text-color);
   }
 }
 
@@ -99,11 +102,6 @@ body.dark {
       background-color: $dark-700;
       color: #fff;
     }
-  }
-
-  /* Links */
-  a {
-    @include link-hover($darkLinkColor, $darkTextColor);
   }
 
   .navigation a {
@@ -284,5 +282,43 @@ body.dark {
   // Gothic Blockquote
   blockquote.g_bq {
     color: $lightGrey;
+  }
+
+  /* Talkroom */
+  .talk__message-box .talk__message {
+    background: $dark-700;
+  }
+
+  .talk__action::before {
+    color: #e3e3e3;
+  }
+
+  .talk__action[disabled] .stack-layer {
+    color: rgba(255 255 255 /.36);
+  }
+
+  .talk__config {
+    --background: #{$dark-700};
+  }
+
+  .talk__config-submit {
+    --button-background: #{$dark-400};
+  }
+
+  .talk__qrcode {
+    background: $dark-750;
+
+    &:hover {
+      background: rgb(127 127 127 /.15);
+    }
+
+    canvas {
+      filter: invert(1);
+    }
+  }
+
+  /* Muted Text */
+  .muted-text {
+    color: #d3d3d3;
   }
 }

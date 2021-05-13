@@ -57,21 +57,22 @@ javascript: talk
   </div>
 
   <div class="talk__message-actions">
-    <div class="talk__file-name" data-talk-target="filename"></div>
+    <div class="talk__file-name icon-attach-outline" data-talk-target="filename"></div>
     <button for="talk__file" class="talk__file-label talk__action"
-      data-talk-target="connectedAction" data-action="talk#chooseFile" data-label="附件" disabled>
-      <span class="icon-attach-outline"></span>
+      data-talk-target="connectedAction" data-action="talk#chooseFile" data-label="文件" disabled>
+      {% include icon-stack.html icon="icon-folder-add" %}
       <input type="file" id="talk__file" class="talk__file"
-        data-talk-target="file connectedAction" data-action="change->talk#updateFileName" aria-label="choose file" disabled>
+        data-talk-target="file connectedAction" data-action="change->talk#updateFileName"
+        aria-label="choose file" disabled>
     </button>
     <button class="talk__clipboard talk__action"
       data-action="talk#syncClipboard visibilitychange@document->talk#applyClipboard"
       data-label="剪贴板" aria-label="sync clipboard" data-talk-target="connectedAction" disabled>
-      <span class="icon-clipboard"></span>
+      {% include icon-stack.html icon="icon-clipboard" %}
     </button>
     <button class="talk__submit-message talk__action" data-action="talk#send" data-label="发送"
       aria-label="send message" data-talk-target="connectedAction" disabled>
-      <span class="icon-forward-outline"></span>
+      {% include icon-stack.html icon="icon-forward-outline" %}
     </button>
   </div>
 

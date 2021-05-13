@@ -5,6 +5,7 @@
 }
 
 .talk-container {
+  color: var(--text-color);
 
   // Talk configuration panel
   .talk__config {
@@ -62,8 +63,10 @@
     .select {
       border: none;
       border-bottom: solid 2px #bbb;
+      color: var(--text-color);
       padding: 5px 5px;
       width: 100%;
+      background: 0 0;
     }
   }
 
@@ -103,9 +106,10 @@
 
   // Messagebox
   .talk__message-box {
-    margin: 1em 0;
+    margin: 1em 0 0.5em 0;
 
     .talk__message {
+      color: var(--text-color);
       padding: 1em;
       width: 100%;
       border-radius: 15px;
@@ -126,7 +130,8 @@
     position: relative;
     margin: 1em 0;
     cursor: pointer;
-    
+    background: #f6f6f6d6;
+
     &:hover {
       background: #eee;
     }
@@ -145,50 +150,71 @@
   }
 
   .talk__action {
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    background-color: $pinky;
-    color: white;
-    margin-left: 10px;
+    border-color: transparent !important;
+    background: 0 0;
+    margin-left: 5px;
     cursor: pointer;
+    font-size: 20px;
     position: relative;
+    padding: 0;
+
+    .fa-stack-1x {
+      color: white;
+    }
+
+    .fa-stack-2x.icon-circle {
+      color: $pinky;
+    }
 
     &:hover {
-      background-color: $linkColor;
+
+      .fa-stack-2x.icon-circle {
+        color: $linkColor;
+      }
     }
 
     &::before {
       content: attr(data-label);
-      position: absolute;
-      top: calc(100% + 5px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
       color: $dark-200;
       font-size: 12px;
+      left: 0;
+      top: calc(100% + 5px);
+      width: 100%;
       text-align: center;
+      pointer-events: none;
+      position: absolute;
     }
   }
 
   .talk__action[disabled] {
-    background-color: $dark-200;
     cursor: auto;
+    pointer-events: none;
+
+    .stack-layer {
+      color: rgba(16 16 16 /.3);
+    }
   }
 
   // Hide file input and style label instead
   #talk__file {
-    display: absolute;
+    position: absolute;
     height: 0.1px;
     width: 0.1px;
     opacity: 0;
   }
 
-  .talk__file-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .talk__file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &::before {
+      margin-right: 3px;
+    }
+
+    &:empty::before {
+      display: none;
+    }
   }
 }
 

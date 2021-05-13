@@ -185,6 +185,6 @@
 
   to {
     transform: rotate(360deg);
-    color: $linkColor;
+    color: var(--link-hover-color);
   }
 }

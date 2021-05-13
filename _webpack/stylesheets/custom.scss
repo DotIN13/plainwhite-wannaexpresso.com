@@ -31,6 +31,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --link-text-color: black;
+  --link-hover-color: #{$linkColor};
   --background: white;
   --button-background: #{$buttonBackground};
   --button-text-color: #616161;
@@ -49,7 +50,7 @@ a {
   color: var(--link-text-color);
 
   &:hover {
-    color: $linkColor;
+    color: var(--link-hover-color);
   }
 }
 
@@ -387,7 +388,7 @@ main {
     // Sidebar mobile
     @media screen and (max-width: $midScreenW) {
       height: auto;
-      margin: 15px 10px 50px 10px;
+      margin: 15px 10px;
 
       .sidebar__hide-button {
 
@@ -506,6 +507,7 @@ main {
 
   .fa-stack {
     font-size: 1em;
+    width: 2.5em;
   }
 
   li {
