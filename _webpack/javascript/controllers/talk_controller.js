@@ -85,7 +85,6 @@ export default class extends Controller {
   }  
   
   // Button functions
-
   config(e) {
     e.stopPropagation();
     this.openConfig();
@@ -113,7 +112,11 @@ export default class extends Controller {
       this.websocket.send(this.messageTarget.value);
       this.messageTarget.value = "";
     }
-    if (this.fileTarget.files.length == 1) this.sendFile();
+    if (this.fileTarget.files.length == 1) {
+      this.sendFile();
+      this.fileTarget.value = '';
+      this.updateFileName();
+    }
   }
 
   chooseFile() {
@@ -121,7 +124,7 @@ export default class extends Controller {
   }
 
   updateFileName() {
-    if (this.fileTarget.files.length == 1) this.filenameTarget.innerHTML = this.fileTarget.files[0].name;
+    this.filenameTarget.innerHTML = this.fileTarget.files[0]?.name || '';
   }
 
   sendFile() {
