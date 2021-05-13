@@ -1,6 +1,7 @@
 import { Controller } from "stimulus";
 import { saveAs } from "file-saver";
 import QRCode from 'qrcode';
+import * as Jdenticon from "jdenticon";
 
 export default class extends Controller {
 
@@ -8,7 +9,7 @@ export default class extends Controller {
     "message",
     "server",
     "room",
-    "messageArea",
+    "logArea",
     "connectedAction",
     "qrcode",
     "file",
@@ -65,9 +66,7 @@ export default class extends Controller {
       // } else if (e.data.startsWith("FILE")) {
       //   this.pendingFile = e.data.slice(5);
       }
-      const msg = document.createElement('div');
-      msg.innerHTML = e.data;
-      this.messageAreaTarget.appendChild(msg);
+      this.log_message(e.data, "incoming");
     } else {
       this.receiveFile(e.data);
     }
@@ -110,10 +109,11 @@ export default class extends Controller {
     // console.log(this.messageTarget.value);
     if (this.messageTarget.value != "") {
       this.websocket.send(this.messageTarget.value);
+      this.log_message(this.messageTarget.value, "outgoing");
       this.messageTarget.value = "";
     }
     if (this.fileTarget.files.length == 1) {
-      this.sendFile();
+      this.log_message(this.sendFile(), "outgoing", "file");
       this.fileTarget.value = '';
       this.updateFileName();
     }
@@ -138,6 +138,7 @@ export default class extends Controller {
     // console.log(file.name, "encoded into", encodedName);
     const fileBlob = new Blob([new Uint8Array([encodedName.length]), encodedName, file]);
     this.websocket.send(fileBlob);
+    return file.name;
   }
 
   async receiveFile(data) {
@@ -194,6 +195,21 @@ export default class extends Controller {
         light: "#ffffff00",
       },
     });
+  }
+
+  // Messaging methods
+  log_message(data, dir, type = null) {
+    const msg = `<div class="talk__log talk__log--${dir}">
+      <div class="talk__log-avatar">
+        <svg width="48" height="48" data-jdenticon-value="${dir}"></svg>
+      </div>
+      <div class="talk__log-text talk__log-text--${dir}">
+        ${type == "file" ? "<span class='icon-attach-outline'></span>": ''}
+        ${data}
+      </div>
+    </div>`;
+    this.logAreaTarget.insertAdjacentHTML("afterbegin", msg);
+    Jdenticon.update(this.logAreaTarget.firstElementChild.querySelector("svg"));
   }
 
   disconnect() {
