@@ -109,7 +109,10 @@ export default class extends Controller {
 
   send() {
     // console.log(this.messageTarget.value);
-    if (this.messageTarget.value != "") this.websocket.send(this.messageTarget.value);
+    if (this.messageTarget.value != "") {
+      this.websocket.send(this.messageTarget.value);
+      this.messageTarget.value = "";
+    }
     if (this.fileTarget.files.length == 1) this.sendFile();
   }
 
