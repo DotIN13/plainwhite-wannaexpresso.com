@@ -285,8 +285,9 @@ body.dark {
   }
 
   /* Talkroom */
-  .talk__message-box .talk__message {
-    background: $dark-700;
+  .talk-container {
+    --talk-background: #{$dark-700};
+    --talk-avatar-border-color: #55555575;
   }
 
   .talk__action::before {
