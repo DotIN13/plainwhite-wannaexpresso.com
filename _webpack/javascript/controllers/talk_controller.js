@@ -23,7 +23,9 @@ export default class extends Controller {
     progress: Number,
     putTemplate: String,
     clipTemplate: String,
-    pendTemplate: String
+    pendTemplate: String,
+    fileInTemplate: String,
+    fileOutTemplate: String
   }
 
   connect() {
@@ -60,20 +62,22 @@ export default class extends Controller {
   onmessage(e) {
     // Debug
     // console.log(e);
+    let templateValue = e.data, command = null;
     if (typeof(e.data) == "string") {
-      let templateValue = false;
       if (e.data.startsWith("PUT")) {
+        command = "put";
         this.roomTarget.value = e.data.slice(4);
-        templateValue = `<a href=${this.location.href}}>#${e.data.slice(4)}</a>`;
+        templateValue = `<a href=${this.location.href}>#${e.data.slice(4)}</a>`;
         this.buildQR();
       } else if (e.data.startsWith("CLIP")) {
+        command = "clip";
         templateValue = this.pendingClip = e.data.slice(5);
         this.applyClipboard();
       } else if (e.data.startsWith("PEND")) {
+        command = "pend";
         templateValue = e.data.slice(5);
       }
-      const message = templateValue ? this[`${e.data.split(' ')[0].toLowerCase()}TemplateValue`].replace("#{TEMPLATE}", templateValue) : e.data;
-      this.log_message(message, "incoming");
+      this.log_message(templateValue, "incoming", command);
     } else {
       this.receiveFile(e.data);
     }
@@ -120,7 +124,7 @@ export default class extends Controller {
       this.messageTarget.value = "";
     }
     if (this.fileTarget.files.length == 1) {
-      this.log_message(this.sendFile(), "outgoing", "file");
+      this.log_message(this.sendFile(), "outgoing", "fileOut");
       this.fileTarget.value = '';
       this.updateFileName();
     }
@@ -160,6 +164,7 @@ export default class extends Controller {
     // console.log("filename length: ", nameLengthBuffer);
     const nameBuffer = await data.slice(1, fileNameLength + 1).arrayBuffer();
     const fileName = new TextDecoder("utf-8").decode(new Uint8Array(nameBuffer));
+    this.log_message(fileName, "incoming", "fileIn");
     saveAs(data.slice(fileNameLength + 1), fileName);
   }
 
@@ -216,9 +221,8 @@ export default class extends Controller {
       <div class="talk__log-avatar">
         <svg width="48" height="48" data-jdenticon-value="${dir}"></svg>
       </div>
-      <div class="talk__log-text talk__log-text--${dir}${type == "file" ? " progress" : ""}">
-        ${type == "file" ? "<span class='icon-attach-outline'></span>": ''}
-        ${data}
+      <div class="talk__log-text talk__log-text--${dir}">
+        ${type ? this[`${type}TemplateValue`].replace('#{TEMPLATE}', data) : data}
       </div>
     </div>`;
     this.logAreaTarget.insertAdjacentHTML("afterbegin", msg);
