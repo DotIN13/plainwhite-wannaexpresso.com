@@ -266,7 +266,19 @@
       background: var(--talk-background);
       border-radius: 15px;
       padding: 10px 15px;
+      position: relative;
       overflow-wrap: anywhere;
+      overflow: hidden;
+
+      &.progress::before {
+        background: #eeeeee96;
+        content: "";
+        top: calc(100% - 5px);
+        left: 0;
+        position: absolute;
+        width: calc(var(--progress) * 100%);
+        height: 5px;
+      }
     }
   }
 

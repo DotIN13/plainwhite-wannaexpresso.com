@@ -13,12 +13,17 @@ export default class extends Controller {
     "connectedAction",
     "qrcode",
     "file",
-    "filename"
+    "filename",
+    "progress"
   ]
 
   static values = {
     connected: Boolean,
-    qr: Boolean
+    qr: Boolean,
+    progress: Number,
+    putTemplate: String,
+    clipTemplate: String,
+    pendTemplate: String
   }
 
   connect() {
@@ -56,17 +61,19 @@ export default class extends Controller {
     // Debug
     // console.log(e);
     if (typeof(e.data) == "string") {
+      let templateValue = false;
       if (e.data.startsWith("PUT")) {
-        this.roomTarget.value = e.data.split(" ")[1];
-        this.qrValue = true;
+        this.roomTarget.value = e.data.slice(4);
+        templateValue = `<a href=${this.location.href}}>#${e.data.slice(4)}</a>`;
         this.buildQR();
       } else if (e.data.startsWith("CLIP")) {
-        this.pendingClip = e.data.slice(5);
+        templateValue = this.pendingClip = e.data.slice(5);
         this.applyClipboard();
-      // } else if (e.data.startsWith("FILE")) {
-      //   this.pendingFile = e.data.slice(5);
+      } else if (e.data.startsWith("PEND")) {
+        templateValue = e.data.slice(5);
       }
-      this.log_message(e.data, "incoming");
+      const message = templateValue ? this[`${e.data.split(' ')[0].toLowerCase()}TemplateValue`].replace("#{TEMPLATE}", templateValue) : e.data;
+      this.log_message(message, "incoming");
     } else {
       this.receiveFile(e.data);
     }
@@ -138,7 +145,12 @@ export default class extends Controller {
     // console.log(file.name, "encoded into", encodedName);
     const fileBlob = new Blob([new Uint8Array([encodedName.length]), encodedName, file]);
     this.websocket.send(fileBlob);
+    this.fileInterval = setInterval(() => this.updateProgress(fileBlob.size), 1000);
     return file.name;
+  }
+
+  updateProgress(total) {
+    this.progressValue = 1 - (this.websocket.bufferedAmount / total);
   }
 
   async receiveFile(data) {
@@ -189,6 +201,7 @@ export default class extends Controller {
   }
 
   buildQR() {
+    this.qrValue = true;
     QRCode.toCanvas(this.qrcodeTarget, this.location.href, {
       width: 180,
       color: {
@@ -203,13 +216,23 @@ export default class extends Controller {
       <div class="talk__log-avatar">
         <svg width="48" height="48" data-jdenticon-value="${dir}"></svg>
       </div>
-      <div class="talk__log-text talk__log-text--${dir}">
+      <div class="talk__log-text talk__log-text--${dir}${type == "file" ? " progress" : ""}">
         ${type == "file" ? "<span class='icon-attach-outline'></span>": ''}
         ${data}
       </div>
     </div>`;
     this.logAreaTarget.insertAdjacentHTML("afterbegin", msg);
     Jdenticon.update(this.logAreaTarget.firstElementChild.querySelector("svg"));
+  }
+
+  // Value methods
+  progressValueChanged(val) {
+    this.element.style.setProperty("--progress", val);
+    if (val >= 1) {
+      clearInterval(this.fileInterval);
+      this.element.querySelectorAll('.progress').forEach(el => el.classList.remove('progress'));
+      this.element.style.setProperty("--progress", 0);
+    }
   }
 
   disconnect() {

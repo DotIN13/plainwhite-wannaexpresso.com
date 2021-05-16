@@ -1,9 +1,12 @@
 ---
 layout: default
+title: Everbody Talks
 javascript: talk
 ---
 
-<div class="talk-container main-container" data-controller="talk" data-talk-qr-value="false">
+<div class="talk-container main-container" data-controller="talk" data-talk-qr-value="false"
+  data-talk-pend-template-value="正在接收文件：#{TEMPLATE}。" data-talk-put-template-value="已切换到房间#{TEMPLATE}。"
+  data-talk-clip-template-value="已经同步剪贴板：#{TEMPLATE}。">
 
   <div class="labelgroup" id="talk-labelgroup"
     data-action="click->talk#config click@document->talk#closeConfig">
@@ -75,6 +78,8 @@ javascript: talk
       {% include icon-stack.html icon="icon-forward-outline" %}
     </button>
   </div>
+
+  <div class="talk__send-progress" data-talk-target="progress"></div>
 
   <div class="talk__log-panel">
     <h3>来往</h3>
