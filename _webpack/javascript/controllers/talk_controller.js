@@ -2,6 +2,7 @@ import { Controller } from "stimulus";
 import { saveAs } from "file-saver";
 import QRCode from 'qrcode';
 import * as Jdenticon from "jdenticon";
+import randomName from "../shared/talk_name.js";
 
 export default class extends Controller {
 
@@ -20,23 +21,37 @@ export default class extends Controller {
 
   static values = {
     connected: Boolean,
+    name: String,
+    peerName: String,
     qr: Boolean,
     room: String,
+    locale: String,
     // Keep record of the number of unsent messages
     // Detect and send message on queue change
     queue: Number,
     progress: Number,
-    putTemplate: String,
+    roomTemplate: String,
     clipTemplate: String,
     pendTemplate: String,
     fileInTemplate: String,
-    fileOutTemplate: String
+    fileOutTemplate: String,
+    peerTemplate: String
   }
 
+  get commands() {
+    return [
+      "ROOM",
+      "CLIP",
+      "PEND",
+      "PEER"
+    ];
+  } 
+
   connect() {
+    this.nameValue = randomName(this.localeValue);
     if (this.currentQuery) {
       this.websocket = this.currentQuery.server;
-      this.websocket.addEventListener("open", () => this.websocket.send(`PUT ${this.currentQuery.room}`));
+      this.websocket.addEventListener("open", () => this.websocket.send(`ROOM ${this.currentQuery.room}`));
     } else {
       this.openConfig();
     }
@@ -70,18 +85,18 @@ export default class extends Controller {
     // console.log(e);
     let templateValue = e.data, command = null;
     if (typeof(e.data) == "string") {
-      if (e.data.startsWith("PUT")) {
-        command = "put";
-        this.roomValue = this.roomTarget.value = e.data.slice(4);
-        templateValue = `<a href=${this.location.href}>#${e.data.slice(4)}</a>`;
+      command = this.isCommand(e.data);
+      if (e.data.startsWith("ROOM")) {
+        this.roomValue = this.roomTarget.value = e.data.slice(5);
+        templateValue = `<a href=${this.location.href}>#${e.data.slice(5)}</a>`;
         this.buildQR();
       } else if (e.data.startsWith("CLIP")) {
-        command = "clip";
         templateValue = this.pendingClip = e.data.slice(5);
         this.applyClipboard();
       } else if (e.data.startsWith("PEND")) {
-        command = "pend";
         templateValue = e.data.slice(5);
+      } else if (e.data.startsWith("PEER")) {
+        this.peerNameValue = templateValue = e.data.slice(5);
       }
       this.log_message(templateValue, "incoming", command);
     } else {
@@ -92,6 +107,7 @@ export default class extends Controller {
   onopen() {
     this.connectedActionTargets.forEach(el => el.removeAttribute("disabled"));
     this.connectedValue = !!this.websocket;
+    this.queue(`NAME ${this.nameValue}`);
     this.unQueue();
   }
   
@@ -124,7 +140,7 @@ export default class extends Controller {
     this.websocket = this.serverTarget.value;
     // Debug
     // console.log(this.websocket);
-    if (this.roomTarget.value != this.roomValue) this.queue(`PUT ${this.roomTarget.value}`);
+    if (this.roomTarget.value != this.roomValue) this.queue(`ROOM ${this.roomTarget.value}`);
   }
 
   send() {
@@ -227,17 +243,37 @@ export default class extends Controller {
   }
 
   // Messaging methods
-  log_message(data, dir, type = null) {
-    const msg = `<div class="talk__log talk__log--${dir}">
-      <div class="talk__log-avatar">
-        <svg width="48" height="48" data-jdenticon-value="${dir}"></svg>
-      </div>
-      <div class="talk__log-text talk__log-text--${dir}">
+  log_message(data, dir, command = null) {
+    const msg = (command ? this.commandHTML(data, command) : this.messageHTML(data, dir));
+    this.logAreaTarget.insertAdjacentHTML("afterbegin", msg);
+    const avatar = this.logAreaTarget.firstElementChild.querySelector("svg");
+    if (avatar) Jdenticon.update(avatar, avatar.parentElement.dataset.name);
+  }
+
+  commandHTML(data, type) {
+    return `<div class="talk__log talk__log-command">
+      <div class="talk__log-command-text">
         ${type ? this[`${type}TemplateValue`].replace('#{TEMPLATE}', data) : data}
       </div>
     </div>`;
-    this.logAreaTarget.insertAdjacentHTML("afterbegin", msg);
-    Jdenticon.update(this.logAreaTarget.firstElementChild.querySelector("svg"));
+  }
+
+  messageHTML(data, dir) {
+    return `<div class="talk__log talk__log--${dir}">
+      <div class="talk__log-avatar" data-name="${dir === "outgoing" ? this.nameValue : this.peerNameValue}">
+        <svg width="48" height="48"></svg>
+      </div>
+      <div class="talk__log-text talk__log-text--${dir}">
+        ${data}
+      </div>
+    </div>`;
+  }
+
+  isCommand(msg) {
+    for (const cmd of this.commands) {
+      if (msg.startsWith(cmd)) return cmd.toLowerCase();
+    }
+    return false;
   }
 
   // Progress methods

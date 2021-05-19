@@ -6,10 +6,12 @@ javascript: talk
 
 <div class="talk-container main-container" data-controller="talk" data-talk-qr-value="false"
   data-talk-pend-template-value="正在接收：#{TEMPLATE}。"
-  data-talk-put-template-value="已切换到房间#{TEMPLATE}。"
-  data-talk-clip-template-value="已经同步剪贴板：#{TEMPLATE}。"
+  data-talk-room-template-value="已切换到房间#{TEMPLATE}。"
+  data-talk-clip-template-value="已经同步剪贴板。"
   data-talk-file-in-template-value="<span class='icon-attch-outline'></span> 收到文件：#{TEMPLATE}。"
-  data-talk-file-out-template-value="<span class='icon-attch-outline'></span> 正在发送文件：#{TEMPLATE}。">
+  data-talk-file-out-template-value="<span class='icon-attch-outline'></span> 正在发送文件：#{TEMPLATE}。"
+  data-talk-peer-template-value="#{TEMPLATE}已经加入房间。"
+  data-talk-locale-value="cn">
 
   <div class="labelgroup" id="talk-labelgroup"
     data-action="click->talk#config click@document->talk#closeConfig">

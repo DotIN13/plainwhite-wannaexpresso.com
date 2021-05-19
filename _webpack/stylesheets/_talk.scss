@@ -293,6 +293,7 @@
       border-radius: 8px;
       border: solid 3px var(--talk-avatar-border-color);
       flex: 0 0 54px;
+      position: relative;
 
       svg {
         display: block;
@@ -329,6 +330,21 @@
     animation: 0.5s 1 xMessageFlyIn forwards;
     opacity: 0;
     transform: translateX(-80%);
+  }
+
+  .talk__log-command {
+    display: block;
+    text-align: center;
+    max-width: unset;
+
+    .talk__log-command-text {
+      background: var(--talk-background);
+      border-radius: 25px;
+      display: inline-block;
+      font-size: .85em;
+      max-width: 60%;
+      padding: 10px 15px;
+    }
   }
 }
 
