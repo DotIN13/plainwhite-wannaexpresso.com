@@ -11,21 +11,65 @@
 
   // Talk configuration panel
   .talk__config {
-    width: 450px;
     background: var(--background);
     border-radius: 10px;
-    box-shadow: 0 1px 2px 0 rgba(0 0 0 /.25), 0 4px 8px 0 rgba(0 0 0 /.25);
+    box-shadow: 0px 1px 2px 0px rgb(0 0 0 / .2), 0 4px 8px 0 rgb(0 0 0 / .2), 0px 8px 16px 0 rgb(0 0 0 / .2);
+    column-gap: 30px;
     display: none;
-    flex-direction: column;
+    grid-template-columns: auto 300px;
+    grid-template-rows: auto auto;
+    grid-template-areas: "qr form""qr actions";
     position: absolute;
     padding: 1.5em 2em;
     top: 100%;
     left: 0;
     z-index: 2;
 
-    @media screen and (max-width: $mobileW) {
+    @media screen and (max-width: $smallScreenW) {
       width: 100%;
       padding: 10px 30px;
+    }
+
+    .talk__qrcode-group {
+      grid-area: qr;
+    }
+
+    .talk__config-form {
+      grid-area: form;
+    }
+
+    .talk__config-actions {
+      grid-area: actions;
+    }
+  }
+
+  // Qrcode
+  // Qrcode wrapper
+  .talk__qrcode-group {
+    margin: 1em 0;
+
+    @media screen and (max-width: $smallScreenW) {
+      text-align: center;
+    }
+  }
+
+  .talk__qrcode {
+    width: 184px;
+    height: 184px;
+    border: 2px solid var(--input-border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background: #f6f6f6d6;
+
+    @media screen and (max-width: $smallScreenW) {
+      margin: 1em auto 0.5em auto;
+    }
+
+    &:hover {
+      background: #eee;
     }
   }
 
@@ -35,47 +79,47 @@
   }
 
   .form-group {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin: 1em 0;
     width: 100%;
 
-    label {
-      flex: 0 1 auto;
-      border-radius: 20px;
-      background: $lightPurple;
-      padding: 5px 12px 5px 10px;
-      color: white;
-      margin-right: 15px;
-    }
-
-    .form-field {
-      flex: 1 1 auto;
-      position: relative;
-
-      .muted-text {
-        position: absolute;
-        top: 110%;
-        left: 0;
-      }
+    .muted-text {
+      position: absolute;
+      top: 110%;
+      left: 0;
     }
 
     .text-field,
     .select {
-      border: none;
-      border-bottom: solid 2px #bbb;
       color: var(--text-color);
-      padding: 5px 5px;
-      width: 100%;
-      background: 0 0;
+    }
+  }
+
+  .talk__config-server {
+    display: flex;
+    flex-wrap: nowrap;
+
+    .talk__server {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .talk__server-selector {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      background: #dfe2e545;
+      flex: 1 0 80px;
+      font-size: 14px;
+      margin-left: -2px;
     }
   }
 
   // Config bottom actions
   .talk__config-actions {
-    align-self: flex-end;
+    text-align: right;
     margin: 1.5em 0 1em 0;
+
+    @media screen and (max-width: $smallScreenW) {
+      margin-top: 3em;
+    }
 
     .button {
       padding: 6px 20px;
@@ -93,8 +137,12 @@
   // On config open
   &.config-open {
     .talk__config {
-      display: flex;
+      display: grid;
       animation: 240ms ease 1 mmfadeIn forwards;
+
+      @media screen and (max-width: $smallScreenW) {
+        display: block;
+      }
     }
 
     .talk__config-icon::before {
@@ -112,7 +160,7 @@
     margin: 1em 0 0.5em 0;
     overflow: hidden;
     position: relative;
-  
+
     &.progress::before {
       background: #eeeeee96;
       content: "";
@@ -137,29 +185,6 @@
         box-shadow: 0 0 0 3px #ff94c2a1;
       }
     }
-  }
-
-  // Qrcode
-  // Qrcode wrapper
-  .talk__qrcode {
-    width: 184px;
-    height: 184px;
-    border: 2px solid #e6e6e6;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    margin: 1em 0;
-    cursor: pointer;
-    background: #f6f6f6d6;
-
-    &:hover {
-      background: #eee;
-    }
-  }
-
-  .talk__qrcode-group {
-    flex-direction: column;
-    align-items: center;
   }
 
   // Talk actions

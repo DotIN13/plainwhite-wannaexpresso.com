@@ -300,6 +300,8 @@ body.dark {
 
   .talk__config {
     --background: #{$dark-700};
+    --input-border-color: #818181;
+    --input-label-color: #{$dark-700};
   }
 
   .talk__config-submit {

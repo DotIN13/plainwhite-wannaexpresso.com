@@ -8,6 +8,7 @@ export default class extends Controller {
   static targets = [
     "message",
     "server",
+    "serverSelect",
     "room",
     "logArea",
     "connectedAction",
@@ -35,6 +36,7 @@ export default class extends Controller {
     } else {
       this.openConfig();
     }
+    this.fillServer();
   }
 
   // Websocket getter and setter
@@ -107,6 +109,10 @@ export default class extends Controller {
   closeConfig(e) {
     e.stopPropagation();
     this.element.classList.remove('config-open');
+  }
+
+  fillServer() {
+    this.serverTarget.value = this.serverSelectTarget.value;
   }
 
   join() {

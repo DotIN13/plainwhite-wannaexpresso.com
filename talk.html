@@ -5,38 +5,43 @@ javascript: talk
 ---
 
 <div class="talk-container main-container" data-controller="talk" data-talk-qr-value="false"
-  data-talk-pend-template-value="正在接收：#{TEMPLATE}。" data-talk-put-template-value="已切换到房间#{TEMPLATE}。"
-  data-talk-clip-template-value="已经同步剪贴板：#{TEMPLATE}。" data-talk-file-in-template-value="<span class='icon-attch-outline'></span> 收到文件：#{TEMPLATE}。"
+  data-talk-pend-template-value="正在接收：#{TEMPLATE}。"
+  data-talk-put-template-value="已切换到房间#{TEMPLATE}。"
+  data-talk-clip-template-value="已经同步剪贴板：#{TEMPLATE}。"
+  data-talk-file-in-template-value="<span class='icon-attch-outline'></span> 收到文件：#{TEMPLATE}。"
   data-talk-file-out-template-value="<span class='icon-attch-outline'></span> 正在发送文件：#{TEMPLATE}。">
 
   <div class="labelgroup" id="talk-labelgroup"
     data-action="click->talk#config click@document->talk#closeConfig">
+    <!-- Page label and config button -->
     <div class="posts-label">
       <h1 class="posts-label__title">talk<span class="talk__config-icon icon-cog"></span></h1>
     </div>
+    <!-- Floating config panel -->
     <div class="talk__config">
-      <div class="form-group talk__qrcode-group" data-action="click->talk#shareRoomLink">
+      <!-- QRCode -->
+      <div class="talk__qrcode-group" data-action="click->talk#shareRoomLink">
         <div class="talk__qrcode">
           <canvas data-talk-target="qrcode" width="180" height="180"></canvas>
         </div>
         <span class="talk__qrcode-desc muted-text">点击二维码分享连接。</span>
       </div>
-      <div class="form-group">
-        <label for="talk__server" class="icon-swap_vert">频道</label>
-        <div class="form-field">
-          <select name="server" id="talk__server" class="talk__select select"
-            data-talk-target="server">
-            <option value="wss://orange.wannaexpresso.com:5614">Orange服务器</option>
-            {% if jekyll.environment == "development" %}<option value="ws://127.0.0.1:5613">调试服务器
-            </option>{% endif %}
+      <!-- Inputs -->
+      <div class="talk__config-form wanna__form">
+        <div class="form-group talk__config-server">
+          <input type="text" name="server" id="talk__server" class="talk__server talk__text-field text-field"
+          data-talk-target="server" required>
+          <label for="talk__server" class="icon-swap_vert">频道</label>
+          <select id="talk__server-selector" class="talk__server-selector talk__select select"
+            data-talk-target="serverSelect" data-action="change->talk#fillServer">
+            <option value="wss://orange.wannaexpresso.com:5614">橘子</option>
+            <option value="ws://127.0.0.1:5613">本地</option>
           </select>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="talk__room" class="icon-location">房间</label>
-        <div class="form-field">
+        <div class="form-group">
           <input type="text" name="room" id="talk__room" class="talk__text-field text-field"
-            data-talk-target="room">
+            data-talk-target="room" required>
+          <label for="talk__room" class="icon-location">房间</label>
           <span class="muted-text">如果留空，服务器将自动分配房间。</span>
         </div>
       </div>

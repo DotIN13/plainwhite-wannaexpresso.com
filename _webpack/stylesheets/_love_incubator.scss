@@ -1,3 +1,59 @@
+/* General form control */
+.wanna__form {
+
+  .form-group {
+    margin: 1em 0;
+    position: relative;
+    width: 60%;
+
+    @media screen and (max-width: $mobileW) {
+      width: 100%;
+    }
+
+    label {
+      opacity: .5;
+      transform: translate(10px, -50%);
+      background: 0 0;
+      padding: 0 3px;
+      transform-origin: left;
+      transition: all 160ms ease;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+    }
+
+    .text-field,
+    .select {
+      background: 0 0;
+      padding: 10px 10px;
+      display: block;
+      border: solid 2px var(--input-border-color);
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    &:focus-within {
+
+      .text-field {
+        border: solid 2px #ba68c8;
+        outline: none;
+      }
+    }
+
+    .text-field:valid+label,
+    &:focus-within label {
+      display: inline-block;
+      font-weight: 700;
+      transform: translate(10px, -50%) scale(0.7);
+      background: var(--input-label-color);
+      padding: 0 3px;
+      border-radius: 3px;
+      opacity: 1;
+      top: 0;
+    }
+  }
+}
+
 .love-incubator__title {
   text-align: center;
   margin: 2em 0;
@@ -28,56 +84,9 @@
     flex: 1 1 auto;
     margin: 1em 0;
   }
+}
 
-  .form-group {
-    margin: 1em 0;
-    position: relative;
-    width: 60%;
-
-    @media screen and (max-width: $mobileW) {
-      width: 100%;
-    }
-
-    label {
-      opacity: .5;
-      transform: translate(10px, -50%);
-      background: transparent;
-      padding: 0 3px;
-      transform-origin: left;
-      transition: all 160ms ease;
-      position: absolute;
-      z-index: 1;
-      top: 50%;
-    }
-
-    .text-field {
-      padding: 10px 10px;
-      display: block;
-      border: solid 2px rgba(0, 0, 0, .25);
-      border-radius: 5px;
-      width: 100%;
-    }
-
-    &:focus-within {
-
-      .text-field {
-        border: solid 2px #ba68c8;
-        outline: none;
-      }
-    }
-
-    .text-field:valid+label,
-    &:focus-within label {
-      display: inline-block;
-      font-weight: 700;
-      transform: translate(10px, -50%) scale(0.7);
-      background: #fff;
-      padding: 0 3px;
-      border-radius: 3px;
-      opacity: 1;
-      top: 0;
-    }
-  }
+.love-incubator__form {
 
   .love-incubator__submit {
     position: absolute;
