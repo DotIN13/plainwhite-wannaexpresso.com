@@ -21,6 +21,10 @@ export default class extends Controller {
   static values = {
     connected: Boolean,
     qr: Boolean,
+    room: String,
+    // Keep record of the number of unsent messages
+    // Detect and send message on queue change
+    queue: Number,
     progress: Number,
     putTemplate: String,
     clipTemplate: String,
@@ -68,7 +72,7 @@ export default class extends Controller {
     if (typeof(e.data) == "string") {
       if (e.data.startsWith("PUT")) {
         command = "put";
-        this.roomTarget.value = e.data.slice(4);
+        this.roomValue = this.roomTarget.value = e.data.slice(4);
         templateValue = `<a href=${this.location.href}>#${e.data.slice(4)}</a>`;
         this.buildQR();
       } else if (e.data.startsWith("CLIP")) {
@@ -88,6 +92,7 @@ export default class extends Controller {
   onopen() {
     this.connectedActionTargets.forEach(el => el.removeAttribute("disabled"));
     this.connectedValue = !!this.websocket;
+    this.unQueue();
   }
   
   onclose() {
@@ -119,7 +124,7 @@ export default class extends Controller {
     this.websocket = this.serverTarget.value;
     // Debug
     // console.log(this.websocket);
-    if (this.roomTarget.value) this.websocket.send(`PUT ${this.roomTarget.value}`);
+    if (this.roomTarget.value != this.roomValue) this.queue(`PUT ${this.roomTarget.value}`);
   }
 
   send() {
@@ -235,7 +240,7 @@ export default class extends Controller {
     Jdenticon.update(this.logAreaTarget.firstElementChild.querySelector("svg"));
   }
 
-  // Value methods
+  // Progress methods
   progressValueChanged(val) {
     this.element.style.setProperty("--progress", val);
     if (val >= 1) {
@@ -243,6 +248,31 @@ export default class extends Controller {
       this.element.querySelectorAll('.progress').forEach(el => el.classList.remove('progress'));
       this.element.style.setProperty("--progress", 0);
     }
+  }
+
+  // Queue Methods
+  queue(msg) {
+    this.queueValue ||= 0;
+    this.messageQueue ||= [];
+    this.queueValue += 1;
+    this.messageQueue.push(msg);
+  }
+
+  queueValueChanged() {
+    if (this.queueValue <= 0) return;
+
+    // debugger
+    // console.log("Unloading messages from queue.");
+    this.unQueue();
+  }
+
+  unQueue() {
+    if (this.websocket?.readyState != 1) return;
+
+    // debugger
+    // console.log(this.messageQueue);
+    this.websocket.send(this.messageQueue.shift());
+    this.queueValue -= 1;
   }
 
   disconnect() {
