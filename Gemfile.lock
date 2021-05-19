@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rubyjs/mini_racer
-  revision: 9340611853f850efcfd0af5df0675e2ac3ec9385
+  revision: 5274ab4c3071d1a986cc0036f1696ed5fff9f1a8
   specs:
     mini_racer (0.4.0)
       libv8-node (~> 15.14.0.0)
@@ -24,7 +24,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
-    execjs (2.7.0)
+    execjs (2.8.1)
     ffi (1.15.0)
     forwardable-extended (2.6.0)
     htmlcompressor (0.4.0)
@@ -84,7 +84,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
     mini_portile2 (2.5.1)
-    nokogiri (1.11.3)
+    nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     objective_elements (1.1.2)
@@ -103,7 +103,7 @@ GEM
     regexp_parser (2.1.1)
     rexml (3.2.5)
     rouge (3.26.0)
-    rubocop (1.14.0)
+    rubocop (1.15.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
