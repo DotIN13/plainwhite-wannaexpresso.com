@@ -3,6 +3,7 @@ import { saveAs } from "file-saver";
 import QRCode from 'qrcode';
 import * as Jdenticon from "jdenticon";
 import randomName from "../shared/talk_name.js";
+import Identity from "../shared/identity";
 
 export default class extends Controller {
 
@@ -16,7 +17,8 @@ export default class extends Controller {
     "qrcode",
     "file",
     "filename",
-    "progress"
+    "progress",
+    "peer"
   ]
 
   static values = {
@@ -35,7 +37,8 @@ export default class extends Controller {
     pendTemplate: String,
     fileInTemplate: String,
     fileOutTemplate: String,
-    peerTemplate: String
+    peerTemplate: String,
+    poutTemplate: String
   }
 
   get commands() {
@@ -43,7 +46,8 @@ export default class extends Controller {
       "ROOM",
       "CLIP",
       "PEND",
-      "PEER"
+      "PEER",
+      "POUT"
     ];
   } 
 
@@ -83,31 +87,37 @@ export default class extends Controller {
   onmessage(e) {
     // Debug
     // console.log(e);
-    let templateValue = e.data, command = null;
+    let templateValue = e.data, command = null, log = true;
     if (typeof(e.data) == "string") {
       command = this.isCommand(e.data);
-      if (e.data.startsWith("ROOM")) {
+      if (command === 'room') {
         this.roomValue = this.roomTarget.value = e.data.slice(5);
         templateValue = `<a href=${this.location.href}>#${e.data.slice(5)}</a>`;
         this.buildQR();
-      } else if (e.data.startsWith("CLIP")) {
+      } else if (command === 'clip') {
         templateValue = this.pendingClip = e.data.slice(5);
         this.applyClipboard();
-      } else if (e.data.startsWith("PEND")) {
+      } else if (command === 'pend') {
         templateValue = e.data.slice(5);
-      } else if (e.data.startsWith("PEER")) {
+      } else if (command === 'peer') {
         this.peerNameValue = templateValue = e.data.slice(5);
+      } else if (command === 'pout') {
+        this.peerNameValue = "";
+        templateValue = e.data.slice(5);
+      } else if (command === 'pong') {
+        log = false;
       }
-      this.log_message(templateValue, "incoming", command);
+      if (log) this.log_message(templateValue, "incoming", command);
     } else {
       this.receiveFile(e.data);
     }
   }
   
-  onopen() {
+  async onopen() {
     this.connectedActionTargets.forEach(el => el.removeAttribute("disabled"));
     this.connectedValue = !!this.websocket;
-    this.queue(`NAME ${this.nameValue}`);
+    // On open, always notify server of client name and uuid
+    this.queue(`NAME ${this.nameValue} ${await new Identity().get()}`);
     this.unQueue();
   }
   
@@ -276,7 +286,7 @@ export default class extends Controller {
     return false;
   }
 
-  // Progress methods
+  // Value changed methods
   progressValueChanged(val) {
     this.element.style.setProperty("--progress", val);
     if (val >= 1) {
@@ -284,6 +294,10 @@ export default class extends Controller {
       this.element.querySelectorAll('.progress').forEach(el => el.classList.remove('progress'));
       this.element.style.setProperty("--progress", 0);
     }
+  }
+
+  peerNameValueChanged(val) {
+    this.peerTarget.innerHTML = val === '' ? this.peerTarget.dataset.placeholder : this.peerNameValue;
   }
 
   // Queue Methods
