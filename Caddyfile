@@ -1,4 +1,8 @@
-localhost:4000 {
+localhost:4000, 192.168.28.179:4000 {
   root dist
   file_server
+}
+
+localhost:5614, 192.168.28.179:5614 {
+  reverse_proxy 127.0.0.1:5613
 }

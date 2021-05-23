@@ -54,8 +54,9 @@ export default class extends Controller {
   connect() {
     this.nameValue = randomName(this.localeValue);
     if (this.currentQuery) {
-      this.websocket = this.currentQuery.server;
-      this.websocket.addEventListener("open", () => this.websocket.send(`ROOM ${this.currentQuery.room}`));
+      this.serverTarget.value = this.currentQuery.server;
+      this.roomTarget.value = this.currentQuery.room;
+      this.join();
     } else {
       this.openConfig();
     }
@@ -117,7 +118,8 @@ export default class extends Controller {
     this.connectedActionTargets.forEach(el => el.removeAttribute("disabled"));
     this.connectedValue = !!this.websocket;
     // On open, always notify server of client name and uuid
-    this.queue(`NAME ${this.nameValue} ${await new Identity().get()}`);
+    // Always send NAME frame before other frames
+    this.websocket.send(`NAME ${this.nameValue} ${await new Identity().get()}`);
     this.unQueue();
   }
   
@@ -147,10 +149,10 @@ export default class extends Controller {
   }
 
   join() {
+    if (this.roomTarget.value != this.roomValue) this.queue(`ROOM ${this.roomTarget.value}`);
     this.websocket = this.serverTarget.value;
     // Debug
     // console.log(this.websocket);
-    if (this.roomTarget.value != this.roomValue) this.queue(`ROOM ${this.roomTarget.value}`);
   }
 
   send() {
@@ -309,18 +311,16 @@ export default class extends Controller {
   }
 
   queueValueChanged() {
-    if (this.queueValue <= 0) return;
-
     // debugger
     // console.log("Unloading messages from queue.");
     this.unQueue();
   }
 
   unQueue() {
-    if (this.websocket?.readyState != 1) return;
+    if (this.websocket?.readyState != 1 || this.queueValue <= 0) return;
 
     // debugger
-    // console.log(this.messageQueue);
+    console.log(this.messageQueue);
     this.websocket.send(this.messageQueue.shift());
     this.queueValue -= 1;
   }
