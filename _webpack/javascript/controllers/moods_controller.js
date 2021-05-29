@@ -51,6 +51,6 @@ export default class extends Controller {
       }
     });
     this.buttonPrevTarget.classList.toggle("hide", !this.trackTarget.scrollLeft);
-    this.buttonNextTarget.classList.toggle("hide", this.trackTarget.scrollLeft >= (this.trackTarget.scrollWidth - this.trackTarget.offsetWidth) * .8);
+    this.buttonNextTarget.classList.toggle("hide", this.trackTarget.scrollLeft >= (this.trackTarget.scrollWidth - this.trackTarget.offsetWidth) - 124);
   }
 }
