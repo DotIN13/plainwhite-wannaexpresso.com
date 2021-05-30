@@ -68,7 +68,8 @@
     "zooming": "^2.1.1"
   },
   "resolutions": {
-    "css-minimizer-webpack-plugin/**/is-svg": "^4.3.1"
+    "css-minimizer-webpack-plugin/**/is-svg": "^4.3.1",
+    "@leancloud/platform-adapters-node@^1.1.0/**/ws": "^7.4.6"
   },
   "browserslist": [
     "last 2 versions",
