@@ -162,13 +162,14 @@
     position: relative;
 
     &.progress::before {
-      background: #eeeeee96;
+      background: #ff94c2;
       content: "";
-      top: calc(100% - 5px);
+      height: 5px;
       left: 0;
       position: absolute;
+      top: calc(100% - 5px);
+      transition: width ease 900ms;
       width: calc(var(--progress) * 100%);
-      height: 5px;
     }
 
     .talk__message-textarea {

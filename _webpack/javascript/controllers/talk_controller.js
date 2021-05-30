@@ -32,6 +32,7 @@ export default class extends Controller {
     // Detect and send message on queue change
     queue: Number,
     progress: Number,
+    pong: Boolean,
     roomTemplate: String,
     clipTemplate: String,
     pendTemplate: String,
@@ -47,7 +48,8 @@ export default class extends Controller {
       "CLIP",
       "PEND",
       "PEER",
-      "POUT"
+      "POUT",
+      "PONG"
     ];
   } 
 
@@ -81,7 +83,7 @@ export default class extends Controller {
 
   clearWebsocket() {
     this.websocket?.close();
-    this.wss = undefined;
+    this.roomValue = this.wss = undefined;
   }
 
   // Websocket callbacks
@@ -106,6 +108,7 @@ export default class extends Controller {
         this.peerNameValue = "";
         templateValue = e.data.slice(5);
       } else if (command === 'pong') {
+        this.pongValue = true;
         log = false;
       }
       if (log) this.log_message(templateValue, "incoming", command);
@@ -113,13 +116,14 @@ export default class extends Controller {
       this.receiveFile(e.data);
     }
   }
-  
+
   async onopen() {
     this.connectedActionTargets.forEach(el => el.removeAttribute("disabled"));
     this.connectedValue = !!this.websocket;
     // On open, always notify server of client name and uuid
     // Always send NAME frame before other frames
     this.websocket.send(`NAME ${this.nameValue} ${await new Identity().get()}`);
+    this.keepAlive = setInterval(() => this.queue("PING"), 13000);
     this.unQueue();
   }
   
@@ -127,7 +131,7 @@ export default class extends Controller {
     this.connectedActionTargets.forEach(el => el.setAttribute("disabled", ""));
     this.clearWebsocket();
     this.connectedValue = !!this.websocket;
-  }  
+  }
   
   // Button functions
   config(e) {
@@ -158,7 +162,7 @@ export default class extends Controller {
   send() {
     // console.log(this.messageTarget.value);
     if (this.messageTarget.value != "") {
-      this.websocket.send(this.messageTarget.value);
+      this.queue(this.messageTarget.value);
       this.log_message(this.messageTarget.value, "outgoing");
       this.messageTarget.value = "";
     }
@@ -187,7 +191,7 @@ export default class extends Controller {
     // console.log(file);
     // console.log(file.name, "encoded into", encodedName);
     const fileBlob = new Blob([new Uint8Array([encodedName.length]), encodedName, file]);
-    this.websocket.send(fileBlob);
+    this.queue(fileBlob);
     this.fileInterval = setInterval(() => this.updateProgress(fileBlob.size), 1000);
     return file.name;
   }
@@ -209,7 +213,7 @@ export default class extends Controller {
 
   syncClipboard() {
     navigator.clipboard.readText()
-      .then(clipText => this.websocket.send(`CLIP ${clipText}`));
+      .then(clipText => this.queue(`CLIP ${clipText}`));
   }
 
   // Apply pending clipboard both after receiving message in #onmessage
@@ -229,11 +233,8 @@ export default class extends Controller {
     const params = new URL(window.location).searchParams;
     const server = params.get("server");
     const room = params.get("room");
-    if (server && room) return {
-      server: params.get("server"),
-      room: params.get("room")
-    };
-    
+    if (server && room) return { server, room };
+
     return null;
   }
 
@@ -293,7 +294,6 @@ export default class extends Controller {
     this.element.style.setProperty("--progress", val);
     if (val >= 1) {
       clearInterval(this.fileInterval);
-      this.element.querySelectorAll('.progress').forEach(el => el.classList.remove('progress'));
       this.element.style.setProperty("--progress", 0);
     }
   }
@@ -316,11 +316,20 @@ export default class extends Controller {
     this.unQueue();
   }
 
-  unQueue() {
+  async unQueue() {
     if (this.websocket?.readyState != 1 || this.queueValue <= 0) return;
 
+    // Handle pings
+    if (this.messageQueue[0] === "PING") setTimeout(() => {
+      if (this.pongValue === true) {
+        this.pongValue = false;
+      } else {
+        this.clearWebsocket();
+        this.join();
+      }
+    }, 5000);
     // debugger
-    console.log(this.messageQueue);
+    // console.log(this.messageQueue);
     this.websocket.send(this.messageQueue.shift());
     this.queueValue -= 1;
   }
