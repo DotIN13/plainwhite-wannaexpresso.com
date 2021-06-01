@@ -33,6 +33,7 @@ export default class extends Controller {
     queue: Number,
     progress: Number,
     pong: Boolean,
+    receiving: Boolean,
     roomTemplate: String,
     clipTemplate: String,
     pendTemplate: String,
@@ -91,6 +92,7 @@ export default class extends Controller {
     // Debug
     // console.log(e);
     let templateValue = e.data, command = null, log = true;
+    this.receivingValue = false;
     if (typeof(e.data) == "string") {
       command = this.isCommand(e.data);
       if (command === 'room') {
@@ -101,6 +103,7 @@ export default class extends Controller {
         templateValue = this.pendingClip = e.data.slice(5);
         this.applyClipboard();
       } else if (command === 'pend') {
+        this.receivingValue = true;
         templateValue = e.data.slice(5);
       } else if (command === 'peer') {
         this.peerNameValue = templateValue = e.data.slice(5);
@@ -320,18 +323,23 @@ export default class extends Controller {
     if (this.websocket?.readyState != 1 || this.queueValue <= 0) return;
 
     // Handle pings
-    if (this.messageQueue[0] === "PING") setTimeout(() => {
-      if (this.pongValue === true) {
-        this.pongValue = false;
-      } else {
-        this.clearWebsocket();
-        this.join();
-      }
-    }, 5000);
+    if (this.messageQueue[0] === "PING") this.pongCheck = setInterval(this.receivePong, 5000);
     // debugger
     // console.log(this.messageQueue);
     this.websocket.send(this.messageQueue.shift());
     this.queueValue -= 1;
+  }
+
+  receivePong() {
+    if (this.receivingValue === true) return;
+
+    clearInterval(this.pongInterval);
+    if (this.pongValue === true) {
+      this.pongValue = false;
+    } else {
+      this.clearWebsocket();
+      this.join();
+    }
   }
 
   disconnect() {
