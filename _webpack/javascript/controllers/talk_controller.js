@@ -83,6 +83,7 @@ export default class extends Controller {
   }
 
   clearWebsocket() {
+    clearInterval(this.keepAlive);
     this.websocket?.close();
     this.roomValue = this.wss = undefined;
   }
@@ -323,7 +324,7 @@ export default class extends Controller {
     if (this.websocket?.readyState != 1 || this.queueValue <= 0) return;
 
     // Handle pings
-    if (this.messageQueue[0] === "PING") this.pongCheck = setInterval(this.receivePong, 5000);
+    if (this.messageQueue[0] === "PING") setTimeout(() => this.receivePong(), 5000);
     // debugger
     // console.log(this.messageQueue);
     this.websocket.send(this.messageQueue.shift());
@@ -333,7 +334,6 @@ export default class extends Controller {
   receivePong() {
     if (this.receivingValue === true) return;
 
-    clearInterval(this.pongInterval);
     if (this.pongValue === true) {
       this.pongValue = false;
     } else {
