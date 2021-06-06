@@ -189,3 +189,9 @@
     color: var(--link-hover-color);
   }
 }
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

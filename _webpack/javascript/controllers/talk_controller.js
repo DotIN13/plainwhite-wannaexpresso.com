@@ -17,7 +17,6 @@ export default class extends Controller {
     "qrcode",
     "file",
     "filename",
-    "progress",
     "peer"
   ]
 
@@ -264,7 +263,7 @@ export default class extends Controller {
     const msg = (command ? this.commandHTML(data, command) : this.messageHTML(data, dir));
     this.logAreaTarget.insertAdjacentHTML("afterbegin", msg);
     const avatar = this.logAreaTarget.firstElementChild.querySelector("svg");
-    if (avatar) Jdenticon.update(avatar, avatar.parentElement.dataset.name);
+    if (avatar) Jdenticon.update(avatar, avatar.closest('.talk__log').dataset.name);
   }
 
   commandHTML(data, type) {
@@ -276,8 +275,8 @@ export default class extends Controller {
   }
 
   messageHTML(data, dir) {
-    return `<div class="talk__log talk__log--${dir}">
-      <div class="talk__log-avatar" data-name="${dir === "outgoing" ? this.nameValue : this.peerNameValue}">
+    return `<div class="talk__log talk__log--${dir}" data-name="${dir === "outgoing" ? this.nameValue : this.peerNameValue}">
+      <div class="talk__log-avatar">
         <svg width="48" height="48"></svg>
       </div>
       <div class="talk__log-text talk__log-text--${dir}">
@@ -302,8 +301,17 @@ export default class extends Controller {
     }
   }
 
+  nameValueChanged(val) {
+    this.messageTarget.placeholder = `${val}说...`;
+  }
+
   peerNameValueChanged(val) {
-    this.peerTarget.innerHTML = val === '' ? this.peerTarget.dataset.placeholder : this.peerNameValue;
+    this.peerTarget.innerHTML = val != '' ? val : this.peerTarget.dataset.connectedTemplate;
+  }
+
+  connectedValueChanged(val) {
+    this.peerTarget.innerHTML = val ? this.peerTarget.dataset.connectedTemplate : this.peerTarget.dataset.disconnectedTemplate;
+    this.peerTarget.classList.toggle("talk__log-peer--active", val);
   }
 
   // Queue Methods
