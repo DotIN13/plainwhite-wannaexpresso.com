@@ -1,5 +1,4 @@
 import { Controller } from "stimulus";
-import "../core-ext/array.js";
 
 export default class extends Controller {
 
@@ -84,7 +83,7 @@ export default class extends Controller {
   get swipeX() {
     if (this.swipes.length < 2) return 0;
 
-    return this.swipes.last()[0] - this.swipes[0][0];
+    return this.swipes[this.swipes.length - 1][0] - this.swipes[0][0];
   }
 
   initSwipe() {
@@ -112,7 +111,7 @@ export default class extends Controller {
   validSwipe() {
     if (this.swipes.length < 2) return true;
 
-    if (Math.abs(this.swipes[0][1] - this.swipes.last()[1]) < 15) return true;
+    if (Math.abs(this.swipes[0][1] - this.swipes[this.swipes.length - 1][1]) < 15) return true;
 
     return false;
   }
