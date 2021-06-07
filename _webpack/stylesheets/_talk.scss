@@ -286,6 +286,7 @@
 
   // Peer information
   .talk__log-peer {
+    font-size: 1em;
     font-weight: 400;
     margin-bottom: 2em;
 
@@ -304,12 +305,19 @@
   }
 
   // Log area placeholder
-  .talk__log-area:empty::before {
-    content: attr(data-placeholder);
-    display: block;
-    font-size: 16px;
-    margin: 2em 0;
-    text-align: center;
+  .talk__log-area {
+
+    div:first-child {
+      margin-top: 3em;
+    }
+
+    &:empty::before {
+      content: attr(data-placeholder);
+      display: block;
+      font-size: 16px;
+      margin: 2em 0;
+      text-align: center;
+    }
   }
 
   .talk__log {
@@ -347,7 +355,7 @@
       font-size: 11px;
       position: absolute;
       top: 0;
-      transform: translateY(-100%);
+      transform: translateY(-110%);
     }
   }
 
@@ -366,7 +374,7 @@
     }
 
     &::before {
-      right: 4px;
+      right: 2px;
     }
   }
 
@@ -376,7 +384,7 @@
     transform: translateX(-80%);
 
     &::before {
-      left: 4px;
+      left: 2px;
     }
   }
 
