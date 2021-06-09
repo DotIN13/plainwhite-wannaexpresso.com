@@ -141,10 +141,8 @@ main {
 
   .about__avatar {
     --avatar-size: 136px;
-    height: var(--avatar-size);
     border-radius: 3px;
     position: relative;
-    overflow: hidden;
     z-index: 3;
 
     @media screen and (max-width: $midScreenW) {
@@ -162,18 +160,9 @@ main {
       // Avoid picture tag overflow
       display: block;
       transform-origin: left bottom;
-
-      // Show avatar from the bottom on mobile devices
-      @media screen and (max-width: $midScreenW) {
-        animation: 1s ease-out 1 avatarIn forwards paused;
-        animation-delay: calc(var(--scroll) * -50s + 1s);
-        animation-fill-mode: both;
-      }
     }
 
-    // Sidebar button start
-
-    // Sidebar toggle
+    // Sidebar toggle start
     .sidebar-toggle {
       z-index: 1;
       left: 50%;
@@ -204,7 +193,27 @@ main {
       }
     }
 
-    // Sidebar button end
+    // Sidebar toggle end
+  }
+
+  // Floating avatar
+  .about__avatar--float {
+    --avatar-size: 80px;
+    bottom: 0;
+    position: fixed;
+    transform: translateY(100%);
+    border-radius: 50%;
+
+    img {
+      border-radius: inherit;
+    }
+  }
+
+  &.float-avatar {
+
+    .about__avatar--float {
+      animation: .3s ease 1 avatarIn forwards;
+    }
   }
 
   /* About header */

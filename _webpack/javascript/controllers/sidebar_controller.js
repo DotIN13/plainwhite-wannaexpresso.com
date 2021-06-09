@@ -19,6 +19,7 @@ export default class extends Controller {
   // Connect lifecycle is excecuted each time page loads
   connect() {
     this.updateNav();
+    this.observeAvatar();
     document.body.addEventListener("click", e => this.hide(e));
   }
 
@@ -116,14 +117,30 @@ export default class extends Controller {
     return false;
   }
 
-  // Update --scroll on a throttled basis
-  updateScroll() {
-    if (!this.updating) requestAnimationFrame(() => this.updateProperty());
-    this.updating = true;
+  // Detect intersection between viewport and avatar
+  observeAvatar() {
+    // eslint-disable-next-line no-unused-vars
+    const avatarObserver = new IntersectionObserver((entries, _obs) => this.handleAvatar(entries), {
+      rootMargin: "0px",
+      threshold: [0, 1],
+    });
+    avatarObserver.observe(this.avatarTarget);
   }
 
-  updateProperty() {
-    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-    this.updating = false;
+  handleAvatar(entries) {
+    entries.forEach(e => {
+      this.element.classList.toggle("float-avatar", e.intersectionRatio < 1);
+    });
   }
+
+  // Update --scroll on a throttled basis
+  // updateScroll() {
+  //   if (!this.updating) requestAnimationFrame(() => this.updateProperty());
+  //   this.updating = true;
+  // }
+
+  // updateProperty() {
+  //   document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+  //   this.updating = false;
+  // }
 }

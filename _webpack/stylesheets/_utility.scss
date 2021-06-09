@@ -153,19 +153,8 @@
 }
 
 @keyframes avatarIn {
-  20% {
-    transform: scale(.7);
-    border-radius: 50%;
-    bottom: -105px;
-    position: fixed;
-  }
-
-  100% {
-    transform: scale(.7);
-    bottom: 15px;
-    position: fixed;
-    border-radius: 50%;
-    box-shadow: 0px 6px 8px rgb(0 0 0 / 19%), 0px 4px 6px rgb(0 0 0 / 23%);
+  to {
+    transform: translateY(-40%);
   }
 }
 
