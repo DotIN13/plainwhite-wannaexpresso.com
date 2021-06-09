@@ -144,6 +144,7 @@ main {
   .about__avatar {
     --avatar-size: 136px;
     position: relative;
+    z-index: 1;
 
     @media screen and (max-width: $midScreenW) {
       --avatar-size: 105px;
@@ -314,7 +315,6 @@ main {
 }
 
 .about--top .about__footer {
-  z-index: -1;
 
   @media screen and (max-width: $midScreenW) {
     display: none;
