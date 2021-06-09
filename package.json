@@ -70,7 +70,8 @@
   },
   "resolutions": {
     "css-minimizer-webpack-plugin/**/is-svg": "^4.3.1",
-    "ws": "^7.4.6"
+    "valine/**/ws": "^7.4.6",
+    "css-minimizer-webpack-plugin/**/normalize-url": "^4.5.1"
   },
   "browserslist": [
     "last 2 versions",
