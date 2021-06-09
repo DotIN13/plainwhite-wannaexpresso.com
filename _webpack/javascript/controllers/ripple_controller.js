@@ -21,6 +21,7 @@ export default class extends Controller {
     beginTime: Number,
     // Ripple fill color
     fill: String,
+    fillDark: String
   }
 
   connect() {
@@ -52,7 +53,11 @@ export default class extends Controller {
   drawCircle(x, y, r) {
     this.canvas.beginPath();
     this.canvas.arc(x, y, r, 0, 2 * Math.PI, false);
-    this.canvas.fillStyle = this.fillValue ? this.fillValue : "#eee";
+    if (document.body.classList.contains('dark')) {
+      this.canvas.fillStyle = this.fillValue ? this.fillDarkValue : "#111";
+    } else {
+      this.canvas.fillStyle = this.fillValue ? this.fillValue : "#eee";
+    }
     this.canvas.fill();
   }
 
