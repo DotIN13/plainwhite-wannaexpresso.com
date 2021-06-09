@@ -7,6 +7,7 @@
 @import "syntax";
 @import "utility";
 @import "ext/fontello";
+@import "sidebar";
 @import "search";
 @import "tagcloud";
 @import "moods";
@@ -117,9 +118,10 @@ main {
 }
 
 .about {
+  z-index: 5;
 
   .about__absolute-container {
-    --about-top: 5vh;
+    --about-top: 10vh;
     width: var(--about-width);
     position: absolute;
     padding-top: var(--about-top);
@@ -141,9 +143,7 @@ main {
 
   .about__avatar {
     --avatar-size: 136px;
-    border-radius: 3px;
     position: relative;
-    z-index: 3;
 
     @media screen and (max-width: $midScreenW) {
       --avatar-size: 105px;
@@ -154,46 +154,16 @@ main {
     }
 
     img {
+      border-radius: 3px;
       cursor: pointer;
-      height: var(--avatar-size);
-      width: auto;
       // Avoid picture tag overflow
       display: block;
-      transform-origin: left bottom;
-    }
-
-    // Sidebar toggle start
-    .sidebar-toggle {
+      height: var(--avatar-size);
+      position: relative;
+      transition: box-shadow .6s ease-out;
+      width: auto;
       z-index: 1;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -100%);
-      opacity: 0;
-
-      &,
-      &::before,
-      &::after {
-        position: absolute;
-        height: 3px;
-        width: 20px;
-        background-color: #ba68c8;
-        transition: transform 300ms, opacity 200ms;
-        display: block;
-        border-radius: 2px;
-      }
-
-      &::before {
-        content: "";
-        top: 6px;
-      }
-
-      &::after {
-        content: "";
-        top: 12px;
-      }
     }
-
-    // Sidebar toggle end
   }
 
   // Floating avatar
@@ -204,7 +174,7 @@ main {
     transform: translateY(100%);
     border-radius: 50%;
 
-    img {
+    picture, img {
       border-radius: inherit;
     }
   }
@@ -341,144 +311,10 @@ main {
   .about__footer {
     text-align: center;
   }
-
-  // Sidebar start
-  .sidebar__container {
-    --link-text-color: #4a4a4a;
-    left: 0;
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    // Pos above searchbar
-    z-index: 4;
-
-    @media screen and (max-width: $midScreenW) {
-      position: fixed;
-      right: 0;
-      left: unset;
-      bottom: 0;
-      background-color: var(--background);
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      box-shadow: 0 -1px 2px 0 rgb(0 0 0 / 27%), 0px -3px 8px 0px rgb(0 0 0 / 33%);
-    }
-  }
-
-  .sidebar {
-    padding: 0;
-    margin: 0 auto;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-
-    .sidebar__item--active {
-      background-color: #ff94c266;
-    }
-
-    .sidebar__item .sidebar__item-link {
-      text-decoration: none;
-      padding: 10px 30px;
-      margin: 10px 0 5px 0;
-      border-radius: 3px;
-      display: block;
-      white-space: nowrap;
-      @include link-hover(var(--link-text-color), $linkColor);
-
-      &:hover {
-        background-color: #9e3fc46c;
-      }
-    }
-
-    .sidebar__item-icon {
-      margin-right: .4em;
-    }
-
-    // Sidebar mobile
-    @media screen and (max-width: $midScreenW) {
-      height: auto;
-      margin: 15px 10px;
-
-      .sidebar__hide-button {
-
-        &::before {
-          left: 13px;
-        }
-      }
-
-      .sidebar__item {
-        flex-basis: 100%;
-
-        .sidebar__item-link {
-          margin: 10px 5px;
-        }
-      }
-    }
-  }
-
-  .sidebar__footer {
-    margin: 1em 0;
-
-    span {
-      text-align: center;
-      display: block;
-      @include link-hover(var(--link-text-color), $linkColor);
-
-      @media screen and (max-width: $midScreenW) {
-        display: none;
-      }
-    }
-  }
-
-  // Sidebar end
-
-  // On shift
-  &.shift {
-
-    .about__avatar .sidebar-toggle {
-      transform: translate(-50%, -50%) rotate(45deg);
-      opacity: 1;
-      transition: transform 300ms, opacity 100ms;
-
-      &::before {
-        opacity: 0;
-        transform: translate(-5px, 0) rotate(-45deg);
-      }
-
-      &::after {
-        transform: translate(0, -12px) rotate(-90deg);
-      }
-    }
-
-    .about__footer,
-    .about__tagline {
-      opacity: 0;
-
-      @media screen and (max-width: $midScreenW) {
-        opacity: 1;
-      }
-    }
-
-    .sidebar__container {
-      transition: all .2s;
-      opacity: 1;
-      pointer-events: auto;
-      animation: 360ms ease 1 sidebarMobile forwards;
-    }
-  }
-}
-
-// Cancel animation after animationend
-.shift.shift-end {
-
-  .sidebar__container {
-    animation: none;
-  }
 }
 
 .about--top .about__footer {
+  z-index: -1;
 
   @media screen and (max-width: $midScreenW) {
     display: none;

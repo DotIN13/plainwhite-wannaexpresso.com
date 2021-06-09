@@ -11,27 +11,23 @@ export default class extends Controller {
   ]
 
   static values = {
-    shift: Boolean,
-    list: String,
-    rippleIn: Boolean
+    list: String
   }
 
   // Connect lifecycle is excecuted each time page loads
   connect() {
     this.updateNav();
     this.observeAvatar();
-    document.body.addEventListener("click", e => this.hide(e));
   }
 
   set shift(val) {
     this.element.classList.remove("shift-end");
-    this.shiftValue = val;
-    this.rippleEvent();
+    this.element.dataset.rippleExpandValue = this.shifted = val;
     this.element.classList.toggle("shift", val);
   }
 
   get shift() {
-    return this.shiftValue || false;
+    return this.shifted || false;
   }
 
   // Highlight navigation item when activated
@@ -46,76 +42,65 @@ export default class extends Controller {
 
   toggle(e) {
     e.stopPropagation();
-    // console.log(e);
-    this.ripplePos = [e.clientX, e.clientY];
+    this.element.dataset.ripplePosValue = JSON.stringify([e.clientX, e.clientY]);
     this.shift = !this.shift;
   }
 
-  hide(e) {
+  hide() {
     if (!this.shift) return;
 
-    if (!e.target.closest(".sidebar")) this.shift = false;
+    this.shift = false;
   }
 
-  endAnimation() {
-    this.element.classList.add("shift-end");
-  }
+  // endAnimation() {
+  //   this.element.classList.add("shift-end");
+  // }
 
-  // Create ripple event
-  rippleEvent() {
-    const disturb = new Event("disturb");
-    disturb.offset = this.ripplePos;
-    // True => ripple in
-    disturb.direction = this.shift;
-    this.avatarTarget.dispatchEvent(disturb);
-    this.ripplePos = undefined;
-  }
+  // // Enable swipe for mobile devices
+  // set swipes(evt) {
+  //   this.touchPos ||= [];
+  //   this.touchPos.push([evt.touches[0].clientX, evt.touches[0].clientY]);
+  // }
 
-  // Enable swipe for mobile devices
-  set swipes(evt) {
-    this.touchPos ||= [];
-    this.touchPos.push([evt.touches[0].clientX, evt.touches[0].clientY]);
-  }
+  // get swipes() {
+  //   return this.touchPos || [];
+  // }
 
-  get swipes() {
-    return this.touchPos || [];
-  }
+  // get swipeX() {
+  //   if (this.swipes.length < 2) return 0;
 
-  get swipeX() {
-    if (this.swipes.length < 2) return 0;
+  //   return this.swipes[this.swipes.length - 1][0] - this.swipes[0][0];
+  // }
 
-    return this.swipes[this.swipes.length - 1][0] - this.swipes[0][0];
-  }
-
-  initSwipe() {
-    this.currentTransform = getComputedStyle(this.containerTarget.firstElementChild).transform;
-  }
+  // initSwipe() {
+  //   this.currentTransform = getComputedStyle(this.containerTarget.firstElementChild).transform;
+  // }
   
-  swipe(e) {
-    if (!this.validSwipe()) return;
-    this.swipes = e;
+  // swipe(e) {
+  //   if (!this.validSwipe()) return;
+  //   this.swipes = e;
 
-    this.containerTarget.children.forEach(child => {
-      child.style.transition = "none";
-      child.style.transform = `${this.currentTransform} translateX(${this.swipeX}px)`;
-    });
-  }
+  //   this.containerTarget.children.forEach(child => {
+  //     child.style.transition = "none";
+  //     child.style.transform = `${this.currentTransform} translateX(${this.swipeX}px)`;
+  //   });
+  // }
 
-  clearSwipe() {
-    if (Math.abs(this.swipeX) > this.containerTarget.offsetWidth * .1) this.shift = this.swipeX > 0;
-    this.touchPos = null;
-    this.containerTarget.children.forEach(child => child.style = "");
-    this.currentTransform = undefined;
-  }
+  // clearSwipe() {
+  //   if (Math.abs(this.swipeX) > this.containerTarget.offsetWidth * .1) this.shift = this.swipeX > 0;
+  //   this.touchPos = null;
+  //   this.containerTarget.children.forEach(child => child.style = "");
+  //   this.currentTransform = undefined;
+  // }
 
-  // Determine whether the move is valid
-  validSwipe() {
-    if (this.swipes.length < 2) return true;
+  // // Determine whether the move is valid
+  // validSwipe() {
+  //   if (this.swipes.length < 2) return true;
 
-    if (Math.abs(this.swipes[0][1] - this.swipes[this.swipes.length - 1][1]) < 15) return true;
+  //   if (Math.abs(this.swipes[0][1] - this.swipes[this.swipes.length - 1][1]) < 15) return true;
 
-    return false;
-  }
+  //   return false;
+  // }
 
   // Detect intersection between viewport and avatar
   observeAvatar() {
@@ -132,15 +117,4 @@ export default class extends Controller {
       this.element.classList.toggle("float-avatar", e.intersectionRatio < 1);
     });
   }
-
-  // Update --scroll on a throttled basis
-  // updateScroll() {
-  //   if (!this.updating) requestAnimationFrame(() => this.updateProperty());
-  //   this.updating = true;
-  // }
-
-  // updateProperty() {
-  //   document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-  //   this.updating = false;
-  // }
 }

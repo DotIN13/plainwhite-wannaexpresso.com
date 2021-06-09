@@ -1,45 +1,78 @@
 import { Controller } from "stimulus";
+import { easeCubicOut, easeCubicInOut } from "d3-ease";
 
 export default class extends Controller {
 
-  // Button effects
-  create(event) {
-    this.end = false;
-    this.clearRipple();
-    const diameter = (this.element.clientWidth + this.element.clientHeight) / 2;
-    const circle = this.currentRipple = document.createElement("span");
-    const radius = diameter / 2;
-    circle.className = event.direction ? "ripple ripple-in" : "ripple ripple-out";
-    circle.addEventListener("animationend", () => this.handleRipple(circle, event.direction));
-    circle.style.width = circle.style.height = `${diameter}px`;
-    const rect = this.element.getBoundingClientRect();
-    if (event.offset) {
-      circle.style.left = `${event.offset[0] - rect.left - radius}px`;
-      circle.style.top = `${event.offset[1] - rect.top - radius}px`;
-    } else {
-      circle.style.left = `${rect.width / 2 - radius}}px`;
-      circle.style.top = `${rect.height / 2 - radius}px`;
-    }
-    this.element.appendChild(circle);
+  static targets = [
+    "canvas"
+  ]
+
+  static values = {
+    // Expansion direction
+    expand: Boolean,
+    // Set by sidebar controlller, indicate click position
+    pos: Array,
+    // Current Radius
+    radius: Number,
+    // Target Radius
+    targetRadius: Number,
+    // Beginning time and radius
+    beginRadius: Number,
+    beginTime: Number,
+    // Ripple fill color
+    fill: String,
   }
 
-  /**
-   * @param {boolean} val
-   */
-  set end(val) {
-    this.element.classList.toggle("ripple-end", val);
+  connect() {
+    this.updateCanvasRect();
+    this.canvas = this.canvasTarget.getContext("2d");
   }
 
-  handleRipple(circle, direction) {
-    if (direction) {
-      circle.className = "ripple ripple-in-end";
-    } else {
-      circle.remove();
-    }
-    this.end = true;
+  animate(shift, time = null) {
+    // Log beginning timestamp to calculate time elapsed
+    this.beginTimeValue ||= time;
+    this.beginRadiusValue ||= this.radiusValue;
+    const end = (this.expandValue && this.radiusValue > this.targetRadiusValue) || (!this.expandValue && this.radiusValue === 0);
+    if (end || this.expandValue != shift) return this.beginTimeValue = this.beginRadiusValue = null;
+
+    const elapsedTime = this.beginTimeValue ? (time - this.beginTimeValue) / 750 : 0;
+    // Calculate target radius value for the next frame
+    const easedTime = this.expandValue ? easeCubicOut(elapsedTime) : easeCubicInOut(elapsedTime);
+    this.radiusValue = this.beginRadiusValue + easedTime * (this.targetRadiusValue - this.beginRadiusValue);
+    if (this.radiusValue < 0) this.radiusValue = 0;
+    this.create();
+    window.requestAnimationFrame(time => this.animate(shift, time));
   }
 
-  clearRipple() {
-    this.currentRipple?.remove();
+  create() {
+    this.canvas.clearRect(0, 0, this.canvasTarget.width, this.canvasTarget.height);
+    this.drawCircle(this.posValue[0], this.posValue[1], this.radiusValue);
+  }
+
+  drawCircle(x, y, r) {
+    this.canvas.beginPath();
+    this.canvas.arc(x, y, r, 0, 2 * Math.PI, false);
+    this.canvas.fillStyle = this.fillValue ? this.fillValue : "#eee";
+    this.canvas.fill();
+  }
+
+  updateCanvasRect() {
+    if (this.scrollTimeout) return;
+
+    this.scrollTimeout = setTimeout(() => {
+      this.canvasTarget.width = window.innerWidth;
+      this.canvasTarget.height = window.innerHeight;
+      this.create();
+      this.scrollTimeout = false;
+    }, 130);
+  }
+
+  expandValueChanged(val) {
+    if (!this.canvas) return;
+
+    this.targetRadiusValue = val ? 1.5 * Math.max(this.canvasTarget.width - this.posValue[0], this.canvasTarget.height - this.posValue[1]) : 0;
+    // Nullify begin values to make room for new ones
+    this.beginTimeValue = this.beginRadiusValue = null;
+    this.animate(val);
   }
 }

@@ -158,13 +158,15 @@
   }
 }
 
-@keyframes sidebarMobile {
+@keyframes sidebarItemIn {
   from {
-    transform: translateY(100%);
+    opacity: 0;
+    transform: perspective(100px) translate3d(0, -10px, -20px);
   }
 
   to {
-    transform: none;
+    opacity: 1;
+    transform: perspective(100px) translate3d(0, 0, 0);
   }
 }
 
