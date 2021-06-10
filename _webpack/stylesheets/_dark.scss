@@ -26,6 +26,10 @@ body.dark {
 
 .dark main {
 
+  .about {
+    --ripple-color: #212121;
+  }
+
   .about .sidebar__footer a,
   .about .tagline {
     @include link-hover(#666);

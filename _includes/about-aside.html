@@ -1,10 +1,14 @@
 <aside class="about about__sticky-container about--top" data-controller="sidebar ripple"
-  id="about-container" data-turbo-permanent data-sidebar-list-value="{{ sidebar_list | join: "," }}"
-  data-ripple-radius-value="0" data-ripple-fill-value="#f06292" data-ripple-fill-dark-value="#212121" data-action="resize@window->ripple#updateCanvasRect">
+  id="about-container" data-turbo-permanent
+  data-sidebar-list-value="{{ sidebar_list | join: "," }}" data-ripple-total-frames-value="50"
+  data-ripple-current-frame="0">
   <div class="about__absolute-container">
+    <div class="sidebar__ripple" data-ripple-target="canvas"></div>
+
+    {% include sidebar.html %}
+
     <div class="about__avatar" id="avatar" data-action="click->sidebar#toggle"
       data-sidebar-target="avatar">
-      <canvas class="sidebar__ripple" data-ripple-target="canvas"></canvas>
       {% picture avatar orange.webp --img alt="site avatar" %}
       <!-- span class="sidebar__toggle"></span -->
     </div>
@@ -23,8 +27,6 @@
     {% include about-footer.html position=include.position %}
 
   </div>
-
-  {% include sidebar.html %}
 
   <!-- Place floating button under sidebar so that the floating avatar always shows above the sidebar -->
   <div class="about__avatar about__avatar--float" data-action="click->sidebar#toggle">

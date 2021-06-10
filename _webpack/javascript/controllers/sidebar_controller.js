@@ -20,14 +20,16 @@ export default class extends Controller {
     this.observeAvatar();
   }
 
-  set shift(val) {
-    this.element.classList.remove("shift-end");
-    this.element.dataset.rippleExpandValue = this.shifted = val;
-    this.element.classList.toggle("shift", val);
+  set expand(val) {
+    this.element.classList.remove("expand-end");
+    this.element.dataset.rippleExpandValue = this.expanded = val;
+    // Disable scroll when sidebar expanded
+    document.body.classList.toggle("no-scroll-y", val);
+    this.element.classList.toggle("expand", val);
   }
 
-  get shift() {
-    return this.shifted || false;
+  get expand() {
+    return this.expanded || false;
   }
 
   // Highlight navigation item when activated
@@ -42,18 +44,23 @@ export default class extends Controller {
 
   toggle(e) {
     e.stopPropagation();
-    this.element.dataset.ripplePosValue = JSON.stringify([e.clientX, e.clientY]);
-    this.shift = !this.shift;
+    this.logClick(e);
+    this.expand = !this.expand;
   }
 
-  hide() {
-    if (!this.shift) return;
+  hide(e) {
+    if (!this.expand) return;
 
-    this.shift = false;
+    this.logClick(e);
+    this.expand = false;
+  }
+
+  logClick(e) {
+    this.element.dataset.ripplePosValue = JSON.stringify([e.clientX, e.clientY]);
   }
 
   // endAnimation() {
-  //   this.element.classList.add("shift-end");
+  //   this.element.classList.add("expand-end");
   // }
 
   // // Enable swipe for mobile devices
@@ -87,7 +94,7 @@ export default class extends Controller {
   // }
 
   // clearSwipe() {
-  //   if (Math.abs(this.swipeX) > this.containerTarget.offsetWidth * .1) this.shift = this.swipeX > 0;
+  //   if (Math.abs(this.swipeX) > this.containerTarget.offsetWidth * .1) this.expanded = this.swipeX > 0;
   //   this.touchPos = null;
   //   this.containerTarget.children.forEach(child => child.style = "");
   //   this.currentTransform = undefined;
@@ -107,14 +114,16 @@ export default class extends Controller {
     // eslint-disable-next-line no-unused-vars
     const avatarObserver = new IntersectionObserver((entries, _obs) => this.handleAvatar(entries), {
       rootMargin: "0px",
-      threshold: [0, 1],
+      threshold: 0,
     });
     avatarObserver.observe(this.avatarTarget);
   }
 
   handleAvatar(entries) {
     entries.forEach(e => {
-      this.element.classList.toggle("float-avatar", e.intersectionRatio < 1);
+      // When scrolling up, the intersectionRatio always returns positive
+      // When scrolling down, the intersectionRatio always returns zero
+      this.element.classList.toggle("float-avatar", e.intersectionRatio === 0);
     });
   }
 }

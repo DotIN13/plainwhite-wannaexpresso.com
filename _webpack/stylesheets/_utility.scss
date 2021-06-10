@@ -54,6 +54,11 @@
   color: $dark-200;
 }
 
+.no-scroll-y {
+  height: 100%;
+  overflow-y: hidden;
+}
+
 @keyframes mmfadeIn {
   from {
     opacity: 0;

@@ -12,72 +12,40 @@ export default class extends Controller {
     expand: Boolean,
     // Set by sidebar controlller, indicate click position
     pos: Array,
-    // Current Radius
-    radius: Number,
-    // Target Radius
-    targetRadius: Number,
-    // Beginning time and radius
-    beginRadius: Number,
-    beginTime: Number,
-    // Ripple fill color
-    fill: String,
-    fillDark: String
+    totalFrames: Number,
+    currentFrame: Number,
   }
 
-  connect() {
-    this.updateCanvasRect();
-    this.canvas = this.canvasTarget.getContext("2d");
+  initiateAnimation() {
+    if (this.animation) this.stopAnimation();
+    this.direction = this.expandValue ? 1 : -1;
+    this.element.style.setProperty('--ripple-x', `${this.posValue[0]}px`);
+    this.element.style.setProperty('--ripple-y', `${this.posValue[1]}px`);
+    this.animate();
   }
 
-  animate(shift, time = null) {
-    // Log beginning timestamp to calculate time elapsed
-    this.beginTimeValue ||= time;
-    this.beginRadiusValue ||= this.radiusValue;
-    const end = (this.expandValue && this.radiusValue > this.targetRadiusValue) || (!this.expandValue && this.radiusValue === 0);
-    if (end || this.expandValue != shift) return this.beginTimeValue = this.beginRadiusValue = null;
-
-    const elapsedTime = this.beginTimeValue ? (time - this.beginTimeValue) / 750 : 0;
-    // Calculate target radius value for the next frame
-    const easedTime = this.expandValue ? easeCubicOut(elapsedTime) : easeCubicInOut(elapsedTime);
-    this.radiusValue = this.beginRadiusValue + easedTime * (this.targetRadiusValue - this.beginRadiusValue);
-    if (this.radiusValue < 0) this.radiusValue = 0;
-    this.create();
-    window.requestAnimationFrame(time => this.animate(shift, time));
+  stopAnimation() {
+    if (this.animation) cancelAnimationFrame(this.animation);
+    this.animation = null;
   }
 
-  create() {
-    this.canvas.clearRect(0, 0, this.canvasTarget.width, this.canvasTarget.height);
-    this.drawCircle(this.posValue[0], this.posValue[1], this.radiusValue);
-  }
-
-  drawCircle(x, y, r) {
-    this.canvas.beginPath();
-    this.canvas.arc(x, y, r, 0, 2 * Math.PI, false);
-    if (document.body.classList.contains('dark')) {
-      this.canvas.fillStyle = this.fillValue ? this.fillDarkValue : "#111";
-    } else {
-      this.canvas.fillStyle = this.fillValue ? this.fillValue : "#eee";
+  // WIP: easing should be based on offset, not absolute frame number
+  animate() {
+    this.currentFrameValue += this.direction;
+    const step = this.currentFrameValue / this.totalFramesValue;
+    const easedStep = this.direction > 0 ? easeCubicOut(step) : easeCubicInOut(step);
+    // console.log(`Frame ${this.currentFrameValue} / ${this.totalFramesValue}, step ${step}, easedStep ${easedStep}`);
+    this.element.style.setProperty("--ripple-step", `${(easedStep * 100).toFixed(2)}%`);
+    if (!(this.currentFrameValue % this.totalFramesValue)) {
+      this.stopAnimation();
+      return;
     }
-    this.canvas.fill();
-  }
-
-  updateCanvasRect() {
-    if (this.scrollTimeout) return;
-
-    this.scrollTimeout = setTimeout(() => {
-      this.canvasTarget.width = window.innerWidth;
-      this.canvasTarget.height = window.innerHeight;
-      this.create();
-      this.scrollTimeout = false;
-    }, 130);
+    this.animation = requestAnimationFrame(() => this.animate());
   }
 
   expandValueChanged(val) {
-    if (!this.canvas) return;
+    if (!val && this.currentFrameValue === 0) return;
 
-    this.targetRadiusValue = val ? 1.5 * Math.max(this.canvasTarget.width - this.posValue[0], this.canvasTarget.height - this.posValue[1]) : 0;
-    // Nullify begin values to make room for new ones
-    this.beginTimeValue = this.beginRadiusValue = null;
-    this.animate(val);
+    this.initiateAnimation();
   }
 }
