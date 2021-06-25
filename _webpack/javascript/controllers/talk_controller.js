@@ -33,6 +33,7 @@ export default class extends Controller {
     progress: Number,
     pong: Boolean,
     receiving: Boolean,
+    messageSize: Number,
     roomTemplate: String,
     clipTemplate: String,
     pendTemplate: String,
@@ -73,7 +74,7 @@ export default class extends Controller {
       this.wss.onmessage = e => this.onmessage(e);
       this.wss.onopen = () => this.onopen();
       this.wss.onclose = () => this.onclose();
-      this.wss.onerror = () => this.clearWebsocket();
+      this.wss.onerror = e => this.clearWebsocket(e);
     }
   }
 
@@ -81,7 +82,8 @@ export default class extends Controller {
     return this.wss || undefined;
   }
 
-  clearWebsocket() {
+  clearWebsocket(e = false) {
+    if (e) console.log("WebSocket disconnected on error:", e);
     clearInterval(this.keepAlive);
     this.websocket?.close();
     this.roomValue = this.wss = undefined;
@@ -195,12 +197,7 @@ export default class extends Controller {
     // console.log(file.name, "encoded into", encodedName);
     const fileBlob = new Blob([new Uint8Array([encodedName.length]), encodedName, file]);
     this.queue(fileBlob);
-    this.fileInterval = setInterval(() => this.updateProgress(fileBlob.size), 1000);
     return file.name;
-  }
-
-  updateProgress(total) {
-    this.progressValue = 1 - (this.websocket.bufferedAmount / total);
   }
 
   async receiveFile(data) {
@@ -323,20 +320,35 @@ export default class extends Controller {
   }
 
   queueValueChanged() {
+    if (this.progressMonitor) return;
+    if (this.websocket?.readyState != 1 || this.queueValue <= 0) return;
+
     // debugger
     // console.log("Unloading messages from queue.");
     this.unQueue();
   }
 
-  async unQueue() {
-    if (this.websocket?.readyState != 1 || this.queueValue <= 0) return;
-
-    // Handle pings
-    if (this.messageQueue[0] === "PING") setTimeout(() => this.receivePong(), 5000);
+  unQueue() {
     // debugger
     // console.log(this.messageQueue);
-    this.websocket.send(this.messageQueue.shift());
-    this.queueValue -= 1;
+    const msg = this.messageQueue.shift();
+    // Handle pings
+    if (msg === "PING") setTimeout(() => this.receivePong(), 5000);
+    this.messageSizeValue = new Blob([msg]).size;
+    this.websocket.send(msg);
+    this.progressMonitor = setInterval(() => this.sendBuffer = this.websocket?.bufferedAmount, 200);
+  }
+
+  /**
+   * @param {number} val
+   */
+  set sendBuffer(val) {
+    this.progressValue = 1 - (val / this.messageSizeValue);
+    if (val === 0) {
+      clearInterval(this.progressMonitor);
+      this.progressMonitor = null;
+      this.queueValue -= 1;
+    }
   }
 
   receivePong() {
@@ -345,7 +357,7 @@ export default class extends Controller {
     if (this.pongValue === true) {
       this.pongValue = false;
     } else {
-      this.clearWebsocket();
+      this.clearWebsocket("No pong received in 5 seconds.");
       this.join();
     }
   }
