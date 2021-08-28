@@ -75,7 +75,7 @@ VLESS是一种新晋的数据传输协议，其数据结构根据[开发者的�
                 "vnext": [
                     {
                         "address": "REDACTED", // 服务端IP地址或域名
-                        "port": REDACTED, // 服务端端口
+                        "port": "REDACTED", // 服务端端口
                         "users": [
                             {
                                 "id": "REDACTED", // 客户端密钥
