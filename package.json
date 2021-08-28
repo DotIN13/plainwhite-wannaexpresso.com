@@ -64,6 +64,7 @@
     "workbox-strategies": "^6.1.2",
     "workbox-webpack-plugin": "^6.1.2",
     "workbox-window": "^6.1.2",
+    "ws": "^7.4.6",
     "zooming": "^2.1.1"
   },
   "resolutions": {
