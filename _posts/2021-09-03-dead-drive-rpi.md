@@ -101,9 +101,11 @@ Aug 26 16:01:14 dottypi aria2c[498]: 08/26 16:01:14 [#033[1;32mNOTICE#033[0m] GI
 
 ## 附录
 
-日志如下：
-
-```yaml
+<details>
+<summary>
+日志
+</summary>
+{% highlight yaml %}
 Aug 26 09:12:55 dottypi kernel: [808772.369054] sd 0:0:0:0: [sda] tag#1 UNKNOWN(0x2003) Result: hostbyte=0x00 driverbyte=0x08 cmd_age=12s
 Aug 26 09:12:55 dottypi kernel: [808772.369096] sd 0:0:0:0: [sda] tag#1 Sense Key : 0x3 [current] 
 Aug 26 09:12:55 dottypi kernel: [808772.369132] sd 0:0:0:0: [sda] tag#1 ASC=0x11 ASCQ=0x0 
@@ -242,7 +244,5 @@ Aug 26 09:19:34 dottypi systemd[1]: Failed unmounting /mnt/Videos.
 Aug 26 09:19:34 dottypi systemd[1]: mnt-Videos.mount: Unit is bound to inactive unit dev-disk-by\x2dpartuuid-d6d003c5\x2dce0f\x2d4af1\x2da18b\x2dd82175e41a10.device, but not stopping since we tried this too often recently.
 Aug 26 09:19:34 dottypi kernel: [809171.940001] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x07 driverbyte=0x00
 Aug 26 09:19:34 dottypi kernel: [809172.000572] xhci_hcd 0000:01:00.0: WARN Can't disable streams for endpoint 0x82, streams are being disabled already
-```
-
-
-
+{% endhighlight %}
+</details>
