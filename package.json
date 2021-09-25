@@ -6,7 +6,7 @@
   "scripts": {
     "develop:nowatch": "webpack --config webpack.dev.js && bundle exec jekyll build",
     "develop": "run-p develop:{webpack,jekyll}",
-    "develop:jekyll": "sleep 5 && bundle exec jekyll serve --host 0.0.0.0 --watch",
+    "develop:jekyll": "sleep 5 && bundle exec jekyll serve --host localhost --watch",
     "develop:webpack": "webpack --config webpack.dev.js --progress --watch",
     "dryrun": "run-s build caddy",
     "build": "run-s build:webpack build:jekyll",
