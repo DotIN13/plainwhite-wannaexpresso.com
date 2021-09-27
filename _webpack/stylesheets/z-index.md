@@ -29,4 +29,4 @@
 
 ## Z-index: 9999
 
-+ .portal__container-toast
++ .portal__container--toast

@@ -34,7 +34,7 @@ module.exports = {
       import: path.join(__dirname, '_webpack', 'javascript', 'talk'),
       dependOn: "hotwired",
     },
-    hotwired: ["@hotwired/turbo", "stimulus"],
+    hotwired: ["@hotwired/turbo", "@hotwired/stimulus"],
   },
   output: {
     path: path.resolve(__dirname, 'dist/assets/public'),

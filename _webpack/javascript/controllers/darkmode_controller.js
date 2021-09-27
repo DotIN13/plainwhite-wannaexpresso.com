@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 const getCookie = (name) => {
   const v = document.cookie.match(`(^|;) ?${name}=([^;]*)(;|$)`);

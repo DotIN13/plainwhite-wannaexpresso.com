@@ -5,7 +5,7 @@ import initWorkbox from './workbox-utilities';
 import * as Turbo from "@hotwired/turbo";
 
 // Stimulus
-import { Application } from "stimulus";
+import { Application } from "@hotwired/stimulus";
 import PortalController from "../controllers/portal_controller";
 import SidebarController from "../controllers/sidebar_controller";
 import DarkmodeController from "../controllers/darkmode_controller";

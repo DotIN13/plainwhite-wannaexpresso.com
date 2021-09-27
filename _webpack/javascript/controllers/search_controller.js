@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import SimpleJekyllSearch from 'simple-jekyll-search';
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
 

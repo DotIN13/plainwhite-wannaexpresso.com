@@ -1,4 +1,4 @@
-import { Application } from "stimulus";
+import { Application } from "@hotwired/stimulus";
 import IncubatorController from "../controllers/incubator_controller";
 
 const application = Application.start();

@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 String.prototype.empty = function() {
   if (this.trim() === "") return true;

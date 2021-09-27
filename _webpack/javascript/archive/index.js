@@ -1,4 +1,4 @@
-import { Application } from "stimulus";
+import { Application } from "@hotwired/stimulus";
 import SearchController from "../controllers/search_controller";
 import ArchiveController from "../controllers/archive_controller";
 

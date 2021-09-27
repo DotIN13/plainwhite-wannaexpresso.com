@@ -24,6 +24,33 @@
   box-sizing: border-box;
 }
 
+:root {
+  --about-width: 320px;
+  --main-margin: auto;
+
+  @media screen and (max-width: $bigScreenW) {
+    --about-width: 280px;
+    --main-margin: 90px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    --about-width: 240px;
+    --main-margin: 75px;
+  }
+
+  @media screen and (max-width: $midScreenW) {
+    --main-margin: 35px;
+  }
+
+  @media screen and (max-width: $mobileW) {
+    --main-margin: 10px;
+  }
+
+  @media screen and (max-width: $smallMobileW) {
+    --main-margin: 0;
+  }
+}
+
 body {
   @include sans-serif();
   font-size: 16px;
@@ -72,32 +99,15 @@ h2 {
 /* Main */
 
 main {
-  margin: 0 auto;
+  margin: 0 var(--main-margin);
   position: relative;
-  --about-width: 320px;
-
-  @media screen and (max-width: $bigScreenW) {
-    --about-width: 280px;
-    margin: 0 90px;
-  }
-
-  @media screen and (max-width: 1280px) {
-    --about-width: 240px;
-    margin: 0 75px;
-  }
 
   @media screen and (max-width: $midScreenW) {
     padding: 0 30px;
-    margin: 0 35px;
-  }
-
-  @media screen and (max-width: $mobileW) {
-    margin: 0 10px;
   }
 
   @media screen and (max-width: $smallMobileW) {
     padding: 0 20px;
-    margin: 0;
   }
 
   .content {
@@ -175,7 +185,8 @@ main {
     transform: translateY(100%);
     border-radius: 50%;
 
-    picture, img {
+    picture,
+    img {
       border-radius: inherit;
     }
   }

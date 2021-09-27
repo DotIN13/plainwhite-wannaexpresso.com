@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 import Identity from "../shared/identity";
 
 export default class extends Controller {

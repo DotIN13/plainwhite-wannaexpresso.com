@@ -11,7 +11,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
+    display: block;
   }
 }
 
@@ -29,7 +29,7 @@
       justify-content: center;
     }
 
-    &.portal__container-toast {
+    &.portal__container--toast {
       z-index: 9999;
       transition: all 230ms cubic-bezier(0.21, 1.02, 0.73, 1) 0s;
 
@@ -86,20 +86,19 @@
 // Mood portal
 #portal {
 
-  .portal__container.portal__container-mood {
-    pointer-events: auto;
-    opacity: 0;
+  // .portal__container.portal__container--mood {
+  //   pointer-events: auto;
 
-    &[aria-hidden=false] {
-      animation: mmfadeIn 0.4s cubic-bezier(0.4, 0, 0, 1) 0s forwards;
-    }
+  //   &[aria-hidden=false] {
+  //     animation: mmfadeIn 0.4s cubic-bezier(0.4, 0, 0, 1) 0s forwards;
+  //   }
 
-    &[aria-hidden=true] {
-      animation: mmfadeOut 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
-    }
-  }
+  //   &[aria-hidden=true] {
+  //     animation: mmfadeOut 0.4s cubic-bezier(0.4, 0, 0, 1) 0s;
+  //   }
+  // }
 
-  .mood {
+  /*.mood {
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -143,50 +142,5 @@
     .mood-meta {
       grid-area: meta;
     }
-  }
-}
-
-/* LikesController */
-
-@keyframes heart-burst {
-  from {
-    background-position: left;
-  }
-
-  to {
-    background-position: right;
-  }
-}
-
-.heart {
-  display: inline-block;
-  cursor: pointer;
-  height: 50px;
-  width: 50px;
-  background-image: url('../../_webpack/images/web_heart_animation.png?size=2900');
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  &.heart--animating {
-    animation: heart-burst .8s steps(28) 1;
-  }
-}
-
-[data-like-liked-value=false] {
-
-  [data-like-target=heart].hover {
-    background-position: right;
-  }
-}
-
-[data-like-liked-value=true] {
-
-  [data-like-target=heart] {
-    background-position: right;
-
-    &.hover {
-      filter: grayscale(0.3);
-    }
-  }
+  } */
 }

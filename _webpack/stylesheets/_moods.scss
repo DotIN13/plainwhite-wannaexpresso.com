@@ -3,6 +3,180 @@
 }
 
 .mood-track {
+  --mood-gap: 10px;
+  --mood-height: 23vh;
+  display: flex;
+  height: calc(3 * var(--mood-height) + 2 * var(--mood-gap));
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--mood-gap) var(--mood-gap);
+  overflow: hidden;
+
+  .mood {
+    position: relative;
+
+    .mood__cover {
+      height: var(--mood-height);
+      cursor: pointer;
+    }
+
+    img {
+      border: 1px solid #cfcbcb;
+      border-radius: 12px;
+      height: 100%;
+      width: auto;
+    }
+
+    .like__button {
+      align-items: center;
+      background-color: #f06292bd;
+      border-radius: 10px;
+      bottom: 5%;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row-reverse;
+      right: 3%;
+      padding: 5px 12px;
+      position: absolute;
+    }
+
+    .heart {
+      --heart-size: 16px;
+
+      svg {
+        fill: none;
+      }
+    }
+
+    .like__count {
+      color: white;
+      font-weight: bold;
+      padding-right: 5px;
+
+      &:empty {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.heart {
+
+  svg {
+    display: block;
+    height: var(--heart-size);
+    overflow: visible;
+    stroke: white;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    width: var(--heart-size);
+  }
+}
+
+#portal .portal__container.portal__container--mood {
+  pointer-events: auto;
+
+  .mood__portal {
+    display: grid;
+    gap: 0 30px;
+    grid-template-columns: 30% auto;
+    grid-template-rows: auto;
+    grid-template-areas: "header content";
+    margin-left: calc(var(--main-margin) + var(--about-width));
+    padding-top: 10vh;
+  }
+
+  .mood__header {
+    grid-area: header;
+
+    .mood__cover {
+
+      img {
+        box-shadow: -1px 2px 9px 3px rgb(0 0 0 / 25%);
+        border-radius: 13px;
+        display: block;
+        height: auto;
+        margin-left: auto;
+        max-height: 85vh;
+        max-width: 100%;
+        width: auto;
+      }
+    }
+
+    .mood__info {
+      align-items: start;
+      display: flex;
+      flex-direction: column;
+
+      &>div {
+        backdrop-filter: blur(36px);
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid #b5b0b082;
+        box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 25%);
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+
+      .mood__title {
+        font-weight: bold;
+        font-size: 1.3em;
+        padding: 8px 16px;
+      }
+
+      .mood__time {
+        padding: 5px 12px;
+      }
+
+      .like__button {
+        padding: 6px 12px;
+      }
+
+      .heart {
+        --heart-size: 15px;
+
+        svg {
+          fill: none;
+          stroke: black;
+          stroke-width: 2px;
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+
+  .mood__content {
+    font-size: 1.15em;
+    grid-area: content;
+    height: fit-content;
+    line-height: 1.15em;
+    min-height: 20vh;
+    padding: 25px 30px;
+    // Set max width for mood content
+    max-width: 302px;
+    // Blur effect for content
+    backdrop-filter: blur(36px);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #61616173;
+    box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 25%);
+    border-radius: 20px;
+
+    :first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+body[data-moods-portal-opened=true] {
+  overflow-y: hidden;
+
+  main {
+    filter: blur(20px);
+    opacity: 0.6;
+  }
+}
+
+/*
+.mood-track {
   list-style: none;
   display: flex;
   overflow: auto;
@@ -199,11 +373,11 @@
 }
 
 
-/*
-*
-*  Placeholder for the moods track
-*
-*/
+
+
+//  Placeholder for the moods track
+
+
 
 .mood--placeholder {
   border: none;
@@ -221,11 +395,7 @@
   }
 }
 
-/*
-*
-*  Styles for mood buttons
-*
-*/
+// Styles for mood buttons
 
 .mood-button {
   background: 0 0;
@@ -310,3 +480,4 @@
     transition: right .5s;
   }
 }
+*/

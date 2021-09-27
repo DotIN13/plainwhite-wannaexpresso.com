@@ -1,4 +1,4 @@
-import { Application } from "stimulus";
+import { Application } from "@hotwired/stimulus";
 import ZoomingController from "../controllers/zooming_controller";
 import ValineController from "../controllers/valine_controller";
 

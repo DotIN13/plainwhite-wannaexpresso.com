@@ -9,7 +9,7 @@
 {% if page.locale == 'en_US' %}{% assign url_locale = "url_en" %}{% else %}{% assign url_locale = "url" %}{% endif %}
 {% assign sidebar_list = site.plainwhite.sidebar | map: url_locale %}
 
-<body data-controller="darkmode">
+<body data-controller="darkmode portal">
   <main class="container">
     <section class="content">
 
@@ -27,7 +27,7 @@
 
   {% include toasts.html %}
 
-  <div id="portal" data-controller="toasts"></div>
+  <div id="portal" data-portal-target="portal" data-controller="toasts"></div>
 
   {%- if site.plainwhite.analytics_id -%}
   <script async

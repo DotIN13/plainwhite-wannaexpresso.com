@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 import { easeCubicOut, easeCubicInOut } from "d3-ease";
 
 export default class extends Controller {

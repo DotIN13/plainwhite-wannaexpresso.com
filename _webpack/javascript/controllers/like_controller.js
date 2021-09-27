@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 import Identity from "../shared/identity";
 
 export default class extends Controller {
@@ -44,7 +44,7 @@ export default class extends Controller {
   }
 
   countValueChanged() {
-    this.countTarget.innerHTML = this.countValue > 0 ? this.countValue : this.placeholderValue || "LIKE";
+    this.countTarget.innerHTML = this.countValue > 0 ? this.countValue : this.placeholderValue;
   }
 
   get instances() {

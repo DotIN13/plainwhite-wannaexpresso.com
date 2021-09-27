@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 import { saveAs } from "file-saver";
 import QRCode from 'qrcode';
 import * as Jdenticon from "jdenticon";
