@@ -1,4 +1,4 @@
-<section class="mood-section" data-controller="moods likes">
+<section class="mood-section" data-controller="likes">
   {% include posts-label.html type='moods' search=false %}
   <div class="mood-track" data-moods-target="track">
     {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
@@ -11,12 +11,12 @@
       {% else %}
         {% assign loading="eager" %}
       {% endif %}
-      <div class="mood" data-action="click->portal#addPlayer" data-moods-target="item"
+      <div class="mood" data-mood-id="{{ mood.id }}" data-action="click->portal#addPlayer"
         data-portal-type-param="moods" data-portal-container-class-param="portal__container--mood" href="#">
         {% include mood-image.html mood=mood loading=loading %}
         {% include like-button.html id=mood.id %}
         <template data-portal-target="template">
-          <div class="mood__portal">
+          <div class="mood__portal" data-controller="mood" data-mood-id-value="{{ mood.id }}">
             <div class="mood__header">
               {% include mood-image.html mood=mood loading=loading %}
               <div class="mood__info">
