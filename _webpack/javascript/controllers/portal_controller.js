@@ -21,7 +21,6 @@ export default class extends Controller {
     // Apply id to the player container
     container.id = `${~~(Date.now() / 1000)}-${[...Array(8)].map(() => Math.random().toString(36)[2]).join("")}`;
     Object.assign(container.dataset, { ...params["containerData"], portalType: params["type"] });
-    this.portalTarget.appendChild(container);
     return container;
   }
 

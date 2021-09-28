@@ -79,15 +79,15 @@
   .mood__portal {
     display: grid;
     gap: 0 30px;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 2fr 4fr minmax(0, auto) 2fr;
     grid-template-rows: auto;
-    grid-template-areas: "header content";
-    margin-left: calc(var(--main-margin) + var(--about-width));
+    grid-template-areas: ". header content .";
     padding-top: 10vh;
   }
 
   .mood__header {
     grid-area: header;
+    justify-self: end;
 
     .mood__cover {
 
@@ -97,8 +97,11 @@
         display: block;
         height: auto;
         margin-left: auto;
-        max-height: 85vh;
+        max-height: calc(100vh - 10vh - 180px);
         max-width: 100%;
+        transition-property: width, height, top, left, right, bottom;
+        transition-duration: .45s;
+        transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
         width: auto;
       }
     }
@@ -109,10 +112,10 @@
       flex-direction: column;
 
       &>div {
-        backdrop-filter: blur(36px);
-        background: rgba(255, 255, 255, 0.4);
+        // backdrop-filter: blur(36px);
+        background: rgba(255, 255, 255, 0.5);
         border: 1px solid #b5b0b082;
-        box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 25%);
+        box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 20%);
         border-radius: 10px;
         margin-top: 10px;
       }
@@ -155,13 +158,36 @@
     max-width: 302px;
     // Blur effect for content
     backdrop-filter: blur(36px);
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid #61616173;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #61616159;
     box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 25%);
-    border-radius: 20px;
+    border-radius: 13px;
 
     :first-child {
       margin-top: 0;
+    }
+  }
+
+  // Place header in center if no content
+  .mood__header:first-child {
+    justify-self: center;
+  }
+
+  // Portal mood image transition
+  .mood__portal {
+
+    .mood__info,
+    .mood__content {
+      transition: opacity .5s;
+      opacity: 0;
+    }
+
+    &.mood--image-animated {
+
+      .mood__info,
+      .mood__content {
+        opacity: 1;
+      }
     }
   }
 }
@@ -172,6 +198,7 @@ body[data-moods-portal-opened=true] {
   main {
     filter: blur(20px);
     opacity: 0.6;
+    transition: filter .3s;
   }
 }
 

@@ -17,8 +17,12 @@
         {% include like-button.html id=mood.id %}
         <template data-portal-target="template">
           <div class="mood__portal" data-controller="mood" data-mood-id-value="{{ mood.id }}">
+            {% assign mood_content = mood.content | strip %}
+            {% if mood_content != "" and mood_content != nil and mood_content != blank %}
+              <div class="mood__content">{{ mood.content }}</div>
+            {% endif %}
             <div class="mood__header">
-              {% include mood-image.html mood=mood loading=loading %}
+              {% include mood-image.html mood=mood loading=loading moodTarget="moodImg" action="load->mood#imgLoaded transitionend->mood#fixImg" %}
               <div class="mood__info">
                 <div class="mood__title">{{ mood.title }}</div>
                 <div class="mood__time">
@@ -29,7 +33,6 @@
                 {% include like-button.html id=mood.id %}
               </div>
             </div>
-            <div class="mood__content">{{ mood.content }}</div>
           </div>
         </template>
       </div>
