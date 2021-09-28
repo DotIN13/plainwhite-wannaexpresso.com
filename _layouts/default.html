@@ -27,7 +27,9 @@
 
   {% include toasts.html %}
 
-  <div id="portal" data-portal-target="portal" data-controller="toasts"></div>
+  <div id="portal" data-portal-target="portal" data-controller="toasts">
+    <div id="portal__toast"></div>
+  </div>
 
   {%- if site.plainwhite.analytics_id -%}
   <script async

@@ -30,8 +30,10 @@ export default class extends Controller {
     // Create player and player container
     const container = this.createContainer(params);
     container.innerHTML = event.target.closest("[data-portal-type-param]").querySelector("template[data-portal-target=template]").innerHTML;
-    this.portalTarget.appendChild(container);
-    this.handleExit(container, params["duration"]);
+    // Custom destination
+    const targetNode = document.getElementById(params["destination"]) || this.portalTarget;
+    targetNode.appendChild(container);
+    this.handleExit(container, params);
     this.queuePlayer(params["type"], container.id);
   }
 
@@ -47,16 +49,27 @@ export default class extends Controller {
     // Delete player from current queue
     const newQueue = this.currentQueue(type);
     newQueue.splice(this.currentQueue(type).indexOf(id), 1);
-    this.portalTarget.dataset[`${type}QueueValue`] = newQueue;
+    this.portalTarget.dataset[`${type}QueueValue`] = JSON.stringify(newQueue);
     // Update portal-opened data if queue is cleared
     if (newQueue.length == 0) this.element.dataset[`${type}PortalOpened`] = false;
   }
 
-  handleExit(container, duration) {
-    if (duration) {
-      setTimeout(() => this.removeContainer(container), duration);
+  // Handle player exit behaviours based on durations
+  handleExit(container, params) {
+    if (params["duration"]) {
+      setTimeout(() => this.playerExit(container, params["animatedExit"]), params["duration"]);
     } else {
-      container.addEventListener("click", () => this.removeContainer(container));
+      container.addEventListener("click", () => this.playerExit(container, params["animatedExit"]));
+    }
+  }
+
+  // Handle player exit behaviours based on animated or not
+  playerExit(container, animated = false) {
+    if (animated) {
+      container.addEventListener("animationend", () => this.removeContainer(container));
+      container.classList.add("portal__container--exiting");
+    } else {
+      this.removeContainer(container);
     }
   }
 

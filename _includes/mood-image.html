@@ -1,5 +1,5 @@
 {% if mood.header-image %}
-  <div class="mood__cover mood__cover--image{% if mood.image-full %} mood__header-image--full{% endif %}" data-caption="{{ mood.title }}" data-path="{{ mood.header-image }}" data-moods-target="image">
+  <div class="mood__cover mood__cover--image">
     {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" loading="{{ loading }}" data-mood-target="{{ include.moodTarget }}" data-action="{{ include.action }}" %}
   </div>
 {% else %}
@@ -7,14 +7,3 @@
     <span>{{ mood.title | slice: 0 }}</span>
   </div>
 {% endif %}
-
-  <!-- div class="mood-meta meta-like">
-    <div class="mood-created-at">
-      <i class="icon-calendar"></i>
-      <span class="mood-time">{{ mood.date | date: site.plainwhite.mood_time_format | append: " · "}}</span>
-      <span class="mood-date">{{ mood.date | date: site.plainwhite.mood_date_format }}</span>
-    </div>
-
-    {% include like-button.html id=mood.id %}
-
-  </div -->

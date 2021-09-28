@@ -6,7 +6,7 @@
       {% capture _ %}
         {% increment mood_index %}
       {% endcapture %}
-      {% if mood_index > 3 %}
+      {% if mood_index > 6 %}
         {% assign loading="lazy" %}
       {% else %}
         {% assign loading="eager" %}
