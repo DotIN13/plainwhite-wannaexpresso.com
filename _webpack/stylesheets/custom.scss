@@ -645,6 +645,7 @@ i.icon-calendar {
 /* like button */
 
 .post-like {
+  --heart-size: 16px;
   margin-top: 1em;
   margin-bottom: 4em;
 
@@ -654,9 +655,21 @@ i.icon-calendar {
     align-items: center;
   }
 
-  .like__count {
-    padding-right: 1.2em;
-  }
+  .heart {
+    cursor: pointer;
+    padding: 1em;
+
+    svg {
+      fill: none;
+      stroke: rgb(80, 78, 78);
+      stroke-width: 2px;
+    }
+
+    &:hover svg {
+      fill: #ff88b0;
+      stroke: #555555c4;
+    }
+  } 
 
   .placeholder-md {
 

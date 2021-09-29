@@ -1,9 +1,11 @@
 {% if mood.header-image %}
   <div class="mood__cover mood__cover--image">
     {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" loading="{{ loading }}" data-mood-target="{{ include.moodTarget }}" data-action="{{ include.action }}" %}
+    {% include like-button.html id=mood.id %}
   </div>
 {% else %}
   <div class="mood__cover mood__cover--text">
     <span>{{ mood.title | slice: 0 }}</span>
+    {% include like-button.html id=mood.id %}
   </div>
 {% endif %}

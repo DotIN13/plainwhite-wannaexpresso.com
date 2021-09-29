@@ -7,12 +7,25 @@ export default class extends Controller {
 
   static values = {
     id: String,
+    // Set imgAnimated to true when animation ends
     imgAnimated: Boolean,
+    imgAnimating: Boolean
   }
 
+  /**
+   * @param {boolean} val
+   */
   set imgAnimated(val) {
     this.imgAnimatedValue = val;
-    this.element.classList.toggle("mood--image-animated", val);
+    this.element.classList.toggle("mood__portal--image-animated", val);
+  }
+
+  /**
+   * @param {boolean} val
+   */
+  set imgAnimating(val) {
+    this.imgAnimatingValue = val;
+    this.element.classList.toggle("mood__portal--image-animating", val);
   }
 
   initialize() {
@@ -27,11 +40,17 @@ export default class extends Controller {
   }
 
   imgLoaded() {
-    this.pinPortalImg();
-    this.posImgAtStart();
-    // Flush computed style
-    getComputedStyle(this.portalImg).width;
-    this.posImgAtEnd();
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        this.pinPortalImg();
+        this.posImgAtStart();
+        // Flush computed style
+        getComputedStyle(this.portalImg).width;
+        // Set imgAnimating to true when animation starts
+        this.imgAnimating = true;
+        this.posImgAtEnd();
+      }, 30);
+    });
   }
 
   posImgAtStart() {
@@ -53,7 +72,6 @@ export default class extends Controller {
   posImgAtEnd() {
     const portalImgRectStyle = this.rectToStyle(this.portalImgRect);
     Object.assign(this.portalImg.style, portalImgRectStyle);
-    this.imgAnimating = true;
   }
 
   rectToStyle(rect) {
@@ -63,11 +81,16 @@ export default class extends Controller {
         .filter(([k]) => posAttributes.includes(k))
         .map(([k, v]) => [k, `${v}px`])
     );
-    return { ...style, position: "fixed", margin: 0, padding: 0 };
+    return {
+      ...style,
+      position: "fixed",
+      margin: 0,
+      padding: 0
+    };
   }
 
   fixImg(e) {
-    if (this.imgAnimating && e.propertyName == "width") {
+    if (this.imgAnimatingValue && e.propertyName == "width") {
       Object.assign(this.portalImg.style, {
         position: "relative",
         inset: null,
@@ -77,8 +100,4 @@ export default class extends Controller {
       this.imgAnimated = true;
     }
   }
-
-  // disconnect() {
-  //   console.log("disconn");
-  // }
 }

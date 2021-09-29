@@ -15,24 +15,8 @@ export default class extends Controller {
     placeholder: String
   }
 
-  connect() {
-    this.heartTarget.addEventListener("animationend", (e) => e.target.classList.remove("heart--animating"));
-    ["touchstart", "touchend", "mousedown", "mouseup", "click"].forEach(type => {
-      this.buttonTarget.addEventListener(type, e => e.stopPropagation());
-    });
-  }
-
-  hover() {
-    this.heartTarget.classList.add("hover");
-  }
-
-  unhover() {
-    this.heartTarget.classList.remove("hover");
-  }
-
-  like() {
-    // Animate heart after clicking
-    this.heartTarget.classList.add("heart--animating");
+  like(e) {
+    e.stopPropagation();
     // Like if not liking, liking status shoud be set in dataset
     this.post();
   }
@@ -40,6 +24,7 @@ export default class extends Controller {
   // Silence first changed event fired upon initialization
   updateLike(el, status) {
     el.dataset.likeLikedValue = status;
+    el.classList.toggle("like__button--liked", status);
     el.dataset.likeCountValue = (Number(el.dataset.likeCountValue) || 0) + (status ? 1 : -1);
   }
 

@@ -1,6 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 import Identity from "../shared/identity";
 
+// WIP
+// Store likes in a single dataset
+// Broadcast likes to all like buttons when updated
+// Update dataset when like buttons are pressed
 export default class extends Controller {
   static targets = [
     "item"
