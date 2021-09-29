@@ -27,6 +27,20 @@
       width: auto;
     }
   }
+
+  @media screen and (max-width: $smallScreenW) {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    height: auto;
+
+    .mood {
+      flex: 1 0 auto;
+
+      .like__button {
+        @include like-button();
+      }
+    }
+  }
 }
 
 // Heart styles
@@ -82,13 +96,7 @@
 .mood .mood__cover:hover .like__button,
 .mood__portal.mood__portal--image-animated .like__button,
 .mood .like__button--liked {
-  background-color: #9e9e9e61;
-  backdrop-filter: blur(23px);
-  display: flex;
-
-  &:hover {
-    background-color: #f06292bd;
-  }
+  @include like-button();
 }
 
 // Mood portals
@@ -112,7 +120,10 @@
 
     @media screen and (max-width: $smallScreenW) {
       display: block;
-      margin: 0 25px;
+      height: 100vh;
+      padding: 10vh 25px;
+      overflow-y: scroll;
+      overflow-x: auto;
     }
 
     &.mood__portal--image-animating {

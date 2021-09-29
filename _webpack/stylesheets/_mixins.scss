@@ -62,3 +62,13 @@
 @mixin transform-transition() {
   transition: transform 1s cubic-bezier(.19, 1, .22, 1);
 }
+
+@mixin like-button() {
+  background-color: #9e9e9e61;
+  backdrop-filter: blur(23px);
+  display: flex;
+
+  &:hover {
+    background-color: #f06292bd;
+  }
+}
