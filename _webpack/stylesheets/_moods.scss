@@ -132,8 +132,8 @@
       // Only apply transition functions after animation starts
       .mood__cover img {
         transition-property: width, height, top, left, right, bottom;
-        transition-duration: .45s;
-        transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        transition-duration: .4s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0, 1);
       }
     }
   }
