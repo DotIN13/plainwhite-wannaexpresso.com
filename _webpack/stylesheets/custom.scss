@@ -654,21 +654,26 @@ i.icon-calendar {
     justify-content: center;
     align-items: center;
     padding: 1em 0;
+
+    .heart {
+      cursor: pointer;
+  
+      svg {
+        fill: none;
+        stroke: rgb(80, 78, 78);
+      }
+  
+      &:hover svg {
+        fill: #f06292;
+        stroke: #f06292;
+      }
+    }
   }
 
-  .heart {
-    cursor: pointer;
-
-    svg {
-      fill: none;
-      stroke: rgb(80, 78, 78);
-    }
-
-    &:hover svg {
-      fill: #f06292;
-      stroke: #f06292;
-    }
-  } 
+  .like__button--liked .heart svg {
+    fill: crimson;
+    stroke: #c70000;
+  }
 
   .placeholder-md {
 

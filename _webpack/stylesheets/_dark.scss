@@ -69,6 +69,16 @@ body.dark {
     }
   }
 
+  .post-like .heart {
+    svg {
+      stroke: #bdbdbd;
+    }
+
+    &:hover svg {
+      stroke: #e1d5d5;
+    }
+  }
+
   /* Sidebar */
   .sidebar__container {
     --background: #{$dark-750};
@@ -210,34 +220,6 @@ body.dark {
 
   .mini-post-list .post-item {
     border-bottom: 1px solid $dark-200;
-  }
-
-  /* Moods */
-  .mood {
-    border: 2px solid #888;
-
-    .mood-meta {
-      color: #93a1a1;
-    }
-
-    @media screen and (min-width: $midScreenW + 1) {
-
-      &:hover {
-        background-color: $dark-800;
-        box-shadow: 0px 4px 12px 5px #333232;
-      }
-    }
-  }
-
-  .mood-button {
-
-    .mood-arrow {
-      border-color: $darkTextColor;
-    }
-
-    &::before {
-      background-color: $dark-700;
-    }
   }
 
   /* Table */
