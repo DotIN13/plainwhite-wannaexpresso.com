@@ -71,4 +71,12 @@
   &:hover {
     background-color: #f06292bd;
   }
+
+  &.like__button--liked svg {
+    fill: #f06292;
+  }
+
+  &.like__button--liked:hover svg {
+    fill: crimson;
+  }
 }

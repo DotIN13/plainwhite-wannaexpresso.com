@@ -653,21 +653,20 @@ i.icon-calendar {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1em 0;
   }
 
   .heart {
     cursor: pointer;
-    padding: 1em;
 
     svg {
       fill: none;
       stroke: rgb(80, 78, 78);
-      stroke-width: 2px;
     }
 
     &:hover svg {
-      fill: #ff88b0;
-      stroke: #555555c4;
+      fill: #f06292;
+      stroke: #f06292;
     }
   } 
 
@@ -691,6 +690,10 @@ i.icon-calendar {
   .like__button,
   .like__desc {
     line-height: 1em;
+  }
+
+  .like__count:not(:empty) {
+    padding-left: 10px;
   }
 }
 
