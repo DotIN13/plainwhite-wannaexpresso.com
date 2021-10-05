@@ -40,17 +40,9 @@ export default class extends Controller {
   }
 
   imgLoaded() {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        this.pinPortalImg();
-        this.posImgAtStart();
-        // Flush computed style
-        getComputedStyle(this.portalImg).width;
-        // Set imgAnimating to true when animation starts
-        this.imgAnimating = true;
-        this.posImgAtEnd();
-      }, 30);
-    });
+    this.pinPortalImg();
+    this.posImgAtStart();
+    this.posImgAtEnd();
   }
 
   posImgAtStart() {
@@ -67,9 +59,13 @@ export default class extends Controller {
     const moodImgRectStyle = this.rectToStyle(this.moodImgRect);
     // Remove x and y properties
     Object.assign(this.portalImg.style, moodImgRectStyle);
+    // Flush computed style
+    getComputedStyle(this.portalImg).width;
   }
 
   posImgAtEnd() {
+    // Set imgAnimating to true when animation starts
+    this.imgAnimating = true;
     const portalImgRectStyle = this.rectToStyle(this.portalImgRect);
     Object.assign(this.portalImg.style, portalImgRectStyle);
   }

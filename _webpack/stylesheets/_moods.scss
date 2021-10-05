@@ -121,9 +121,18 @@
     @media screen and (max-width: $smallScreenW) {
       display: block;
       height: 100vh;
-      padding: 10vh 25px;
+      padding: 10vh 10px;
+      margin: 0 13vw;
       overflow-y: scroll;
       overflow-x: auto;
+    }
+
+    @media screen and (max-width: $mobileW) {
+      margin: 0 10vw;
+    }
+
+    @media screen and (max-width: $smallScreenW) {
+      margin: 0 7vw;
     }
 
     &.mood__portal--image-animating {
@@ -140,8 +149,11 @@
 
   .mood__header {
     grid-area: header;
+    max-width: 53vw;
 
     @media screen and (max-width: $smallScreenW) {
+      max-width: none;
+      width: 100%;
       justify-self: start;
     }
 
@@ -217,7 +229,7 @@
     }
 
     @media screen and (max-width: $smallScreenW) {
-      margin-top: 10px;
+      margin-top: 12px;
       max-width: none;
     }
   }
@@ -252,6 +264,6 @@ body[data-moods-portal-opened=true] {
   main {
     filter: blur(20px);
     opacity: 0.6;
-    transition: filter .3s;
+    // transition: filter .3s;
   }
 }
