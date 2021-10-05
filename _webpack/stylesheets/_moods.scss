@@ -18,6 +18,9 @@
     .mood__cover {
       height: var(--mood-height);
       cursor: pointer;
+      // Remove blue square on tap
+      -webkit-tap-highlight-color: transparent;
+      outline: 0;
     }
 
     img {
