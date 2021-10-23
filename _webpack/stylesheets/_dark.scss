@@ -8,6 +8,7 @@ body.dark {
   --button-hover-background: #{$darkLinkColor};
   --link-text-color: #{$darkLinkColor};
   --link-hover-color: #{$pinky};
+  --mood-border-color: #343333;
 }
 
 .dark main {
@@ -309,5 +310,17 @@ body.dark {
   /* Muted Text */
   .muted-text {
     color: #d3d3d3;
+  }
+}
+
+body.dark {
+  /* Toast */
+  #portal .portal__container--toast .toast {
+    color: white;
+    background: #403f3f;
+
+    [data-action=update-sw] {
+      color: #df81ef;
+    }
   }
 }

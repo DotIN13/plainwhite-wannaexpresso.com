@@ -2,6 +2,10 @@
   position: relative;
 }
 
+:root {
+  --mood-border-color: rgb(245, 245, 247);
+}
+
 .mood-track {
   --mood-gap: 10px;
   --mood-height: 23vh;
@@ -23,11 +27,17 @@
       outline: 0;
     }
 
-    img {
-      border: 1px solid #cfcbcb;
-      border-radius: 12px;
-      height: 100%;
-      width: auto;
+    .mood__cover--image {
+      img {
+        border: 1px solid var(--mood-border-color);
+        border-radius: 12px;
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    .mood__cover--text {
+      font-size: calc(var(--mood-height) * .95);
     }
   }
 
@@ -43,6 +53,27 @@
         @include like-button();
       }
     }
+  }
+}
+
+// Universal text mood covers
+.mood__cover--text {
+  align-items: center;
+  background-color: var(--mood-border-color);
+  border: 1px solid var(--mood-border-color);
+  border-radius: 12px;
+  display: grid;
+
+  .mood__cover-text {
+    background: linear-gradient(150deg,#ff629d,#ff7076);
+    font-weight: bold;
+    line-height: 1em;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding: 0 5px;
   }
 }
 
@@ -142,11 +173,11 @@
       visibility: visible;
 
       // Only apply transition functions after animation starts
-      .mood__cover img {
-        transition-property: width, height, top, left, right, bottom;
-        transition-duration: .4s;
-        transition-timing-function: cubic-bezier(0.4, 0, 0, 1);
-      }
+      // .mood__cover img {
+      //   transition-property: transform;
+      //   transition-duration: .4s;
+      //   transition-timing-function: cubic-bezier(0.4, 0, 0, 1);
+      // }
     }
   }
 
@@ -162,6 +193,9 @@
 
     .mood__cover {
       position: relative;
+    }
+
+    .mood__cover--image {
 
       img {
         box-shadow: -1px 2px 9px 3px rgb(0 0 0 / 25%);
@@ -177,6 +211,21 @@
           max-width: none;
           width: 100%;
         }
+      }
+    }
+
+    .mood__cover--text {
+      display: inline-block;
+      max-width: 100%;
+
+      .mood__cover-text {
+        display: inherit;
+        font-size: 20vw;
+        padding: 5px 10px;
+        white-space: nowrap;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
 
