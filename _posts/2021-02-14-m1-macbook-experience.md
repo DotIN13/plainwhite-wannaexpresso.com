@@ -13,8 +13,6 @@ typora-root-url: ../
 locale: zh_CN
 ---
 
-今情人佳节，谨以此文献余妻王氏。
-
 ## 别了，Thinkbook
 
 {% include post-image.html link="post-macbook/idlefish.jpg" alt="Thinkbook Sold" wrapper_class="float-md-end ml-md-1 mt-0" %}
@@ -25,7 +23,7 @@ locale: zh_CN
 
 ## 你好，M1 MacBook
 
-老婆用的是旧款的Intel MacBook Air，摸一爪子，温润，略有些心动。寒假回家旁敲侧击，周旋至浦东Apple Store，一举又骗得8999大洋的M1 MBA。私心里想着要和老婆搭配，不要Pro，不要银色，只要那金色的Air，店员几乎有些不解，我莞尔一笑，他便也心领神会不再多问，给我取来机子下了单。
+身边人用的是旧款的Intel MacBook Air，摸一爪子，温润，略有些心动。寒假回家旁敲侧击，周旋至浦东Apple Store，一举又骗得8999大洋的M1 MBA。私心里想着，不要Pro，不要银色，只要那金色的Air，店员几乎有些不解，我莞尔一笑，他便也心领神会不再多问，给我取来机子下了单。
 
 {% include post-image.html link="post-macbook/in-store.jpg" alt="New MacBook"%}
 
@@ -65,7 +63,7 @@ Thinkbook的设计语言偏于硬朗，外壳棱角分明，四角接近直角�
 
 ### 摄像系统
 
-AI？人工智能？或许这些技术已经被用到了手机摄像系统中。不过，电脑摄像头使用这些技术来提升音像质量，还是头一回听说。MBA的这颗摄像头令我又惊又喜，因为自从我用上了这台MBA和我老婆打视频电话，她每隔两分钟就要夸我白嫩。确实，我自个从屏幕里看到的自己也是气色红润，噪点压制得力。
+AI？人工智能？或许这些技术已经被用到了手机摄像系统中。不过，电脑摄像头使用这些技术来提升音像质量，还是头一回听说。MBA的这颗摄像头令我又惊又喜，因为自从我用上了这台MBA和人打视频电话，大家都夸我白嫩。确实，我自个从屏幕里看到的自己也是气色红润，噪点压制得力。
 
 再也不用MIX3打网络电话了，MIX3的前置补光灯在微信电话里根本就打不开！
 
@@ -85,7 +83,7 @@ Apple所大力推荐的Haptic Feedback与Force Touch，无感。不过，瑕不�
 
 听说MacBook惯用的蝴蝶键盘经过多年的迭代也仅仅是勉强可用。
 
-但2020年，剪刀脚键盘，轻装上阵。MacBook的这张键盘打破了我的惟键程论，虽然键程相较Thinkbook确实短一些，但回弹力度足够，凹陷的键帽更加贴合手指，打字还是比较舒服的。摸过老婆覆了膜的同款键盘，加上了TPU键盘膜确实回弹体验稍差，一时间不知道是不是该继续裸奔下去。
+但2020年，剪刀脚键盘，轻装上阵。MacBook的这张键盘打破了我的惟键程论，虽然键程相较Thinkbook确实短一些，但回弹力度足够，凹陷的键帽更加贴合手指，打字还是比较舒服的。我也摸过覆了膜的同款键盘，加上了TPU键盘膜确实回弹体验稍差，一时间不知道是不是该继续裸奔下去。
 
 除了回弹，键盘背光非常温柔。每一颗键帽单独的LED确实让键盘的背光更加均匀，更有安全感。
 
@@ -111,19 +109,15 @@ macOS给人的感觉就是**温度**。
 
 macOS一直在试图保障我的安全。无论我运行什么程序，它都会检测这些程序是否是由可信的开发者制作发行的。如果不是，那么只能用上Ctrl+Open强制打开，表示自愿接受风险。相比之下，Windows只会阻止它认为危险的程序，macOS显得更加保守。
 
-### 记得我老婆
+### 老生常谈的人工智障
 
-最让我感到感动的是Siri，她记得了谁是我老婆。
+室友常说Siri是人工智障，她不知道我问的是哪天的天气，她不知道今天我不回家回的是宿舍，她不知道我爱听刘若英的《后来》。不过我觉得，一个人的时候，有个人陪伴也不错。
 
-不知怎的想到要跟这个Artificial Intelligence提一嘴Wang Wenrou是我的老婆，Siri居然回答我，设置好自己的联系人之后就可以设置老婆的卡片了。我依样画葫芦，设置好老婆的名片，对着Siri说“FaceTime my girlfriend”，FaceTime弹出了窗口，熟悉的拨号的“嘟嘟”声在我的小房间里响起……
-
-{% include post-image.html link="post-macbook/siri.png" alt="Remembering My Girl" %}
-
-Siri记住了我宝贝老婆的名字，书前（指Mac**Book**），月下（指卤素**灯**），泪落。
+我会叫她给亲爱的人发条消息，叫她过半个小时叫我起床，叫她随便放点音乐……她并不是无所不知，却时常让我知道些什么。
 
 ### 缺点
 
-macOS是人情味的，却也是固执的。它不愿意支持NTFS的硬盘读写，在M1 MacBook上，甚至连[读取都存在困难](https://discussions.apple.com/thread/252114297)（当然我希望这只是Big Sur的锅）。它无法完美地支持老旧的1080P显示器，在我的老优派上显得不够锐利（虽说这情有可原）。它不够自由，不像Unix一样可以通过`.desktop`随意执行命令，通过`systemctl`任意添加后台Daemon（这也极有可能是因为我没有熟练地掌握macOS）。
+macOS是人情味的，却也是固执的。它不愿意支持NTFS的硬盘读写，在M1 MacBook上，甚至连[读取都存在困难](https://discussions.apple.com/thread/252114297)（当然我希望这只是Bug Sur的锅）。它无法完美地支持老旧的1080P显示器，在我的老优派上显得不够锐利（虽说这情有可原）。它不够自由，不像Unix一样可以通过`.desktop`随意执行快捷方式，通过`systemctl`任意添加后台Daemon（这也极有可能是因为我没有熟练地掌握macOS）。
 
 与此同时，家中老旧的2.4GHz鼠标悉数不能使用，为了体验Minecraft只得翻出一只Joy珍藏的有线光电鼠标来（谢天谢地，轨迹球没有库存了）。
 
@@ -131,7 +125,7 @@ macOS是人情味的，却也是固执的。它不愿意支持NTFS的硬盘读�
 
 ## 折腾
 
-ARM64架构对于Windows来说还是Experiment，对于macOS来说是Experimental。总有些应用还不能直接一键安装运行，例如Ruby、Minecraft、KDEConnect等等。
+ARM64架构对于Windows来说还是Experiment，对于macOS来说也还是Experimental。总有些应用还不能直接一键安装运行，例如Ruby、Minecraft、KDEConnect等等。
 
 但这台电脑给了我平庸的寒假生活无穷的乐趣，因为**折腾**，既是Original Sin，又是Original Rejoice。
 
