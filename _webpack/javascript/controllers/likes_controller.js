@@ -9,9 +9,26 @@ export default class extends Controller {
   static targets = [
     "item"
   ]
+  
+  static values = {
+    counts: Object,
+  }
 
   connect() {
-    this.pull();
+    this.pull()
+      .then(() => this.countsUpdated = true);
+  }
+
+  updateLike(target) {
+    Object.assign(target.dataset, this.countsValue[target.dataset.likeIdValue]);
+  }
+
+  itemTargetConnected(target) {
+    this.updateLike(target);
+  }
+
+  countsValueChanged() {
+    this.itemTargets.forEach(target => this.updateLike(target));
   }
 
   async pull() {
@@ -25,7 +42,8 @@ export default class extends Controller {
     const identityQuery = `?identity=${identity}`;
 
     fetch(`/api/likes/get${identityQuery}&${likableIds.join("&")}`)
-      .then((res) => res.json())
-      .then((json) => likables.forEach(el => Object.assign(el.dataset, json[el.dataset.likeIdValue])));
+      .then(res => res.json())
+      .then(json => this.countsValue = json);
+    // .then((json) => likables.forEach(el => Object.assign(el.dataset, json[el.dataset.likeIdValue])));
   }
 }

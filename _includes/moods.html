@@ -1,4 +1,4 @@
-<section class="mood-section" data-controller="likes">
+<section class="mood-section">
   {% include posts-label.html type='moods' search=false %}
   <div class="mood-track" data-moods-target="track">
     {% assign sorted_moods = site.moods | sort: 'date' | reverse %}

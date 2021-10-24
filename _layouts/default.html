@@ -9,7 +9,7 @@
 {% if page.locale == 'en_US' %}{% assign url_locale = "url_en" %}{% else %}{% assign url_locale = "url" %}{% endif %}
 {% assign sidebar_list = site.plainwhite.sidebar | map: url_locale %}
 
-<body data-controller="darkmode portal">
+<body data-controller="darkmode portal likes" data-likes-counts-value="{}">
   <main class="container">
     <section class="content">
 

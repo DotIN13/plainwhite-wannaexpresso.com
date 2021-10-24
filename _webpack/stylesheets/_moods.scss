@@ -27,16 +27,14 @@
       outline: 0;
     }
 
-    .mood__cover--image {
-      img {
-        border: 1px solid var(--mood-border-color);
-        border-radius: 12px;
-        height: 100%;
-        width: auto;
-      }
+    .mood__cover--image img {
+      border: 1px solid var(--mood-border-color);
+      border-radius: 12px;
+      height: 100%;
+      width: auto;
     }
 
-    .mood__cover--text {
+    .mood__cover--text .mood__cover-text {
       font-size: calc(var(--mood-height) * .95);
     }
   }
@@ -65,7 +63,7 @@
   display: grid;
 
   .mood__cover-text {
-    background: linear-gradient(150deg,#ff629d,#ff7076);
+    background: linear-gradient(150deg, #ff629d, #ff7076);
     font-weight: bold;
     line-height: 1em;
     -webkit-background-clip: text;

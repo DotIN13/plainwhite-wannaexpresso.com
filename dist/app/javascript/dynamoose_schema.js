@@ -64,6 +64,7 @@ const LoveIncubator = dynamoose.model("love_incubator", loveSchema, { create: tr
 const connectTo = {
   dev() {
     dynamoose.aws.ddb.local();
+    console.log("Connected to dev server.");
   },
 
   prod() {

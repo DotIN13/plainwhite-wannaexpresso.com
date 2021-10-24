@@ -660,7 +660,7 @@ i.icon-calendar {
   
       svg {
         fill: none;
-        stroke: rgb(80, 78, 78);
+        stroke: #877f7f;
       }
   
       &:hover svg {
@@ -671,8 +671,8 @@ i.icon-calendar {
   }
 
   .like__button--liked .heart svg {
-    fill: crimson;
-    stroke: #c70000;
+    fill: #e3032e;
+    stroke: #ffbfec;
   }
 
   .placeholder-md {
