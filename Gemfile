@@ -11,7 +11,7 @@ gem 'jekyll-minifier'
 gem 'jekyll-paginate-v2'
 gem 'nokogiri'
 gem "jekyll_picture_tag"
-gem 'mini_racer', git: "https://github.com/rubyjs/mini_racer"
+gem 'mini_racer'
 
 group :development do
   gem 'rake'
