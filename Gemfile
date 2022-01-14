@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 gemspec
 
-ruby '~> 3.1.x'
+ruby '~> 2.7.x'
 
 gem 'jekyll'
 gem 'jekyll-feed'
