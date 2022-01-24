@@ -4,20 +4,17 @@ layout: default
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 <div class="post-container main-container">
   {% if page.multilingual %}
-  <div class="multilingual-title">
+  <div class="multilingual-title post-header">
     {% include multilingual-sel.html %}
     <a class="post-link" href="{{ page.url | relative_url }}">
       <h2 class="post-title">{{ page.title | escape }}</h2>
+      {% if page.subtitle %}
+        <h3 class="post-subtitle">{{ page.subtitle }}</h3>
+      {% endif %}
     </a>
   </div>
-  {% if page.subtitle %}
-  <a class="post-link" href="{{ page.url | relative_url }}">
-    <h3 class="post-subtitle">{{ page.subtitle }}</h3>
-  </a>
-  {% endif %}
-
   {% else %}
-  <a class="post-link" href="{{ page.url | relative_url }}">
+  <a class="post-link post-header" href="{{ page.url | relative_url }}">
     <h2 class="post-title">{{ page.title | escape }}</h2>
     {% if page.subtitle %}
     <h3 class="post-subtitle">{{ page.subtitle }}</h3>

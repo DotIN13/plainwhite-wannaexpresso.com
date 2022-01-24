@@ -136,16 +136,22 @@
   .post-item {
     position: relative;
     border-bottom: solid 1px #e3e3e3;
+    
+    .post-header {
+      margin: 20px 0 10px 0;
+    }
+
+    .post-series {
+      font-size: 16px;
+    }
 
     .post-title {
       font-size: 16px;
       font-weight: 500;
-      margin-top: 20px;
     }
 
     .post-subtitle {
       font-size: 13px;
-      margin-bottom: 0.5em;
     }
 
     .post-meta {

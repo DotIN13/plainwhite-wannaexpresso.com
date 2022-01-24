@@ -452,25 +452,33 @@ i.icon-calendar {
 
 /* Post list */
 
-.post-link {
-  text-decoration: none;
-  transition: none;
-
-  .post-title,
-  .post-subtitle,
-  .post {
+.post-header {
+  display: block;
+  margin: 40px 0 1em 0;
+  
+  &.post-link, a.post-link {
     transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
+}
+
+.post-link {
+  text-decoration: none; // Remove underlines from post excerpts
+}
+
+.post-series {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
 }
 
 .post-title {
   line-height: 1.2em;
   font-size: 28px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .post-subtitle {
-  margin-top: 0;
+  margin: 10px 0;
 }
 
 .content {
@@ -506,10 +514,6 @@ i.icon-calendar {
     list-style-type: none;
     padding-left: 0;
   }
-
-  .post-title {
-    margin-top: 40px;
-  }
 }
 
 .post-item {
@@ -541,8 +545,7 @@ i.icon-calendar {
 
   &:hover {
 
-    .post-title,
-    .post-subtitle {
+    .post-header {
       color: $linkColor;
     }
 
