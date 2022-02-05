@@ -454,11 +454,9 @@ i.icon-calendar {
 
 .post-header {
   display: block;
-  margin: 40px 0 1em 0;
-  
-  &.post-link, a.post-link {
-    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  }
+  margin: 0;
+  margin-bottom: 1em;
+  @include color-transition();
 }
 
 .post-link {
@@ -466,9 +464,110 @@ i.icon-calendar {
 }
 
 .post-series {
-  font-size: 20px;
-  font-weight: 400;
-  margin: 0 0 10px 0;
+  position: relative;
+
+  .post-series__name {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 3px 0;
+    position: relative;
+
+    // Arrow animations when hovered
+    &::before, &::after {
+      content: ">";
+      position: absolute;
+      right: 0;
+      opacity: 0;
+    }
+
+    &:hover {
+      &::before {
+        --hover-distance: 30px;
+        animation: 200ms cubic-bezier(0, 0, 0.09, 1) 0s 1 forwards seriesArrowHover;
+      } // The right arrow
+
+      &::after {
+        --hover-distance: 20px;
+        animation: 350ms cubic-bezier(0.02, 0.71, 0.32, 0.99) 50ms 1 forwards seriesArrowHover;
+      } // The left arrow
+    }
+
+    // &::before {
+      // another plausible cubic-bezier: cubic-bezier(0, 0.51, 0, 1.03)
+      // transition: opacity, transform 350ms cubic-bezier(0.02, 0.71, 0.32, 0.99);
+    // }
+  
+    // &::after {
+    //   transition: opacity, transform 200ms cubic-bezier(0, 0, 0.09, 1);
+    // }
+  
+    // &:hover {
+    //   &::before {
+    //     opacity: 1;
+    //     transition-delay: 50ms;
+    //     transform: translateX(20px);
+    //   }
+  
+    //   &::after {
+    //     opacity: 1;
+    //     transform: translateX(30px);
+    //   }
+    // }
+  }
+
+  // Not activated + hover: translateX 20px
+  // Activated: translateX 40px, translateX -40px
+
+  &.popup--pop {
+    .post-series__name {
+      &::before {
+        animation: 150ms cubic-bezier(0, 0, 0.09, 1) 50ms normal forwards seriesArrowOut;
+      } // The right arrow
+
+      &::after {
+        --activate-distance: -7px;
+        animation: 150ms cubic-bezier(0, 0, 0.09, 1) 0s normal forwards seriesArrowOut, 150ms cubic-bezier(0.02, 0.71, 0.32, 0.99) 150ms 1 normal forwards seriesArrowIn;
+      } // The left arrow
+    }
+  }
+
+  .post-series__list {
+    --background: #f3f3f3;
+    background: var(--background);
+    border-radius: 20px;
+    transform: scale(0) translate(-10px, -10px);
+    transform-origin: top left;
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+    padding: 15px 0;
+    position: absolute;
+    margin-top: 10px;
+  }
+
+  .post-series__list-item {
+    display: block;
+    text-decoration: none;
+    opacity: 0;
+    padding: 8px 25px;
+  }
+
+  &.popup--pop {
+
+    // series name animations
+    .post-series__name {
+      animation: SeriesNamePopup 200ms ease-out forwards;
+    }
+
+    // series list animations
+    .post-series__list {
+      transform: scale(1) translate(0);
+    }
+
+    .post-series__list-item {
+      animation: 200ms ease-out forwards mmfadeIn;
+    }
+  }
 }
 
 .post-title {
@@ -517,6 +616,7 @@ i.icon-calendar {
 }
 
 .post-item {
+  margin-top: 40px;
 
   .post {
 
@@ -543,6 +643,8 @@ i.icon-calendar {
     }
   }
 
+  // When hovering over the post item, highlight both the series and the item
+  // When hovering over the series, highlight only the series
   &:hover {
 
     .post-header {
@@ -789,7 +891,7 @@ select.sel-lang {
 
   .vbtn:active,
   .vbtn:hover {
-    color: #fff;
+    color: white;
     border-color: #ba68c8;
     background-color: #ba68c8;
   }

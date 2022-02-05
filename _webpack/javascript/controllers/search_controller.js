@@ -29,8 +29,6 @@ export default class extends Controller {
     /* hack ios safari unfocus */
     if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))
       document.body.firstElementChild.tabIndex = 1;
-    
-    document.body.addEventListener("click", this.hide.bind(this));
   }
 
   show(e) {
@@ -42,7 +40,7 @@ export default class extends Controller {
   }
 
   hide(e) {
-    if (!e.target.closest(".search__container"))
+    if (!this.element.contains(e.target))
       this.focus = false;
   }
 }

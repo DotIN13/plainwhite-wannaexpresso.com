@@ -80,6 +80,14 @@ body.dark {
     }
   }
 
+  .post-series__list {
+    --background: #{$dark-700};
+
+    .post-series__list-item {
+      @include link-hover($darkTextColor, $darkLinkColor);
+    }
+  }
+
   /* Sidebar */
   .sidebar__container {
     --background: #{$dark-750};
@@ -115,7 +123,7 @@ body.dark {
   .post-categories {
     li {
       background-color: $dark-700;
-      color: #fff;
+      color: white;
     }
   }
 
@@ -123,18 +131,25 @@ body.dark {
     @include link-hover($darkTextColor);
   }
 
-  a.post-link:hover,
-  .post-preview:hover,
-  .post-item:hover {
+  /* Post header hovering */
+  .post-item {
 
-    .post-title,
-    .post-subtitle {
+    .post-header {
+      color: white;
+
+      .post-title,
+      .post-subtitle {
+        color: inherit;
+      }
+    }
+
+    &:hover .post-header {
       color: $darkLinkColor;
     }
   }
 
   #title a {
-    @include link-hover(#fff);
+    @include link-hover(white);
   }
 
   .post-pager li a {
@@ -314,6 +329,7 @@ body.dark {
 }
 
 body.dark {
+
   /* Toast */
   #portal .portal__container--toast .toast {
     color: white;

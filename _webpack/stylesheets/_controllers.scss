@@ -47,7 +47,7 @@
     .toast {
       display: flex;
       align-items: center;
-      background: #fff;
+      background: white;
       color: #363636;
       line-height: 1.3;
       will-change: transform;
@@ -78,4 +78,16 @@
       }
     }
   }
+}
+
+// Popup
+
+[data-popup-target=popup] {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.popup--pop [data-popup-target=popup] {
+  pointer-events: auto;
+  opacity: 1;
 }

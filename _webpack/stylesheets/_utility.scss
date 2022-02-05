@@ -191,3 +191,59 @@
     opacity: 0;
   }
 }
+
+@keyframes SeriesListItemPopup {
+  from {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes SeriesNamePopup {
+  to {
+    transform: translateX(25px);
+  }
+}
+
+@keyframes seriesArrowHover {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(var(--hover-distance));
+  }
+}
+
+@keyframes seriesArrowOut {
+  from {
+    opacity: 1;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+@keyframes seriesArrowIn {
+  from {
+    opacity: 0;
+    right: 100%;
+    transform: translateX(calc(var(--activate-distance) - 30px));
+  }
+
+  to {
+    opacity: 1;
+    right: 100%;
+    transform: translateX(var(--activate-distance));
+  }
+}
