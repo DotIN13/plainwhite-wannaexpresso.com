@@ -694,18 +694,17 @@ i.icon-calendar {
 }
 
 .post {
+  --link-text-color: #{$linkColor};
   @include serif();
   font-weight: 400;
   color: #222;
   line-height: 1.9em;
 
   a {
-    color: $linkColor;
     text-decoration: none;
-    transition: border-bottom 0.4s;
 
     &:hover {
-      border-bottom: 0.5px solid $linkColor;
+      border-bottom: 0.5px solid var(--link-hover-color);
     }
   }
 
