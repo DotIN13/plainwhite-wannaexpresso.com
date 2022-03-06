@@ -18,9 +18,9 @@ locale: zh_CN
 2. 发行软件包版本太高，无法满足其他软件的依赖关系，比如FFmpeg；
 3. 发行软件包所使用的编译选项不合心意，缺少自己需要的功能，例如FFmpeg；
 
-开个玩笑。这个问题不止出在FFmpeg身上，举个例子🌰，最近就有同志提出，[发行版本过低的Chrome带来了大量安全隐患](https://www.reddit.com/r/debian/comments/pgv3wc/debian_chromium_package_has_many_security_issues/)。但FFmpeg要完美地利用QSV还真的是要安装好所有正确的依赖，还个个版本都不能出错。
+开个玩笑。这个问题不止出在FFmpeg身上，举个例子🌰，最近就出了个大新闻，[发行版本过低的Chrome带来了大量安全隐患](https://www.reddit.com/r/debian/comments/pgv3wc/debian_chromium_package_has_many_security_issues/)。但FFmpeg要完美地利用QSV还真的是要安装好所有正确的依赖，还个个版本都不能出错。
 
-这里就转载一则教程，教教大家怎么在Ubuntu上编译使用带QSV转码功能的FFmpeg，压榨一下消极怠工的UHD小核显。
+这里就转载一则教程，教教大家怎么在Ubuntu上编译使用带QSV转码功能的FFmpeg，压榨一下消极怠工的UHD小核显。[^1]
 
 > 注意：接下来这段路我们开的是如假包换的手动挡，会有些颠簸，您可能需要自备氧气瓶（来解决一切可能遇到的窒息问题）。
 
@@ -368,3 +368,6 @@ hash -r
 但无论包管理如何发展，都无法替代编译，就好比自动挡与手动挡，自动挡是手动挡的整合、规范化与程序化，但最终与车辆打交道的还是手动挡的原理。包管理要有发行包，就必须有人编译。
 
 再换一个比喻，虽然自动挡不断普及，但仍然有人开手动挡，也有老师傅说手动挡更加得心应手。编译，有的时候，也就是起的这个作用。
+
+---
+[^1]: [ffmpeg-qsv-enabled-build-ubuntu-18.04lts](https://gist.github.com/Brainiarc7/4f831867f8e55d35cbcb527e15f9f116)
