@@ -10,13 +10,14 @@ gem 'jekyll-feed'
 gem 'jekyll-minifier'
 gem 'jekyll-paginate-v2'
 gem 'nokogiri'
-gem "jekyll_picture_tag"
+gem 'jekyll_picture_tag'
 gem 'mini_racer'
 
 group :development do
   gem 'rake'
   gem 'rubocop'
   gem 'rubocop-rake', require: false
+  gem 'webrick'
 end
 
 # gem 'aws-sdk-dynamodb'
