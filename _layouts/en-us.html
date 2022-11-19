@@ -3,9 +3,8 @@ layout: default
 locale: en_US
 ---
 
-<div class="posts-container main-container">
+<div class="page-container grid-contents d-contents">
   {%- if site.posts.size > 0 -%}
-  {% include posts-label.html type="posts" search=true %}
   <ul>
     <li>
       {%- for post in paginator.posts -%}
@@ -16,5 +15,4 @@ locale: en_US
   {%- endif -%}
 
   {% include pagination-links.html %}
-
 </div>

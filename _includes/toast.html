@@ -1,5 +1,5 @@
 <div id="{{ include.id }}" data-action="bake->portal#addPlayer"
-  data-portal-type-param="toasts" data-portal-duration-param="50000"
+  data-portal-type-param="toasts" data-portal-duration-param="{{ include.duration or 50000}}"
   data-portal-container-class-param="portal__container--toast top center"
   data-portal-destination-param="portal__toast"
   data-portal-container-data-param='{"toastsTarget": "toast"}'

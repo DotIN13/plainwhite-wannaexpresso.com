@@ -10,13 +10,13 @@
   <div class="mood__header">
     <div class="mood__info">
       <h2 class="mood__title">{{ mood.title }}</h2>
-      <span class="mood__meta font-serif">
+      <span class="mood__meta font-sans">
         @DotIN13 · {{ mood.date | date: site.plainwhite.mood_date_format }}
       </span>
     </div>
     <!-- The like button goes here -->
   </div>
   {% if mood_text %}
-    <div class="mood__text font-serif">{{ mood.content | excerpt | strip_html | strip | truncate: 140 }}</div>
+    <div class="mood__text post-content font-serif">{{ mood.content | excerpt | strip_html | strip | truncate: 140 }}</div>
   {% endif %}
 </div>

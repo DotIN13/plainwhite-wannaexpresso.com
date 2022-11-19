@@ -5,7 +5,8 @@ subtitle: "关于"
 description: "'Tis Me."
 header-img: "_webpack/images/about-bg.jpg"
 locale: en_US
-multilingual: true
+multilingual:
+  - en-us
 id: /about
 ---
 

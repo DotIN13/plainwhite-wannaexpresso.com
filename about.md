@@ -4,7 +4,8 @@ title: "关于"
 subtitle: "About"
 description: "'Tis Me."
 header-img: "_webpack/images/about-bg.jpg"
-multilingual: true
+multilingual:
+  - en-us
 locale: zh_CN
 javascript: posts
 id: /about

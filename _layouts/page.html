@@ -3,31 +3,42 @@ layout: default
 ---
 
 <div class="page-container grid-contents d-contents">
-  {%- if site.posts.size > 0 -%}
-  <section class="posts-section">
-    <ul class="post-list">
-      {%- for post in paginator.posts limit: 3 -%}
-      {%- include post-item.html post=post -%}
-      {%- endfor -%}
-    </ul>
-  </section>
-  {%- endif -%}
-
   {% if paginator.page == 1 and site.moods.size > 0 %}
-  {% include moods.html %}
+
+    {%- if site.posts.size > 0 -%}
+    <section class="posts-section">
+      <ul class="post-list">
+        {%- for post in paginator.posts limit: 3 -%}
+        {%- include post-item.html post=post -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+    {%- endif -%}
+
+    {% include moods.html %}
+
+    {{ content }}
+
+    {%- if paginator.posts.size > 0 -%}
+    <section class="posts-section">
+      <ul class=post-list>
+        {%- for post in paginator.posts offset: 3 -%}
+        {%- include post-item.html post=post -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+    {%- endif -%}
+  {% else %}
+    {%- if paginator.posts.size > 0 -%}
+    <section class="posts-section">
+      <ul class=post-list>
+        {%- for post in paginator.posts -%}
+        {%- include post-item.html post=post -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+    {%- endif -%}
   {% endif %}
-
-  {{ content }}
-
-  {%- if paginator.posts.size > 0 -%}
-  <section class="posts-section">
-    <ul class=post-list>
-      {%- for post in paginator.posts offset: 3 -%}
-      {%- include post-item.html post=post -%}
-      {%- endfor -%}
-    </ul>
-  </section>
-  {%- endif -%}
 
   {% include pagination-links.html %}
 </div>

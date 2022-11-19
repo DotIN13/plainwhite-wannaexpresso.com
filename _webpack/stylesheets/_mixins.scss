@@ -78,24 +78,6 @@
   transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-@mixin like-button() {
-  background-color: #9e9e9e61;
-  backdrop-filter: blur(23px);
-  display: flex;
-
-  &:hover {
-    background-color: #f06292bd;
-  }
-
-  &.like__button--liked svg {
-    fill: #f06292;
-  }
-
-  &.like__button--liked:hover svg {
-    fill: crimson;
-  }
-}
-
 @mixin posts-label() {
   --link-hover-color: var(--menu-hover-color, $dark-700);
   font-size: 16px;

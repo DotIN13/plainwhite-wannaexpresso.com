@@ -6,10 +6,6 @@
   }
 }
 
-.d-inline-block {
-  display: inline-block;
-}
-
 .float-start {
   float: left;
 }
@@ -27,6 +23,10 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.d-inline-block {
+  display: inline-block;
 }
 
 .d-none {

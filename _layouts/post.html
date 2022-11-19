@@ -5,24 +5,31 @@ layout: default
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 
 <article class="post-container post-article grid-contents d-contents">
-  {% if page.multilingual %}
-  <div class="multilingual-title post-header">
-    {% include multilingual-sel.html %}
-    <a class="post-link" href="{{ page.url | relative_url }}">
-      <h2 class="post-title">{{ page.title | escape }}</h2>
-      {% if page.subtitle %}
-      <h3 class="post-subtitle">{{ page.subtitle }}</h3>
-      {% endif %}
-    </a>
+  <div class="post-actions d-flex row-reverse">
+    <div class="share">
+      <i class="icon-link" onclick='try {
+        navigator.clipboard.writeText(window.location.href);
+        const e = new Event("bake");
+        document.getElementById("toast__copy-link").dispatchEvent(e);
+        } catch (e) {
+          console.log("Clipboard API is not supported.")
+      }'></i>
+      <i class="icon-share"></i>
+    </div>
+
+    {% if page.multilingual %}
+    <div class="multilingual">
+      {% include multilingual-sel.html %}
+    </div>
+    {% endif %}
   </div>
-  {% else %}
+
   <a class="post-link post-header" href="{{ page.url | relative_url }}">
     <h2 class="post-title">{{ page.title | escape }}</h2>
     {% if page.subtitle %}
     <h3 class="post-subtitle">{{ page.subtitle }}</h3>
     {% endif %}
   </a>
-  {% endif %}
 
   <div class="post-meta">
     {% if page.tags %}
@@ -37,27 +44,15 @@ layout: default
       {%- endfor -%}
     </div>
     {% endif %}
-    <div class="post-misc">
-      {% if page.date %}
-      <div class="post-date">
-        <i class="icon-calendar"></i>{{ page.date | date: date_format }}
-      </div>
-      {% endif %}
+    {% if page.date %}
+    <div class="post-date">
+      <i class="icon-calendar"></i>{{ page.date | date: date_format }}
     </div>
+    {% endif %}
   </div>
 
   <div class="post-content grid-contents d-contents" data-controller="zooming">
-    {% include anchor-headings.html beforeHeading=true anchorBody="#"
-    html=content %}
-  </div>
-
-  <div class="post-like">
-    <div class="separator post-like__separator text-center"></div>
-
-    {% include like-button.html id=page.id description='SMACK ME<span
-      class="placeholder-md"
-      >like you smack a sack of rice</span
-    >!' %}
+    {% include anchor-headings.html beforeHeading=true anchorBody="#" html=content %}
   </div>
 
   <ul class="post-pager">

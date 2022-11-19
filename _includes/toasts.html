@@ -6,6 +6,11 @@
     </span>
   {% endcapture %}
 
+  {% capture copy_link %}
+    <span class="status">Link copied!</span>
+  {% endcapture %}
+
   {% include toast.html id="toast__page-update" content=page_update %}
+  {% include toast.html id="toast__copy-link" content=copy_link duration=3000 %}
 
 </div>

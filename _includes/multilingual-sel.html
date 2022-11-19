@@ -1,4 +1,18 @@
 <!-- Language Selector -->
-<a class="translate button" href="{% if page.locale == 'en_US' %}{{ page.url | remove: '/en-us'}}{% else %}{{ '/en-us' | append: page.url }}{% endif %}">
-  <i class="icon-translate"></i>
-</a>
+{% assign current_lang = "zh-cn" # Set defaults %}
+{% assign page_url = page.url %}
+
+{% assign url_arr = page.url | downcase | split: "/" # split the url into array %}
+{% for lang in page.multilingual %}
+  {% if url_arr[1] == lang | downcase %}
+    {% assign arr_size = url_arr | size %}
+    {% assign page_url = url_arr | slice: 2, arr_size | join: "/" | prepend: "/" %}
+    {% assign current_lang = url_arr[1] %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<a href="{{ page_url | relative_url }}" class="post-lang {% if current_lang == 'zh-cn' %}active{% endif %}">ZH-CN</a>
+{% for lang in page.multilingual %}
+  <a href="{{ site.baseurl }}/{{ lang | append: page_url }}" class="post-lang {% if current_lang == lang %}active{% endif %}">{{ lang | upcase }}</a>
+{% endfor %}

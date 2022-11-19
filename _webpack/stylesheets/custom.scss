@@ -131,10 +131,14 @@ main {
   }
 }
 
+.page-container > :first-child {
+  margin-top: 2.5rem;
+}
+
 /* Navigations in main */
 
 .main-nav {
-  align-items: baseline;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   margin-top: 6rem;
@@ -160,6 +164,22 @@ main {
       text-decoration: none;
       @include link-hover();
       @include color-transition(0.15s);
+    }
+
+    .icon-search {
+      font-size: 20px;
+    }
+
+    .icon-translate {
+      font-size: 17px;
+    }
+
+    .icon-moon {
+      font-size: 16px;
+    }
+
+    .icon-rss_feed {
+      font-size: 19px;
     }
   }
 }
@@ -349,11 +369,12 @@ main.grid-contents .about {
 
 .post-tags {
   display: flex;
-  gap: 20px 14px;
+  flex-wrap: wrap;
+  gap: 14px;
   padding: 0;
 
   .tag {
-    --button-background: #8ebaba50;
+    --button-background: #dce9e9;
     --button-text-color: #0d4435;
     @include button();
     font-size: 14px;
@@ -386,9 +407,9 @@ main.grid-contents .about {
 
 .post-date {
   margin-right: 10px;
+  margin-left: 20px;
   color: $dark-400;
-  margin-top: auto;
-  margin-bottom: auto;
+  flex: 1 0 auto;
   text-align: right;
 }
 

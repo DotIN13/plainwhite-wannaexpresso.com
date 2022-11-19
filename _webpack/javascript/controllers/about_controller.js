@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   wideTargetConnected(target) {
-    console.log("connected target")
     this.observeAbout(target);
   }
 
@@ -20,7 +19,20 @@ export default class extends Controller {
 
   // Detect intersection between about section and other wide grid elements
   observeAbout(...targets) {
+    targets.forEach((el) => this.observer.observe(el));
+  }
+
+  readRect() {
+    const { bottom } = this.innerTarget.getBoundingClientRect();
+    this.aboutTop = `-${this.innerTarget.style
+      .getPropertyValue("--about-top")
+      .trim()}`;
+    this.aboutBottom = `${-Math.round(
+      (1 - bottom / window.innerHeight) * 100
+    )}%`;
+    // Initialize a new observer with the new rect
     // eslint-disable-next-line no-unused-vars
+    this.observer?.disconnect();
     this.observer = new IntersectionObserver(
       (entries, _obs) => this.handleAbout(entries),
       {
@@ -28,12 +40,10 @@ export default class extends Controller {
         threshold: [0, 0.01],
       }
     );
-    targets.forEach((el) => this.observer.observe(el));
   }
 
   // Whenever the page is resized, update observations
   updateObserver() {
-    this.observer?.disconnect();
     clearTimeout(this.timeout);
     const update = () => {
       this.readRect();
@@ -48,18 +58,7 @@ export default class extends Controller {
     });
   }
 
-  readRect() {
-    const { bottom } = this.innerTarget.getBoundingClientRect();
-    this.aboutTop = `-${this.innerTarget.style
-      .getPropertyValue("--about-top")
-      .trim()}`;
-    this.aboutBottom = `${-Math.round(
-      (1 - bottom / window.innerHeight) * 100
-    )}%`;
-    console.log(this.aboutTop);
-  }
-
   disconnect() {
-    this.observer.disconnect();
+    this.observer?.disconnect();
   }
 }

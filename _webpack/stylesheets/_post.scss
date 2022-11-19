@@ -56,6 +56,36 @@
 /* Post container */
 
 .post-container {
+  .post-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    .multilingual {
+      display: flex;
+      gap: 20px;
+
+      .post-lang {
+        @include posts-label();
+        font-size: 0.95rem;
+
+        &.active {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .share {
+      justify-self: end;
+      display: flex;
+      gap: 15px;
+
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+
   .post-header {
     margin-top: 4rem;
   }
@@ -133,65 +163,6 @@
       background-color: $violet;
       color: white;
     }
-  }
-}
-
-/* like button */
-
-.post-like {
-  --heart-size: 16px;
-  margin-top: 1em;
-  margin-bottom: 4em;
-
-  .like__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em 0;
-
-    .heart {
-      cursor: pointer;
-
-      svg {
-        fill: none;
-        stroke: #877f7f;
-      }
-
-      &:hover svg {
-        fill: #f06292;
-        stroke: #f06292;
-      }
-    }
-  }
-
-  .like__button--liked .heart svg {
-    fill: #e3032e;
-    stroke: #ffbfec;
-  }
-
-  .placeholder-md {
-    @media screen and (max-width: $mobileW) {
-      display: none;
-    }
-  }
-
-  .post-like__separator {
-    margin-top: 2em;
-    margin-bottom: 1em;
-
-    &::before {
-      content: ". . .";
-      font-weight: 700;
-    }
-  }
-
-  .like__button,
-  .like__desc {
-    line-height: 1em;
-  }
-
-  .like__count:not(:empty) {
-    padding-left: 10px;
   }
 }
 

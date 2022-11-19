@@ -54,7 +54,6 @@ body.dark {
     }
   }
 
-  .post-like,
   .post-content,
   .post-content p {
     color: #ddd;
@@ -77,25 +76,6 @@ body.dark {
 
     a:hover .icon-circle {
       color: $darkLinkColor;
-    }
-  }
-
-  .post-like .heart {
-    svg {
-      stroke: #bdbdbd;
-    }
-
-    &:hover svg {
-      stroke: #e1d5d5;
-    }
-  }
-
-  .post-series__list {
-    --background: #{$dark-700};
-
-    .post-series__list-item {
-      color: $darkTextColor;
-      @include link-hover();
     }
   }
 
