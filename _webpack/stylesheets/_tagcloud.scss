@@ -40,7 +40,7 @@
     }
 
     &.focus {
-      background: $linkColor;
+      background: $violet;
       color: white;
       box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
     }
@@ -48,7 +48,7 @@
 
   .tag-button--all {
     font-weight: 700;
-    color: $linkColor;
+    color: $violet;
 
     &:hover {
       color: white;
@@ -108,7 +108,7 @@
 }
 
 .listing-seperator {
-  color: $linkColor;
+  color: $violet;
   font-size: 21px !important;
   display: inline-block;
   margin: 20px 0;

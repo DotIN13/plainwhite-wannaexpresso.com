@@ -1,12 +1,12 @@
-<section class="mood-section">
-  {% include posts-label.html type='moods' search=false %}
-  <div class="mood-track" data-moods-target="track">
+<section class="mood-section wide">
+  {% include posts-label.html name='mood picks' href="/moods" %}
+  <div class="mood-track" data-moods-target="track" data-about-target="wide">
     {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
-    {% for mood in sorted_moods limit: 9 %}
+    {% for mood in sorted_moods limit: 5 %}
       {% capture _ %}
         {% increment mood_index %}
       {% endcapture %}
-      {% if mood_index > 6 %}
+      {% if mood_index > 2 %}
         {% assign loading="lazy" %}
       {% else %}
         {% assign loading="eager" %}
@@ -14,14 +14,14 @@
       <div class="mood" data-mood-id="{{ mood.id }}" data-action="click->portal#addPlayer"
         data-portal-type-param="moods" data-portal-container-class-param="portal__container--mood" href="#">
 
-        {% include mood-image.html mood=mood loading=loading %}
+        {% include moods-track-item.html mood=mood loading=loading %}
 
         <template data-portal-target="template">
           {% assign mood_content = mood.content | strip %}
           {% if mood_content == "" or mood_content == nil or mood_content == blank %}{% assign mood_content = false %}{% endif %}
           <div class="mood__portal{% if mood_content == false %} mood__portal--no-content{% endif %}" data-controller="mood" data-mood-id-value="{{ mood.id }}">
             <div class="mood__header">
-              {% include mood-image.html mood=mood loading=loading imgTarget="moodImg" imgAction="load->mood#animateCover" wrapperAction="transitionend->mood#fixImg" %}
+              {% include moods-track-item.html mood=mood loading=loading imgTarget="moodImg" imgAction="load->mood#animateCover" wrapperAction="transitionend->mood#fixImg" %}
               <div class="mood__info">
                 <div class="mood__title">{{ mood.title }}</div>
                 <div class="mood__time">
@@ -40,10 +40,4 @@
       </div>
     {% endfor %}
     </div>
-  <!-- button aria-label="previous mood item" class="mood-button--prev mood-button hide" data-action="moods#prev" data-moods-target="buttonPrev">
-    <div class="mood-arrow--prev mood-arrow"></div>
-  </button>
-  <button aria-label="next mood item" class="mood-button--next mood-button" data-action="moods#next" data-moods-target="buttonNext">
-    <div class="mood-arrow--next mood-arrow"></div>
-  </button -->
 </section>

@@ -6,8 +6,13 @@ body.dark {
   --button-text-color: #{$darkTextColor};
   --button-hover-text-color: #{$darkTextColor};
   --button-hover-background: #{$darkLinkColor};
+  // Links
   --link-text-color: #{$darkLinkColor};
   --link-hover-color: #{$pinky};
+  // Menu item
+  --menu-text-color: #{$darkTextColor};
+  --menu-hover-color: #a7a7a7;
+  --menu-action-color: #7d7d7d;
   --mood-border-color: #343333;
 }
 
@@ -23,9 +28,6 @@ body.dark {
   h6 {
     color: var(--text-color);
   }
-}
-
-.dark main {
 
   .about {
     --ripple-color: #212121;
@@ -33,7 +35,8 @@ body.dark {
 
   .about .sidebar__footer a,
   .about .tagline {
-    @include link-hover(#666);
+    --link-hover-color: #666;
+    @include link-hover();
   }
 
   .about #pwa-install {
@@ -46,25 +49,27 @@ body.dark {
     }
 
     &.expand {
-      background-color: $linkColor;
+      background-color: $violet;
       color: white;
     }
   }
 
-  .post,
-  .post p,
-  .post-date,
-  .post-like {
+  .post-like,
+  .post-content,
+  .post-content p {
     color: #ddd;
   }
 
-  .post {
+  .post-date {
+    color: rgb(175, 172, 172);
+  }
+
+  .post-content {
     --link-text-color: #cf6ae1;
     --link-hover-color: #e491f3;
   }
 
   .social {
-
     .icon-circle {
       color: $dark-700;
       transition: color 0.3s;
@@ -89,7 +94,8 @@ body.dark {
     --background: #{$dark-700};
 
     .post-series__list-item {
-      @include link-hover($darkTextColor, $darkLinkColor);
+      color: $darkTextColor;
+      @include link-hover();
     }
   }
 
@@ -100,12 +106,13 @@ body.dark {
 
   .sidebar {
     .sidebar__item .sidebar__item-link {
-      @include link-hover($darkTextColor, $darkLinkColor);
+      color: $darkTextColor;
+      @include link-hover();
     }
   }
 
   /* Code highlighting */
-  @import 'ext/solarized-dark';
+  @import "ext/solarized-dark";
 
   .highlight,
   .highlight * {
@@ -119,26 +126,26 @@ body.dark {
 
   pre.highlight-dark,
   code {
-    font-family: 'Consolas', Menlo, monospace;
+    font-family: "Consolas", Menlo, monospace;
     line-height: 1.4em;
     tab-size: 4;
   }
 
   /* Tag pills */
-  .post-categories {
-    li {
+  .post-tags {
+    .tag {
       background-color: $dark-700;
       color: white;
     }
   }
 
   .navigation a {
-    @include link-hover($darkTextColor);
+    color: $darkTextColor;
+    @include link-hover();
   }
 
   /* Post header hovering */
   .post-item {
-
     .post-header {
       color: white;
 
@@ -154,7 +161,8 @@ body.dark {
   }
 
   #title a {
-    @include link-hover(white);
+    color: white;
+    @include link-hover();
   }
 
   .post-pager li a {
@@ -168,16 +176,8 @@ body.dark {
   }
 
   /* Labelgroup */
-  .posts-label__title {
-    color: $darkTextColor;
-
-    &:hover {
-      color: #a7a7a7;
-    }
-  }
 
   .labelgroup {
-
     .posts-label__search-icon::before {
       color: white;
     }
@@ -206,15 +206,12 @@ body.dark {
   }
 
   .labelgroup:hover {
-
     input {
       color: white;
     }
   }
 
-
   .labelgroup.focus-within {
-
     input {
       color: $darkTextColor;
       background-color: $dark-700;
@@ -224,8 +221,10 @@ body.dark {
   /* Archive tagcloud */
   #tag-cloud .tag-button,
   #show-tags {
+    --link-hover-color: #{$darkTextColor};
     background-color: $dark-700;
-    @include link-hover($darkTextColor, $darkTextColor);
+    color: $darkTextColor;
+    @include link-hover();
 
     &:hover,
     &:active,
@@ -246,7 +245,6 @@ body.dark {
   /* Table */
 
   table {
-
     th,
     td {
       border: 1px solid $dark-700;
@@ -255,7 +253,6 @@ body.dark {
     th {
       background-color: #0d0d0d;
     }
-
 
     tr:nth-child(2n),
     thead {
@@ -302,7 +299,7 @@ body.dark {
   }
 
   .talk__action[disabled] .stack-layer {
-    color: rgba(255 255 255 /.36);
+    color: rgba(255 255 255 /0.36);
   }
 
   .talk__config {
@@ -319,7 +316,7 @@ body.dark {
     background: $dark-750;
 
     &:hover {
-      background: rgb(127 127 127 /.15);
+      background: rgb(127 127 127 /0.15);
     }
 
     canvas {
@@ -334,13 +331,12 @@ body.dark {
 }
 
 body.dark {
-
   /* Toast */
   #portal .portal__container--toast .toast {
     color: white;
     background: #403f3f;
 
-    [data-action=update-sw] {
+    [data-action="update-sw"] {
       color: #df81ef;
     }
   }

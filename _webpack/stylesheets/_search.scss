@@ -20,22 +20,7 @@ main {
   }
 
   .posts-label__title {
-    font-size: 15px;
-    color: #555;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: normal;
-    margin: 0;
-    text-decoration: none;
-    transition: color 130ms ease;
-    // Make sure underline ::after is visible
-    z-index: 1;
-    position: relative;
-
-    &:hover {
-      color: $dark-700;
-    }
+    @include posts-label();
   }
 
   .posts-label__search-icon::before {
@@ -68,7 +53,7 @@ main {
 
     input {
       background: $searchBackground;
-      color: #555;
+      color: $dark-400;
       font-size: 15px;
       height: 39px;
       border: none;
@@ -107,7 +92,7 @@ main {
 
       &:hover {
         color: black;
-        background-color: $pinkLight;
+        background-color: $lightPink;
 
         &::before {
           color: #586e75;
@@ -117,7 +102,6 @@ main {
   }
 
   &.focus-within {
-
     .search__container {
       display: block;
       animation: 200ms ease 1 mmfadeIn forwards;
@@ -128,7 +112,7 @@ main {
     }
 
     .posts-label__search-icon::before {
-      color: $linkColor;
+      color: $violet;
       left: 5px;
     }
   }

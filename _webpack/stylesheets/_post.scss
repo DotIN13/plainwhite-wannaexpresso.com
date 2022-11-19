@@ -1,0 +1,415 @@
+/* In-post */
+
+/* Normalize */
+
+.post-content > {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  div.responsive-table,
+  div.post-img,
+  div.highlighter-rouge {
+    margin: 0;
+  }
+
+  div.post-img {
+    margin-top: 1.5rem;
+  }
+
+  h1,
+  h2 {
+    margin-top: 1.2rem;
+  }
+
+  h3,
+  blockquote {
+    margin-top: 1rem;
+  }
+
+  h4,
+  h5,
+  h6,
+  div.responsive-table {
+    margin-top: 0.9rem;
+  }
+
+  p,
+  div.highlighter-rouge {
+    margin-top: 0.8rem;
+  }
+}
+
+/* Shared post content styles */
+
+.post-content {
+  @include serif();
+  font-weight: 400;
+  color: #222;
+  line-height: 1.9em;
+}
+
+/* Post container */
+
+.post-container {
+  .post-header {
+    margin-top: 4rem;
+  }
+
+  .post-content {
+    --link-text-color: #{$violet};
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        border-bottom: 0.5px solid var(--link-hover-color);
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @include sans-serif();
+    }
+
+    /* Images */
+
+    .post-img__container {
+      margin-top: 1.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      em {
+        @include sans-serif();
+        font-size: 0.9em;
+        color: #666;
+        display: block;
+        margin-bottom: 1em;
+      }
+    }
+
+    img {
+      display: block;
+      max-height: 64vh;
+      height: auto;
+      width: auto;
+
+      @media screen and (max-width: $mobileW) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.multilingual-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-top: 20px;
+
+  .post-title {
+    margin-top: 0;
+  }
+
+  a.translate {
+    line-height: 1.2em;
+    margin: 0 0.5em 10px 0;
+    border-radius: 2px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+
+    &:hover {
+      background-color: $violet;
+      color: white;
+    }
+  }
+}
+
+/* like button */
+
+.post-like {
+  --heart-size: 16px;
+  margin-top: 1em;
+  margin-bottom: 4em;
+
+  .like__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+
+    .heart {
+      cursor: pointer;
+
+      svg {
+        fill: none;
+        stroke: #877f7f;
+      }
+
+      &:hover svg {
+        fill: #f06292;
+        stroke: #f06292;
+      }
+    }
+  }
+
+  .like__button--liked .heart svg {
+    fill: #e3032e;
+    stroke: #ffbfec;
+  }
+
+  .placeholder-md {
+    @media screen and (max-width: $mobileW) {
+      display: none;
+    }
+  }
+
+  .post-like__separator {
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    &::before {
+      content: ". . .";
+      font-weight: 700;
+    }
+  }
+
+  .like__button,
+  .like__desc {
+    line-height: 1em;
+  }
+
+  .like__count:not(:empty) {
+    padding-left: 10px;
+  }
+}
+
+/* pagination */
+
+.pagination-links {
+  @include pager();
+  padding-top: 45px;
+
+  .pager--prev {
+    justify-self: end;
+  }
+
+  a {
+    @include button();
+    text-decoration: none;
+    padding: 6px 25px;
+    border-radius: 2px;
+    display: inline-block;
+    min-width: 95px;
+    margin: 0;
+  }
+}
+
+.post-pager {
+  @include pager();
+  padding: 0;
+
+  li {
+    display: flex;
+
+    a {
+      width: 100%;
+      line-height: 1.2em;
+      font-size: 0.95em;
+      text-decoration: none;
+      background-color: #ededed;
+      padding: 6px 25px;
+      border-radius: 2px;
+      display: inline-block;
+      min-width: 95px;
+      text-align: center;
+
+      span {
+        font-size: 0.8em;
+        color: #555;
+        transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      }
+
+      &:hover {
+        background-color: $violet;
+        color: white;
+
+        span {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+select.sel-lang {
+  padding: 0px 1px 2px 1px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: white;
+  border: none;
+  border-bottom: solid 1px black;
+}
+
+/* Vcomments */
+
+#vcomments.v .vwrap .vheader .vinput {
+  border-bottom: 1px solid #dedede;
+  transition: border-color 0.3s;
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid #ba68c8;
+  }
+}
+
+#vcomments.v {
+  .vbtn:active,
+  .vbtn:hover {
+    color: white;
+    border-color: #ba68c8;
+    background-color: #ba68c8;
+  }
+
+  a:before {
+    background: $violet;
+  }
+
+  .vpower.txt-right {
+    display: none;
+  }
+
+  .vemoji-btn {
+    @extend .icon-insert_emoticon;
+  }
+
+  .vpreview-btn {
+    @extend .icon-pageview;
+  }
+
+  .vemoji-btn,
+  .vpreview-btn {
+    font-size: 1.5em;
+    color: #bdbdbd;
+    transition: color 0.3s;
+    @extend .fa-2x;
+    @include fontello();
+
+    &:hover,
+    &.actived {
+      color: $violet;
+    }
+  }
+}
+
+#vcomments.v .vwrap {
+  border: 2px solid #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  overflow: hidden;
+  position: relative;
+  padding: 0.8em 1.5em;
+}
+
+/* video iframe */
+
+.video-iframe {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+}
+
+.video-iframe iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* Block Quote */
+
+blockquote {
+  color: #555;
+}
+
+blockquote.g_bq {
+  font: italic 600 32px EB Garamond, serif;
+  font-style: italic;
+  quotes: "\201c""\201d""\2018""\2019";
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  color: #282828;
+  border: none;
+
+  &:before {
+    content: open-quote;
+  }
+
+  &:after {
+    content: close-quote;
+  }
+}
+
+/* GitHub table styling */
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+table {
+  padding: 0;
+  word-break: initial;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-top: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+  background-color: #f8f8f8;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #dfe2e5;
+  border-bottom: 0;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}

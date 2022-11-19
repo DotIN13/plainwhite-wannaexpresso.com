@@ -1,36 +1,21 @@
-<aside class="about about__sticky-container about--top" data-controller="sidebar ripple"
-  id="about-container" data-turbo-permanent
-  data-sidebar-list-value="{{ sidebar_list | join: "," }}" data-ripple-total-frames-value="50"
-  data-ripple-current-frame="0">
-  <div class="about__absolute-container">
-    <div class="sidebar__ripple" data-ripple-target="canvas"></div>
-
-    {% include sidebar.html %}
-
-    <div class="about__avatar" id="avatar" data-action="click->sidebar#toggle"
-      data-sidebar-target="avatar">
-      {% picture avatar orange.webp --img alt="site avatar" %}
-      <!-- span class="sidebar__toggle"></span -->
+<aside class="about" data-action="resize@window->about#updateObserver" data-about-target="about">
+  <div class="about__inner" style="--about-top: 20%" data-about-target="inner">
+    <div class="about__avatar" id="avatar">
+      <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">
+        {% picture avatar orange.webp --img alt="site avatar" %}
+      </a>
     </div>
 
     <div class="about__header">
       <h2 id="title" class="about__title">
-        <a
-          href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}">{{ site.plainwhite.name }}</a>
+        <a href="{% if page.locale == 'en_US' %}/en-us/{% else %}/{% endif %}"
+          >{{ site.plainwhite.name }}
+        </a>
       </h2>
     </div>
 
     {%- if site.plainwhite.tagline -%}
     <p class="about__tagline">{{ site.plainwhite.tagline }}</p>
-    {%- endif -%}
-
-    {% include about-footer.html position=include.position %}
-
+    {%- endif -%} {% include about-footer.html position=include.position %}
   </div>
-
-  <!-- Place floating button under sidebar so that the floating avatar always shows above the sidebar -->
-  <div class="about__avatar about__avatar--float" data-action="click->sidebar#toggle">
-    {% picture avatar orange.webp --img alt="site avatar" %}
-  </div>
-
 </aside>

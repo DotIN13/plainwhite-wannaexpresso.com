@@ -1,26 +1,21 @@
 .mood-section {
   position: relative;
-}
 
-:root {
-  --mood-border-color: rgb(245, 245, 247);
+  .labelgroup {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .mood-track {
-  --mood-gap: 10px;
-  --mood-height: 23vh;
-  display: flex;
-  height: calc(3 * var(--mood-height) + 2 * var(--mood-gap));
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: var(--mood-gap) var(--mood-gap);
-  overflow: hidden;
+  column-count: 2;
+  column-gap: 75px;
+  --mood-border-color: rgb(245, 245, 247);
 
   .mood {
+    margin-bottom: 4rem;
     position: relative;
 
     .mood__cover {
-      height: var(--mood-height);
       cursor: pointer;
       // Remove blue square on tap
       -webkit-tap-highlight-color: transparent;
@@ -29,291 +24,29 @@
 
     .mood__cover--image img {
       border: 1px solid var(--mood-border-color);
-      border-radius: 12px;
-      height: 100%;
-      width: auto;
-    }
-
-    .mood__cover--text .mood__cover-text {
-      font-size: calc(var(--mood-height) * .95);
-    }
-  }
-
-  @media screen and (max-width: $smallScreenW) {
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    height: auto;
-
-    .mood {
-      flex: 1 0 auto;
-
-      .like__button {
-        @include like-button();
-      }
-    }
-  }
-}
-
-// Universal text mood covers
-.mood__cover--text {
-  align-items: center;
-  background-color: var(--mood-border-color);
-  border: 1px solid var(--mood-border-color);
-  border-radius: 12px;
-  display: grid;
-
-  .mood__cover-text {
-    background: linear-gradient(150deg, #ff629d, #ff7076);
-    font-weight: bold;
-    line-height: 1em;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    padding: 0 5px;
-  }
-}
-
-// Heart styles
-.heart svg {
-  display: block;
-  height: var(--heart-size);
-  overflow: visible;
-  stroke: white;
-  stroke-width: 3px;
-  stroke-linejoin: round;
-  width: var(--heart-size);
-  fill: none;
-}
-
-// Like button both on homepage and in mood portals
-// Only show like buttons after mood header image animations
-.mood,
-.mood__portal {
-  .like__button {
-    display: none;
-  }
-}
-
-.mood,
-.mood__portal {
-  .like__button {
-    align-items: center;
-    border-radius: 10px;
-    bottom: min(15px, 5%);
-    cursor: pointer;
-    flex-direction: row-reverse;
-    right: 3%;
-    padding: 0 12px;
-    position: absolute;
-    height: 26px;
-  }
-
-  .heart {
-    --heart-size: 16px;
-  }
-
-  .like__count {
-    color: white;
-    font-weight: bold;
-    padding-right: 5px;
-
-    &:empty {
-      padding: 0;
-    }
-  }
-}
-
-.mood .mood__cover:hover .like__button,
-.mood__portal.mood__portal--image-animated .like__button,
-.mood .like__button--liked {
-  @include like-button();
-}
-
-// Mood portals
-#portal .portal__container.portal__container--mood {
-  pointer-events: auto;
-
-  .mood__portal {
-    display: grid;
-    gap: 0 30px;
-    grid-template-columns: 2fr auto min-content 2fr;
-    grid-template-rows: 100%;
-    grid-template-areas: ". header content .";
-    padding-top: 10vh;
-    visibility: hidden;
-
-    @media screen and (max-width: $midScreenW) {
-      gap: 0 20px;
-      grid-template-columns: 1fr auto min-content 1fr;
-      grid-template-areas: ". header content .";
-    }
-
-    @media screen and (max-width: $smallScreenW) {
-      display: block;
-      height: 100vh;
-      padding: 10vh 10px;
-      margin: 0 13vw;
-      overflow-y: scroll;
-      overflow-x: auto;
-    }
-
-    @media screen and (max-width: $mobileW) {
-      margin: 0 10vw;
-    }
-
-    @media screen and (max-width: $smallScreenW) {
-      margin: 0 7vw;
-    }
-
-    &.mood__portal--image-animating {
-      visibility: visible;
-
-      // Only apply transition functions after animation starts
-      // .mood__cover img {
-      //   transition-property: transform;
-      //   transition-duration: .4s;
-      //   transition-timing-function: cubic-bezier(0.4, 0, 0, 1);
-      // }
-    }
-  }
-
-  .mood__header {
-    grid-area: header;
-    max-width: 53vw;
-
-    @media screen and (max-width: $smallScreenW) {
-      max-width: none;
+      height: auto;
       width: 100%;
-      justify-self: start;
     }
 
-    .mood__cover {
-      position: relative;
-    }
+    .mood__content {
+      margin-top: 25px;
 
-    .mood__cover--image {
-
-      img {
-        box-shadow: -1px 2px 9px 3px rgb(0 0 0 / 25%);
-        border-radius: 13px;
-        display: block;
-        height: auto;
-        max-height: calc(80vh - 100px);
-        max-width: 100%;
-        width: auto;
-
-        @media screen and (max-width: $smallScreenW) {
-          max-height: none;
-          max-width: none;
-          width: 100%;
-        }
-      }
-    }
-
-    .mood__cover--text {
-      display: inline-block;
-      max-width: 100%;
-
-      .mood__cover-text {
-        display: inherit;
-        font-size: 20vw;
-        padding: 5px 10px;
-        white-space: nowrap;
-        max-width: 100%;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-    }
-
-    .mood__info {
-      align-items: start;
-      display: flex;
-      flex-direction: column;
-
-      &>div {
-        // backdrop-filter: blur(36px);
-        background: rgba(255, 255, 255, 0.5);
-        border: 1px solid #b5b0b082;
-        box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 20%);
-        border-radius: 10px;
-        margin-top: 10px;
+      .mood__header {
+        margin: 20px 0;
       }
 
       .mood__title {
-        font-weight: bold;
-        font-size: 1.3em;
-        padding: 8px 16px;
+        display: inline;
       }
 
-      .mood__time {
-        padding: 5px 12px;
+      // The mood author and date
+      .mood__meta {
+        color: $dark-400;
+      }
+
+      .mood__text {
+        line-height: 1.7em;
       }
     }
-  }
-
-  .mood__content {
-    font-size: 1.15em;
-    grid-area: content;
-    height: fit-content;
-    line-height: 1.15em;
-    min-height: 20vh;
-    padding: 25px 30px;
-    // Set max width for mood content
-    min-width: 302px;
-    max-width: max(302px, 30vw);
-    // Blur effect for content
-    backdrop-filter: blur(36px);
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #61616159;
-    box-shadow: 1px 1px 7px 0px rgb(0 0 0 / 25%);
-    border-radius: 13px;
-
-    :first-child {
-      margin-top: 0;
-    }
-
-    @media screen and (max-width: $midScreenW) {
-      min-width: 240px;
-    }
-
-    @media screen and (max-width: $smallScreenW) {
-      margin-top: 12px;
-      max-width: none;
-    }
-  }
-
-  // Place header in center if no content
-  .mood__portal--no-content .mood__header {
-    justify-self: center;
-  }
-
-  // Portal mood image transition
-  .mood__portal {
-
-    .mood__info,
-    .mood__content {
-      transition: opacity .5s;
-      opacity: 0;
-    }
-
-    &.mood__portal--image-animated {
-
-      .mood__info,
-      .mood__content {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-body[data-moods-portal-opened=true] {
-  overflow-y: hidden;
-
-  main {
-    filter: blur(20px);
-    opacity: 0.6;
-    // transition: filter .3s;
   }
 }

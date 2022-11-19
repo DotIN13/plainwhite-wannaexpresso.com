@@ -1,14 +1,6 @@
 {% if include.post.series %}
-<div class="post-series" data-controller="popup" data-action="click@document->popup#hide">
-  <h3 class="post-series__name" data-action="click->popup#toggle">{{ include.post.series }}</h3>
-  <ul class="post-series__list popup" data-popup-target="popup">
-    {% assign related_posts = site.posts | where_exp: "item", "item.series contains include.post.series" %}
-    {% for post in related_posts %}
-    <li>
-      <a class="post-series__list-item" style="animation-delay: {{ forloop.index | times: 0.05 | plus: 0.1 }}s;" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
-  </ul>
+<div class="post-series">
+  <h3 class="post-series__name">{{ include.post.series }}</h3>
 </div>
 {% endif %}
 

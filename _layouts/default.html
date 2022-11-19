@@ -10,19 +10,12 @@
 {% assign sidebar_list = site.plainwhite.sidebar | map: url_locale %}
 
 <body data-controller="darkmode portal likes" data-likes-counts-value="{}">
-  <main class="container">
-    <section class="content">
+  <main class="container main-container grid-canvas grid-contents" data-controller="about">
 
-      {% include about-aside.html position="top" %}
+    {% include main-nav.html %}
+    {% include about-aside.html position="top" %}
+    {{ content }}
 
-      {{ content }}
-
-    </section>
-    <div class="about about--bottom">
-
-      {% include about-footer.html position="bottom" %}
-
-    </div>
   </main>
 
   {% include toasts.html %}

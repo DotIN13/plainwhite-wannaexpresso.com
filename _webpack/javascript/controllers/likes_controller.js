@@ -6,17 +6,14 @@ import Identity from "../shared/identity";
 // Broadcast likes to all like buttons when updated
 // Update dataset when like buttons are pressed
 export default class extends Controller {
-  static targets = [
-    "item"
-  ]
-  
+  static targets = ["item"];
+
   static values = {
     counts: Object,
-  }
+  };
 
   connect() {
-    this.pull()
-      .then(() => this.countsUpdated = true);
+    this.pull().then(() => (this.countsUpdated = true));
   }
 
   updateLike(target) {
@@ -28,22 +25,25 @@ export default class extends Controller {
   }
 
   countsValueChanged() {
-    this.itemTargets.forEach(target => this.updateLike(target));
+    this.itemTargets.forEach((target) => this.updateLike(target));
   }
 
   async pull() {
     // Get all like buttons
     // Ignore any likables without ID
-    const likables = this.itemTargets.filter(el => el.dataset.likeIdValue);
+    const likables = this.itemTargets.filter((el) => el.dataset.likeIdValue);
     // Get all article IDs with like counts to retrieve
-    const likableIds = Array.from(likables).map(el => `likable=${el.dataset.likeIdValue}`);
+    const likableIds = Array.from(likables).map(
+      (el) => `likable=${el.dataset.likeIdValue}`
+    );
 
     const identity = await new Identity().get();
     const identityQuery = `?identity=${identity}`;
 
     fetch(`/api/likes/get${identityQuery}&${likableIds.join("&")}`)
-      .then(res => res.json())
-      .then(json => this.countsValue = json);
+      .then((res) => res.json())
+      .then((json) => (this.countsValue = json))
+      .catch((err) => console.log("Failed to fetch likes."));
     // .then((json) => likables.forEach(el => Object.assign(el.dataset, json[el.dataset.likeIdValue])));
   }
 }

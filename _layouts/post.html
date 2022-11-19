@@ -1,15 +1,17 @@
 ---
 layout: default
 ---
+
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
-<div class="post-container main-container">
+
+<article class="post-container post-article grid-contents d-contents">
   {% if page.multilingual %}
   <div class="multilingual-title post-header">
     {% include multilingual-sel.html %}
     <a class="post-link" href="{{ page.url | relative_url }}">
       <h2 class="post-title">{{ page.title | escape }}</h2>
       {% if page.subtitle %}
-        <h3 class="post-subtitle">{{ page.subtitle }}</h3>
+      <h3 class="post-subtitle">{{ page.subtitle }}</h3>
       {% endif %}
     </a>
   </div>
@@ -24,46 +26,64 @@ layout: default
 
   <div class="post-meta">
     {% if page.tags %}
-    <div class="post-categories">
+    <div class="post-tags">
       {%- for tag in page.tags -%}
-      <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+      <a
+        class="button tag"
+        href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}"
+        title="{{ tag }}"
+        >{{ tag }}</a
+      >
       {%- endfor -%}
     </div>
     {% endif %}
     <div class="post-misc">
       {% if page.date %}
-      <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
+      <div class="post-date">
+        <i class="icon-calendar"></i>{{ page.date | date: date_format }}
+      </div>
       {% endif %}
     </div>
   </div>
 
-  <div class="post" data-controller="zooming">
-
-    {% include anchor-headings.html beforeHeading=true anchorBody="#" html=content %}
-
+  <div class="post-content grid-contents d-contents" data-controller="zooming">
+    {% include anchor-headings.html beforeHeading=true anchorBody="#"
+    html=content %}
   </div>
 
   <div class="post-like">
-
     <div class="separator post-like__separator text-center"></div>
 
-    {% include like-button.html id=page.id description="SMACK ME<span class='placeholder-md'> like you smack a sack of rice</span>!" %}
-
+    {% include like-button.html id=page.id description='SMACK ME<span
+      class="placeholder-md"
+      >like you smack a sack of rice</span
+    >!' %}
   </div>
 
   <ul class="post-pager">
     {% if page.next.url %}
     <li class="pager--next">
-      <a class="button" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-        NEXT<br>
+      <a
+        class="button"
+        href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="{{page.next.title}}"
+      >
+        NEXT<br />
         <span>{{page.next.title}}</span>
       </a>
     </li>
-    {% endif %}
-    {% if page.previous.url %}
+    {% endif %} {% if page.previous.url %}
     <li class="pager--prev">
-      <a class="button" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-        PREV<br>
+      <a
+        class="button"
+        href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="{{page.previous.title}}"
+      >
+        PREV<br />
         <span>{{page.previous.title}}</span>
       </a>
     </li>
@@ -72,24 +92,27 @@ layout: default
 
   {% if site.valine %}
   <div id="vcomments" data-controller="valine"></div>
-  {% endif %}
-
-  {%- if site.plainwhite.disqus_shortname -%}
-  <div id="disqus_thread" style="margin-top:25px"></div>
+  {% endif %} {%- if site.plainwhite.disqus_shortname -%}
+  <div id="disqus_thread" style="margin-top: 25px"></div>
   <script>
-    var disqus_config = function() {
-      this.page.url = '{{ page.url | absolute_url }}';
-      this.page.identifier = '{{ page.url | absolute_url }}';
+    var disqus_config = function () {
+      this.page.url = "{{ page.url | absolute_url }}";
+      this.page.identifier = "{{ page.url | absolute_url }}";
     };
-    (function() {
+    (function () {
       var d = document,
-        s = d.createElement('script');
-      s.src = 'https://{{ site.plainwhite.disqus_shortname }}.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
+        s = d.createElement("script");
+      s.src =
+        "https://{{ site.plainwhite.disqus_shortname }}.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
       (d.head || d.body).appendChild(s);
     })();
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
-      powered by Disqus.</a></noscript>
+  <noscript
+    >Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+      >comments powered by Disqus.</a
+    ></noscript
+  >
   {%- endif -%}
-</div>
+</article>

@@ -1,5 +1,5 @@
 <footer class="about__footer {{ include.position | prepend: "about__footer-" }}">
-  <div class="about-buttons">
+  <!-- <div class="about-buttons">
     <a href="/" class="language-selection button" aria-label="Change locale"><span
         class="icon-translate"></span></a>
     <a href="/feed.xml" class="feed button" aria-label="RSS Feed"><span
@@ -11,9 +11,9 @@
     {%- endif -%}
     <a href="#" id="pwa-install" class="install button icon-install disabled"
       aria-label="Install as Web Application"><span>Install</span></a>
-  </div>
+  </div> -->
 
   {% include social.html %}
 
-  <p class="about__timestamp">©{{ site.time | date: "%Y" }}</p>
+  <p class="about__timestamp">© {{ site.time | date: "%Y" }}</p>
 </footer>

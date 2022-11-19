@@ -1,26 +1,30 @@
 <li class="post-item">
   {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 
-  {% include post-title.html post=include.post %}
+  <article class="post-article">
+    {% include post-title.html post=include.post %}
 
-  <div class="post-meta">
-    <div class="post-categories">
-      {%- for tag in include.post.tags -%}
-        <a class="button" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
-      {%- endfor -%}
+    <div class="post-meta">
+      <div class="post-tags">
+        {%- for tag in include.post.tags -%}
+        <a
+          class="button tag"
+          href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}"
+          title="{{ tag }}"
+          >{{ tag }}</a
+        >
+        {%- endfor -%}
+      </div>
+      <div class="post-date">
+        <i class="icon-calendar"></i>{{ include.post.date | date: date_format }}
+      </div>
     </div>
-    <div class="post-date">
-      <i class="icon-calendar"></i>{{ include.post.date | date: date_format }}
-    </div>
-  </div>
-  <a class="post-link" href="{{ include.post.url | relative_url }}">
-    <div class="post">
-      {% if include.post.locale == 'en_US' %}{% assign exerpt_length = 300 %}{% else %}{% assign exerpt_length = 200 %}{% endif %}
-      {{ include.post.content | excerpt | strip_html | strip | truncate: exerpt_length }}
-      <span class="button__arrows">
-        <span class="button__arrow" aria-hidden="true">→</span>
-        <span class="button__arrow" aria-hidden="true">→</span>
-      </span>
-    </div>
-  </a>
+    <a class="post-link" href="{{ include.post.url | relative_url }}">
+      <div class="post-content">
+        {% if include.post.locale == 'en_US' %}{% assign exerpt_length = 300%}
+        {% else %}{% assign exerpt_length = 128 %}{% endif %}
+        {{ include.post.content | excerpt | strip_html | strip | truncate: exerpt_length }}
+      </div>
+    </a>
+  </article>
 </li>

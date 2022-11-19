@@ -2,12 +2,11 @@
 layout: default
 ---
 
-<div class="posts-container main-container">
+<div class="page-container grid-contents d-contents">
   {%- if site.posts.size > 0 -%}
   <section class="posts-section">
-    {% include posts-label.html type="posts" search=true href="/archive" %}
     <ul class="post-list">
-      {%- for post in paginator.posts limit: 1 -%}
+      {%- for post in paginator.posts limit: 3 -%}
       {%- include post-item.html post=post -%}
       {%- endfor -%}
     </ul>
@@ -23,7 +22,7 @@ layout: default
   {%- if paginator.posts.size > 0 -%}
   <section class="posts-section">
     <ul class=post-list>
-      {%- for post in paginator.posts offset: 1 -%}
+      {%- for post in paginator.posts offset: 3 -%}
       {%- include post-item.html post=post -%}
       {%- endfor -%}
     </ul>
@@ -31,5 +30,4 @@ layout: default
   {%- endif -%}
 
   {% include pagination-links.html %}
-
 </div>
