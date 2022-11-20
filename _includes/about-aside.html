@@ -16,6 +16,10 @@
 
     {%- if site.plainwhite.tagline -%}
     <p class="about__tagline">{{ site.plainwhite.tagline }}</p>
-    {%- endif -%} {% include about-footer.html position=include.position %}
+    {%- endif -%}
+
+    {% include nav-actions.html %}
+    
+    {% include about-footer.html %}
   </div>
 </aside>

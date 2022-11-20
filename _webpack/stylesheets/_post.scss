@@ -13,11 +13,13 @@
   blockquote,
   div.responsive-table,
   div.post-img,
-  div.highlighter-rouge {
+  div.highlighter-rouge,
+  div.video-iframe {
     margin: 0;
   }
 
-  div.post-img {
+  div.post-img,
+  div.video-iframe {
     margin-top: 1.5rem;
   }
 
@@ -44,7 +46,7 @@
   }
 }
 
-/* Shared post content styles */
+/* Shared post content styles among homepage post items and post pages */
 
 .post-content {
   @include serif();
@@ -56,12 +58,21 @@
 /* Post container */
 
 .post-container {
+  // Actions
   .post-actions {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
 
-    .multilingual {
+    &:not(.multilingual) {
+      justify-content: end;
+    }
+
+    @media screen and (max-width: $smallScreenW) {
+      gap: 25px;
+      margin-top: 4rem;
+    }
+
+    .languages {
       display: flex;
       gap: 20px;
 
@@ -74,22 +85,76 @@
         }
       }
     }
+  }
 
-    .share {
-      justify-self: end;
-      display: flex;
-      gap: 15px;
+  // Shared styles for post share buttons
+  .share {
+    display: flex;
+    gap: 15px;
 
-      i {
-        cursor: pointer;
+    .share-button {
+      display: none;
+      visibility: hidden;
+    }
+
+    .share-button.can-share {
+      display: inline-block;
+      visibility: visible;
+    }
+  }
+
+  // Shared styles for post actions
+  .post-action {
+    gap: 7px; // Gap between action icon and caption
+    color: var(--menu-text-color);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    .icon svg {
+      fill: var(--menu-text-color);
+    }
+
+    .caption {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  // Add margin to the top of the post title
+  .post-actions + .post-series,
+  .post-actions + .post-header {
+    margin-top: 4rem;
+
+    @media screen and (max-width: $smallScreenW) {
+      margin-top: 0.5rem;
+    }
+  }
+
+  // Post series
+  .post-series {
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0.8rem 0;
+
+      @media screen and (max-width: $smallScreenW) {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
       }
     }
   }
 
+  // Post header
   .post-header {
-    margin-top: 4rem;
+    margin-bottom: 0.75rem;
   }
 
+  // Post content
   .post-content {
     --link-text-color: #{$violet};
 
@@ -138,30 +203,35 @@
       }
     }
   }
-}
 
-.multilingual-title {
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin-top: 20px;
+  .post-footer {
+    justify-content: space-between;
+    margin-top: 3rem;
 
-  .post-title {
-    margin-top: 0;
-  }
+    .post-reactions {
+      gap: 10px;
 
-  a.translate {
-    line-height: 1.2em;
-    margin: 0 0.5em 10px 0;
-    border-radius: 2px;
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    font-size: 20px;
+      .reaction {
+        flex: 1 0 80px;
+      }
 
-    &:hover {
-      background-color: $violet;
-      color: white;
+      .icon svg {
+        height: 20px;
+        width: 20px;
+      }
+
+      .reaction.like-button--liked {
+        .icon svg {
+          fill: $rose;
+        }
+
+        &:hover {
+          .icon svg {
+            transition: fill 0.2s ease;
+            fill: black;
+          }
+        }
+      }
     }
   }
 }
@@ -190,6 +260,7 @@
 .post-pager {
   @include pager();
   padding: 0;
+  margin-top: 4rem;
 
   li {
     display: flex;
@@ -222,15 +293,6 @@
       }
     }
   }
-}
-
-select.sel-lang {
-  padding: 0px 1px 2px 1px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  background: white;
-  border: none;
-  border-bottom: solid 1px black;
 }
 
 /* Vcomments */

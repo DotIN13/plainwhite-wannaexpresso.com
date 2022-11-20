@@ -5,31 +5,17 @@ layout: default
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 
 <article class="post-container post-article grid-contents d-contents">
-  <div class="post-actions d-flex row-reverse">
-    <div class="share">
-      <i class="icon-link" onclick='try {
-        navigator.clipboard.writeText(window.location.href);
-        const e = new Event("bake");
-        document.getElementById("toast__copy-link").dispatchEvent(e);
-        } catch (e) {
-          console.log("Clipboard API is not supported.")
-      }'></i>
-      <i class="icon-share"></i>
-    </div>
-
+  <div class="post-actions d-flex {% if page.multilingual %}multilingual{% endif %}">
     {% if page.multilingual %}
-    <div class="multilingual">
-      {% include multilingual-sel.html %}
-    </div>
+      <div class="languages">
+        {% include multilingual-sel.html %}
+      </div>
     {% endif %}
+
+    {% include post-share.html %}
   </div>
 
-  <a class="post-link post-header" href="{{ page.url | relative_url }}">
-    <h2 class="post-title">{{ page.title | escape }}</h2>
-    {% if page.subtitle %}
-    <h3 class="post-subtitle">{{ page.subtitle }}</h3>
-    {% endif %}
-  </a>
+  {% include post-title.html post=page %}
 
   <div class="post-meta">
     {% if page.tags %}
@@ -53,6 +39,11 @@ layout: default
 
   <div class="post-content grid-contents d-contents" data-controller="zooming">
     {% include anchor-headings.html beforeHeading=true anchorBody="#" html=content %}
+  </div>
+
+  <div class="post-footer d-flex">
+    {% include post-reactions.html id=page.id placeholder="Like" %}
+    {% include post-share.html %}
   </div>
 
   <ul class="post-pager">

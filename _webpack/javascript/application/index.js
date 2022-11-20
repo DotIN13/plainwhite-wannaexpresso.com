@@ -1,9 +1,13 @@
+/* CSS */
+
+import '../../stylesheets/custom.scss';
+
 /* Modules */
 
-import initWorkbox from './workbox-utilities';
-// eslint-disable-next-line no-unused-vars
-import * as Turbo from "@hotwired/turbo";
+import "@hotwired/turbo";
 
+// Workbox
+import initWorkbox from './workbox-utilities';
 // Stimulus
 import { Application } from "@hotwired/stimulus";
 import PortalController from "../controllers/portal_controller";
@@ -26,7 +30,3 @@ application.register("like", LikeController);
 
 // Initialize workbox
 window.addEventListener('DOMContentLoaded', initWorkbox);
-
-/* CSS */
-
-import '../../stylesheets/custom.scss';

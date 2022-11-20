@@ -27,9 +27,9 @@ export default class extends Controller {
     this.aboutTop = `-${this.innerTarget.style
       .getPropertyValue("--about-top")
       .trim()}`;
-    this.aboutBottom = `${-Math.round(
+    this.aboutBottom = `${-Math.floor(
       (1 - bottom / window.innerHeight) * 100
-    )}%`;
+    )}%`; // Round down to make the observer more sensitive
     // Initialize a new observer with the new rect
     // eslint-disable-next-line no-unused-vars
     this.observer?.disconnect();

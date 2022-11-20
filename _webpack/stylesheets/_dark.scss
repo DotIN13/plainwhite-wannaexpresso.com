@@ -1,11 +1,12 @@
 body.dark {
   background-color: $dark-800;
   --text-color: #{$darkTextColor};
+  --title-text-color: #{$darkTextColorLight};
   --background: #{$dark-800};
   --button-background: #{$dark-700};
   --button-text-color: #{$darkTextColor};
   --button-hover-text-color: #{$darkTextColor};
-  --button-hover-background: #{$darkLinkColor};
+  --button-hover-background: #0d8c7e;
   // Links
   --link-text-color: #{$darkLinkColor};
   --link-hover-color: #{$pinky};
@@ -13,7 +14,6 @@ body.dark {
   --menu-text-color: #{$darkTextColor};
   --menu-hover-color: #a7a7a7;
   --menu-action-color: #7d7d7d;
-  --mood-border-color: #343333;
 }
 
 .dark main {
@@ -26,7 +26,7 @@ body.dark {
   h4,
   h5,
   h6 {
-    color: var(--text-color);
+    color: var(--title-text-color);
   }
 
   .about {
@@ -37,21 +37,6 @@ body.dark {
   .about .tagline {
     --link-hover-color: #666;
     @include link-hover();
-  }
-
-  .about #pwa-install {
-    background-color: $dark-700;
-    color: #df93e8;
-
-    &.disabled {
-      color: #888;
-      background-color: #333;
-    }
-
-    &.expand {
-      background-color: $violet;
-      color: white;
-    }
   }
 
   .post-content,
@@ -114,8 +99,12 @@ body.dark {
   /* Tag pills */
   .post-tags {
     .tag {
-      background-color: $dark-700;
-      color: white;
+      --button-background: #093c38;
+      --button-text-color: white;
+
+      &:first-child {
+        --button-background: #0b6d66;
+      }
     }
   }
 
@@ -127,7 +116,7 @@ body.dark {
   /* Post header hovering */
   .post-item {
     .post-header {
-      color: white;
+      color: var(--title-text-color);
 
       .post-title,
       .post-subtitle {
@@ -141,7 +130,7 @@ body.dark {
   }
 
   #title a {
-    color: white;
+    color: var(--title-text-color);
     @include link-hover();
   }
 
@@ -220,6 +209,14 @@ body.dark {
 
   .mini-post-list .post-item {
     border-bottom: 1px solid $dark-200;
+  }
+
+  /* Post article */
+
+  .post-article {
+    .post-content .post-img__container em {
+      color: #939191;
+    }
   }
 
   /* Table */
@@ -307,6 +304,12 @@ body.dark {
   /* Muted Text */
   .muted-text {
     color: #d3d3d3;
+  }
+
+  /* Mood */
+  .mood-track {
+    --mood-border-color: rgb(47, 51, 54);
+    --mood-meta-color: #817f7f;
   }
 }
 

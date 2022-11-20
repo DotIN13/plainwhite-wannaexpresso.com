@@ -6,11 +6,11 @@ $rose: #de678d;
 $champagne: #b75680;
 $lightPurple: #ba68c8;
 $violet: #9C27B0;
-$smallMobileW: 480px;
-$mobileW: 600px;
-$smallScreenW: 768px;
-$midScreenW: 1024px;
-$bigScreenW: 1600px;
+$smallMobileW: 479px;
+$mobileW: 599px;
+$smallScreenW: 767px; // Ipad Mini, breaking point for grid layout
+$midScreenW: 1023px; // Ipad Air
+$bigScreenW: 1599px;
 
 $leftWidth: 220px;
 $maxWidth: 1000px;
@@ -20,7 +20,8 @@ $buttonBackground: #e3e3e3;
 $moodPadding: 2.6em;
 $smallMoodPadding: 2em;
 
-$darkTextColor: #f6f6f6;
+$darkTextColor: #bdc1c6;
+$darkTextColorLight: #dfdfdf;
 $darkLinkColor: #e584f6;
 $lightGrey: #eee;
 $dark-200: #666;

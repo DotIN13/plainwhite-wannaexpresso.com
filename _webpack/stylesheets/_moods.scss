@@ -10,6 +10,11 @@
   column-count: 2;
   column-gap: 75px;
   --mood-border-color: rgb(245, 245, 247);
+  --mood-meta-color: #{$dark-300};
+
+  @media screen and (max-width: $mobileW) {
+    column-count: 1;
+  }
 
   .mood {
     margin-bottom: 4rem;
@@ -41,7 +46,7 @@
 
       // The mood author and date
       .mood__meta {
-        color: $dark-300;
+        color: var(--mood-meta-color);
         padding-left: 5px;
       }
 
@@ -49,5 +54,13 @@
         line-height: 1.7em;
       }
     }
+  }
+}
+
+/* Moods page */
+
+.moods-container {
+  .mood-track:first-child {
+    margin-top: 4rem;
   }
 }

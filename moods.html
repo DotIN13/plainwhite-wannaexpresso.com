@@ -1,0 +1,18 @@
+---
+layout: default
+pagination: 
+  enabled: true
+  collection: moods
+---
+
+<div class="moods-container">
+  <div class="mood-track">
+    {%- for mood in paginator.posts -%}
+      <div class="mood">
+        {% include moods-track-item.html mood=mood %}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {% include pagination-links.html %}
+</div>

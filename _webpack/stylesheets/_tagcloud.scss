@@ -15,21 +15,18 @@
 }
 
 #tag-cloud {
-  margin: 8px -4px 0 -4px;
-  display: flex;
-  overflow: hidden;
-  flex-wrap: wrap;
   align-items: flex-start;
   align-content: flex-start;
+  display: flex;
+  height: 108px;
+  gap: 12px 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
 
   .tag-button {
     text-decoration: none;
 
-    @media only screen and (min-width: $mobileW) {
-      margin-right: 5px;
-    }
-
-    &>.sup {
+    & > .sup {
       margin-left: 4px;
       font-weight: 700;
       line-height: 18px;
@@ -42,7 +39,8 @@
     &.focus {
       background: $violet;
       color: white;
-      box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
+      box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px,
+        rgba(0, 0, 0, 0.239216) 0 1px 4px;
     }
   }
 
@@ -54,43 +52,17 @@
       color: white;
     }
   }
-
-  a.tag-button[rel="1"] {
-    display: none;
-
-    &.expand,
-    &.focus,
-    &.visited {
-      display: block;
-    }
-  }
-
-  @media only screen and (min-width: $mobileW) {
-    margin: 8px -4px 0 11px;
-  }
 }
 
-// Show Tags Button
-#show-tags,
 .tag-button {
   @include button();
   font-size: 14px;
   height: 28px;
   line-height: 28px;
-  margin-bottom: 8px;
   border-radius: 5px;
   flex: 1 1 auto;
   padding: 0 8px;
   text-align: center;
-}
-
-#show-tags {
-  @media only screen and (min-width: $mobileW) {
-    margin-left: 15px;
-  }
-
-  margin-left: 0;
-  margin-right: 0;
 }
 
 .tag-comments {
@@ -140,7 +112,7 @@
   .post-item {
     position: relative;
     border-bottom: solid 1px #e3e3e3;
-    margin-top: 1em;
+    margin: 1rem 0;
 
     .post-series__name {
       font-size: 16px;
@@ -166,7 +138,7 @@
     }
   }
 
-  @media only screen and (min-width: $mobileW + 1) {
+  @media only screen and (min-width: ($mobileW + 1)) {
     .post-item {
       margin-left: 20px;
 

@@ -31,7 +31,7 @@ export default class extends Controller {
     likeCounts[this.idValue] = { likeCountValue, likeLikedValue };
     document.body.dataset.likesCountsValue = JSON.stringify(likeCounts);
     // el.dataset.likeLikedValue = status;
-    // el.classList.toggle("like__button--liked", status);
+    // el.classList.toggle("like-button--liked", status);
     // el.dataset.likeCountValue = (Number(el.dataset.likeCountValue) || 0) + (status ? 1 : -1);
   }
 
@@ -40,7 +40,7 @@ export default class extends Controller {
   }
 
   likedValueChanged(val) {
-    this.element.classList.toggle("like__button--liked", val);
+    this.element.classList.toggle("like-button--liked", val);
   }
 
   // get instances() {

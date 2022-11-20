@@ -1,0 +1,24 @@
+<div class="share">
+  <div
+    class="link-button post-action"
+    onclick='try {
+    navigator.clipboard.writeText(window.location.href);
+    const e = new Event("bake");
+    document.getElementById("toast__copy-link").dispatchEvent(e);
+    } catch (e) {
+      console.log("Clipboard API is not supported.")
+    }'
+  >
+    <i class="icon icon-link"></i>
+    <span class="caption">Link</span>
+  </div>
+
+  <div class="share-button post-action">
+    <i
+      class="icon icon-share"
+      data-share-title="{{ page.title | escape }}"
+      data-share-url="{{ page.url | absolute_url }}"
+    ></i>
+    <span class="caption">Share</span>
+  </div>
+</div>

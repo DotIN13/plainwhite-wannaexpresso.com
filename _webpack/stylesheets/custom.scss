@@ -35,18 +35,22 @@ a {
 }
 
 :root {
-  --about-width: 252px;
+  --about-width: min(calc(200px + (100vw - 768px) * 0.25), 252px);
   --background: white;
   --button-background: #{$buttonBackground};
   --button-text-color: #616161;
   --button-hover-text-color: white;
   --button-hover-background: #0e7b73;
   --container-width: 1080px; // The main container width
-  --content-width: 700px; // The main content width
+  --content-width: calc(
+    var(--container-width) * 0.65
+  ); // The main content width
+  --content-gap-right: 2rem;
   --input-border-color: rgba(0, 0, 0, 0.25);
   --input-label-color: white;
-  --gap: 1rem;
+  --gap: 3rem;
   // Link colors
+  --line-height: 1.2rem;
   --link-text-color: #{$dark-800};
   --link-hover-color: #{$violet};
   // Menu item colors
@@ -56,19 +60,21 @@ a {
   font-size: 16px;
 
   @media screen and (max-width: $bigScreenW) {
-    --about-width: 238px;
     --container-width: 956px;
-    --content-width: 658px;
   }
 
-  @media screen and (max-width: 1280px) {
-    --about-width: 226px;
+  @media screen and (max-width: $midScreenW) {
+    --gap: 2rem;
+  }
+
+  @media screen and (max-width: $mobileW) {
+    --gap: 1.2rem;
   }
 }
 
 body {
   @include sans-serif();
-  line-height: 1.2em;
+  line-height: var(--line-height);
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -107,16 +113,34 @@ main {
   grid-template-columns:
     [full-start] minmax(var(--gap), auto)
     [wide-start] var(--about-width)
-    [main-start] min(var(--content-width, 720px), calc(100% - var(--gap) * 2))
+    [main-start] min(
+      var(--content-width, 720px),
+      calc(
+        100vw - var(--about-width) - var(--content-gap-right) - var(--gap) * 2
+      )
+    )
     [main-end]
-    calc(
-      (
-        var(--container-width, 1200px) - var(--content-width, 720px) -
-          var(--about-width)
+    minmax(
+      var(--content-gap-right),
+      calc(
+        (
+          var(--container-width, 1200px) - var(--content-width, 720px) -
+            var(--about-width)
+        )
       )
     )
     [wide-end] minmax(var(--gap), auto)
     [full-end];
+
+  @media screen and (max-width: $smallScreenW) {
+    grid-template-columns:
+      [full-start] minmax(var(--gap), auto)
+      [wide-start] auto
+      [main-start] calc(100vw - var(--gap) * 2)
+      [main-end] auto
+      [wide-end] minmax(var(--gap), auto)
+      [full-end];
+  }
 }
 
 .grid-contents > :not(.grid-contents) {
@@ -132,7 +156,9 @@ main {
 }
 
 .page-container > :first-child {
-  margin-top: 2.5rem;
+  // The 10px is from the .post-title,
+  // which has extra 10px margin-top in post but not in page.
+  margin-top: calc(10px + var(--line-height, 1.2rem));
 }
 
 /* Navigations in main */
@@ -144,6 +170,10 @@ main {
   margin-top: 6rem;
   margin-bottom: 1rem;
 
+  @media screen and (max-width: $smallScreenW) {
+    display: block;
+  }
+
   .site-nav {
     display: flex;
     gap: 35px;
@@ -151,36 +181,55 @@ main {
     li > a {
       @include posts-label();
     }
+
+    @media screen and (max-width: $midScreenW) {
+      gap: 25px;
+    }
+
+    @media screen and (max-width: $smallScreenW) {
+      gap: 0;
+      justify-content: space-between;
+    }
   }
 
   .actions {
     align-items: center;
-    display: flex;
-    gap: 22px;
 
-    a {
-      --link-hover-color: var(--menu-hover-color);
-      color: var(--menu-action-color);
-      text-decoration: none;
-      @include link-hover();
-      @include color-transition(0.15s);
+    @media screen and (max-width: $smallScreenW) {
+      display: none;
+      visibility: hidden;
     }
+  }
+}
 
-    .icon-search {
-      font-size: 20px;
-    }
+// Shared styles for .actions
 
-    .icon-translate {
-      font-size: 17px;
-    }
+.actions {
+  display: flex;
+  gap: 22px;
 
-    .icon-moon {
-      font-size: 16px;
-    }
+  a {
+    --link-hover-color: var(--menu-hover-color);
+    color: var(--menu-action-color);
+    text-decoration: none;
+    @include link-hover();
+    @include color-transition(0.15s);
+  }
 
-    .icon-rss_feed {
-      font-size: 19px;
-    }
+  .icon-search {
+    font-size: 20px;
+  }
+
+  .icon-translate {
+    font-size: 17px;
+  }
+
+  .icon-moon {
+    font-size: 16px;
+  }
+
+  .icon-rss_feed {
+    font-size: 19px;
   }
 }
 
@@ -190,6 +239,16 @@ main {
 
 main.grid-contents .about {
   grid-column: wide-start / main-start;
+
+  @media screen and (max-width: $smallScreenW) {
+    position: static;
+    height: auto;
+    grid-column: main-start / main-end;
+
+    .about__inner {
+      position: static;
+    }
+  }
 }
 
 .about {
@@ -203,6 +262,10 @@ main.grid-contents .about {
 
   @media screen and (max-width: $midScreenW) {
     --avatar-size: 105px;
+  }
+
+  @media screen and (max-width: $smallScreenW) {
+    margin-top: 1rem;
   }
 
   @media screen and (max-width: $mobileW) {
@@ -224,6 +287,10 @@ main.grid-contents .about {
     align-items: center;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: $smallScreenW) {
+      align-items: start;
+    }
   }
 
   .about__avatar {
@@ -266,13 +333,17 @@ main.grid-contents .about {
     transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     margin-bottom: 0.8rem;
     @include link-hover();
+
+    @media screen and (max-width: $smallScreenW) {
+      margin-top: 0.5rem;
+    }
   }
 
   .about__title,
   .about__tagline {
     text-align: center;
 
-    @media screen and (max-width: $midScreenW) {
+    @media screen and (max-width: $smallScreenW) {
       text-align: left;
     }
   }
@@ -288,12 +359,27 @@ main.grid-contents .about {
     @include color-transition();
   }
 
+  .actions {
+    align-items: start;
+    margin-top: 0.5rem;
+
+    @media screen and (min-width: ($smallScreenW + 1)) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
   .about__timestamp {
     margin-top: 1.5em;
   }
 
   .about__footer {
     text-align: center;
+
+    @media screen and (max-width: $smallScreenW) {
+      display: none;
+      visibility: hidden;
+    }
   }
 }
 
@@ -349,12 +435,11 @@ main.grid-contents .about {
 }
 
 .post-series {
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  font-size: 0.64rem;
-  font-weight: 400;
-
   h3 {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.04rem;
+    font-weight: 500;
     margin: 0;
   }
 }
@@ -406,11 +491,14 @@ main.grid-contents .about {
 }
 
 .post-date {
-  margin-right: 10px;
-  margin-left: 20px;
   color: $dark-400;
   flex: 1 0 auto;
   text-align: right;
+  padding-left: 20px;
+
+  @media screen and (max-width: $mobileW) {
+    padding-left: 0;
+  }
 }
 
 i.icon-calendar {

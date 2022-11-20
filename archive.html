@@ -9,66 +9,62 @@ sitemap:
 ---
 
 <div class="archive-container" data-controller="archive">
-    <ul style="list-style: none; padding-left: 0;">
-        {% include posts-label.html type="archive" search=true %}
-    </ul>
+  <ul style="list-style: none; padding-left: 0;">
+    {% include posts-label.html name="archive" %}
+  </ul>
 
-    <div id='tag-cloud' class="tags tags-sup js-tags" data-expand=false data-archive-target="cloud">
-        <a class="tag-button tag-button--all" data-encode="" href="#" data-action="archive#focus">
-            Show All
-            <span class="sup">{{site.posts.size}}</span>
-        </a>
+  <div id='tag-cloud' class="tags tags-sup js-tags" data-expand=false data-archive-target="cloud">
+    <a class="tag-button tag-button--all" data-encode="" href="#" data-action="archive#focus">
+      Show All
+      <span class="sup">{{site.posts.size}}</span>
+    </a>
 
-        {% capture tags %}
-        {% for tag in site.tags %}
-        {% assign tag_encoded = tag[0] | strip | url_encode %}
-        <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" href="?tag={{ tag_encoded }}" data-encode="{{ tag_encoded }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}" data-archive-target="tag" data-action="archive#focus">
-            {{ tag[0] }}
-            <span class="sup">{{ tag[1].size }}</span>
-        </a>__SEPERATOR__
-        {% endfor %}
-        {% endcapture %}
-        {{ tags | split:'__SEPERATOR__' | sort }}
-    </div>
+    {% capture tags %}
+    {% for tag in site.tags %}
+    {% assign tag_encoded = tag[0] | strip | url_encode %}
+    <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" href="?tag={{ tag_encoded }}" data-encode="{{ tag_encoded }}" class="tag-button" title="{{ tag[0] }}" rel="{{ tag[1].size }}" data-archive-target="tag" data-action="archive#focus">
+      {{ tag[0] }}
+      <span class="sup">{{ tag[1].size }}</span>
+    </a>__SEPERATOR__
+    {% endfor %}
+    {% endcapture %}
+    {{ tags | split:'__SEPERATOR__' | sort }}
+  </div>
 
-    <div id='show-tags' data-archive-target="toggle" data-action="click->archive#toggleCloud">
-        <i class="far icon-expand_more"></i>
-    </div>
-
-    <!-- Article List -->
-    <div class="mini-post-list js-result">
-        {%- assign _sorted_list = site.posts -%}
-        {%- assign _sorted_list = _sorted_list | sort: 'date' -%}
-        {%- assign _sorted_list = _sorted_list | reverse -%}
+  <!-- Article List -->
+  <div class="mini-post-list js-result">
+    {%- assign _sorted_list = site.posts -%}
+    {%- assign _sorted_list = _sorted_list | sort: 'date' -%}
+    {%- assign _sorted_list = _sorted_list | reverse -%}
 
 
-        {%- for _article in _sorted_list -%}
-        {%- assign _tags = '' -%}
-        {%- for _tag in _article.tags -%}
-        {%- assign _tag_encode = _tag | strip | url_encode -%}
-        {%- if forloop.last -%}
-        {%- assign _tags = _tags | append: _tag_encode -%}
-        {%- else -%}
-        {%- assign _tags = _tags | append: _tag_encode | append: ',' -%}
-        {%- endif -%}
-        {%- endfor -%}
+    {%- for _article in _sorted_list -%}
+    {%- assign _tags = '' -%}
+    {%- for _tag in _article.tags -%}
+    {%- assign _tag_encode = _tag | strip | url_encode -%}
+    {%- if forloop.last -%}
+    {%- assign _tags = _tags | append: _tag_encode -%}
+    {%- else -%}
+    {%- assign _tags = _tags | append: _tag_encode | append: ',' -%}
+    {%- endif -%}
+    {%- endfor -%}
 
-        {% comment %} group by year {% endcomment %}
-        {%- assign _currentdate = _article.date | date: '%Y' -%}
-        {%- if _currentdate != _date -%}
-        {%- unless forloop.first -%}</section>{%- endunless -%}
-        <section data-archive-target="year">
-            <span class="listing-seperator">
-                <span class="tag-text">{{ _currentdate }}</span>
-            </span>
-            {%- assign _date = _currentdate -%}
-            {%- endif -%}
+    {% comment %} group by year {% endcomment %}
+    {%- assign _currentdate = _article.date | date: '%Y' -%}
+    {%- if _currentdate != _date -%}
+    {%- unless forloop.first -%}</section>{%- endunless -%}
+    <section data-archive-target="year">
+      <span class="listing-seperator">
+        <span class="tag-text">{{ _currentdate }}</span>
+      </span>
+      {%- assign _date = _currentdate -%}
+      {%- endif -%}
 
-            <div class="post-item" data-tags="{{ _tags }}">
-                {% include post-title.html post=_article %}
-                <!--hr-->
-            </div>
-            {%- if forloop.last -%}</section>{%- endif -%}
-        {% endfor %}
-    </div>
+      <div class="post-item" data-tags="{{ _tags }}">
+        {% include post-title.html post=_article %}
+        <!--hr-->
+      </div>
+      {%- if forloop.last -%}</section>{%- endif -%}
+    {% endfor %}
+  </div>
 </div>
