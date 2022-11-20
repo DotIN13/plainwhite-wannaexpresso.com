@@ -11,8 +11,7 @@
       {% else %}
         {% assign loading="eager" %}
       {% endif %}
-      <div class="mood" data-mood-id="{{ mood.id }}" data-action="click->portal#addPlayer"
-        data-portal-type-param="moods" data-portal-container-class-param="portal__container--mood" href="#">
+      <div class="mood" data-mood-id="{{ mood.id }}">
 
         {% include moods-track-item.html mood=mood loading=loading %}
 
