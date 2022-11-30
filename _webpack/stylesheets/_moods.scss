@@ -26,7 +26,7 @@
       // Remove blue square on tap
       -webkit-tap-highlight-color: transparent;
       outline: 0;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1rem;
     }
 
     .mood__cover--image img {
@@ -37,9 +37,12 @@
     }
 
     .mood__content {
-
       .mood__header {
-        margin-bottom: 1.1rem;
+        margin-bottom: 0.8rem;
+
+        .mood__info {
+          line-height: 1.5rem;
+        }
       }
 
       .mood__title {

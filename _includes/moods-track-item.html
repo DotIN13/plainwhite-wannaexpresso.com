@@ -11,7 +11,7 @@
     <div class="mood__info">
       <h2 class="mood__title">{{ mood.title }}</h2>
       <span class="mood__meta font-sans">
-        @DotIN13 · {{ mood.date | ago }}
+        @DotIN13 · <time data-mood-target="time" datetime="{{ mood.date | date_to_xmlschema }}">{{ mood.date | date: site.plainwhite.mood_date_format }}</time>
       </span>
     </div>
     <!-- The like button goes here -->

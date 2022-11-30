@@ -11,7 +11,7 @@
       {% else %}
         {% assign loading="eager" %}
       {% endif %}
-      <div class="mood" data-mood-id="{{ mood.id }}">
+      <div class="mood" data-mood-id="{{ mood.id }}" data-controller="mood">
 
         {% include moods-track-item.html mood=mood loading=loading %}
 

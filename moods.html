@@ -8,7 +8,7 @@ pagination:
 <div class="moods-container">
   <div class="mood-track">
     {%- for mood in paginator.posts -%}
-      <div class="mood">
+      <div class="mood" data-controller="mood">
         {% include moods-track-item.html mood=mood %}
       </div>
     {%- endfor -%}
