@@ -11,7 +11,7 @@
     <div class="mood__info">
       <h2 class="mood__title">{{ mood.title }}</h2>
       <span class="mood__meta font-sans">
-        @DotIN13 · {{ mood.date | date: site.plainwhite.mood_date_format }}
+        @DotIN13 · {{ mood.date | ago }}
       </span>
     </div>
     <!-- The like button goes here -->

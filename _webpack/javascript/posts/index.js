@@ -7,24 +7,26 @@ const application = Application.start();
 application.register("zooming", ZoomingController);
 application.register("valine", ValineController);
 
-const shareButtons = document.querySelectorAll(".share .share-button");
+window.addEventListener("DOMContentLoaded", () => {
+  const shareButtons = document.querySelectorAll(".share .share-button");
 
-if (navigator.canShare) {
-  shareButtons.forEach((el) => {
-    el.classList.add("can-share");
-    el.addEventListener(
-      "click",
-      () => {
-        try {
-          navigator.share({
-            title: el.dataset.shareTitle,
-            url: el.dataset.shareUrl,
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      },
-      false
-    );
-  });
-}
+  if (navigator.canShare) {
+    shareButtons.forEach((el) => {
+      el.classList.add("can-share");
+      el.addEventListener(
+        "click",
+        () => {
+          try {
+            navigator.share({
+              title: el.dataset.shareTitle,
+              url: el.dataset.shareUrl,
+            });
+          } catch (err) {
+            console.log(err);
+          }
+        },
+        false
+      );
+    });
+  }
+});

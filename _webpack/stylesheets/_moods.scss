@@ -2,7 +2,7 @@
   position: relative;
 
   .labelgroup {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.8rem;
   }
 }
 
@@ -17,6 +17,7 @@
   }
 
   .mood {
+    break-inside: avoid;
     margin-bottom: 4rem;
     position: relative;
 
@@ -25,19 +26,20 @@
       // Remove blue square on tap
       -webkit-tap-highlight-color: transparent;
       outline: 0;
+      margin-bottom: 1.4rem;
     }
 
     .mood__cover--image img {
       border: 1px solid var(--mood-border-color);
+      border-radius: 1rem;
       height: auto;
       width: 100%;
     }
 
     .mood__content {
-      margin-top: 25px;
 
       .mood__header {
-        margin: 20px 0;
+        margin-bottom: 1.1rem;
       }
 
       .mood__title {
