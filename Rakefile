@@ -2,7 +2,7 @@ require 'rake'
 
 desc 'Create new mood'
 task :new_mood, [:title] do |_t, args|
-  title = args[:title]
+  title = args[:title] || "untitled"
   file = File.join(File.dirname(__FILE__), '_moods',
                    "#{Time.new.strftime('%Y-%m-%d')}-#{title.downcase.gsub(' ', '-')}.md")
   yaml = <<-EOYAML.gsub(/^\s{2}/, '')
