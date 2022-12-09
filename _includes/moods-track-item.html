@@ -17,6 +17,6 @@
     <!-- The like button goes here -->
   </div>
   {% if mood_text %}
-    <div class="mood__text post-content font-serif">{{ mood.content | excerpt | strip_html | strip | truncate: 140 }}</div>
+    <div class="mood__text post-content font-serif">{{ mood.content | smart_truncate: 140 }}</div>
   {% endif %}
 </div>
