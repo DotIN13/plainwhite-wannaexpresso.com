@@ -47,12 +47,12 @@
 
       .mood__title {
         display: inline;
+        padding-right: 5px;
       }
 
       // The mood author and date
       .mood__meta {
         color: var(--mood-meta-color);
-        padding-left: 5px;
       }
 
       .mood__text {

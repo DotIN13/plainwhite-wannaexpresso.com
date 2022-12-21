@@ -2,7 +2,7 @@
   {% include posts-label.html name='mood picks' href="/moods" %}
   <div class="mood-track" data-moods-target="track" data-about-target="wide">
     {% assign sorted_moods = site.moods | sort: 'date' | reverse %}
-    {% for mood in sorted_moods limit: 5 %}
+    {% for mood in sorted_moods limit: 6 %}
       {% capture _ %}
         {% increment mood_index %}
       {% endcapture %}
