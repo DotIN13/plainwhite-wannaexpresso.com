@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+<article class="mood-container mood-article post-container post-article grid-contents d-contents">
+
+  <div class="mood__nav d-flex">
+    <span class="back icon-arrow_back" tabindex="0" role="button" aria-label="Back"
+      onclick="history.back(); return false;"></span>
+    <a href="/moods"><span class="title">Moods</span></a>
+  </div>
+
+  {% if page.header-image %}
+    <div class="mood__cover mood__cover--image" data-controller="zooming">
+      {% picture mood "{{ page.header-image | prepend: "in-mood/" }}" --img alt="{{ page.title }}" class="zoomable" %}
+    </div>
+  {% endif %}
+
+  <div class="mood__info post-header">
+    {% if page.title != "" %}<h2 class="mood__title">{{ page.title }}</h2>{% endif %}
+    <span class="mood__meta font-serif">
+      @DotIN13 · <time data-mood-target="time" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.plainwhite.mood_date_format }}</time>
+    </span>
+  </div>
+
+  <div class="mood-content post-content grid-contents d-contents">
+    {{ content }}
+  </div>
+
+  <div class="post-footer d-flex">
+    {% include post-reactions.html id=page.id placeholder="Like" %}
+    {% include post-share.html %}
+  </div>
+
+  <ul class="post-pager">
+    {% if page.next.url %}
+    <li class="pager--next">
+      <a
+        class="button"
+        href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="{{page.next.title}}"
+      >
+        NEXT<br />
+        <span>{{page.next.title}}</span>
+      </a>
+    </li>
+    {% endif %} {% if page.previous.url %}
+    <li class="pager--prev">
+      <a
+        class="button"
+        href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="{{page.previous.title}}"
+      >
+        PREV<br />
+        <span>{{page.previous.title}}</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+
+  {% if site.valine %}
+    <div id="vcomments" data-controller="valine"></div>
+  {% endif %}
+
+</article>

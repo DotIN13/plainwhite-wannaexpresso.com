@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "At The Start of Confusion"
 author: "DotIN13"
 locale: en_US

@@ -26,6 +26,8 @@
 .icon-forward-outline:before { content: '\e818'; } /* '' */
 .icon-link:before { content: '\e819'; } /* '' */
 .icon-share:before { content: '\e81a'; } /* '' */
+.icon-school:before { content: '\e81b'; } /* '' */
+.icon-arrow_back:before { content: '\e81c'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-github:before { content: '\f09b'; } /* '' */
 .icon-circle:before { content: '\f111'; } /* '' */

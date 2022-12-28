@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "Lovely Day"
 author: "DotIN13"
 locale: zh_CN

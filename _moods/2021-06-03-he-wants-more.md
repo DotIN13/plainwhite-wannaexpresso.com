@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "更多的，更多的"
 author: "DotIN13"
 locale: zh_CN

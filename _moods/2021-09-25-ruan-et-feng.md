@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "阮先生 💖 冯女士"
 author: "DotIN13"
 locale: zh_CN

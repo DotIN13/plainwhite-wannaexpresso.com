@@ -1,22 +1,24 @@
 {% assign mood_text = mood.content | strip %}
 {% if mood_text == "" or mood_text == nil or mood_text == blank %}{% assign mood_text = false %}{% endif %}
 
-{% if mood.header-image %}
-  <div class="mood__cover mood__cover--image" data-action="{{ include.wrapperAction }}">
-    {% picture mood "{{ mood.header-image | prepend: "in-mood/"}}" --img alt="{{ mood.title }}" loading="{{ loading }}" data-mood-target="{{ include.imgTarget }}" data-action="{{ include.imgAction }}" %}
-  </div>
-{% endif %}
-<div class="mood__content" data-action="{{ include.wrapperAction }}">
-  <div class="mood__header">
-    <div class="mood__info">
-      {% if mood.title != "" %}<h2 class="mood__title">{{ mood.title }}</h2>{% endif %}
-      <span class="mood__meta font-sans">
-        @DotIN13 · <time data-mood-target="time" datetime="{{ mood.date | date_to_xmlschema }}">{{ mood.date | date: site.plainwhite.mood_date_format }}</time>
-      </span>
+<a href="{{ mood.url }}">
+  {% if mood.header-image %}
+    <div class="mood__cover mood__cover--image" data-action="{{ include.wrapperAction }}">
+      {% picture mood "{{ mood.header-image | prepend: "in-mood/" }}" --img alt="{{ mood.title }}" loading="{{ loading }}" data-mood-target="{{ include.imgTarget }}" data-action="{{ include.imgAction }}" %}
     </div>
-    <!-- The like button goes here -->
-  </div>
-  {% if mood_text %}
-    <div class="mood__text post-content font-serif">{{ mood.content | smart_truncate: 140 }}</div>
   {% endif %}
-</div>
+  <div class="mood__content" data-action="{{ include.wrapperAction }}">
+    <div class="mood__header">
+      <div class="mood__info">
+        {% if mood.title != "" %}<h2 class="mood__title">{{ mood.title }}</h2>{% endif %}
+        <span class="mood__meta font-serif">
+          @DotIN13 · <time data-mood-target="time" datetime="{{ mood.date | date_to_xmlschema }}">{{ mood.date | date: site.plainwhite.mood_date_format }}</time>
+        </span>
+      </div>
+      <!-- The like button goes here -->
+    </div>
+    {% if mood_text %}
+      <div class="mood__text post-content font-serif">{{ mood.content | smart_truncate: 140 }}</div>
+    {% endif %}
+  </div>
+</a>

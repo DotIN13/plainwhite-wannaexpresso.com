@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "Love Is Thin"
 author: "DotIN13"
 locale: zh_CN

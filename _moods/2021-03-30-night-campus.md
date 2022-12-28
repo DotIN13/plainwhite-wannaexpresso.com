@@ -1,5 +1,6 @@
 ---
-title: "夜"
+layout: mood
+title: ""
 author: "DotIN13"
 locale: zh_CN
 header-image: "night-campus.jpg"

@@ -205,12 +205,6 @@
       "src": "entypo"
     },
     {
-      "uid": "d6944e1d9af302093d43b299bbecbbbe02",
-      "css": "home",
-      "code": 59403,
-      "src": "iconic"
-    },
-    {
       "uid": "ccd52a22af21fbaa98a9c85fb50fca6b",
       "css": "info",
       "code": 59407,
@@ -289,6 +283,52 @@
       "css": "folder-add",
       "code": 59411,
       "src": "typicons"
+    },
+    {
+      "uid": "d6944e1d9af302093d43b299bbecbbbe02",
+      "css": "home",
+      "code": 59403,
+      "src": "iconic"
+    },
+    {
+      "uid": "815503841e980c848f55e0271deacead",
+      "css": "link",
+      "code": 59417,
+      "src": "entypo"
+    },
+    {
+      "uid": "390d6d13398cbf8c8c3c5493f7d34088",
+      "css": "share",
+      "code": 59418,
+      "src": "entypo"
+    },
+    {
+      "uid": "9886d584654605f6837933d1359ca24d",
+      "css": "school",
+      "code": 59419,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M500 125L959 375V709H875V419.9L500 625 41 375ZM209 548.8L500 709 791 548.8V716.8L500 875 209 716.8V548.8Z",
+        "width": 1000
+      },
+      "search": [
+        "school"
+      ]
+    },
+    {
+      "uid": "c59f6f37ceac9bb81120d5dc34900a94",
+      "css": "arrow_back",
+      "code": 59420,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M834 459V541H326.2L558.6 775.4 500 834 166 500 500 166 558.6 224.6 326.2 459H834Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow_back"
+      ]
     },
     {
       "uid": "f2a3b01d6174eab9b80fc7d61d8327a3",
@@ -974,20 +1014,6 @@
       },
       "search": [
         "archive"
-      ]
-    },
-    {
-      "uid": "c59f6f37ceac9bb81120d5dc34900a94",
-      "css": "arrow_back",
-      "code": 97,
-      "src": "custom_icons",
-      "selected": false,
-      "svg": {
-        "path": "M834 459V541H326.2L558.6 775.4 500 834 166 500 500 166 558.6 224.6 326.2 459H834Z",
-        "width": 1000
-      },
-      "search": [
-        "arrow_back"
       ]
     },
     {
@@ -10284,20 +10310,6 @@
       },
       "search": [
         "schedule"
-      ]
-    },
-    {
-      "uid": "9886d584654605f6837933d1359ca24d",
-      "css": "school",
-      "code": 115,
-      "src": "custom_icons",
-      "selected": false,
-      "svg": {
-        "path": "M500 125L959 375V709H875V419.9L500 625 41 375ZM209 548.8L500 709 791 548.8V716.8L500 875 209 716.8V548.8Z",
-        "width": 1000
-      },
-      "search": [
-        "school"
       ]
     },
     {

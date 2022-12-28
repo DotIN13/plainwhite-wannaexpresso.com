@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "四十五年"
 author: "DotIN13"
 locale: zh_CN

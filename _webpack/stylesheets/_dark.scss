@@ -219,6 +219,14 @@ body.dark {
     }
   }
 
+  .mood-article {
+    .mood__meta,
+    .mood__nav,
+    .mood__nav a {
+      color: var(--title-text-color);
+    }
+  }
+
   /* Table */
 
   table {
@@ -309,7 +317,7 @@ body.dark {
   /* Mood */
   .mood-track {
     --mood-border-color: rgb(47, 51, 54);
-    --mood-meta-color: #817f7f;
+    --mood-meta-color: #bbb;
   }
 }
 

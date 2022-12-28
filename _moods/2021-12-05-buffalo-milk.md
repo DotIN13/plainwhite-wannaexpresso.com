@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "水牛奶"
 author: "DotIN13"
 locale: zh_CN

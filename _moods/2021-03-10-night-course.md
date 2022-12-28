@@ -1,4 +1,5 @@
 ---
+layout: mood
 title: "晚课"
 author: "DotIN13"
 locale: zh_CN

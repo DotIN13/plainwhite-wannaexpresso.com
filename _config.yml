@@ -143,6 +143,8 @@ plainwhite:
 collections:
   moods:
     sort_by: date
+    permalink: "/:collection/:year:month:day:hour:minute:second/:title"
+    output: true
 
 plugins:
   - jekyll-paginate-v2
