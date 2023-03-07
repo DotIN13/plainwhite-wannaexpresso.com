@@ -228,6 +228,7 @@ dbus-launch --exit-with-session /usr/bin/gnome-session --systemd --session=ubunt
 ```shell
 session=ubuntu
 geometry=1920x1080
+localhost
 alwaysshared
 ```
 
