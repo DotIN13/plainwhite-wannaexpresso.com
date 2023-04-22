@@ -101,7 +101,7 @@ plainwhite:
       url: "/talk"
       icon: "icon-chat"
   # analytics_id: "UA-159368053-1"
-  heap: true
+  heap: false
   heap_dev: "180019940"
   heap_prod: "1629285273"
 

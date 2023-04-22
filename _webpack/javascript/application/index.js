@@ -1,13 +1,15 @@
 /* CSS */
 
-import '../../stylesheets/custom.scss';
+import "../../stylesheets/custom.scss";
 
 /* Modules */
 
 import "@hotwired/turbo";
+import { inject } from "@vercel/analytics";
+inject();
 
 // Workbox
-import initWorkbox from './workbox-utilities';
+import initWorkbox from "./workbox-utilities";
 // Stimulus
 import { Application } from "@hotwired/stimulus";
 import PortalController from "../controllers/portal_controller";
@@ -29,4 +31,4 @@ application.register("likes", LikesController);
 application.register("like", LikeController);
 
 // Initialize workbox
-window.addEventListener('DOMContentLoaded', initWorkbox);
+window.addEventListener("DOMContentLoaded", initWorkbox);
