@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{% if page.locale == 'en_US' %}en{% else %}zh{% endif %}">
+<html lang="{% if page.locale == 'en_US' and site.multilingual == true %}en{% else %}zh{% endif %}">
 
 <head>
   {%- include head.html -%}
 </head>
 
 <!-- Generate sidebar list for matching -->
-{% if page.locale == 'en_US' %}{% assign url_locale = "url_en" %}{% else %}{% assign url_locale = "url" %}{% endif %}
+{% if page.locale == 'en_US' and site.multilingual == true %}{% assign url_locale = "url_en" %}{% else %}{% assign url_locale = "url" %}{% endif %}
 {% assign sidebar_list = site.plainwhite.sidebar | map: url_locale %}
 
 <body data-controller="darkmode portal likes" data-likes-counts-value="{}">
