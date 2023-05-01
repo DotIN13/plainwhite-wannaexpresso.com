@@ -130,5 +130,9 @@
 
   .mood-content {
     font-size: 1.5rem;
+
+    & > p {
+      margin-top: 1.2rem;
+    }
   }
 }
