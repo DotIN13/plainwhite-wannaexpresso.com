@@ -71,12 +71,10 @@ Error parsing global options: Unknown error occurred
 
 ## 后记
 
-驱动打上之后大约半个月，我的小KiKi总算想起来他还有个男朋友可以和她一起在线看视频了。加入Sync Play同步播放，点开她心心念念的GroundHog Day，却卡在了视频加载。
-
-用`sudo intel_gpu_top`查看GPU占用，发现全部“归零”，大事不妙。
+驱动打上之后大约半个月，用`sudo intel_gpu_top`查看GPU占用，发现全部“归零”，大事不妙。
 
 检查FFmpeg日志，没有异常，只是视频转码速度降为了`0.5x`左右。视频转码的命令与正常转码的命令有所不同。
 
 摸不着头脑的我再回头查看主程序日志，发现问题出在`ffprobe`。`ffprobe`没有正确识别视频格式，导致生成的转码命令有误。通过**一点点排查与思考**，我发现，我在编译FFmpeg时使用了最新源码，版本号已经来到5.0，而Jellyfin官方仅支持到4.4.1，版本差别导致了jellyfin内部的`ffprobe`命令不能正确获取视频格式。
 
-重新编译FFmpeg 4.4.1，Groundhog Day已经可以正常播放，只是……生气的KiKi谁来哄呢？还得是我！
+重新编译FFmpeg 4.4.1，视频已经可以正常播放。还得是我！

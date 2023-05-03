@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "让FFmpeg用上QSV编码器（手动挡）"
-subtitle: "How to Enable QSV in FFmpeg (Manual)"
+subtitle: "How to Enable QSV for FFmpeg on Ubuntu (Manual)"
 author: "DotIN13"
 tags:
   - FFmpeg
