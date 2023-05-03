@@ -11,6 +11,8 @@ tags:
 locale: zh_CN
 ---
 
+> 本品不含防腐剂、添加剂与完整配置教程，如有需求，欢迎参阅[在Manjaro上优雅地使用QSV加速Jellyfin视频转码（自动挡）](/2023/05/03/how-to-elegantly-enable-qsv-for-jellyfin-on-manjaro/)。
+
 菜羊G5905是什么乐色，2202年了，还只有双核双线程，能用吗？
 
 好像还行（小声🤫），自带的UHD610好像还能用来转码串流视频……就是……好像不太好伺候，要是不给打好驱动，这小核显立马甩锅CPU——CPU满载，转码失败。

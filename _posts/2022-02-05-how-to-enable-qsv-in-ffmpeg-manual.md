@@ -10,6 +10,8 @@ tags:
 locale: zh_CN
 ---
 
+> 不习惯手动编译？换辆自动挡开开：[在Manjaro上优雅地使用QSV加速Jellyfin视频转码（自动挡）](/2023/05/03/how-to-elegantly-enable-qsv-for-jellyfin-on-manjaro/)！
+
 [Jellyfin x Manjaro系列第三回](/2022/01/24/jellyfin-quick-sync-qsv-transcode/)说到，Manjaro显卡驱动管理百密一疏，没能在安装时就打上支持QSV的显卡驱动；但话又说回来，别的发行版可能还要手动安装，甚至手动编译呢！
 
 但话又说回话又说回来，手动编译在某些情况下有其存在的价值，比如：

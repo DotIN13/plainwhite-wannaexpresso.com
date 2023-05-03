@@ -202,6 +202,11 @@
         width: 100%;
       }
     }
+
+    blockquote > p {
+      border-left: solid 5px #fc8dca;
+      padding-left: 15px;
+    }
   }
 
   .post-footer {
