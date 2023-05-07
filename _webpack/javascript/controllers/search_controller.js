@@ -9,13 +9,13 @@ export default class extends Controller {
     "container"
   ]
 
-  /**
-   * @param {boolean} val
-   */
-  set focus(val) {
-    this.focusWithin = val;
-    this.element.classList.toggle("focus-within", val);
-  }
+  // /**
+  //  * @param {boolean} val
+  //  */
+  // set focus(val) {
+  //   this.focusWithin = val;
+  //   this.element.classList.toggle("focus-within", val);
+  // }
 
   connect() {
     window.SimpleJekyllSearch({
@@ -26,21 +26,27 @@ export default class extends Controller {
       noResultsText: ''
     });
 
-    /* hack ios safari unfocus */
-    if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))
-      document.body.firstElementChild.tabIndex = 1;
-  }
-
-  show(e) {
-    e.stopPropagation();
-    if (e.target.dataset.action != "click->search#show") return;
-
-    this.focus = true;
     this.barTarget.focus();
+
+    // /* hack ios safari unfocus */
+    // if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))
+    //   document.body.firstElementChild.tabIndex = 1;
   }
 
-  hide(e) {
-    if (!this.element.contains(e.target))
-      this.focus = false;
+  // show(e) {
+  //   e.stopPropagation();
+  //   if (e.target.dataset.action != "click->search#show") return;
+
+  //   this.focus = true;
+  //   this.barTarget.focus();
+  // }
+
+  // hide(e) {
+  //   if (!this.element.contains(e.target))
+  //     this.focus = false;
+  // }
+
+  stopPropagation(e) {
+    e.stopPropagation();
   }
 }

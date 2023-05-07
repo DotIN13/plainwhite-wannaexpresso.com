@@ -5,8 +5,8 @@ subtitle: "Jellyfin on Manjaro: Intel Quick Sync Video Transcode"
 author: "DotIN13"
 series: "Jellyfin x Manjaro"
 tags:
-  - Manjaro
   - Jellyfin
+  - Manjaro
   - Intel QSV
 locale: zh_CN
 ---

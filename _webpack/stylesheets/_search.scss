@@ -22,49 +22,59 @@ main {
   .posts-label__title {
     @include posts-label();
   }
+}
 
-  .posts-label__search-icon::before {
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 100%;
-    color: #777;
-    padding: 10px 12px;
-    transition: color 500ms, left 230ms cubic-bezier(0.24, 0.04, 0.2, 1);
-    font-size: 15px;
-    z-index: 2;
-  }
+.portal__container--search {
+  pointer-events: visible;
+  backdrop-filter: blur(2px);
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.1)
+  );
+}
 
+#search {
+  display: flex;
+  justify-content: center;
   /* Search components */
 
   .search__container {
-    display: none;
-    position: absolute;
-    width: 100%;
+    background: $searchBackground;
+    width: min(400px, 100%);
+    margin: 20vh 20px;
     z-index: 2;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0px 4px 6px 0 #33333359, 0px -1px 2px 0px #33333317;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
   }
 
   .search__input {
+    background: transparent;
+    align-items: baseline;
     border-bottom: 1px solid #dfe2e5;
+    display: flex;
+
+    .icon-search {
+      padding: 0 17px;
+      color: $violet;
+      font-size: 15px;
+    }
 
     input {
-      background: $searchBackground;
+      background: transparent;
       color: $dark-400;
       font-size: 15px;
-      height: 39px;
+      height: 50px;
       border: none;
-      padding: 10px 15px 10px 45px;
+      padding: 10px 0;
       outline: none;
       width: 100%;
     }
   }
 
   .search__results {
-    background: $searchBackground;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -95,25 +105,9 @@ main {
         background-color: $lightPink;
 
         &::before {
-          color: #586e75;
+          color: #474747;
         }
       }
-    }
-  }
-
-  &.focus-within {
-    .search__container {
-      display: block;
-      animation: 200ms ease 1 mmfadeIn forwards;
-    }
-
-    input {
-      color: black;
-    }
-
-    .posts-label__search-icon::before {
-      color: $violet;
-      left: 5px;
     }
   }
 }

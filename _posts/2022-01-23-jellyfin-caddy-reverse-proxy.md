@@ -5,8 +5,8 @@ subtitle: "Jellyfin on Manjaro: Caddy Reverse Proxy"
 author: "DotIN13"
 series: "Jellyfin x Manjaro"
 tags:
-  - Manjaro
   - Jellyfin
+  - Manjaro
   - Caddy
 locale: zh_CN
 ---

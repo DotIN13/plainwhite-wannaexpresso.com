@@ -144,49 +144,6 @@ body.dark {
     }
   }
 
-  /* Labelgroup */
-
-  .labelgroup {
-    .posts-label__search-icon::before {
-      color: white;
-    }
-
-    .search__results {
-      color: $darkTextColor;
-      background-color: $dark-700;
-
-      a {
-        color: $darkTextColor;
-        transition: none;
-
-        &:hover {
-          background-color: $champagne;
-
-          &::before {
-            color: $darkTextColor;
-          }
-        }
-      }
-    }
-
-    input {
-      background-color: transparent;
-    }
-  }
-
-  .labelgroup:hover {
-    input {
-      color: white;
-    }
-  }
-
-  .labelgroup.focus-within {
-    input {
-      color: $darkTextColor;
-      background-color: $dark-700;
-    }
-  }
-
   /* Archive tagcloud */
   #tag-cloud .tag-button,
   #show-tags {
@@ -329,6 +286,48 @@ body.dark {
 
     [data-action="update-sw"] {
       color: #df81ef;
+    }
+  }
+
+  /* Search */
+
+  #portal #search {
+    .search__container {
+      background: #53284a;
+    }
+
+    .search__input {
+      border-bottom: solid 1px #84696963;
+
+      .icon-search {
+        color: #ffadf6;
+      }
+
+      input {
+        color: rgb(249, 249, 249);
+      }
+    }
+
+    .search__results {
+      color: rgb(236, 236, 236);
+
+      a {
+        color: inherit;
+        transition: none;
+
+        &:hover {
+          background-color: rgb(239 116 168 / 99%);
+          color: white;
+
+          &::before {
+            color: white;
+          }
+        }
+
+        &::before {
+          color: #d1d1d1;
+        }
+      }
     }
   }
 }

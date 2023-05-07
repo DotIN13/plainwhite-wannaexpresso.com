@@ -19,6 +19,7 @@ import LocaleController from "../controllers/locale_controller";
 import ToastsController from "../controllers/toasts_controller";
 import LikesController from "../controllers/likes_controller";
 import LikeController from "../controllers/like_controller";
+import SearchController from "../controllers/search_controller";
 
 const application = Application.start();
 
@@ -29,6 +30,7 @@ application.register("locale", LocaleController);
 application.register("toasts", ToastsController);
 application.register("likes", LikesController);
 application.register("like", LikeController);
+application.register("search", SearchController);
 
 // Initialize workbox
 window.addEventListener("DOMContentLoaded", initWorkbox);

@@ -26,10 +26,15 @@ export default class extends Controller {
 
   // All ported items are treated as players
   addPlayer(event) {
+    event.preventDefault();
     const params = event.params;
     // Create player and player container
     const container = this.createContainer(params);
-    container.innerHTML = event.target.closest("[data-portal-type-param]").querySelector("template[data-portal-target=template]").innerHTML;
+    if (params["template"]) {
+      container.innerHTML = document.getElementById(params["template"]).innerHTML;
+    } else {
+      container.innerHTML = event.target.firstElementChild.innerHTML;
+    }
     // Custom destination
     const targetNode = document.getElementById(params["destination"]) || this.portalTarget;
     targetNode.appendChild(container);

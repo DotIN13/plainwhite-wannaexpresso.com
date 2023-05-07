@@ -5,8 +5,8 @@ subtitle: "Jellyfin on Manjaro: Parent Directory Permissions"
 author: "DotIN13"
 series: "Jellyfin x Manjaro"
 tags:
-  - Manjaro
   - Jellyfin
+  - Manjaro
   - File Permission
 locale: zh_CN
 ---

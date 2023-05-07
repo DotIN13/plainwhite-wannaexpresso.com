@@ -5,9 +5,9 @@ subtitle: "How to Elegantly (And Automatically) Enable QSV for Jellyfin on Manja
 series: "Jellyfin x Manjaro"
 author: "DotIN13"
 tags:
-  - FFmpeg
-  - Intel QSV
   - Jellyfin
+  - Manjaro
+  - Intel QSV
 locale: zh_CN
 ---
 
