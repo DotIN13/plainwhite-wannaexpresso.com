@@ -18,7 +18,8 @@
     "caddy": "caddy run",
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
     "lint": "eslint _webpack/",
-    "lint:fix": "eslint --fix _webpack/"
+    "lint:fix": "eslint --fix _webpack/",
+    "serve:mobile": "caddy file-server --listen 0.0.0.0:8080 --domain procrustean.local"
   },
   "dependencies": {
     "@babel/core": "^7.18.10",

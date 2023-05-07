@@ -57,7 +57,7 @@ main {
     display: flex;
 
     .icon-search {
-      padding: 0 17px;
+      padding: 0 14px 0 17px;
       color: $violet;
       font-size: 15px;
     }
@@ -65,7 +65,7 @@ main {
     input {
       background: transparent;
       color: $dark-400;
-      font-size: 15px;
+      font-size: 1em;
       height: 50px;
       border: none;
       padding: 10px 0;
