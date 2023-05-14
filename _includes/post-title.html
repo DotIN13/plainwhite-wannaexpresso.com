@@ -5,8 +5,8 @@
 {% endif %}
 
 <a class="post-link post-header" href="{{ include.post.url | relative_url }}">
-  <h2 class="post-title">{{ include.post.title | escape }}</h2>
+  <h1 class="post-title">{{ include.post.title | escape }}</h1>
   {% if include.post.subtitle %}
-  <h3 class="post-subtitle">{{ include.post.subtitle }}</h3>
+  <h2 class="post-subtitle">{{ include.post.subtitle }}</h2>
   {% endif %}
 </a>

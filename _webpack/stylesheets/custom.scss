@@ -206,7 +206,7 @@ main {
 
 .actions {
   display: flex;
-  gap: 22px;
+  gap: 24px;
 
   a {
     --link-hover-color: var(--menu-hover-color);
@@ -217,7 +217,8 @@ main {
   }
 
   .icon-search {
-    font-size: 20px;
+    font-size: 19px;
+    margin-top: 1px;
   }
 
   .icon-translate {

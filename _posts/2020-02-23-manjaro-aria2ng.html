@@ -19,6 +19,7 @@ locale: zh_CN
 <a href="https://sunpma.com/usr/uploads/2019/07/981191327.jpg" data-fancybox="gallery" ><img border="0" src="https://sunpma.com/usr/uploads/2019/07/981191327.jpg" /></a>
 <p>安装后建议自行建立aria专用文件夹，并手动创建以下三个配置文件：<code>aria2.conf</code>、<code>aria2.session</code>、<code>aria2.log</code>。</p>
 
+<p>
 <details>
 <summary>aria2.conf示例</summary>
 {% highlight YAML %}dir=/home/dotin13/Downloads
@@ -117,6 +118,7 @@ bt-seed-unverified=true
 # 保存磁力链接元数据为种子文件(.torrent文件), 默认:false
 bt-save-metadata=true{% endhighlight %}
 </details>
+</p>
 
 <h2>配置<code>Aria2</code>开机启动</h2>
 <p>在<code>/lib/systemd/system/aria2.service</code>编写如下脚本：</p>
@@ -139,7 +141,7 @@ systemctl start aria2.service{% endhighlight %}
 
 <h2>安装<code>Aria2NG</code></h2>
 {% include post-image.html link="post-aria2ng/screenshot-1.png" alt="Aria2NG" %}<br>
-<code>Aria2NG</code>是一款优秀的<code>Aria2</code>管理前端，相当于是<code>Aria2</code>的GUI，极大方便<code>Aria2</code>的使用。在Manjaro中可以直接搜索安装<code>ariang-allinone</code>软件包。
+<p><code>Aria2NG</code>是一款优秀的<code>Aria2</code>管理前端，相当于是<code>Aria2</code>的GUI，极大方便<code>Aria2</code>的使用。在Manjaro中可以直接搜索安装<code>ariang-allinone</code>软件包。</p>
 
 <h2>将<code>Aria2NG</code>添加到<code>Favorites</code></h2>
 <p>运行以下命令：</p>
