@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在Manjaro上优雅地使用QSV加速Jellyfin视频转码（自动挡）"
+title: "在Manjaro上优雅地使用QSV加速Jellyfin转码（自动挡）"
 subtitle: "How to Elegantly (And Automatically) Enable QSV for Jellyfin on Manjaro"
 series: "Jellyfin x Manjaro"
 author: "DotIN13"
