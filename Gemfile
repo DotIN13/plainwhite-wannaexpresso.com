@@ -22,3 +22,5 @@ end
 
 # gem 'aws-sdk-dynamodb'
 # gem 'dynamoid'
+
+gem "tiktoken_ruby", "~> 0.0.5"
