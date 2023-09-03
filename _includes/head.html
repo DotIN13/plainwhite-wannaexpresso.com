@@ -42,6 +42,10 @@
   <meta content="noindex" name="robots"/>
 {% endif %}
 
+{% if site.valine %}
+  <script src="https://unpkg.com/leancloud-storage@4.12.0/dist/av-min.js"></script>
+{% endif %}
+
 <!-- Webpack -->
 {% include head-assets.html %}
 
