@@ -48,6 +48,11 @@ defaults:
       type: "posts"
     values:
       javascript: posts
+  - scope:
+      path: ""
+      type: "moods"
+    values:
+      javascript: posts
 
 # Gitalk settings
 gitalk_clientid: false
