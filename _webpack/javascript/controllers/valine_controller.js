@@ -9,7 +9,7 @@ export default class extends Controller {
       el: this.element,
       appId: "PSy1tmiW2mx0DpKo7psk67EN-9Nh9j0Va",
       appKey: "MskLH2QYVC2Kqj8aG3XJ7x7o",
-      serverURLs: "https://psy1tmiw.lc-cn-e1-shared.com",
+      serverURLs: "https://psy1tmiw.lc-cn-n1-shared.com",
       placeholder: "Your comment here...",
       avatar: "identicon",
       visitor: true,
