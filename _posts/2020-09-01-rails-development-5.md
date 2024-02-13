@@ -9,7 +9,7 @@ tags:
   - Ruby on Rails
   - WoD
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Development must go on...

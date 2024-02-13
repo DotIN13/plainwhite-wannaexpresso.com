@@ -6,7 +6,8 @@ description: "'Tis Me."
 header-img: "_webpack/images/about-bg.jpg"
 multilingual:
   - en-us
-locale: zh_CN
+  - zh-cn
+locale: zh-cn
 javascript: posts
 id: /about
 ---

@@ -8,7 +8,7 @@ tags:
   - Linux
   - Python
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 一次不求甚解的尝试

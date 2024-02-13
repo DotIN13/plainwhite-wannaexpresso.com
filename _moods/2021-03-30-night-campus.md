@@ -2,7 +2,7 @@
 layout: mood
 title: ""
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 header-image: "night-campus.jpg"
 date: 2021-03-30 00:36:56 +0800
 ---

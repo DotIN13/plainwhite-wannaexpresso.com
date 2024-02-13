@@ -6,7 +6,7 @@ author: "DotIN13"
 tags:
   - Life
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 没有名字的人

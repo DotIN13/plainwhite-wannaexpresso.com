@@ -21,7 +21,7 @@
     </div>
     <a class="post-link" href="{{ include.post.url | relative_url }}">
       <div class="post-content">
-        {% if include.post.locale == 'en_US' %}{% assign exerpt_length = 300%}
+        {% if include.post.locale == 'en-us' %}{% assign exerpt_length = 300%}
         {% else %}{% assign exerpt_length = 128 %}{% endif %}
         {{ include.post.content | excerpt | strip_html | strip | truncate: exerpt_length }}
       </div>

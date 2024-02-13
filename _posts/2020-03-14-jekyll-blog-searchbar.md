@@ -10,7 +10,7 @@ tags:
   - Jekyll
   - Blog
   - Searchbar
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 这不是一篇教程

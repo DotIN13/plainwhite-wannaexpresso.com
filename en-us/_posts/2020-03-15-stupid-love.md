@@ -8,7 +8,7 @@ header-mask: 0.6
 tags:
   - Music
   - Lady Gaga
-locale: en_US
+locale: en-us
 ---
 
 ## Video

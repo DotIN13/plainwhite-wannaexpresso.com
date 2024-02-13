@@ -7,7 +7,7 @@ tags:
   - FFmpeg
   - Intel QSV
   - Jellyfin
-locale: zh_CN
+locale: zh-cn
 ---
 
 > 不习惯手动编译？换辆自动挡开开：[在Manjaro上优雅地使用QSV加速Jellyfin视频转码（自动挡）](/2023/05/03/how-to-elegantly-enable-qsv-for-jellyfin-on-manjaro/)！

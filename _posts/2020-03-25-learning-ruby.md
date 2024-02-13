@@ -8,7 +8,7 @@ tags:
   - Programming Language
   - Linux
   - Ruby
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Why Ruby

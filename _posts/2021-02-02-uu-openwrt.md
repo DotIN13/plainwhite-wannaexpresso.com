@@ -7,7 +7,7 @@ tags:
   - UU Router
   - OpenWrt
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## UU加速器OpenWrt插件

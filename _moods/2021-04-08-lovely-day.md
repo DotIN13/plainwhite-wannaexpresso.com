@@ -2,7 +2,7 @@
 layout: mood
 title: "Lovely Day"
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 header-image: "new-life.jpg"
 date: 2021-04-08 23:17:30 +0800
 ---

@@ -6,7 +6,7 @@ author: DotIN13
 tags:
   - Yan Xuetong
   - Life
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 故事

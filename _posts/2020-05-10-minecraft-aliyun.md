@@ -9,7 +9,7 @@ tags:
   - Minecraft
   - Alibaba Cloud
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 阿里云ECS

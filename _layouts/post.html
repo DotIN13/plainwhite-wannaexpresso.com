@@ -4,9 +4,28 @@ layout: default
 
 {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
 
+<!-- Get the posts with the same locale -->
+{% assign page_locale = page.locale | default: "zh-cn" %}
+{% assign locale_posts = site.posts | where: "locale", page_locale %}
+
+<!-- Get the previous and next post -->
+{% for post in locale_posts %}
+  {% if post.url == page.url %}
+  	{% assign pOffset = forloop.index0 | minus: 1 %}
+  	{% assign nOffset = pOffset | plus: 2 %}
+  	{% if forloop.first == false %}
+  	  {% assign next_post = locale_posts[pOffset] %}
+  	{% endif %}
+  	{% if forloop.last == false %}
+  	  {% assign previous_post = locale_posts[nOffset] %}
+  	{% endif %}
+  	{% break %}
+  {% endif %}
+{% endfor %}
+
 <article class="post-container post-article grid-contents d-contents">
-  <div class="post-actions d-flex {% if page.multilingual %}multilingual{% endif %}">
-    {% if page.multilingual %}
+  <div class="post-actions d-flex {% if page.multilingual and page.multilingual.size > 1 %}multilingual{% endif %}">
+    {% if page.multilingual and page.multilingual.size > 1 %}
       <div class="languages">
         {% include multilingual-sel.html %}
       </div>
@@ -47,30 +66,32 @@ layout: default
   </div>
 
   <ul class="post-pager">
-    {% if page.next.url %}
+    {% if next_post.url %}
     <li class="pager--next">
       <a
         class="button"
-        href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
+        href="{{ next_post.url | prepend: site.baseurl | replace: '//', '/' }}"
         data-toggle="tooltip"
         data-placement="top"
-        title="{{page.next.title}}"
+        title="{{ next_post.title }}"
       >
         NEXT<br />
-        <span>{{page.next.title}}</span>
+        <span>{{ next_post.title }}</span>
       </a>
     </li>
-    {% endif %} {% if page.previous.url %}
+    {% endif %}
+    
+    {% if previous_post.url %}
     <li class="pager--prev">
       <a
         class="button"
-        href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
+        href="{{ previous_post.url | prepend: site.baseurl | replace: '//', '/' }}"
         data-toggle="tooltip"
         data-placement="top"
-        title="{{page.previous.title}}"
+        title="{{ previous_post.title }}"
       >
         PREV<br />
-        <span>{{page.previous.title}}</span>
+        <span>{{ previous_post.title }}</span>
       </a>
     </li>
     {% endif %}

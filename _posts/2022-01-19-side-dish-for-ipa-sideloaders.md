@@ -7,7 +7,7 @@ tags:
   - Sideload
   - macOS
   - iOS
-locale: zh_CN
+locale: zh-cn
 ---
 
 家里的硬盘装了众多电影，但如果没有合适的播放器也等于白搭。iOS好用的infuse播放器要价不菲，风靡发烧友圈子的Kodi又没有上架Apple Store，没有办法的办法，只好侧载——从电脑端直接向iOS设备安装IPA软件包。

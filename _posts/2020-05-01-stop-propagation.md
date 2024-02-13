@@ -5,11 +5,12 @@ subtitle: "Onclick Not Working after Switching Pages? stopPropagation Saves the 
 author: "DotIN13"
 multilingual:
   - en-us
+  - zh-cn
 tags:
   - JavaScript
   - Blog
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Plainwhite主题

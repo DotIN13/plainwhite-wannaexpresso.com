@@ -8,7 +8,7 @@ tags:
   - Jellyfin
   - Manjaro
   - File Permission
-locale: zh_CN
+locale: zh-cn
 ---
 
 第二回说到，向Jellyfin添加电影目录时报错。

@@ -7,7 +7,7 @@ tags:
   - Book
   - 高晓声
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 <style>

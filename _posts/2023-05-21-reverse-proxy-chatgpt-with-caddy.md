@@ -7,7 +7,7 @@ tags:
   - ChatGPT
   - OpenAI
   - Caddy
-locale: zh_CN
+locale: zh-cn
 ---
 
 有的时候，大雨来了忘记带伞，于是之后每天都带着伞出门，直到下次大雨的前一天。

@@ -8,7 +8,7 @@ tags:
   - Jellyfin
   - Manjaro
   - Caddy
-locale: zh_CN
+locale: zh-cn
 ---
 
 Manjaro玩转Jellyfin，还不简单？

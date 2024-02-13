@@ -10,7 +10,7 @@ tags:
   - Ruby
   - Homebrew
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Ruby on M1 MacBook

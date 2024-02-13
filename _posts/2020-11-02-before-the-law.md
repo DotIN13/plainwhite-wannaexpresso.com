@@ -8,7 +8,7 @@ tags:
   - Jurisprudence
   - Kafka
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 法律门前

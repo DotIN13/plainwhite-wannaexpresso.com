@@ -8,7 +8,7 @@ tags:
   - Blog
   - Plugin
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Jekyll插件

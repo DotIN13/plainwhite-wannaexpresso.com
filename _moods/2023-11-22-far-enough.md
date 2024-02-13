@@ -2,7 +2,7 @@
 layout: mood
 title: "远方"
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 header-image: false
 date: 2023-11-22 23:53:00 +0800
 ---

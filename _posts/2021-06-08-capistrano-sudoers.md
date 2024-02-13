@@ -7,7 +7,7 @@ tags:
   - Ruby
   - Capistrano
   - Sudoers
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Capistrano

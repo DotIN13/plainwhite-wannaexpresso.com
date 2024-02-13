@@ -7,7 +7,7 @@ tags:
   - Life
   - Short Story
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 “片儿川”这家酒楼属当地一绝。

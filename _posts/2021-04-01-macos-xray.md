@@ -7,7 +7,7 @@ tags:
   - macOS
   - VLESS
   - XLTS
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Xray

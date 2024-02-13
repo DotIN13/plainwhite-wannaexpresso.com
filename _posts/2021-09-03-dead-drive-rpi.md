@@ -6,7 +6,7 @@ author: DotIN13
 tags:
   - Pi
   - Life
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 前世

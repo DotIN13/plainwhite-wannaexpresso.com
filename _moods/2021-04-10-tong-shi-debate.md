@@ -2,7 +2,7 @@
 layout: mood
 title: "四十五年"
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 header-image: "fourty-five.jpg"
 date: 2021-04-10 23:44:27 +0800
 ---

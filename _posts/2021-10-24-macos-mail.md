@@ -7,7 +7,7 @@ tags:
   - Life
   - macOS
   - 126
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## macOS Mail

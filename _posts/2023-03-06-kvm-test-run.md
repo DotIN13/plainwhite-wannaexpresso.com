@@ -8,7 +8,7 @@ tags:
   - Ubuntu
   - KVM
   - RDP
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 只因不够用

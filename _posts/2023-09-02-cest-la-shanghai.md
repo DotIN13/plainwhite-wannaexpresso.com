@@ -6,7 +6,7 @@ author: "DotIN13"
 tags:
   - Life
   - Short Story
-locale: zh_CN
+locale: zh-cn
 ---
 
 周三，我像往常一样坐公交上班。车里略显拥挤。

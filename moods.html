@@ -1,18 +1,10 @@
 ---
-layout: default
+layout: moods
 pagination: 
   enabled: true
   collection: moods
+locale: zh-cn
+multilingual:
+  - en-us
+  - zh-cn
 ---
-
-<div class="moods-container">
-  <div class="mood-track">
-    {%- for mood in paginator.posts -%}
-      <div class="mood" data-controller="mood">
-        {% include moods-track-item.html mood=mood %}
-      </div>
-    {%- endfor -%}
-  </div>
-
-  {% include pagination-links.html %}
-</div>

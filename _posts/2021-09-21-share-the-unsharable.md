@@ -7,7 +7,7 @@ tags:
   - Life
   - Raspberry Pi
   - OpenWrt
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## Share The Unsharable

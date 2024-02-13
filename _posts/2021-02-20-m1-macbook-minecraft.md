@@ -9,7 +9,7 @@ tags:
   - Minecraft
   - Forge
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 > 根据最新情报，本文方法已过时，达文西同志已经研制出了最新启动方法，通杀Minecraft 1.7至今所有版本，这款终极武器的名字就叫做：**黑了他-3000**。呃……不好意思，走错片场，但是船新启动方法是真的，[M1-HMCL-Hack](/2022/08/07/m1-hmcl-hack/#m1-hmcl-hack)现已上线！

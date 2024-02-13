@@ -53,6 +53,7 @@ defaults:
       type: "moods"
     values:
       javascript: posts
+multilingual: true
 
 # Gitalk settings
 gitalk_clientid: false
@@ -202,7 +203,7 @@ pagination:
   tag: ""
 
   # Optional, the default locale to use, omit to disable (depends on a field 'locale' to be specified in the posts,
-  # in reality this can be any value, suggested are the Microsoft locale-codes (e.g. en_US, en_GB) or simply the ISO-639 language code )
+  # in reality this can be any value, suggested are the Microsoft locale-codes (e.g. en-us, en_GB) or simply the ISO-639 language code )
   locale: ""
 
   # Optional,omit or set both before and after to zero to disable.

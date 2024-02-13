@@ -2,7 +2,7 @@
 layout: mood
 title: "晚课"
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 date: 2021-03-10 20:34:12 +0800
 ---
 

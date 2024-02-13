@@ -5,11 +5,12 @@ subtitle: "切换页面后onclick不工作 stopPropagation来救场"
 author: "DotIN13"
 multilingual:
   - en-us
+  - zh-cn
 tags:
   - JavaScript
   - Blog
 typora-root-url: ../
-locale: en_US
+locale: en-us
 ---
 
 ## Plainwhite Theme

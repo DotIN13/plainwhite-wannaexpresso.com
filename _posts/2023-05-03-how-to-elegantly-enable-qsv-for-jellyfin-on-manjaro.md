@@ -8,7 +8,7 @@ tags:
   - Jellyfin
   - Manjaro
   - Intel QSV
-locale: zh_CN
+locale: zh-cn
 ---
 
 FFmpeg啊，真的是天天都想搞个大新闻——你们看，这才一年没到，已经刷了俩大版本了，把版本号直接干到了6.0。

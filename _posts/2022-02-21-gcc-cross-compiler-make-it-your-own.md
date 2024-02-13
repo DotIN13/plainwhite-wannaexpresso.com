@@ -6,7 +6,7 @@ author: "DotIN13"
 tags:
   - Linux
   - Cross Compile
-locale: zh_CN
+locale: zh-cn
 ---
 
 鹤立鸡群，曲高和寡。遮望眼，鸡立鹤群，白羽千冠不见天。
@@ -349,7 +349,7 @@ make install
 
 [1] [How to Build a GCC Cross-Compiler *by Jason*](https://jasonblog.github.io/note/raspberry_pi/how_to_build_a_gcc_cross-compiler.html)
 
-[2] [Linux From Scratch](https://bf.mengyan1223.wang/lfs/zh_CN/8.3/chapter05/generalinstructions.html)
+[2] [Linux From Scratch](https://bf.mengyan1223.wang/lfs/zh-cn/8.3/chapter05/generalinstructions.html)
 
 [3] [GCC Fails to Build *from Mailing list for the GCC project*](https://gcc.gnu.org/legacy-ml/gcc-help/2020-01/msg00057.html)
 

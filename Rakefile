@@ -2,14 +2,14 @@ require 'rake'
 
 desc 'Create new mood'
 task :new_mood, [:title] do |_t, args|
-  title = args[:title] || "untitled"
+  title = args[:title] || 'untitled'
   file = File.join(File.dirname(__FILE__), '_moods',
                    "#{Time.new.strftime('%Y-%m-%d')}-#{title.downcase.gsub(' ', '-')}.md")
   yaml = <<-EOYAML.gsub(/^\s{2}/, '')
   ---
   title: "#{title}"
   author: "DotIN13"
-  locale: zh_CN
+  locale: zh-cn
   header-image: false
   date: #{Time.now}
   ---
@@ -31,7 +31,7 @@ task :new_post, [:title] do |_t, args|
   author: "DotIN13"
   tags:
     - Example
-  locale: zh_CN
+  locale: zh-cn
   ---
 
   EOYAML

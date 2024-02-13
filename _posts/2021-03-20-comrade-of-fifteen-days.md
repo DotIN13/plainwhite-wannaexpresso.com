@@ -7,7 +7,7 @@ tags:
   - Life
   - Monologue
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 风没有帮连长传声的意思，他的声音却分毫不让地钻到队列中来。

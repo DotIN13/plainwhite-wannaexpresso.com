@@ -9,7 +9,7 @@ tags:
   - Translation
   - MedCram
   - Online Courses
-locale: zh_CN
+locale: zh-cn
 ---
 
 <div class="video-iframe">

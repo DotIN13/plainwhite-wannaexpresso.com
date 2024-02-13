@@ -8,7 +8,7 @@ tags:
   - Game
   - Universal Law
 typora-root-url: ../..
-locale: zh_CN
+locale: zh-cn
 ---
 
 {% include post-image.html link="post-wodbasics/universe.png" alt="WoD宇宙" %}

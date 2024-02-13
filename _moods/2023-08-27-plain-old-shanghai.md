@@ -2,7 +2,7 @@
 layout: mood
 title: "Plain Old Shanghai"
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 header-image: false
 date: 2023-08-27 23:41:57 +0800
 ---

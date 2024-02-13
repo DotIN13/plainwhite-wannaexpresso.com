@@ -8,7 +8,7 @@ tags:
   - Game
   - Terminology
 typora-root-url: ../..
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 角色

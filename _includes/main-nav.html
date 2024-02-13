@@ -1,9 +1,9 @@
 <nav class="main-nav">
   <ul class="site-nav">
-    <li><a href="{% if page.locale == 'en_US' and site.multilingual == true %}/en-us{% else %}/{% endif %}">HOME</a></li>
-    <li><a href="/moods">MOODS</a></li>
-    <li><a href="/archive">ARCHIVE</a></li>
-    <li><a href="/about">ABOUT</a></li>
+    <li><a href="{% if page.locale == 'en-us' and site.multilingual == true %}/en-us{% else %}/{% endif %}">HOME</a></li>
+    <li><a href="{% if page.locale == 'en-us' and site.multilingual == true %}/en-us/moods{% else %}/moods{% endif %}">MOODS</a></li>
+    <li><a href="{% if page.locale == 'en-us' and site.multilingual == true %}/en-us/archive{% else %}/archive{% endif %}">ARCHIVE</a></li>
+    <li><a href="{% if page.locale == 'en-us' and site.multilingual == true %}/en-us/about{% else %}/about{% endif %}">ABOUT</a></li>
   </ul>
   {% include nav-actions.html %}
 </nav>

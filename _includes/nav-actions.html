@@ -1,6 +1,35 @@
+<!-- Language Selector -->
+{% assign current_lang = "zh-cn" # Set defaults %}
+{% assign page_url = page.url %}
+
+{% assign url_arr = page.url | downcase | split: "/" # split the url into array %}
+{% for lang in page.multilingual %}
+  {% if url_arr[1] == lang | downcase %}
+    {% assign arr_size = url_arr | size %}
+    {% assign page_url = url_arr | slice: 2, arr_size | join: "/" | prepend: "/" %}
+    {% assign current_lang = url_arr[1] %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
 <div class="actions">
   <a href="#" class="icon-search" data-action="click->portal#addPlayer" data-portal-template-param="search-template" data-portal-type-param="search" data-portal-duration-param="false" data-portal-container-class-param="portal__container--search top center" data-portal-destination-param="portal__search" data-portal-animated-exit-param="false"></a>
-  <!-- <a href="{% if page.locale == 'en_US' and site.multilingual == true %}/{% else %}/en-us{% endif %}" class="icon-translate"></a> -->
+  
+  {% if page.multilingual and site.multilingual == true %}
+    {% for lang in page.multilingual %}
+      {% if lang != current_lang %}
+        {% if lang == 'zh-cn' %} <!-- Do not add lang for zh-cn pages -->
+          <a href="{{ site.baseurl }}{{ page_url }}" class="icon-translate"></a>
+        {% else %}
+          <a href="{{ site.baseurl }}/{{ lang | append: page_url }}" class="icon-translate"></a>
+        {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <a href="{% if page.locale == 'en-us' and site.multilingual == true %}/{% else %}/en-us{% endif %}" class="icon-translate"></a>
+  {% endif %}
+  
   <a href="#" class="icon-moon" data-darkmode-target="indicator" data-action="darkmode#toggle"></a>
   <a href="/feed.xml" class="icon-rss_feed"></a>
 </div>

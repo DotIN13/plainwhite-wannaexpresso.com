@@ -12,7 +12,10 @@
   {% endif %}
 {% endfor %}
 
-<a href="{{ page_url | relative_url }}" class="post-lang {% if current_lang == 'zh-cn' %}active{% endif %}">ZH-CN</a>
 {% for lang in page.multilingual %}
-  <a href="{{ site.baseurl }}/{{ lang | append: page_url }}" class="post-lang {% if current_lang == lang %}active{% endif %}">{{ lang | upcase }}</a>
+  {% if lang == 'zh-cn' %}
+    <a href="{{ site.baseurl }}{{ page_url }}" class="post-lang {% if current_lang == lang %}active{% endif %}">ZH-CN</a>
+  {% else %}
+    <a href="{{ site.baseurl }}/{{ lang | append: page_url }}" class="post-lang {% if current_lang == lang %}active{% endif %}">{{ lang | upcase }}</a>
+  {% endif %}
 {% endfor %}

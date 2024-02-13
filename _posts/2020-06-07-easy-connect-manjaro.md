@@ -8,7 +8,7 @@ tags:
   - EasyConnect
   - Manjaro
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 不会开发就不要开发

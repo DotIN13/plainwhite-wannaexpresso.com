@@ -1,7 +1,7 @@
 <div class="sidebar__container" data-action="click->sidebar#hide">
   <ul class="sidebar">
     {% for item in site.plainwhite.sidebar %}
-    {% if page.locale == 'en_US' and site.multilingual == true %}{% assign dest = item.url_en %}{% else %}{% assign dest = item.url %}{% endif %}
+    {% if page.locale == 'en-us' and site.multilingual == true %}{% assign dest = item.url_en %}{% else %}{% assign dest = item.url %}{% endif %}
     {% include sidebar-item.html href=dest icon=item.icon title=item.title index=forloop.index %}
     {% endfor %}
   </ul>

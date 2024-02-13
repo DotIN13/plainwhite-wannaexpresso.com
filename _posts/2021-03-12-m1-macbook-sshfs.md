@@ -11,7 +11,7 @@ tags:
   - Linux
   - macFUSE
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 无中生有的需求

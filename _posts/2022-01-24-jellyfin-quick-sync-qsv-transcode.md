@@ -8,7 +8,7 @@ tags:
   - Jellyfin
   - Manjaro
   - Intel QSV
-locale: zh_CN
+locale: zh-cn
 ---
 
 > 本品不含防腐剂、添加剂与完整配置教程，如有需求，欢迎参阅[在Manjaro上优雅地使用QSV加速Jellyfin视频转码（自动挡）](/2023/05/03/how-to-elegantly-enable-qsv-for-jellyfin-on-manjaro/)。

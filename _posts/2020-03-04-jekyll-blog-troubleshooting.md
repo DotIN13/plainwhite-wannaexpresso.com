@@ -14,7 +14,7 @@ tags:
   - Lightbox
   - GitHub Pages
   - Coding Pages
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 核心问题

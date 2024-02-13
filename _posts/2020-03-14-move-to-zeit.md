@@ -11,7 +11,7 @@ tags:
   - Blog
   - GitHub Pages
   - Zeit Now
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 来龙

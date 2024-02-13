@@ -8,7 +8,7 @@ tags:
   - NextCloud
   - Life
 typora-root-url: ../
-locale: zh_CN
+locale: zh-cn
 ---
 
 ## 新的文字
@@ -380,7 +380,7 @@ $CONFIG = array (
   # ...
   'overwriteprotocol' => 'https',
   'default_language' => 'zh',
-  'default_locale' => 'zh_CN',
+  'default_locale' => 'zh-cn',
   'default_phone_region' => 'CN',
 );
 ```

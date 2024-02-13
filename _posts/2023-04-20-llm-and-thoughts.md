@@ -6,7 +6,7 @@ tags:
   - LLM
   - NLP
   - ChatGPT
-locale: en_US
+locale: en-us
 ---
 
 LLMs have been creeping into our lives relentlessly since the emergence and then the prevalence of the flagship model ChatGPT over the entire human Internet. However, while everyone is really just trying out, or even starting to rely on LLMs to make an easier and more enjoyable life, it should be noted that LLMs are still, essentially, a game of capital and mode of production in the name of the pursuit of knowledge and truth.

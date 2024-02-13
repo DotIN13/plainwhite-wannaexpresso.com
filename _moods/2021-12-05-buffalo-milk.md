@@ -2,7 +2,7 @@
 layout: mood
 title: "水牛奶"
 author: "DotIN13"
-locale: zh_CN
+locale: zh-cn
 header-image: "buffalo.jpeg"
 date: 2021-12-05 09:10:49 +0800
 ---

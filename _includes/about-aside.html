@@ -1,14 +1,14 @@
 <aside class="about" data-action="resize@window->about#updateObserver" data-about-target="about">
   <div class="about__inner" style="--about-top: 20%" data-about-target="inner">
     <div class="about__avatar" id="avatar">
-      <a href="{% if page.locale == 'en_US' and site.multilingual == true %}/en-us/{% else %}/{% endif %}">
+      <a href="{% if page.locale == 'en-us' and site.multilingual == true %}/en-us/{% else %}/{% endif %}">
         {% picture avatar orange.webp --img alt="site avatar" %}
       </a>
     </div>
 
     <div class="about__header">
       <h2 id="title" class="about__title">
-        <a href="{% if page.locale == 'en_US' and site.multilingual == true %}/en-us/{% else %}/{% endif %}"
+        <a href="{% if page.locale == 'en-us' and site.multilingual == true %}/en-us/{% else %}/{% endif %}"
           >{{ site.plainwhite.name }}
         </a>
       </h2>
