@@ -4,10 +4,9 @@ layout: post
 locale: en-us
 subtitle: null
 tags:
-- "\u5361\u592B\u5361"
 - Jurisprudence
 - Kafka
-title: null
+title: Before the Law
 typora-root-url: ../
 ---
 

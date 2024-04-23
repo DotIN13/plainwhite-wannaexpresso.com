@@ -6,7 +6,7 @@ subtitle: null
 tags:
 - Pi
 - Life
-title: Another Drop Dead of Raspberry Pi
+title: Raspberry Pi Drop Dead
 ---
 
 ## Previous Life
